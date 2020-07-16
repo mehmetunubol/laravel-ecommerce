@@ -40,8 +40,8 @@ class Setting extends Model
         $entry = $setting->where('key', $key)->firstOrFail();
         $entry->value = $value;
         $entry->saveOrFail();
-        Config::set('key', $value);
-        if (Config::get($key) == $value) {
+        \Config::set('key', $value);
+        if (\Config::get($key) == $value) {
             return true;
         }
         return false;
