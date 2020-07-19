@@ -75,10 +75,10 @@
                                 <div class="form-group col-md-6">
                                     <label for="country">Country</label>
                                     <select id="country" class="form-control" name="country">
-                                        <option> Choose...</option>
+                                        <option value="Turkey" selected="">Turkey</option>
                                         <option value="United Kingdom">United Kingdom</option>
                                         <option value="France">France</option>
-                                        <option value="United States" selected="">United States</option>
+                                        <option value="United States">United States</option>
                                     </select>
                                 </div>
                             </div>
