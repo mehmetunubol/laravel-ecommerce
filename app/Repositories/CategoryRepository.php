@@ -133,4 +133,28 @@ class CategoryRepository extends BaseRepository implements CategoryContract
 
         return $category;
     }
+
+    /**
+     * @return mixed
+     */
+    public function treeList()
+    {
+        /*
+            The nest() and listFlattened() methods are provided by the NestedCollection package we installed earlier.
+
+            Next, we will use the treeList() method in our Admin\CategoryController instead of listCategories().
+        */
+        return Category::orderByRaw('-name ASC')
+            ->get()
+            ->nest()
+            ->listsFlattened('name');
+    }
+
+    public function findBySlug($slug)
+    {
+        return Category::with('products')
+            ->where('slug', $slug)
+            ->where('menu', 1)
+            ->first();
+    }
 }

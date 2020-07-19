@@ -5,8 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
+/*
+    we have used the parent_id in our categories table, to nest the categories. 
+    We can write our own logic to render the nested categories using a recursive PHP function 
+    but I opt for using a package called NestedCollection.
+    pre command: composer require typicms/nestablecollection
+*/
+use TypiCMS\NestableTrait;
+
 class Category extends Model
 {
+    use NestableTrait;
+
     protected $table = 'categories';
 
     protected $fillable = [
