@@ -20,3 +20,4 @@ mix.copyDirectory('resources/customertemplate', 'public/customertemplate');
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
 */
+mix.js('resources/js/app.js', 'public/admintemplate/js');
