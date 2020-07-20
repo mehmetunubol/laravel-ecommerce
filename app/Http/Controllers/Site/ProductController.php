@@ -9,6 +9,8 @@ use App\Contracts\AttributeContract;
 
 use App\Http\Controllers\Controller;
 
+use Cart;
+
 class ProductController extends Controller
 {
     
@@ -33,6 +35,11 @@ class ProductController extends Controller
 
     public function addToCart(Request $request)
     {
-        dd($request->all());
+        $product = $this->productRepository->findProductById($request->input('productId'));
+        $options = $request->except('_token', 'productId', 'price', 'qty');
+    
+        Cart::add(uniqid(), $product->name, $request->input('price'), $request->input('qty'), $options);
+    
+        return redirect()->back()->with('message', 'Item added to cart successfully.');
     }
 }
