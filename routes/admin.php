@@ -80,6 +80,13 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::get('/{order}/show', 'Admin\OrderController@show')->name('admin.orders.show');
          });
         
+         Route::group(['prefix' => 'users'], function () {
+            Route::get('/', 'Admin\UserController@index')->name('admin.users.index');
+            Route::get('/create', 'Admin\UserController@create')->name('admin.users.create');
+            Route::post('/store', 'Admin\UserController@store')->name('admin.users.store');
+            Route::get('/edit/{id}', 'Admin\UserController@edit')->name('admin.users.edit');
+            Route::get('/delete/{id}', 'Admin\UserController@delete')->name('admin.users.delete');
+         });
     });
 
 });

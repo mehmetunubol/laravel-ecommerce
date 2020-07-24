@@ -30,7 +30,7 @@ class UserRepository extends BaseRepository implements UserContract
      * @param array $columns
      * @return mixed
      */
-    public function listUsers(string $sort = 'desc', array $columns = ['*'])
+    public function listUsers(string $sort = 'id', array $columns = ['*'])
     {
         return $this->all($columns, $sort);
     }

@@ -8,7 +8,7 @@
             </a>
         </li>
         <li>
-           <a class="app-menu__item" href="#">
+            <a class="app-menu__item {{ Route::currentRouteName() == 'admin.users.index' ? 'active' : '' }}" href="{{ route('admin.users.index') }}">
                 <i class="app-menu__icon fa fa-users"></i>
                 <span class="app-menu__label">Customers</span>
             </a>
