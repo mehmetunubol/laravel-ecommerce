@@ -1,9 +1,9 @@
 @extends('site.app')
-@section('title', 'Shopping Cart')
+@section('title', {{ __("Alışveriş Sepeti") }})
 @section('content')
     <section class="section-pagetop bg-dark">
         <div class="container clearfix">
-            <h2 class="title-page">Cart</h2>
+            <h2 class="title-page">{{ __("Sepet") }}</h2>
         </div>
     </section>
     <section class="section-content bg padding-y border-top">
@@ -18,15 +18,15 @@
             <div class="row">
                 <main class="col-sm-9">
                     @if (\Cart::isEmpty())
-                        <p class="alert alert-warning">Your shopping cart is empty.</p>
+                        <p class="alert alert-warning">{{ __("Sepetin Boş") }}</p>
                     @else
                         <div class="card">
                             <table class="table table-hover shopping-cart-wrap">
                                 <thead class="text-muted">
                                 <tr>
-                                    <th scope="col">Product</th>
-                                    <th scope="col" width="120">Quantity</th>
-                                    <th scope="col" width="120">Price</th>
+                                    <th scope="col">{{ __("Ürün") }}</th>
+                                    <th scope="col" width="120">{{ __("Miktar") }}</th>
+                                    <th scope="col" width="120">{{ __("Fiyat") }}</th>
                                     <th scope="col" class="text-right" width="200">Action</th>
                                 </tr>
                                 </thead>
@@ -67,7 +67,7 @@
                 </main>
                 <aside class="col-sm-3">
                     <a href="{{ route('checkout.cart.clear') }}" class="btn btn-danger btn-block mb-4">Clear Cart</a>
-                    <p class="alert alert-success">Add USD 5.00 of eligible items to your order to qualify for FREE Shipping. </p>
+                    <p class="alert alert-success">{{ __("Ekle") }} USD 5.00 of eligible items to your order to qualify for FREE Shipping. </p>
                     <dl class="dlist-align h4">
                         <dt>Total:</dt>
                         <dd class="text-right"><strong>{{ config('settings.currency_symbol') }}{{ \Cart::getSubTotal() }}</strong></dd>
@@ -86,7 +86,7 @@
                             <br> Lorem ipsum dolor
                         </div>
                     </figure>
-                    <a href="{{ route('checkout.index') }}" class="btn btn-success btn-lg btn-block">Proceed To Checkout</a>
+                    <a href="{{ route('checkout.index') }}" class="btn btn-success btn-lg btn-block">{{ __("Ödemeye geç") }}</a>
                 </aside>
             </div>
         </div>

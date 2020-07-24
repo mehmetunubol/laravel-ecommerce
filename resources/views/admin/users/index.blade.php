@@ -6,7 +6,7 @@
             <h1><i class="fa fa-tags"></i> {{ $pageTitle }}</h1>
             <p>{{ $subTitle }}</p>
         </div>
-        <!--<a href="{{ route('admin.users.create') }}" class="btn btn-primary pull-right">Add User</a>-->
+        <!--<a href="{{ route('admin.users.create') }}" class="btn btn-primary pull-right">{{ __("Ekle") }} User</a>-->
     </div>
     @include('admin.partials.flash')
     <div class="row">
@@ -17,10 +17,10 @@
                         <thead>
                         <tr>
                             <th> # </th>
-                            <th class="text-center"> Name </th>
-                            <th class="text-center"> Email </th>
-                            <th class="text-center"> Address </th>
-                            <th class="text-center"> Orders </th>
+                            <th class="text-center"> {{ __("İsim") }}</th>
+                            <th class="text-center"> {{ __("Email") }} </th>
+                            <th class="text-center"> {{ __("Adres") }} </th>
+                            <th class="text-center"> {{ __("Siparişler") }} </th>
                             <th style="width:100px; min-width:100px;" class="text-center text-danger"><i class="fa fa-bolt"> </i></th>
                         </tr>
                         </thead>

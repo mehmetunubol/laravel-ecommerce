@@ -3,7 +3,7 @@
 @section('content')
     <section class="section-pagetop bg-dark">
         <div class="container clearfix">
-            <h2 class="title-page">Register</h2>
+            <h2 class="title-page">{{ __("Kayıt Ol") }}</h2>
         </div>
     </section>
     <section class="section-content bg padding-y">
@@ -11,14 +11,14 @@
             <div class="col-md-6 mx-auto">
                 <div class="card">
                     <header class="card-header">
-                        <h4 class="card-title mt-2">Profile</h4>
+                        <h4 class="card-title mt-2">{{ __("Profil") }}</h4>
                     </header>
                     <article class="card-body">
                         <form action="{{ route('account.profile') }}" method="POST" role="form">
                             @csrf
                             <div class="form-row">
                                 <div class="col form-group">
-                                    <label for="first_name">First name</label>
+                                    <label for="first_name">{{ __("İsim") }}</label>
                                     <input type="text" class="form-control @error('first_name') is-invalid @enderror" name="first_name" id="first_name" value="{{ $user->first_name }}">
                                     @error('first_name')
                                     <span class="invalid-feedback" role="alert">
@@ -27,7 +27,7 @@
                                     @enderror
                                 </div>
                                 <div class="col form-group">
-                                    <label for="last_name">Last name</label>
+                                    <label for="last_name">{{ __("Soyisim") }}</label>
                                     <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" id="last_name" value="{{ $user->last_name }}">
                                     @error('last_name')
                                     <span class="invalid-feedback" role="alert">
@@ -37,7 +37,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="email">E-Mail Address</label>
+                                <label for="email">{{ __("E-Mail Adresi") }}</label>
                                 <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{ $user->email }}">
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -46,16 +46,16 @@
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label for="address">Address</label>
+                                <label for="address">{{ __("Adres") }}</label>
                                 <input class="form-control" type="text" name="address" id="address" value="{{ $user->address }}">
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="city">City</label>
+                                    <label for="city">{{ __("Şehir") }}</label>
                                     <input type="text" class="form-control" name="city" id="city" value="{{ $user->city }}">
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="country">Country</label>
+                                    <label for="country">{{ __("Ülke") }}</label>
                                     <select id="country" class="form-control" name="country">
                                         <option value="Turkey" <?php echo ($user->country == 'Turkey')?'selected':''; ?>>Turkey</option>
                                         <option value="United Kingdom" <?php echo ($user->country == 'United Kingdom')?'selected':''; ?>>United Kingdom</option>
@@ -65,7 +65,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-success btn-block"> Update </button>
+                                <button type="submit" class="btn btn-success btn-block"> {{ __("Güncelle") }} </button>
                             </div>
                         </form>
                     </article>
