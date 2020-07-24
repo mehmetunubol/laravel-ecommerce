@@ -33,6 +33,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('checkout/payment/complete', 'Site\CheckoutController@complete')->name('checkout.payment.complete');
 
     Route::get('account/orders', 'Site\AccountController@getOrders')->name('account.orders');
+    Route::get('account/profile', 'Site\AccountController@getProfile')->name('account.profile');
+    Route::post('account/profile', 'Site\AccountController@updateProfile')->name('account.profile');
+    Route::get('account/delete', 'Site\AccountController@deleteProfile')->name('account.delete');
 });
 
 Auth::routes();
