@@ -87,6 +87,15 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::get('/edit/{id}', 'Admin\UserController@edit')->name('admin.users.edit');
             Route::get('/delete/{id}', 'Admin\UserController@delete')->name('admin.users.delete');
          });
+
+         Route::group(['prefix'  =>   'sitepages'], function() {
+            Route::get('/', 'Admin\SitePageController@index')->name('admin.sitepages.index');
+            Route::get('/create', 'Admin\SitePageController@create')->name('admin.sitepages.create');
+            Route::post('/store', 'Admin\SitePageController@store')->name('admin.sitepages.store');
+            Route::get('/{id}/edit', 'Admin\SitePageController@edit')->name('admin.sitepages.edit');
+            Route::post('/update', 'Admin\SitePageController@update')->name('admin.sitepages.update');
+            Route::get('/{id}/delete', 'Admin\SitePageController@delete')->name('admin.sitepages.delete');
+        });
     });
 
 });
