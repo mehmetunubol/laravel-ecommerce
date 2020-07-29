@@ -38,4 +38,10 @@ interface SitePageContract
      * @return bool
      */
     public function deleteSitePage($id);
+
+    /**
+     * @param $slug
+     * @return mixed
+     */
+    public function findSitepageBySlug($slug);
 }

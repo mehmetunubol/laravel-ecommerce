@@ -56,6 +56,12 @@ class SitePageRepository extends BaseRepository implements SitePageContract
 
     }
 
+    public function findSitepageBySlug($slug)
+    {
+        $sitepage = SitePage::where('slug', $slug)->first();
+        return $sitepage;
+    }
+
     /**
      * @param array $params
      * @return SitePage|mixed

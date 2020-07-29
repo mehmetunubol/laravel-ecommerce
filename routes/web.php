@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'site.pages.homepage');
+
+Route::get('/sitepages/{slug}', 'Site\SitePageController@show')->name('sitepages.show');
+Route::get('/sitepages', 'Site\SitePageController@getAllPages')->name('sitepages');
+
 Route::get('/category/{slug}', 'Site\CategoryController@show')->name('category.show');
 Route::get('/product/{slug}', 'Site\ProductController@show')->name('product.show');
 
