@@ -10,6 +10,8 @@ use App\Contracts\OrderContract;
 
 class OrderRepository extends BaseRepository implements OrderContract
 {
+    private $defined_states = ['pending', 'wait_payment', 'wait_pay_confirm', 'wait_ship', 'declined', 'shipping','completed', 'return_shipping', 'returned'];
+
     public function __construct(Order $model)
     {
         parent::__construct($model);
@@ -67,5 +69,22 @@ class OrderRepository extends BaseRepository implements OrderContract
     public function findOrderByNumber($orderNumber)
     {
         return Order::where('order_number', $orderNumber)->first();
+    }
+
+    public function setOrderState($params)
+    {
+        $order = $this->findOrderByNumber($params['number']);
+        if(false == in_array($params['state'], $this->defined_states))
+        {
+            throw new InvalidArgumentException("Given state is not predefined!");
+        }
+        $order->status = $params['state'];
+        $order->save();
+        return $order;
+    }
+
+    public function getOrderStates()
+    {
+        return $this->defined_states;
     }
 }

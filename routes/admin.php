@@ -78,6 +78,8 @@ Route::group(['prefix'  =>  'admin'], function () {
          Route::group(['prefix' => 'orders'], function () {
             Route::get('/', 'Admin\OrderController@index')->name('admin.orders.index');
             Route::get('/{order}/show', 'Admin\OrderController@show')->name('admin.orders.show');
+            Route::get('/{order}/edit', 'Admin\OrderController@edit')->name('admin.orders.edit');
+            Route::post('/update', 'Admin\OrderController@update')->name('admin.orders.update');
          });
         
          Route::group(['prefix' => 'users'], function () {
