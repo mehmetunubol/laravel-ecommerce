@@ -17,6 +17,9 @@ use App\Contracts\UserContract;
 use App\Repositories\UserRepository;
 use App\Contracts\WishlistContract;
 use App\Repositories\WishlistRepository;
+use App\Contracts\SitePageContract;
+use App\Repositories\SitePageRepository;
+
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -28,6 +31,7 @@ class RepositoryServiceProvider extends ServiceProvider
         OrderContract::class            =>          OrderRepository::class,
         UserContract::class             =>          UserRepository::class,
         WishlistContract::class         =>          WishlistRepository::class,
+        SitePageContract::class         =>          SitePageRepository::class,
     ];
 
     /**

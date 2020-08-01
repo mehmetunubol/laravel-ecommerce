@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use App\Contracts\OrderContract;
 use App\Http\Controllers\BaseController;
+
 class OrderController extends BaseController
 {
     protected $orderRepository;
@@ -26,5 +28,39 @@ class OrderController extends BaseController
 
         $this->setPageTitle('Order Details', $orderNumber);
         return view('admin.orders.show', compact('order'));
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function edit($number)
+    {
+        $order = $this->orderRepository->findOrderByNumber($number);
+        $states = $this->orderRepository->getOrderStates();
+        $this->setPageTitle('Orders', 'Edit Order : '.$order->number);
+        return view('admin.orders.edit', compact('order', 'states'));
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function update(Request $request)
+    {
+        $this->validate($request, [
+            'state'      =>  'required',
+            'number'      =>  'required',
+        ]);
+
+        $params = $request->except('_token');
+
+        $order = $this->orderRepository->setOrderState($params);
+
+        if (!$order) {
+            return $this->responseRedirectBack('Error occurred while updating order.', 'error', true, true);
+        }
+        return $this->responseRedirectBack('Order updated successfully' ,'success',false, false);
     }
 }

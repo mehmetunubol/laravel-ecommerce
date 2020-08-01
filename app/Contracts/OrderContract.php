@@ -9,4 +9,8 @@ interface OrderContract
     public function listOrders(string $order = 'id', string $sort = 'desc', array $columns = ['*']);
 
     public function findOrderByNumber($orderNumber);
+
+    public function setOrderState($params);
+
+    public function getOrderStates();
 }

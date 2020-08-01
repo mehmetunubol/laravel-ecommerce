@@ -28,13 +28,13 @@ class CheckoutController extends Controller
 
         // You can add more control here to handle if the order
         // is not stored properly
-        if ($order) {
-            dd($order);
-            // TODO: Payment
-            # $this->payPal->processPayment($order);
+        if (!isset($order)) {
+            return redirect()->back()->with('message','Order not placed');
         }
-
-        return redirect()->back()->with('message','Order not placed');
+        $this->orderRepository->setOrderState(['number'=> $order->order_number, 'state' => 'wait_payment']);
+        // TODO: Payment
+        # $this->payPal->processPayment($order);
+        return $order;
     }
 
     public function complete(Request $request)
@@ -50,6 +50,7 @@ class CheckoutController extends Controller
         $order->payment_status = 1;
         $order->payment_method = 'PayPal -'.// TODO: Payment $status['salesId'];
         $order->save();
+        $this->orderRepository->setOrderState(['number'=> $order->order_number, 'state' => 'wait_ship']);
 
         Cart::clear();
         return view('site.pages.success', compact('order'));
