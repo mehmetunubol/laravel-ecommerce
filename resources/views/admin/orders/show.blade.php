@@ -16,22 +16,22 @@
                             <h2 class="page-header"><i class="fa fa-globe"></i> {{ $order->order_number }}</h2>
                         </div>
                         <div class="col-6">
-                            <h5 class="text-right">Date: {{ $order->created_at->toFormattedDateString() }}</h5>
+                            <h5 class="text-right">{{ __("Tarih") }}: {{ $order->created_at->toFormattedDateString() }}</h5>
                         </div>
                     </div>
                     <div class="row invoice-info">
-                        <div class="col-4">Placed By
+                        <div class="col-4">{{ __("Müşteri") }}
                             <address><strong>{{ $order->user->fullName }}</strong><br>Email: {{ $order->user->email }}</address>
                         </div>
-                        <div class="col-4">Ship To
+                        <div class="col-4">{{ __("Kargo Adresi") }}
                             <address><strong>{{ $order->first_name }} {{ $order->last_name }}</strong><br>{{ $order->address }}<br>{{ $order->city }}, {{ $order->country }} {{ $order->post_code }}<br>{{ $order->phone_number }}<br></address>
                         </div>
                         <div class="col-4">
-                            <b>Order ID:</b> {{ $order->order_number }}<br>
-                            <b>Amount:</b> {{ config('settings.currency_symbol') }}{{ round($order->grand_total, 2) }}<br>
-                            <b>Payment Method:</b> {{ $order->payment_method }}<br>
-                            <b>Payment Status:</b> {{ $order->payment_status == 1 ? 'Completed' : 'Not Completed' }}<br>
-                            <b>Order Status:</b> {{ $order->status }}<br>
+                            <b>{{ __("Sipariş Numarası") }}:</b> {{ $order->order_number }}<br>
+                            <b>{{ __("Toplam") }}:</b> {{ config('settings.currency_symbol') }}{{ round($order->grand_total, 2) }}<br>
+                            <b>{{ __("Ödeme Methodu") }}:</b> {{ $order->payment_method }}<br>
+                            <b>{{ __("Ödeme Durumu") }}:</b> {{ $order->payment_status == 1 ?  __("Tamamlandı") : __("Tamamlanmadı") }}<br>
+                            <b>{{ __("Sipariş Durumu") }}:</b> {{ __($order->status) }}<br>
                         </div>
                     </div>
                     <div class="row">
@@ -39,11 +39,11 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Qty</th>
-                                    <th>Product</th>
-                                    <th>SKU #</th>
-                                    <th>Qty</th>
-                                    <th>Subtotal</th>
+                                    <th>{{ __("ID") }}</th>
+                                    <th>{{ __("Ürün") }}</th>
+                                    <th>{{ __("Ürün Id") }}</th>
+                                    <th>{{ __("Adet") }}</th>
+                                    <th>{{ __("Ücret") }}</th>
                                 </tr>
                                 </thead>
                                 <tbody>

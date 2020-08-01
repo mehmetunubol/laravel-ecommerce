@@ -1,7 +1,7 @@
 <template>
     <div id="">
         <div class="tile">
-            <h3 class="tile-title">Attribute Values</h3>
+            <h3 class="tile-title"{{ __('Özellik Değerleri') }}</h3>
             <hr>
             <div class="tile-body">
                 <div class="form-group">
@@ -16,7 +16,7 @@
                     />
                 </div>
                 <div class="form-group">
-                    <label class="control-label" for="price">Price</label>
+                    <label class="control-label" for="price">{{ __("Fiyat") }}</label>
                     <input
                         class="form-control"
                         type="number"
@@ -31,10 +31,10 @@
                 <div class="row d-print-none mt-2">
                     <div class="col-12 text-right">
                         <button class="btn btn-success" type="submit" @click.stop="saveValue()" v-if="addValue">
-                            <i class="fa fa-fw fa-lg fa-check-circle"></i>Save
+                            <i class="fa fa-fw fa-lg fa-check-circle"></i>{{ __("Kaydet") }}
                         </button>
                         <button class="btn btn-success" type="submit" @click.stop="updateValue()" v-if="!addValue">
-                            <i class="fa fa-fw fa-lg fa-check-circle"></i>Update
+                            <i class="fa fa-fw fa-lg fa-check-circle"></i>{{ __("Güncelle") }}
                         </button>
                         <button class="btn btn-primary" type="submit" @click.stop="reset()" v-if="!addValue">
                             <i class="fa fa-fw fa-lg fa-check-circle"></i>Reset
@@ -52,7 +52,7 @@
                         <tr class="text-center">
                             <th>#</th>
                             <th>Value</th>
-                            <th>Price</th>
+                            <th>{{ __("Fiyat") }}</th>
                             <th>Action</th>
                         </tr>
                         </thead>

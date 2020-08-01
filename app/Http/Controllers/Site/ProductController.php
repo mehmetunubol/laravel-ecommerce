@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Contracts\ProductContract;
 use App\Contracts\AttributeContract;
+use App\Contracts\WishlistContract;
 
 use App\Http\Controllers\Controller;
 
@@ -18,19 +19,21 @@ class ProductController extends Controller
 
     protected $attributeRepository;
 
+    protected $wishlistRepository;
 
-    public function __construct(ProductContract $productRepository, AttributeContract $attributeRepository)
+    public function __construct(ProductContract $productRepository, AttributeContract $attributeRepository, WishlistContract $wishlistRepository)
     {
         $this->productRepository = $productRepository;
         $this->attributeRepository = $attributeRepository;
+        $this->wishlistRepository = $wishlistRepository;
     }
 
     public function show($slug)
     {
         $product = $this->productRepository->findProductBySlug($slug);
         $attributes = $this->attributeRepository->listAttributes();
-    
-        return view('site.pages.product', compact('product', 'attributes'));
+        $wishlist = $this->wishlistRepository->findWishlistByProductId($product->id);
+        return view('site.pages.product', compact('product', 'attributes','wishlist'));
     }
 
     public function addToCart(Request $request)

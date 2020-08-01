@@ -15,16 +15,16 @@
                     @csrf
                     <div class="tile-body">
                         <div class="form-group">
-                            <label class="control-label" for="name">Name <span class="m-l-5 text-danger"> *</span></label>
+                            <label class="control-label" for="name">{{ __("İsim") }} <span class="m-l-5 text-danger"> *</span></label>
                             <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" id="name" value="{{ old('name') }}"/>
                             @error('name') {{ $message }} @enderror
                         </div>
                         <div class="form-group">
-                            <label class="control-label" for="description">Description</label>
+                            <label class="control-label" for="description"> {{ __("Açıklama") }}</label>
                             <textarea class="form-control" rows="4" name="description" id="description">{{ old('description') }}</textarea>
                         </div>
                         <div class="form-group">
-                            <label for="parent">Parent Category <span class="m-l-5 text-danger"> *</span></label>
+                            <label for="parent">{{ __("Ana") }} {{ __("Kategori") }} <span class="m-l-5 text-danger"> *</span></label>
                             <select id=parent class="form-control custom-select mt-15 @error('parent_id') is-invalid @enderror" name="parent_id">
                                 <option value="0">Select a parent category</option>
                                 @foreach($categories as $key => $category)
@@ -36,27 +36,27 @@
                         <div class="form-group">
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" id="featured" name="featured"/>Featured Category
+                                    <input class="form-check-input" type="checkbox" id="featured" name="featured"/> {{ __("Öne Çıkarılan") }}
                                 </label>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-check">
                                 <label class="form-check-label">
-                                    <input class="form-check-input" type="checkbox" id="menu" name="menu"/>Show in Menu
+                                    <input class="form-check-input" type="checkbox" id="menu" name="menu"/> {{ __("Menüde göster") }}
                                 </label>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label">Category Image</label>
+                            <label class="control-label"> {{ __("Kategori") }} > {{ __("Fotoğraf") }}</label>
                             <input class="form-control @error('image') is-invalid @enderror" type="file" id="image" name="image"/>
                             @error('image') {{ $message }} @enderror
                         </div>
                     </div>
                     <div class="tile-footer">
-                        <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Save Category</button>
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>{{ __("Kaydet") }}  {{ __("Kategori") }}</button>
                         &nbsp;&nbsp;&nbsp;
-                        <a class="btn btn-secondary" href="{{ route('admin.categories.index') }}"><i class="fa fa-fw fa-lg fa-times-circle"></i>Cancel</a>
+                        <a class="btn btn-secondary" href="{{ route('admin.categories.index') }}"><i class="fa fa-fw fa-lg fa-times-circle"></i>{{ __("İptal") }}</a>
                     </div>
                 </form>
             </div>
