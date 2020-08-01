@@ -88,6 +88,7 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::post('/store', 'Admin\UserController@store')->name('admin.users.store');
             Route::get('/edit/{id}', 'Admin\UserController@edit')->name('admin.users.edit');
             Route::get('/delete/{id}', 'Admin\UserController@delete')->name('admin.users.delete');
+            Route::get('/loginToUser/{id}', 'Admin\UserController@loginToUser')->name('admin.users.loginToUser');
          });
 
          Route::group(['prefix'  =>   'sitepages'], function() {

@@ -37,6 +37,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('checkout/payment/complete', 'Site\CheckoutController@complete')->name('checkout.payment.complete');
 
     Route::get('account/orders', 'Site\AccountController@getOrders')->name('account.orders');
+    Route::get('account/wishlist', 'Site\WishlistController@getWishlist')->name('account.wishlist');
+    Route::post('wishlist/add', 'Site\WishlistController@addToWishlist')->name('wishlist.add');
+    Route::post('wishlist/remove', 'Site\WishlistController@removeFromWishlist')->name('wishlist.remove');
     Route::get('account/profile', 'Site\AccountController@getProfile')->name('account.profile');
     Route::post('account/profile', 'Site\AccountController@updateProfile')->name('account.profile');
     Route::get('account/delete', 'Site\AccountController@deleteProfile')->name('account.delete');

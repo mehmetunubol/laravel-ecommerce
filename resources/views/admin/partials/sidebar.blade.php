@@ -13,17 +13,27 @@
                 <span class="app-menu__label">{{ __("Üyeler") }}</span>
             </a>
         </li>
-        <li>
-            <a class="app-menu__item {{ Route::currentRouteName() == 'admin.products.index' ? 'active' : '' }}" href="{{ route('admin.products.index') }}">
+        <li class="treeview">
+            <a data-toggle="treeview" class="app-menu__item {{ Route::currentRouteName() == 'admin.products.index' ? 'active' : '' }}" href="#">
                 <i class="app-menu__icon fa fa-shopping-bag"></i>
-                <span class="app-menu__label">{{ __("Ürünler") }}</span>
+
+                <span class="app-menu__label">Product Management</span>
+                <i class="treeview-indicator fa fa-angle-right"></i>
             </a>
-        </li>
-        <li>
-            <a class="app-menu__item {{ Route::currentRouteName() == 'admin.attributes.index' ? 'active' : '' }}" href="{{ route('admin.attributes.index') }}">
-                <i class="app-menu__icon fa fa-th"></i>
-                <span class="app-menu__label">{{ __("Ürün Özellikleri") }}</span>
-            </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a data-toggle="treeview-item" class="app-menu__item {{ Route::currentRouteName() == 'admin.products.index' ? 'active' : '' }}" href="{{ route('admin.products.index') }}">
+                        <i class="app-menu__icon fa fa-shopping-bag"></i>
+                        <span class="app-menu__label">Products</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="treeview-item {{ Route::currentRouteName() == 'admin.attributes.index' ? 'active' : '' }}" href="{{ route('admin.attributes.index') }}">
+                        <i class="app-menu__icon fa fa-th"></i>
+                        <span class="app-menu__label">Attributes</span>
+                    </a>
+                </li>
+            </ul> 
         </li>
         <li>
             <a class="app-menu__item {{ Route::currentRouteName() == 'admin.categories.index' ? 'active' : '' }}" href="{{ route('admin.categories.index') }}">

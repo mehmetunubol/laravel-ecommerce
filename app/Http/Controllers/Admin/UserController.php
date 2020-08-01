@@ -77,4 +77,11 @@ class UserController extends BaseController
         }
         return $this->responseRedirect('admin.users.index', 'User deleted successfully' ,'success',false, false);
     }
+
+    public function loginToUser($id)
+    {
+        auth()->loginUsingId($id);
+        
+        return redirect("/");
+    }
 }

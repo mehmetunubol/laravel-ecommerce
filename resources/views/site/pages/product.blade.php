@@ -103,8 +103,23 @@
                                             </div>
                                         </div>
                                         <hr>
-                                        <button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Add To Cart</button>
+                                        <button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart"></i> {{__("Add To Cart") }}</button>
                                     </form>
+                                    @if(auth()->user())
+                                        @if($wishlist)
+                                            <form action="{{ route('wishlist.remove') }}" method="POST" role="form" id="removeFromWishlist">
+                                                @csrf
+                                                <input type="hidden" name="productId" value="{{ $product->id }}">
+                                                <button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart"></i> {{__("Remove From Wishlist") }}</button>
+                                            </form>
+                                        @else
+                                            <form action="{{ route('wishlist.add') }}" method="POST" role="form" id="addToWishlist">
+                                                @csrf
+                                                <input type="hidden" name="productId" value="{{ $product->id }}">
+                                                <button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart"></i> {{__("Add To Wishlist") }}</button>
+                                            </form>
+                                        @endif
+                                    @endif
                                 </article>
                             </aside>
                         </div>

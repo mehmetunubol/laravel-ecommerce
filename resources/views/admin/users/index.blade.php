@@ -36,6 +36,7 @@
                                         <div class="btn-group" role="group" aria-label="Second group">
                                             <!--<a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>-->
                                             <a href="{{ route('admin.users.delete', $user->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                            <a href="{{ route('admin.users.loginToUser', $user->id) }}" class="btn btn-sm btn-warning"><i class="fa fa-arrow-circle-right"></i></a>
                                         </div>
                                     </td>
                                 </tr>

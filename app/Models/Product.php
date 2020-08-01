@@ -70,4 +70,9 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class, 'product_categories', 'product_id', 'category_id');
     }
+
+    public function wishlist()
+    {
+       return $this->hasMany(Wishlist::class);
+    }
 }
