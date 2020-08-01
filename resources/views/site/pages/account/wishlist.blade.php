@@ -1,5 +1,5 @@
 @extends('site.app')
-@section('title', '{{__("Wishlist")}}')
+@section('title', 'Wishlist')
 @section('content')
     <section class="section-pagetop bg-dark">
         <div class="container clearfix">
