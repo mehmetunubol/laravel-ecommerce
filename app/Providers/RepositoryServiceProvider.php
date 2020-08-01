@@ -15,6 +15,8 @@ use App\Contracts\OrderContract;
 use App\Repositories\OrderRepository;
 use App\Contracts\UserContract;
 use App\Repositories\UserRepository;
+use App\Contracts\WishlistContract;
+use App\Repositories\WishlistRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {

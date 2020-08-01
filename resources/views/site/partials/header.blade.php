@@ -55,6 +55,7 @@
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('account.profile') }}">{{ __("Profil") }}</a>
                                         <a class="dropdown-item" href="{{ route('account.orders') }}">{{ __("Siparişlerim") }}</a>
+                                        <a class="dropdown-item" href="{{ route('account.wishlist') }}">{{ __("Favorilerim") }}</a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
