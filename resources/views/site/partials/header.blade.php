@@ -28,7 +28,7 @@
                                 <div class="icon-wrap icon-xs bg2 round text-secondary"><i
                                         class="fa fa-shopping-cart"></i></div>
                                 <div class="text-wrap">
-                                    <small>{{ $cartCount }} items</small>
+                                    <small>{{ $cartCount }}</small>
                                 </div>
                             </a>
                         </div>
@@ -36,13 +36,13 @@
                             <div class="widget-header">
                                 <a href="{{ route('login') }}" class="ml-3 icontext">
                                     <div class="icon-wrap icon-xs bg-primary round text-white"><i class="fa fa-user"></i></div>
-                                    <div class="text-wrap"><span>Login</span></div>
+                                    <div class="text-wrap"><span>{{ __("Giriş") }}</span></div>
                                 </a>
                             </div>
                             <div class="widget-header">
                                 <a href="{{ route('register') }}" class="ml-3 icontext">
                                     <div class="icon-wrap icon-xs bg-success round text-white"><i class="fa fa-user"></i></div>
-                                    <div class="text-wrap"><span>Register</span></div>
+                                    <div class="text-wrap"><span>{{ __("Kayıt Ol") }}</span></div>
                                 </a>
                             </div>
                         @else
@@ -53,12 +53,14 @@
                                     </a>
                                     
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{ route('account.profile') }}">{{ __("Profil") }}</a>
+                                        <a class="dropdown-item" href="{{ route('account.orders') }}">{{ __("Siparişlerim") }}</a>
+                                        <a class="dropdown-item" href="{{ route('account.wishlist') }}">{{ __("Favorilerim") }}</a>
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
-                                        <a class="dropdown-item" href="{{ route('account.orders') }}">Orders</a>
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
                                         </form>

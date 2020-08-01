@@ -38,7 +38,7 @@
                         </figure>
                     </div>
                 @empty
-                    <p>No Products found in {{ $category->name }}.</p>
+                    <p>{{ __("Hayır") }} Products found in {{ $category->name }}.</p>
                 @endforelse
             </div>
         </div>

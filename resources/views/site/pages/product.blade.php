@@ -46,7 +46,7 @@
                                     <dl class="row">
                                         <dt class="col-sm-3">SKU</dt>
                                         <dd class="col-sm-9">{{ $product->sku }}</dd>
-                                        <dt class="col-sm-3">Weight</dt>
+                                        <dt class="col-sm-3">{{ __("Ağırlık") }}</dt>
                                         <dd class="col-sm-9">{{ $product->weight }}</dd>
                                     </dl>
                                     <div class="mb-3">
@@ -93,7 +93,7 @@
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <dl class="dlist-inline">
-                                                    <dt>Quantity: </dt>
+                                                    <dt>{{ __("Miktar") }}: </dt>
                                                     <dd>
                                                         <input class="form-control" type="number" min="1" value="1" max="{{ $product->quantity }}" name="qty" style="width:70px;">
                                                         <input type="hidden" name="productId" value="{{ $product->id }}">
@@ -103,8 +103,23 @@
                                             </div>
                                         </div>
                                         <hr>
-                                        <button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Add To Cart</button>
+                                        <button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart"></i> {{__("Add To Cart") }}</button>
                                     </form>
+                                    @if(auth()->user())
+                                        @if($wishlist)
+                                            <form action="{{ route('wishlist.remove') }}" method="POST" role="form" id="removeFromWishlist">
+                                                @csrf
+                                                <input type="hidden" name="productId" value="{{ $product->id }}">
+                                                <button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart"></i> {{__("Remove From Wishlist") }}</button>
+                                            </form>
+                                        @else
+                                            <form action="{{ route('wishlist.add') }}" method="POST" role="form" id="addToWishlist">
+                                                @csrf
+                                                <input type="hidden" name="productId" value="{{ $product->id }}">
+                                                <button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart"></i> {{__("Add To Wishlist") }}</button>
+                                            </form>
+                                        @endif
+                                    @endif
                                 </article>
                             </aside>
                         </div>

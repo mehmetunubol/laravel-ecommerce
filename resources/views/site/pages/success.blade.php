@@ -1,9 +1,9 @@
 @extends('site.app')
-@section('title', 'Order Completed')
+@section('title', {{ __("Siparişiniz tamamlandı") }})
 @section('content')
     <section class="section-pagetop bg-dark">
         <div class="container clearfix">
-            <h2 class="title-page">Order Completed</h2>
+            <h2 class="title-page">{{ __("Siparişiniz tamamlandı") }}</h2>
         </div>
     </section>
     <section class="section-content bg padding-y border-top">
