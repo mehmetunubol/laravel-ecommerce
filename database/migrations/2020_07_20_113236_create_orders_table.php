@@ -31,7 +31,7 @@ class CreateOrdersTable extends Migration
                     * returned          : order is returned back.
             */
             $table->enum('status', ['pending', 'wait_payment', 'wait_pay_confirm', 'wait_ship', 'declined', 'shipping','completed', 'return_shipping', 'returned'])->default('pending');
-            $table->decimal('grand_total', 20, 6);
+            $table->decimal('grand_total', 20, 2);
             $table->unsignedInteger('item_count');
 
             $table->boolean('payment_status')->default(1);

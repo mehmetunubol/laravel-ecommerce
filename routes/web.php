@@ -33,8 +33,11 @@ Route::get('/cart/clear', 'Site\CartController@clearCart')->name('checkout.cart.
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/checkout', 'Site\CheckoutController@getCheckout')->name('checkout.index');
     Route::post('/checkout/order', 'Site\CheckoutController@placeOrder')->name('checkout.place.order');
+    Route::get('/checkout/payment/complete', 'Site\CheckoutController@complete')->name('checkout.payment.complete');
 
-    Route::get('checkout/payment/complete', 'Site\CheckoutController@complete')->name('checkout.payment.complete');
+    Route::get('/checkout/payment/paytr/succeeded', 'Payment\PaytrController@successfulAttempt')->name('checkout.payment.paytr.succeeded');
+    Route::get('/checkout/payment/paytr/failed', 'Payment\PaytrController@failedAttempt')->name('checkout.payment.paytr.failed');
+    Route::post('/checkout/payment/paytr/result', 'Payment\PaytrController@paymentResult')->name('checkout.payment.paytr.result');
 
     Route::get('account/orders', 'Site\AccountController@getOrders')->name('account.orders');
     Route::get('account/wishlist', 'Site\WishlistController@getWishlist')->name('account.wishlist');

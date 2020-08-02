@@ -5,14 +5,17 @@ namespace App\Http\Controllers\Site;
 use Illuminate\Http\Request;
 use App\Contracts\OrderContract;
 use App\Http\Controllers\Controller;
+use App\Services\PaytrService;
 
 class CheckoutController extends Controller
 {
     protected $orderRepository;
+    protected $paytr;
 
-    public function __construct(OrderContract $orderRepository)
+    public function __construct(OrderContract $orderRepository, PaytrService $paytr)
     {
         $this->orderRepository = $orderRepository;
+        $this->paytr           = $paytr;
     }
 
     public function getCheckout()
@@ -22,19 +25,30 @@ class CheckoutController extends Controller
 
     public function placeOrder(Request $request)
     {
-        // Before storing the order we should implement the
-        // request validation TODO
+        $this->validate($request, [
+            'first_name'    =>  'required',
+            'last_name'     =>  'required',
+            'address'     =>  'required',
+            'city'          =>  'required',
+            'country'       =>  'required',
+            'post_code'      =>  'required',
+            'phone_number'  =>  'required',
+            'payment_method'       =>  'required'
+        ]);
+        $payment = $request->payment_method;
         $order = $this->orderRepository->storeOrderDetails($request->all());
 
-        // You can add more control here to handle if the order
-        // is not stored properly
         if (!isset($order)) {
             return redirect()->back()->with('message','Order not placed');
         }
-        $this->orderRepository->setOrderState(['number'=> $order->order_number, 'state' => 'wait_payment']);
-        // TODO: Payment
-        # $this->payPal->processPayment($order);
-        return $order;
+        $order = $this->orderRepository->setOrderState(['number'=> $order->order_number, 'state' => 'wait_payment']);
+        // Redirect to Payment
+        if($payment == 'paytr')
+        {
+            $token = $this->paytr->getToken($order);
+            return view('site.payment.paytr.index', compact('token'));
+        }
+        return redirect()->back()->with('message','Not Found : Payment method');
     }
 
     public function complete(Request $request)

@@ -74,27 +74,23 @@ class SettingsTableSeeder extends Seeder
             'value'                     =>  '',
         ],
         [
-            'key'                       =>  'stripe_payment_method',
+            'key'                       =>  'paytr_payment_method',
             'value'                     =>  '',
         ],
         [
-            'key'                       =>  'stripe_key',
+            'key'                       =>  'paytr_merchant_id',
             'value'                     =>  '',
         ],
         [
-            'key'                       =>  'stripe_secret_key',
+            'key'                       =>  'paytr_merchant_key',
             'value'                     =>  '',
         ],
         [
-            'key'                       =>  'paypal_payment_method',
+            'key'                       =>  'paytr_merchant_salt',
             'value'                     =>  '',
         ],
         [
-            'key'                       =>  'paypal_client_id',
-            'value'                     =>  '',
-        ],
-        [
-            'key'                       =>  'paypal_secret_id',
+            'key'                       =>  'paytr_redirect_host',
             'value'                     =>  '',
         ],
     ];

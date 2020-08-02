@@ -10,7 +10,11 @@ interface OrderContract
 
     public function findOrderByNumber($orderNumber);
 
+    public function findOrderById($orderId);
+
     public function setOrderState($params);
 
     public function getOrderStates();
+
+    public function setPaymentStatus($params);
 }

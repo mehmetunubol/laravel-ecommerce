@@ -86,6 +86,9 @@
                                 </div>
                             </div>
                             <div class="col-md-12 mt-4">
+                                <input id="payment_method" name="payment_method" type="radio" class="" value="paytr" checked> {{ __("Paytr") }}</input>
+                            </div>
+                            <div class="col-md-12 mt-4">
                                 <button type="submit" class="subscribe btn btn-success btn-lg btn-block">{{ __("Sipariş ver") }}</button>
                             </div>
                         </div>

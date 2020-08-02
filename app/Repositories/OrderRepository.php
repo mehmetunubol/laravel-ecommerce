@@ -22,12 +22,12 @@ class OrderRepository extends BaseRepository implements OrderContract
     {
         $order = Order::create([
             'order_number'      =>  'ORD-'.strtoupper(uniqid()),
-            'user_id'           => auth()->user()->id,
+            'user_id'           =>  auth()->user()->id,
             'status'            =>  'pending',
             'grand_total'       =>  Cart::getSubTotal(),
             'item_count'        =>  Cart::getTotalQuantity(),
             'payment_status'    =>  0,
-            'payment_method'    =>  null,
+            'payment_method'    =>  $params['payment_method'],
             'first_name'        =>  $params['first_name'],
             'last_name'         =>  $params['last_name'],
             'address'           =>  $params['address'],
@@ -70,6 +70,11 @@ class OrderRepository extends BaseRepository implements OrderContract
     {
         return Order::where('order_number', $orderNumber)->first();
     }
+    
+    public function findOrderById($orderId)
+    {
+        return Order::where('id', $orderId)->first();
+    }
 
     public function setOrderState($params)
     {
@@ -86,5 +91,13 @@ class OrderRepository extends BaseRepository implements OrderContract
     public function getOrderStates()
     {
         return $this->defined_states;
+    }
+
+    public function setPaymentStatus($params)
+    {
+        $order = $this->findOrderByNumber($params['id']);
+        $order->payment_status = $params['status'];
+        $order->save();
+        return $order;
     }
 }
