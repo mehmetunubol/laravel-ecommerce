@@ -16,12 +16,8 @@ class WishlistController extends Controller
 
     public function getWishlist()
     {
-    	if(auth()->user())
-    	{
-    		$wishlists = auth()->user()->wishlist()->get();
-        	return view('site.pages.account.wishlist', compact('wishlists'));	
-    	}
-        return redirect()->back();
+        $wishlists = auth()->user()->wishlist()->get();
+        return view('site.pages.account.wishlist', compact('wishlists'));	
     }
 
     public function addToWishlist(Request $request)
