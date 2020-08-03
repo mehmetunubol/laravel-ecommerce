@@ -37,8 +37,20 @@ class CategoryRepository extends BaseRepository implements CategoryContract
     */
     public function listCategories(string $order = 'id', string $sort = 'desc', array $columns = ['*'])
     {
-        $tag_id = Category::where('name', 'Tag')->first()->id;
+        $tag_id = $this->findTagId();
         return $this->all($columns, $order, $sort)->where('name', '!=', 'Tag')->where('parent_id', '!=', $tag_id);
+    }
+
+        /**
+     * @param string $order
+     * @param string $sort
+     * @param array $columns
+     * @return mixed
+    */
+    public function listTags(string $order = 'id', string $sort = 'desc', array $columns = ['*'])
+    {
+        $tag_id = $this->findTagId();
+        return $this->all($columns, $order, $sort)->where('name', '!=', 'Root')->where('parent_id', $tag_id);
     }
 
     /**
@@ -158,5 +170,10 @@ class CategoryRepository extends BaseRepository implements CategoryContract
             ->where('slug', $slug)
             ->where('menu', 1)
             ->first();
+    }
+
+    public function findTagId()
+    {
+        return Category::where('name', 'Tag')->first()->id;
     }
 }

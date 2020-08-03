@@ -32,6 +32,22 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::get('/{id}/delete', 'Admin\CategoryController@delete')->name('admin.categories.delete');        
         });
 
+        /*
+            *** Implementation note for tags ***
+                * 'tags' has not independent database table.
+                * It will use the categories table and will be root category.
+                * Tags should have base 'Tag' category as parent_id and it will not be allowed to have nested tags.
+            ***
+        */
+        Route::group(['prefix'  =>   'tags'], function() {
+            Route::get('/', 'Admin\TagController@index')->name('admin.tags.index');
+            Route::get('/create', 'Admin\TagController@create')->name('admin.tags.create');
+            Route::post('/store', 'Admin\TagController@store')->name('admin.tags.store');
+            Route::get('/{id}/edit', 'Admin\TagController@edit')->name('admin.tags.edit');
+            Route::post('/update', 'Admin\TagController@update')->name('admin.tags.update');
+            Route::get('/{id}/delete', 'Admin\TagController@delete')->name('admin.tags.delete');        
+        });
+
         Route::group(['prefix'  =>   'brands'], function() {
             Route::get('/', 'Admin\BrandController@index')->name('admin.brands.index');
             Route::get('/create', 'Admin\BrandController@create')->name('admin.brands.create');
