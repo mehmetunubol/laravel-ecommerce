@@ -166,7 +166,10 @@ class CategoryRepository extends BaseRepository implements CategoryContract
 
     public function findBySlug($slug)
     {
+        $tag_id = $this->findTagId();
         return Category::with('products')
+            ->where('name', '!=', 'Tag')
+            ->where('parent_id', '!=', $tag_id)
             ->where('slug', $slug)
             ->where('menu', 1)
             ->first();

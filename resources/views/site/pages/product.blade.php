@@ -48,6 +48,10 @@
                                         <dd class="col-sm-9">{{ $product->sku }}</dd>
                                         <dt class="col-sm-3">{{ __("Ağırlık") }}</dt>
                                         <dd class="col-sm-9">{{ $product->weight }}</dd>
+                                        <dt class="col-sm-3">{{ __("Kategoriler") }}</dt>
+                                        <dd class="col-sm-9">{{ implode($product->categories, '-') }}</dd>
+                                        <dt class="col-sm-3">{{ __("Etiketler") }}</dt>
+                                        <dd class="col-sm-9">{{ implode($product->tags, '-') }}</dd>
                                     </dl>
                                     <div class="mb-3">
                                         @if ($product->sale_price > 0)

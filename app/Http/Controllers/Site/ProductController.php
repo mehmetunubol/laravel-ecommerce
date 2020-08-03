@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Contracts\ProductContract;
 use App\Contracts\AttributeContract;
 use App\Contracts\WishlistContract;
+use App\Contracts\CategoryContract;
 
 use App\Http\Controllers\Controller;
 
@@ -20,12 +21,18 @@ class ProductController extends Controller
     protected $attributeRepository;
 
     protected $wishlistRepository;
+    
+    protected $categoryRepository;
 
-    public function __construct(ProductContract $productRepository, AttributeContract $attributeRepository, WishlistContract $wishlistRepository)
+    public function __construct(ProductContract $productRepository, 
+                                AttributeContract $attributeRepository, 
+                                WishlistContract $wishlistRepository,
+                                CategoryContract $categoryRepository)
     {
         $this->productRepository = $productRepository;
         $this->attributeRepository = $attributeRepository;
         $this->wishlistRepository = $wishlistRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     public function show($slug)
@@ -33,6 +40,23 @@ class ProductController extends Controller
         $product = $this->productRepository->findProductBySlug($slug);
         $attributes = $this->attributeRepository->listAttributes();
         $wishlist = $this->wishlistRepository->findWishlistByProductId($product->id);
+        
+        $tag_id = $this->categoryRepository->findTagId();
+        $categories = array();
+        $tags = array();
+        foreach ($product->categories as $cat)
+        {
+            if($cat->parent_id == 1)
+            {
+                array_push($categories, $cat->name);
+            }
+            elseif ($cat->parent_id == $tag_id) {
+                array_push($tags, $cat->name);
+            }
+        }
+        $product->categories = $categories;
+        $product->tags = $tags;
+
         return view('site.pages.product', compact('product', 'attributes','wishlist'));
     }
 
