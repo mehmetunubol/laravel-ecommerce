@@ -28,7 +28,7 @@
                         </thead>
                         <tbody>
                             @foreach($categories as $category)
-                                @if ($category->id != 1)
+                                @if ($category->id != 1 && $category->name != 'Tag')
                                     <tr>
                                         <td>{{ $category->id }}</td>
                                         <td>{{ $category->name }}</td>

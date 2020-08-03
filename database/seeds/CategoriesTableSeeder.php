@@ -18,6 +18,12 @@ class CategoriesTableSeeder extends Seeder
             'parent_id'     =>  null,
             'menu'          =>  0,
         ]);
+        Category::create([
+            'name'          =>  'Tag',
+            'description'   =>  'This is the root tag, don\'t delete this one',
+            'parent_id'     =>  null,
+            'menu'          =>  0,
+        ]);
 
         /* Creates dummy data */
         factory('App\Models\Category', 3)->create();

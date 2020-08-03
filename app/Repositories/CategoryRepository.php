@@ -37,7 +37,8 @@ class CategoryRepository extends BaseRepository implements CategoryContract
     */
     public function listCategories(string $order = 'id', string $sort = 'desc', array $columns = ['*'])
     {
-        return $this->all($columns, $order, $sort);
+        $tag_id = Category::where('name', 'Tag')->first()->id;
+        return $this->all($columns, $order, $sort)->where('name', '!=', 'Tag')->where('parent_id', '!=', $tag_id);
     }
 
     /**
@@ -144,7 +145,8 @@ class CategoryRepository extends BaseRepository implements CategoryContract
 
             Next, we will use the treeList() method in our Admin\CategoryController instead of listCategories().
         */
-        return Category::orderByRaw('-name ASC')
+        return Category::where('name', '!=', 'Tag')
+            ->orderByRaw('-name ASC')
             ->get()
             ->nest()
             ->listsFlattened('name');
