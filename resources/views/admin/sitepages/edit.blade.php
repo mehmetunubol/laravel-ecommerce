@@ -1,5 +1,8 @@
 @extends('admin.app')
 @section('title') {{ $pageTitle }} @endsection
+@push('styles')
+    <link type="text/css" href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+@endpush
 @section('content')
     <div class="app-title">
         <div>
@@ -11,7 +14,7 @@
         <div class="col-md-8 mx-auto">
             <div class="tile">
                 <h3 class="tile-title">{{ $subTitle }}</h3>
-                <form action="{{ route('admin.sitepages.update') }}" method="POST" role="form" enctype="multipart/form-data">
+                <form id="form" action="{{ route('admin.sitepages.update') }}" method="POST" role="form" enctype="multipart/form-data">
                     @csrf
                     <div class="tile-body">
                         <div class="form-group">
@@ -53,7 +56,10 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label" for="content"> {{ __("İçerik") }}</label>
-                            <textarea name="content" id="content" rows="8" class="form-control">{{ old('content', $sitepage->content) }}</textarea>
+                            <textarea hidden name="content" id="content" class="form-control">{{ old('content', $sitepage->content) }}</textarea>
+                            <div name="contenteditor" id="contenteditor" class="form-control">
+                                
+                            </div>
                         </div>
                         <div class="form-group">
                             <div class="form-check">
@@ -90,3 +96,18 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script>
+        var quill = new Quill('#contenteditor', {
+            theme: 'snow'
+        });
+        quill.setContents({!! $sitepage->content !!});
+        $("#form").on("submit",function(){
+            $("#content").val(JSON.stringify(quill.getContents()));
+            var content = document.querySelector('input[name=content]');
+            content.value = JSON.stringify(quill.getContents()); 
+            return true;
+        });        
+    </script>
+@endpush
