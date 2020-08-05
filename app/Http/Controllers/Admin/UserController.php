@@ -80,8 +80,8 @@ class UserController extends BaseController
 
     public function loginToUser($id)
     {
-        auth()->loginUsingId($id);
-        
-        return redirect("/");
+        auth()->guard('web')->loginUsingId($id);
+
+        return redirect('/');        
     }
 }
