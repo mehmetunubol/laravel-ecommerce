@@ -8,6 +8,7 @@ use App\Contracts\ProductContract;
 use App\Contracts\AttributeContract;
 use App\Contracts\WishlistContract;
 use App\Contracts\CategoryContract;
+use App\Contracts\ProductStatsContract;
 
 use App\Http\Controllers\Controller;
 
@@ -24,15 +25,19 @@ class ProductController extends Controller
     
     protected $categoryRepository;
 
+    protected $productStatsRepository;
+
     public function __construct(ProductContract $productRepository, 
                                 AttributeContract $attributeRepository, 
                                 WishlistContract $wishlistRepository,
-                                CategoryContract $categoryRepository)
+                                CategoryContract $categoryRepository,
+                                ProductStatsContract $productStatsRepository)
     {
-        $this->productRepository = $productRepository;
-        $this->attributeRepository = $attributeRepository;
-        $this->wishlistRepository = $wishlistRepository;
-        $this->categoryRepository = $categoryRepository;
+        $this->productRepository        = $productRepository;
+        $this->attributeRepository      = $attributeRepository;
+        $this->wishlistRepository       = $wishlistRepository;
+        $this->categoryRepository       = $categoryRepository;
+        $this->productStatsRepository   = $productStatsRepository;
     }
 
     public function show($slug)
@@ -57,6 +62,8 @@ class ProductController extends Controller
         $product->categories = $categories;
         $product->tags = $tags;
 
+        $this->productStatsRepository->incrementProductStats($product->id, 'view');
+
         return view('site.pages.product', compact('product', 'attributes','wishlist'));
     }
 
@@ -66,7 +73,7 @@ class ProductController extends Controller
         $options = $request->except('_token', 'productId', 'price', 'qty');
     
         Cart::add(uniqid(), $product->name, $request->input('price'), $request->input('qty'), $options);
-    
+        $this->productStatsRepository->incrementProductStats($product->id, 'cart');
         return redirect()->back()->with('message', 'Item added to cart successfully.');
     }
 }

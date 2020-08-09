@@ -115,6 +115,12 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::post('/update', 'Admin\SitePageController@update')->name('admin.sitepages.update');
             Route::get('/{id}/delete', 'Admin\SitePageController@delete')->name('admin.sitepages.delete');
         });
+
+        Route::group(['prefix' => 'statistics/product'], function () {
+            Route::get('/view', 'Admin\ProductStatsController@view_index')->name('admin.statistics.product.view');
+            Route::get('/cart', 'Admin\ProductStatsController@cart_index')->name('admin.statistics.product.cart');
+            Route::get('/order', 'Admin\ProductStatsController@order_index')->name('admin.statistics.product.order');
+         });
     });
 
 });
