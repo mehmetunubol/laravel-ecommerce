@@ -57,5 +57,7 @@ interface CategoryContract
     * @param $slug
     * @return mixed
     */
-   public function findBySlug($slug);
+   public function findBySlugWithOrderFilter($slug, $order = null, $filter = null);
+
+   public function findTagId();
 }

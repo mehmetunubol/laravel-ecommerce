@@ -164,10 +164,37 @@ class CategoryRepository extends BaseRepository implements CategoryContract
             ->listsFlattened('name');
     }
 
-    public function findBySlug($slug)
+    public function findBySlugWithOrderFilter($slug, $order = null, $filter = null)
     {
+        if (isset($order) &&  isset($filter))
+        {
+            $closure = function ($products) use($order, $filter) 
+                        {
+                            return $products->orderBy($order['column'], $order['type'])
+                                            ->where($filter); 
+                        };
+        }
+        else if (isset($order))
+        {
+            $closure = function ($products) use($order) 
+                        { 
+                            return $products->orderBy($order['column'], $order['type']); 
+                        };
+        }
+        else if (isset($filter))
+        {
+            $closure = function ($products) use($filter) 
+                        { 
+                            return $products->where($filter); 
+                        };
+        }
+        else
+        {
+            $closure = function(){};
+        }
+
         $tag_id = $this->findTagId();
-        return Category::with('products')
+        return Category::with(['products' => $closure])
             ->where('name', '!=', 'Tag')
             ->where('parent_id', '!=', $tag_id)
             ->where('slug', $slug)
