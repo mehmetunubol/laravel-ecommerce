@@ -37,8 +37,8 @@ class CategoryController extends Controller
             $order['type'] = $orderByArray[1];
         }
         // Test code, TODO: remove the test code
-        $order['column'] = 'price';
-        $order['type'] = 'desc';
+        //$order['column'] = 'price';
+        //$order['type'] = 'desc';
         // End Test code
         /*
             * Expected Request

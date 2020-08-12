@@ -185,12 +185,22 @@ class CategoryRepository extends BaseRepository implements CategoryContract
         {
             $closure = function ($products) use($filter) 
                         { 
-                            return $products->where($filter); 
+                            /* Note: If you change default sorting of the products you should change here also. */
+                            return $products->orderBy('order', 'desc')->orderBy('id', 'desc')->where($filter); 
                         };
         }
         else
         {
-            $closure = function(){};
+            /* 
+                It is default order of products. It is configurable from admin panel.
+                It will be applicable if and only if 'customer' does not select any order.
+                If there is no configurable value for the column 'order', products will be sorted by id desc.
+                Note: If you change below, you should change the same in else-if block above.
+            */
+            $closure = function ($products) use($filter) 
+                        { 
+                            return $products->orderBy('order', 'desc')->orderBy('id', 'desc');
+                        };
         }
 
         $tag_id = $this->findTagId();

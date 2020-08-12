@@ -41,6 +41,16 @@ class ProductRepository extends BaseRepository implements ProductContract
     }
 
     /**
+     * @param string $order
+     * @param string $sort
+     * @param array $columns
+     * @return mixed
+     */
+    public function listProductsWithCategories(string $order = 'id', string $sort = 'desc', array $columns = ['*'])
+    {
+        return $this->model::with('categories:name')->get();
+    }
+    /**
      * @param int $id
      * @return mixed
      * @throws ModelNotFoundException
@@ -129,6 +139,19 @@ class ProductRepository extends BaseRepository implements ProductContract
     public function findProductBySlug($slug)
     {
         $product = Product::where('slug', $slug)->first();
+
+        return $product;
+    }
+
+        /**
+     * @param array $params
+     * @return mixed
+     */
+    public function setProductAdminOrder(array $params)
+    {
+        $product = $this->findProductById($params['product_id']);
+        $product->order = $params['order'];
+        $product->save();
 
         return $product;
     }

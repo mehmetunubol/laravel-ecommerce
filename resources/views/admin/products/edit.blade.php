@@ -45,7 +45,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="control-label" for="sku">SKU</label>
                                             <input
@@ -61,7 +61,23 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label" for="order">{{ __("Özel Sıralama") }}</label>
+                                            <input
+                                                class="form-control @error('order') is-invalid @enderror"
+                                                type="text"
+                                                placeholder="Özel sıralama isteniyorsa girilmelidir."
+                                                id="order"
+                                                name="order"
+                                                value="{{ old('order', $product->order) }}"
+                                            />
+                                            <div class="invalid-feedback active">
+                                                <i class="fa fa-exclamation-circle fa-fw"></i> @error('order') <span>{{ $message }}</span> @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="control-label" for="brand_id">{{ __("Marka") }}</label>
                                             <select name="brand_id" id="brand_id" class="form-control @error('brand_id') is-invalid @enderror">

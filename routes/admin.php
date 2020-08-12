@@ -89,6 +89,10 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::post('attributes/add', 'Admin\ProductAttributeController@addAttribute');
             // Delete product attribute from the current product
             Route::post('attributes/delete', 'Admin\ProductAttributeController@deleteAttribute');            
+
+            // Special Admin Order
+            Route::get('/order', 'Admin\ProductController@order_index')->name('admin.products.order');
+            Route::post('/order-set', 'Admin\ProductController@set_order')->name('admin.products.setOrder');
          });
 
          Route::group(['prefix' => 'orders'], function () {
