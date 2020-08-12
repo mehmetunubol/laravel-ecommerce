@@ -34,6 +34,12 @@
                     </a>
                 </li>
                 <li>
+                    <a class="treeview-item {{ Route::currentRouteName() == 'admin.statistics.products.order' ? 'active' : '' }}" href="{{ route('admin.products.order') }}">
+                        <i class="app-menu__icon fa fa-th"></i>
+                        <span class="app-menu__label">Ürün Gösterim Sıralamaları</span>
+                    </a>
+                </li>
+                <li>
                     <a data-toggle="treeview-item" class="app-menu__item {{ Route::currentRouteName() == 'admin.statistics.product.view' ? 'active' : '' }}" href="{{ route('admin.statistics.product.view') }}">
                         <i class="app-menu__icon fa fa-shopping-bag"></i>
                         <span class="app-menu__label">View Statistics</span>
