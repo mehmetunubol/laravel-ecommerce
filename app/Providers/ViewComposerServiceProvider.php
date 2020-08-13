@@ -1,7 +1,6 @@
 <?php
 /*
- *    The most efficient way to pass categories to our nav.blade.php partial view is by using the View Composers.
-
+ * The detailed information about View Composers can be found at -> https://laravel.com/docs/7.x/views#view-composers
 */
 namespace App\Providers;
 
@@ -27,5 +26,9 @@ class ViewComposerServiceProvider extends ServiceProvider
         View::composer('site.partials.header', function ($view) {
             $view->with('cartCount', Cart::getContent()->count());
         });
+
+        View::composer(
+            'site.pages.product', 'App\Http\View\Composers\ProductComposer'
+        );
     }
 }

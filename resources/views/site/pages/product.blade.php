@@ -1,6 +1,9 @@
 @extends('site.app')
 @section('title', $product->name)
 @section('content')
+    @foreach($recentlyViewed as $p)
+        {{ $p->name  }}-
+    @endforeach
     <section class="section-pagetop bg-dark">
         <div class="container clearfix">
             <h2 class="title-page">{{ $product->name }}</h2>

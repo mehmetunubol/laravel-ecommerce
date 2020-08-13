@@ -45,7 +45,7 @@ class ProductController extends Controller
         $product = $this->productRepository->findProductBySlug($slug);
         $attributes = $this->attributeRepository->listAttributes();
         $wishlist = $this->wishlistRepository->findWishlistByProductId($product->id);
-        
+
         $tag_id = $this->categoryRepository->findTagId();
         $categories = array();
         $tags = array();
@@ -61,8 +61,6 @@ class ProductController extends Controller
         }
         $product->categories = $categories;
         $product->tags = $tags;
-
-        $this->productStatsRepository->incrementProductStats($product->id, 'view');
 
         return view('site.pages.product', compact('product', 'attributes','wishlist'));
     }
