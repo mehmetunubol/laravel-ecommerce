@@ -30,6 +30,13 @@ interface ProductContract
     public function findProductById(int $id);
 
     /**
+     * @param int $ids
+     * @return mixed
+     * @throws ModelNotFoundException
+     */
+    public function findProductsByIds(array $ids);
+
+    /**
      * @param array $params
      * @return mixed
      */
@@ -52,4 +59,10 @@ interface ProductContract
      * @return mixed
      */
     public function findProductBySlug($slug);
+
+    /**
+     * @param $id
+     * @return similarProducts
+     */
+    public function findSimilarProducts($id);
 }

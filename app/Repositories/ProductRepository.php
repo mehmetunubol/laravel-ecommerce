@@ -50,6 +50,7 @@ class ProductRepository extends BaseRepository implements ProductContract
     {
         return $this->model::with('categories:name')->get();
     }
+
     /**
      * @param int $id
      * @return mixed
@@ -65,6 +66,16 @@ class ProductRepository extends BaseRepository implements ProductContract
             throw new ModelNotFoundException($e);
         }
 
+    }
+
+    /**
+     * @param int $ids
+     * @return mixed
+     * @throws ModelNotFoundException
+     */
+    public function findProductsByIds(array $ids)
+    {
+        return $this->model::find($ids);
     }
 
     /**
@@ -154,5 +165,23 @@ class ProductRepository extends BaseRepository implements ProductContract
         $product->save();
 
         return $product;
+    }
+
+    /**
+     * @param $id
+     * @return similarProducts
+     */
+    public function findSimilarProducts($id)
+    {
+        $product = $this->model::with('categories')->findOrFail($id);
+
+        $categoryIds = $product->categories->pluck('id')->toArray();
+        $similarProducts = $this->model::whereHas('categories', function ($query) use ($categoryIds) {
+                                                    return $query->whereIn('category_id', $categoryIds);
+                                                })
+                            ->where('id', "!=" ,$product->id)
+                            ->limit(5)
+                            ->get();
+        return $similarProducts;
     }
 }

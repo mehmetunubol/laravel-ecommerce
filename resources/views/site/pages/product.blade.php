@@ -1,8 +1,14 @@
 @extends('site.app')
 @section('title', $product->name)
 @section('content')
+    Recently Viewed ->
     @foreach($recentlyViewed as $p)
-        {{ $p->name  }}-
+         <b>{{ $p->name  }}</b>-
+    @endforeach
+    <br/>
+    Similar Products ->
+    @foreach($similarProducts as $p)
+        <b>{{ $p->name  }}</b>-
     @endforeach
     <section class="section-pagetop bg-dark">
         <div class="container clearfix">

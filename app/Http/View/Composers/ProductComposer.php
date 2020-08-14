@@ -4,23 +4,22 @@ namespace App\Http\View\Composers;
 
 use Illuminate\View\View;
 use App\Models\Product;
+use App\Contracts\ProductContract;
 use App\Contracts\ProductStatsContract;
 
 class ProductComposer
 {
-    /**
-     *
-     * @var ProductStatsRepository
-     */
+    protected $productRepository;
     protected $productStatsRepository;
 
     /**
      *
-     * @param  ProductStatsContract 
+     * @param  ProductContract, ProductStatsContract
      * @return void
      */
-    public function __construct(ProductStatsContract $productStatsRepository)
+    public function __construct(ProductContract $productRepository, ProductStatsContract $productStatsRepository)
     {
+        $this->productRepository = $productRepository;
         $this->productStatsRepository = $productStatsRepository;
     }
     /**
@@ -34,17 +33,37 @@ class ProductComposer
         /**
          * Recently Viewed Product Implementation
          */
-        $products = array_filter(session()->get('products.recently_viewed'), function ($p) use($view) {
-            return $p != $view->product->id;
-        });
-        $view->with([
-            'recentlyViewed' => Product::find($products),
-        ]);
+        $recentlyViewed = array();
+        $recentlyViewedIds = session()->get('products.recently_viewed');
+        if (isset($recentlyViewedIds)) {
+            $recentlyViewedIds = array_filter($recentlyViewedIds, 
+                                                        function ($p) use($view) {
+                                                            return $p != $view->product->id;
+                                            });
+            $recentlyViewed = $this->productRepository->findProductsByIds($recentlyViewedIds);
+        }
+
+        /**
+         * Add currently viewed product to the session
+         */
         session()->push('products.recently_viewed', $view->product->id);
-        
+
+        /**
+         * Similar Products Implementation
+         */
+        $similarProducts = $this->productRepository->findSimilarProducts($view->product->id);
+
         /**
          * Increment Product Statistics
          */
         $this->productStatsRepository->incrementProductStats($view->product->id, 'view');
+
+        /** 
+         * Push prepared records to the view 
+         */
+        $view->with([
+            'recentlyViewed' =>  $recentlyViewed,
+            'similarProducts' => $similarProducts,
+        ]);
     }
 }
