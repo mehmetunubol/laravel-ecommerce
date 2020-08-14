@@ -17,14 +17,6 @@ interface CategoryContract
     public function listCategories(string $order = 'id', string $sort = 'desc', array $columns = ['*']);
 
     /**
-     * @param string $order
-     * @param string $sort
-     * @param array $columns
-     * @return mixed
-     */
-    public function listTags(string $order = 'id', string $sort = 'desc', array $columns = ['*']);
-
-    /**
      * @param int $id
      * @return mixed
      */
@@ -59,5 +51,4 @@ interface CategoryContract
     */
    public function findBySlugWithOrderFilter($slug, $order = null, $filter = null);
 
-   public function findTagId();
 }

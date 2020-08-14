@@ -37,20 +37,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract
     */
     public function listCategories(string $order = 'id', string $sort = 'desc', array $columns = ['*'])
     {
-        $tag_id = $this->findTagId();
-        return $this->all($columns, $order, $sort)->where('name', '!=', 'Tag')->where('parent_id', '!=', $tag_id);
-    }
-
-        /**
-     * @param string $order
-     * @param string $sort
-     * @param array $columns
-     * @return mixed
-    */
-    public function listTags(string $order = 'id', string $sort = 'desc', array $columns = ['*'])
-    {
-        $tag_id = $this->findTagId();
-        return $this->all($columns, $order, $sort)->where('name', '!=', 'Root')->where('parent_id', $tag_id);
+        return $this->all($columns, $order, $sort);
     }
 
     /**
@@ -157,8 +144,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract
 
             Next, we will use the treeList() method in our Admin\CategoryController instead of listCategories().
         */
-        return Category::where('name', '!=', 'Tag')
-            ->orderByRaw('-name ASC')
+        return Category::orderByRaw('-name ASC')
             ->get()
             ->nest()
             ->listsFlattened('name');
@@ -203,17 +189,9 @@ class CategoryRepository extends BaseRepository implements CategoryContract
                         };
         }
 
-        $tag_id = $this->findTagId();
         return Category::with(['products' => $closure])
-            ->where('name', '!=', 'Tag')
-            ->where('parent_id', '!=', $tag_id)
             ->where('slug', $slug)
             ->where('menu', 1)
             ->first();
-    }
-
-    public function findTagId()
-    {
-        return Category::where('name', 'Tag')->first()->id;
     }
 }

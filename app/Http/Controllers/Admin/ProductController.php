@@ -40,20 +40,14 @@ class ProductController extends BaseController
     {
         $brands = $this->brandRepository->listBrands('name', 'asc');
         $categories = $this->categoryRepository->listCategories('name', 'asc');
-        $tags = $this->categoryRepository->listTags('name', 'asc');
 
         $this->setPageTitle('Products', 'Create Product');
-        return view('admin.products.create', compact('categories', 'brands', 'tags'));
+        return view('admin.products.create', compact('categories', 'brands'));
     }
 
     public function store(StoreProductFormRequest $request)
     {
         $params = $request->except('_token');
-
-        if(array_key_exists('tags', $params))
-        {
-            $params['categories'] = array_merge($params['categories'], $params['tags']);
-        }
 
         $product = $this->productRepository->createProduct($params);
 
@@ -68,20 +62,15 @@ class ProductController extends BaseController
         $product = $this->productRepository->findProductById($id);
         $brands = $this->brandRepository->listBrands('name', 'asc');
         $categories = $this->categoryRepository->listCategories('name', 'asc');
-        $tags = $this->categoryRepository->listTags('name', 'asc');
 
         $this->setPageTitle('Products', 'Edit Product');
-        return view('admin.products.edit', compact('categories', 'brands', 'product', 'tags'));
+        return view('admin.products.edit', compact('categories', 'brands', 'product'));
     }
 
     public function update(StoreProductFormRequest $request)
     {
         $params = $request->except('_token');
-        
-        if(array_key_exists('tags', $params))
-        {
-            $params['categories'] = array_merge($params['categories'], $params['tags']);
-        }
+
         $product = $this->productRepository->updateProduct($params);
 
         if (!$product) {

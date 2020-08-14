@@ -46,21 +46,12 @@ class ProductController extends Controller
         $attributes = $this->attributeRepository->listAttributes();
         $wishlist = $this->wishlistRepository->findWishlistByProductId($product->id);
 
-        $tag_id = $this->categoryRepository->findTagId();
         $categories = array();
-        $tags = array();
         foreach ($product->categories as $cat)
         {
-            if($cat->parent_id == 1)
-            {
-                array_push($categories, $cat->name);
-            }
-            elseif ($cat->parent_id == $tag_id) {
-                array_push($tags, $cat->name);
-            }
+            array_push($categories, $cat->name);
         }
         $product->categories = $categories;
-        $product->tags = $tags;
 
         return view('site.pages.product', compact('product', 'attributes','wishlist'));
     }
