@@ -184,4 +184,28 @@ class ProductRepository extends BaseRepository implements ProductContract
                             ->get();
         return $similarProducts;
     }
+
+    /**
+     * @param $search
+     * @return products
+     */
+    public function searchAllProducts($search = null)
+    {
+        $searchQueues = explode(" ", $search);
+
+	    for($i = 0; $i < count($searchQueues); $i++) 
+        {
+            if($i == 0) 
+            {
+                $products = $this->model::where('name', 'LIKE', "%{$search}%") 
+                                        ->orWhere('description', 'LIKE', "%{$search}%");
+            }
+            else
+            {
+                $products = $products->where('name', 'LIKE', "%{$search}%") 
+                                     ->orWhere('description', 'LIKE', "%{$search}%");
+            }
+        }
+        return $products->get();
+    }
 }

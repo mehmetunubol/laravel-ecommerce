@@ -10,9 +10,10 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-sm-6">
-                    <form action="#" class="search-wrap">
+                    <form action="{{ route('products.search') }}" method="POST" role="form" class="search-wrap">
+                    @csrf
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search">
+                            <input name="search" type="text" class="form-control" placeholder="Search">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="submit">
                                     <i class="fa fa-search"></i>

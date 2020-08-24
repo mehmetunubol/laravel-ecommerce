@@ -19,9 +19,12 @@ Route::get('/sitepages/{slug}', 'Site\SitePageController@show')->name('sitepages
 Route::get('/sitepages', 'Site\SitePageController@getAllPages')->name('sitepages');
 
 Route::get('/category/{slug}', 'Site\CategoryController@show')->name('category.show');
-Route::get('/product/{slug}', 'Site\ProductController@show')->name('product.show');
 
+Route::get('/product/{slug}', 'Site\ProductController@show')->name('product.show');
 Route::post('/product/add/cart', 'Site\ProductController@addToCart')->name('product.add.cart');
+
+Route::post('/products/search', 'Site\ProductController@searchProducts')->name('products.search');
+
 Route::get('/cart', 'Site\CartController@getCart')->name('checkout.cart');
 Route::get('/cart/item/{id}/remove', 'Site\CartController@removeItem')->name('checkout.cart.remove');
 Route::get('/cart/clear', 'Site\CartController@clearCart')->name('checkout.cart.clear');
