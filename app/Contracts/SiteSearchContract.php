@@ -13,7 +13,7 @@ interface SiteSearchContract
      * @param array $columns
      * @return mixed
      */
-    public function listSiteSearchs(string $sort = 'desc', array $columns = ['*']);
+    public function listSiteSearchs(string $order = 'count', string $sort = 'desc', array $columns = ['*']);
 
     /**
      * @param int $id

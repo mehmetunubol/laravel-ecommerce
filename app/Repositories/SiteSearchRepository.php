@@ -31,9 +31,9 @@ class SiteSearchRepository extends BaseRepository implements SiteSearchContract
      * @param array $columns
      * @return mixed
      */
-    public function listSiteSearchs(string $sort = 'id', array $columns = ['*'])
+    public function listSiteSearchs(string $order = 'count', string $sort = 'desc', array $columns = ['*'])
     {
-        return $this->all($columns, $sort);
+        return $this->all($columns, $order, $sort);
     }
 
     /**

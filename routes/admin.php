@@ -125,6 +125,11 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::get('/cart', 'Admin\ProductStatsController@cart_index')->name('admin.statistics.product.cart');
             Route::get('/order', 'Admin\ProductStatsController@order_index')->name('admin.statistics.product.order');
          });
+
+         Route::group(['prefix' => 'sitesearches'], function () {
+            Route::get('/index', 'Admin\SiteSearchController@index')->name('admin.sitesearches.index');
+            Route::get('/show/{id}', 'Admin\SiteSearchController@show')->name('admin.sitesearches.show');
+         });
     });
 
 });
