@@ -3,7 +3,7 @@
 @section('content')
 <section class="section-pagetop bg-dark">
     <div class="container clearfix">
-        <h2 class="title-page">{{ $searchText }}</h2>
+        <h2 class="title-page">{{ $searchRecord }}</h2>
         <!-- We can add Category Image if it has ! -->
     </div>
 </section>

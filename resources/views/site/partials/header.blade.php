@@ -10,7 +10,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 col-sm-6">
-                    <form action="{{ route('products.search') }}" method="POST" role="form" class="search-wrap">
+                    <form action="{{ route('sitesearch.product') }}" method="POST" role="form" class="search-wrap">
                     @csrf
                         <div class="input-group">
                             <input name="search" type="text" class="form-control" placeholder="Search">

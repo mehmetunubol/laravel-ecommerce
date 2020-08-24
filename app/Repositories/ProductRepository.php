@@ -193,19 +193,20 @@ class ProductRepository extends BaseRepository implements ProductContract
     {
         $searchQueues = explode(" ", $search);
 
-	    for($i = 0; $i < count($searchQueues); $i++) 
+        foreach($searchQueues as $i => $text) 
         {
             if($i == 0) 
             {
-                $products = $this->model::where('name', 'LIKE', "%{$search}%") 
-                                        ->orWhere('description', 'LIKE', "%{$search}%");
+                $products = $this->model::where('name', 'LIKE', "%{$text}%") 
+                                        ->orWhere('description', 'LIKE', "%{$text}%");
             }
             else
             {
-                $products = $products->where('name', 'LIKE', "%{$search}%") 
-                                     ->orWhere('description', 'LIKE', "%{$search}%");
+                $products = $products->where('name', 'LIKE', "%{$text}%") 
+                                     ->orWhere('description', 'LIKE', "%{$text}%");
             }
         }
+        
         return $products->get();
     }
 }

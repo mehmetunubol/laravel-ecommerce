@@ -66,10 +66,4 @@ class ProductController extends Controller
         return redirect()->back()->with('message', 'Item added to cart successfully.');
     }
 
-    public function searchProducts(Request $request)
-    {
-        $searchText = $request->input('search');
-        $products = $this->productRepository->searchAllProducts($searchText);
-        return view('site.pages.products', compact('products', 'searchText'));
-    }
 }
