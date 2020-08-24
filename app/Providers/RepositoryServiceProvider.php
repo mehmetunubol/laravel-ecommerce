@@ -21,7 +21,8 @@ use App\Contracts\SitePageContract;
 use App\Repositories\SitePageRepository;
 use App\Contracts\ProductStatsContract;
 use App\Repositories\ProductStatsRepository;
-
+use App\Contracts\BadgeContract;
+use App\Repositories\BadgeRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -35,6 +36,7 @@ class RepositoryServiceProvider extends ServiceProvider
         WishlistContract::class         =>          WishlistRepository::class,
         SitePageContract::class         =>          SitePageRepository::class,
         ProductStatsContract::class     =>          ProductStatsRepository::class,
+        BadgeContract::class            =>          BadgeRepository::class,
     ];
 
     /**
