@@ -112,21 +112,6 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label" for="tags">{{ __("Etiketler") }}</label>
-                                            <select name="tags[]" id="tags" class="form-control" multiple>
-                                                @foreach($tags as $tag)
-                                                    @if($tag->parent_id != NULL && $product->categories)
-                                                        @php $check = in_array($tag->id, $product->categories->pluck('id')->toArray()) ? 'selected' : ''@endphp
-                                                        <option value="{{ $tag->id }}" {{ $check }}>{{ $tag->name }}</option>
-                                                    @endif
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label" for="price">{{ __("Fiyat") }}</label>
@@ -284,7 +269,6 @@
         Dropzone.autoDiscover = false;
         $( document ).ready(function() {
             $('#categories').select2();
-            $('#tags').select2();
             let myDropzone = new Dropzone("#dropzone", {
                 paramName: "image",
                 addRemoveLinks: false,
