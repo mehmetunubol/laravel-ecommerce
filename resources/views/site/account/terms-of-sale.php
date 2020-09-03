@@ -1,0 +1,21 @@
+<div class="col-md-8 col-lg-9 order-2 order-md-2 mb-5 mb-md-0">
+<h1> SATIŞ SÖZLEŞMESİ </h1>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada malesuada metus ut placerat. Cras a porttitor quam, eget ornare sapien. In sit amet vulputate metus. Nullam eget rutrum nisl. Sed tincidunt lorem sed maximus interdum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean scelerisque efficitur mauris nec tincidunt. Ut cursus leo mi, eu ultricies magna faucibus id.</p>
+
+<p>Integer id metus sit amet turpis facilisis ullamcorper elementum ac mauris in, venenatis consectetur est. Praesent condimentum ut erat sit amet bibendum. Morbi sit amet commodo est. Donec arcu nulla, pellentesque at mi in, fringilla tincidunt risus. Nunc finibus pellentesque diam in tincidunt. Nulla cursus fermentum neque quis consequat. Maecenas non augue id dui placerat tempor. Duis maximus commodo dui a viverra. Fusce nunc augue, pharetra in sem sed, maximus commodo nisl. Vivamus molestie nisl eu gravida dapibus. Integer ac lacus laoreet, dictum sem sit amet, volutpat turpis. Nulla molestie metus nec nibh vestibulum, vitae porta felis vehicula. Curabitur volutpat, libero eget fermentum ultricies, velit purus luctus arcu, sit amet vulputate dui magna nec nulla.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada malesuada metus ut placerat. Cras a porttitor quam, eget ornare sapien. In sit amet vulputate metus. Nullam eget rutrum nisl. Sed tincidunt lorem sed maximus interdum.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada malesuada metus ut placerat. Cras a porttitor quam, eget ornare sapien. In sit amet vulputate metus. Nullam eget rutrum nisl. Sed tincidunt lorem sed maximus interdum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean scelerisque efficitur mauris nec tincidunt. Ut cursus leo mi, eu ultricies magna faucibus id.</p>
+<p>Integer id metus sit amet turpis facilisis ullamcorper. Sed tellus tellus, elementum ac mauris in, venenatis consectetur est. Praesent condimentum ut erat sit amet bibendum. Morbi sit amet commodo est. Donec arcu nulla, pellentesque at mi in, fringilla tincidunt risus. Nunc finibus pellentesque diam in tincidunt. Nulla cursus fermentum neque quis consequat. Maecenas non augue id dui placerat tempor. Duis maximus commodo dui a viverra. Fusce nunc augue, pharetra in sem sed, maximus commodo nisl. Vivamus molestie nisl eu gravida dapibus. Integer ac lacus laoreet, dictum sem sit amet, volutpat turpis. Nulla molestie metus nec nibh vestibulum, vitae porta felis vehicula. Curabitur volutpat, libero eget fermentum ultricies, velit purus luctus arcu, sit amet vulputate dui magna nec nulla.</p>
+
+<p>Integer id metus sit amet turpis facilisis ullamcorper. Sed , elementum ac mauris in, venenatis consectetur est. Praesent condimentum ut erat sit amet bibendum. Morbi sit amet commodo est. Donec arcu nulla, pellentesque at mi in, fringilla tincidunt risus. Nunc finibus pellentesque diam in tincidunt. Nulla cursus fermentum neque quis consequat. Maecenas non augue id dui placerat tempor. Duis maximus commodo dui a viverra. Fusce nunc augue, pharetra in sem sed, maximus commodo nisl. Vivamus molestie nisl eu gravida dapibus. Integer ac lacus laoreet, dictum sem sit amet, volutpat turpis. Nulla molestie metus nec nibh vestibulum, vitae porta felis vehicula. Curabitur volutpat, libero eget fermentum ultricies, velit purus luctus arcu, sit amet vulputate dui magna nec nulla.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada malesuada metus ut placerat. Cras a porttitor quam, eget ornare sapien. In sit amet vulputate metus. Nullam eget rutrum nisl. Sed tincidunt lorem sed maximus interdum.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur malesuada malesuada metus ut placerat. Cras a porttitor quam, eget ornare sapien. In sit amet vulputate metus. Nullam eget rutrum nisl. Sed tincidunt lorem sed maximus interdum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aenean scelerisque efficitur mauris nec tincidunt. Ut cursus leo mi, eu ultricies magna faucibus id.</p>
+
+</div>
+
+
+
