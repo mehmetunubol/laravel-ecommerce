@@ -40,6 +40,10 @@ class CategoryRepository extends BaseRepository implements CategoryContract
         return $this->all($columns, $order, $sort);
     }
 
+    public function getMainCategories()
+    {
+        return Category::where('parent_id',1)->get();
+    }
     /**
      * @param int $id
      * @return mixed
@@ -189,8 +193,7 @@ class CategoryRepository extends BaseRepository implements CategoryContract
                         };
         }
 
-        return Category::with(['products' => $closure])
-            ->where('slug', $slug)
+        return Category::where('slug', $slug)
             ->where('menu', 1)
             ->first();
     }

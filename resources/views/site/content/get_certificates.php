@@ -16,10 +16,10 @@
 
 <div class="col-md-3 mb-5 mb-md-0 " >
 <div class="portfolio-item hover-effect-3d">
-<a class="lightbox" href="../../../public/customertemplate/img/demo/cert.jpg" data-plugin-options="{'type':'image', 'mainClass': 'mfp-with-zoom', 'zoom': {'enabled': true, 'duration': 300}}">
+<a class="lightbox" href="customertemplate/img/demo/cert.jpg" data-plugin-options="{'type':'image', 'mainClass': 'mfp-with-zoom', 'zoom': {'enabled': true, 'duration': 300}}">
 <span class="image-frame image-frame-style-1 image-frame-effect-1 boxX">
 <span class="image-frame-wrapper">
-<img src="../../../public/customertemplate/img/demo/cert.jpg" class="img-fluid" alt="">
+<img src="customertemplate/img/demo/cert.jpg" class="img-fluid" alt="">
 <span class="image-frame-inner-border"></span>
 <span class="image-frame-action">
 <span class="image-frame-action-icon">
@@ -34,10 +34,10 @@
 
 <div class="col-md-3 mb-5 mb-md-0">
 <div class="portfolio-item hover-effect-3d">
-<a class="lightbox" href="../../../public/customertemplate/img/demo/cert.jpg" data-plugin-options="{'type':'image', 'mainClass': 'mfp-with-zoom', 'zoom': {'enabled': true, 'duration': 300}}">
+<a class="lightbox" href="customertemplate/img/demo/cert.jpg" data-plugin-options="{'type':'image', 'mainClass': 'mfp-with-zoom', 'zoom': {'enabled': true, 'duration': 300}}">
 <span class="image-frame image-frame-style-1 image-frame-effect-1 boxX">
 <span class="image-frame-wrapper">
-<img src="../../../public/customertemplate/img/demo/cert.jpg" class="img-fluid" alt="">
+<img src="customertemplate/img/demo/cert.jpg" class="img-fluid" alt="">
 <span class="image-frame-inner-border"></span>
 <span class="image-frame-action">
 <span class="image-frame-action-icon">
@@ -52,10 +52,10 @@
 
 <div class="col-md-3 mb-5 mb-md-0">
 <div class="portfolio-item hover-effect-3d">
-<a class="lightbox" href="../../../public/customertemplate/img/demo/cert.jpg" data-plugin-options="{'type':'image', 'mainClass': 'mfp-with-zoom', 'zoom': {'enabled': true, 'duration': 300}}">
+<a class="lightbox" href="customertemplate/img/demo/cert.jpg" data-plugin-options="{'type':'image', 'mainClass': 'mfp-with-zoom', 'zoom': {'enabled': true, 'duration': 300}}">
 <span class="image-frame image-frame-style-1 image-frame-effect-1 boxX">
 <span class="image-frame-wrapper">
-<img src="../../../public/customertemplate/img/demo/cert.jpg" class="img-fluid" alt="">
+<img src="customertemplate/img/demo/cert.jpg" class="img-fluid" alt="">
 <span class="image-frame-inner-border"></span>
 <span class="image-frame-action">
 <span class="image-frame-action-icon">
@@ -70,10 +70,10 @@
 
 <div class="col-md-3 mb-5 mb-md-0">
 <div class="portfolio-item hover-effect-3d">
-<a class="lightbox" href="../../../public/customertemplate/img/demo/cert.jpg" data-plugin-options="{'type':'image', 'mainClass': 'mfp-with-zoom', 'zoom': {'enabled': true, 'duration': 300}}">
+<a class="lightbox" href="customertemplate/img/demo/cert.jpg" data-plugin-options="{'type':'image', 'mainClass': 'mfp-with-zoom', 'zoom': {'enabled': true, 'duration': 300}}">
 <span class="image-frame image-frame-style-1 image-frame-effect-1 boxX">
 <span class="image-frame-wrapper">
-<img src="../../../public/customertemplate/img/demo/cert.jpg" class="img-fluid" alt="">
+<img src="customertemplate/img/demo/cert.jpg" class="img-fluid" alt="">
 <span class="image-frame-inner-border"></span>
 <span class="image-frame-action">
 <span class="image-frame-action-icon">
@@ -88,10 +88,10 @@
 
 <div class="col-md-3 mb-5 mb-md-0">
 <div class="portfolio-item hover-effect-3d">
-<a class="lightbox" href="../../../public/customertemplate/img/demo/cert.jpg" data-plugin-options="{'type':'image', 'mainClass': 'mfp-with-zoom', 'zoom': {'enabled': true, 'duration': 300}}">
+<a class="lightbox" href="customertemplate/img/demo/cert.jpg" data-plugin-options="{'type':'image', 'mainClass': 'mfp-with-zoom', 'zoom': {'enabled': true, 'duration': 300}}">
 <span class="image-frame image-frame-style-1 image-frame-effect-1 boxX">
 <span class="image-frame-wrapper">
-<img src="../../../public/customertemplate/img/demo/cert.jpg" class="img-fluid" alt="">
+<img src="customertemplate/img/demo/cert.jpg" class="img-fluid" alt="">
 <span class="image-frame-inner-border"></span>
 <span class="image-frame-action">
 <span class="image-frame-action-icon">

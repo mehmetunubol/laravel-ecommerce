@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr">
 
-		<?php require_once("../../../public/customertemplate/head/head.php"); ?>
+		<?php require_once("customertemplate/head/head.php"); ?>
 
 <body>
 <div class="body">
@@ -25,7 +25,7 @@
 		<?php require_once("sections/footer_lite.php"); ?>
 
 </div>
-		<?php require_once("../../../public/customertemplate/head/bottom_scripts_lite.php"); ?>
+		<?php require_once("customertemplate/head/bottom_scripts_lite.php"); ?>
 
 </body>
 </html>

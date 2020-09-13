@@ -105,11 +105,7 @@
                                         <div class="form-group">
                                             <label class="control-label" for="tags">{{ __("Etiketler") }}</label>
                                             <select name="tags[]" id="tags" class="form-control" multiple>
-                                                @foreach($tags as $tag)
-                                                    @if($tag->parent_id != NULL)
-                                                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
-                                                    @endif
-                                                @endforeach
+                                                
                                             </select>
                                         </div>
                                     </div>

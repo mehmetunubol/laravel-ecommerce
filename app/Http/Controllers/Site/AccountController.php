@@ -5,14 +5,24 @@ namespace App\Http\Controllers\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\UserContract;
+use App\Contracts\WishlistContract;
 
 class AccountController extends Controller
 {
     protected $userRepository;
 
-    public function __construct(UserContract $userRepository)
+    public function __construct(UserContract $userRepository, WishlistContract $wishlistRepository)
     {
         $this->userRepository = $userRepository;
+        $this->wishlistRepository = $wishlistRepository;
+    }
+
+    public function getAccount($page_name)
+    {
+        $wishlists = auth()->user()->wishlist()->get();
+        $orders = auth()->user()->orders;
+        $user = $this->userRepository->findUserById(auth()->user()->id);
+        return view('site.pages.account.account' ,compact('page_name', 'orders', 'user', 'wishlists'));
     }
 
     public function getOrders()
@@ -39,7 +49,8 @@ class AccountController extends Controller
 
         $user = $this->userRepository->updateUser($params);
 
-        if (!$user) {
+        if (!$user) 
+        {
             return redirect()->back()->with('message', 'User Profile is not updated.');
         }
         return redirect()->back()->with('Category updated successfully');

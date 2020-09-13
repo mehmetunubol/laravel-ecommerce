@@ -15,6 +15,12 @@ class CategoryController extends Controller
         $this->categoryRepository = $categoryRepository;
     }
 
+    public function categories()
+    {
+        $categories = $this->categoryRepository->listCategories()->where('parent_id','<>', NULL);
+
+        return view('site.pages.categories', compact('categories'));
+    }
     public function show(Request $request, $slug)
     {
         /* 
@@ -59,6 +65,7 @@ class CategoryController extends Controller
         ];
         // End Test code
         $category = $this->categoryRepository->findBySlugWithOrderFilter($slug, $order, $filter);
+        
         return view('site.pages.category', compact('category'));
     }
 }

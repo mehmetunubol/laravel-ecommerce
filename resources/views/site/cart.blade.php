@@ -1,68 +1,73 @@
-<!DOCTYPE html>
-<html lang="tr">
-
-		<?php require_once("../../../public/customertemplate/head/head.php"); ?>
-
-<body>
+@extends('site.app')
+@section('title', 'Ürün')
+@section('content')
 <div class="body">
+	<div role="main" class="main">
+		<div class="container">
 
-		<?php require_once("sections/header.php"); ?>
-
-<div role="main" class="main">
-
-		<?php require_once("sections/page_title.php"); ?>
-
-
-<div class="container">
-
-
+			<div class="row">
+                <div class="col-sm-12">
+                    @if (Session::has('message'))
+                        <p class="alert alert-success">{{ Session::get('message') }}</p>
+                    @endif
+                </div>
+            </div>
 
 <section class="section pt-0">
 					<div class="container">
 						<div class="row mb-5">
 							<div class="col">
-								<form class="shop-cart" method="post" action="#">
-
+								<form class="shop-cart" method="get" action="#">
+									@csrf
 									<div class="table-responsive">
 										<table class="shop-cart-table w-100">
-<!-- 											<thead>
+										<thead>
 
 												<tr>
 													<th class="product-remove"></th>
 													<th class="product-thumbnail"></th>
-													<th class="product-name"><strong>Product</strong></th>
-													<th class="product-price"><strong>Unit Price</strong></th>
-													<th class="product-quantity"><strong>Quantity</strong></th>
-													<th class="product-subtotal"><strong>Total</strong></th>
+													<th class="product-name"><strong>{{__('Ürün')}}</strong></th>
+													<th class="product-price"><strong>{{__('Birim Fİyat')}}</strong></th>
+													<th class="product-quantity"><strong>{{__('Adet')}}</strong></th>
+													<th class="product-subtotal"><strong>T{{__('Total')}}</strong></th>
 												</tr>
 
-											</thead> -->
+											</thead> 
 											<tbody>
-
+												@forelse(\Cart::getContent() as $item)
 												<tr class="cart-item">
 													<td class="product-remove">
-														<a href="#"><i class="fas fa-times" aria-label="Remove"></i></a>
+														<a href="{{ route('checkout.cart.remove', $item->id) }}"><i class="fas fa-times" aria-label="Remove"></i></a>
 													</td>
 													<td class="product-thumbnail">
-														<img src="img/demo/product-1-2.jpg" class="img-fluid" width="67" alt="" />
+														<?php $image = \App\Models\Product::where('name',$item->name)->first()->images->first()?>
+														@if($image != null)
+														<img src="{{ asset('storage/'.$image->full) }}" class="img-fluid" width="67" alt="" />
+														@endif
 													</td>
 													<td class="product-name">
-														<a href="shop-product-detail-right-sidebar.html">ÜRÜN ADI</a>
+														<a href="shop-product-detail-right-sidebar.html">{{ Str::words($item->name,20) }}</a>
 													</td>
 													<td class="product-price">
-														<span class="unit-price">100 TL</span>
+														<span class="unit-price">{{ config('settings.currency_symbol'). $item->price }}</span>
 													</td>
 													<td class="product-quantity">
 														<div class="quantity">
-															<input type="button" value="-" class="minus">
-															<input type="number" step="1" min="1" name="quantity" value="1" title="Qty" class="qty" size="2">
-															<input type="button" value="+" class="plus">
+															<a type="button" class="minus" href="/cart/decrementItemQuantity/{{ $item->id }}">-</a>
+															<input type="number" step="1" min="1" name="quantity" value="{{ $item->quantity }}" title="Qty" class="qty" size="2">
+															<a type="button" class="plus" href="/cart/incrementItemQuantity/{{ $item->id }}">+</a>
+															
 														</div>
 													</td>
 													<td class="product-subtotal">
-														<span class="sub-total"><strong>100 TL</strong></span>
+														<span class="sub-total"><strong>{{ config('settings.currency_symbol'). ($item->price*$item->quantity) }}</strong></span>
 													</td>
 												</tr>
+												<input type="hidden" name="id" value="{{$item->id}}">
+												@empty
+												<p class="alert alert-warning">{{ __("Sepetin Boş") }}</p>
+
+												@endforelse
 
 
 
@@ -72,15 +77,18 @@
 														<div class="row mx-0">
 															<div class="col-md-5 px-0 mb-3 mb-md-0">
 																<div class="input-group input-group-style-3 rounded">
+																	<!--
 																  	<input type="text" class="form-control bg-light-5 border-0" placeholder="İNDİRİM KODU..." aria-label="Enter Coupon Code">
 																  	<span class="input-group-btn bg-light-5 p-1">
-																    	<button class="btn btn-primary font-weight-semibold btn-h-3 rounded h-100" type="submit">UYGULA</button>
+																    	<button class="btn btn-primary font-weight-semibold btn-h-3 rounded h-100" type="submit">{{__('UYGULA')}}</button>
 																  	</span>
+																  -->
 																</div>
 															</div>
+															
 															<div class="col-md-7 text-right px-0">
-																<a href="index.php" class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3">ALIŞVERİŞE DEVAM</a>
-																<button class="btn btn-dark btn-outline btn-rounded font-weight-bold btn-h-2 btn-v-3" type="submit">SEPETİ GÜNCELLE</button>
+																<a href="/" class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3">{{__('ALIŞVERİŞE DEVAM')}}</a>
+																<!--<button class="btn btn-dark btn-outline btn-rounded font-weight-bold btn-h-2 btn-v-3" type="submit">SEPETİ GÜNCELLE</button>-->
 															</div>
 														</div>
 													</td>
@@ -96,7 +104,7 @@
 <div class="col-md-6 mb-5 mb-md-0">
 
 <div class="col mb-5">
-
+<!--
 			<h2 class="font-weight-bold text-4 mb-3">Kargo Hesaplama</h2>
 			<form class="shipping-calculator" action="#" method="post">
 			<div class="form-row">
@@ -133,9 +141,9 @@
 			</div>
 			</div>
 			</form>
-
+-->
 </div>
-
+<!--
 <div class="col">
 <form class="shipping-calculator" action="#" method="post">
 	<div class="form-group col">
@@ -145,15 +153,16 @@
 <button class="btn btn-dark btn-outline btn-rounded font-weight-bold btn-h-3 btn-v-3" type="submit">NOTU KAYDET</button>
 </form>
 </div>
-
+-->
 </div>
 
 <div class="col-md-6">
 
-			<h2 class="font-weight-bold text-4 mb-3">SEPET TOPLAMI</h2>
+			<h2 class="font-weight-bold text-4 mb-3">{{__('SEPET TOPLAM')}}</h2>
 			<div class="table-responsive">
 			<table class="cart-totals w-100">
 			<tbody>
+			<!--
 			<tr>
 			<td><span class="cart-total-label">ARA TOPLAM</span></td>
 			<td><span class="cart-total-value">100 TL</span></td>
@@ -173,16 +182,16 @@
 			<td><span class="cart-total-label">KDV</span></td>
 			<td><span class="cart-total-value">18 TL</span></td>
 			</tr>
-
+			-->
 			<tr>
-			<td><span class="cart-total-label">TOPLAM</span></td>
-			<td><span class="cart-total-value text-color-primary text-4">118 TL</span></td>
+			<td><span class="cart-total-label">{{__('TOPLAM')}}</span></td>
+			<td><span class="cart-total-value text-color-primary text-4">{{\Cart::getSubTotal()}}</span></td>
 			</tr>
 
 
 			<tr class="border-bottom-0">
-			<td><span class="cart-total-label">Sepetinizi onaylıyorsanız adres seçimine geçiniz --></span></td>
-			<td><a href="checkout-address.php" class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3">ADRES SEÇİMİ</a></td>
+			<td><span class="cart-total-label">{{__('Sepetinizi onaylıyorsanız adres seçimine geçiniz')}} --></span></td>
+			<td><a href="{{route('checkout.index')}}" class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3">{{__('ADRES SEÇİMİ')}}</a></td>
 			</tr>
 
 
@@ -205,10 +214,8 @@
 
 </div>
 
-		<?php require_once("sections/footer_lite.php"); ?>
+		@include("site.partials.footer_lite")
 
 </div>
-		<?php require_once("../../../public/customertemplate/head/bottom_scripts_lite.php"); ?>
 
-</body>
-</html>
+@stop

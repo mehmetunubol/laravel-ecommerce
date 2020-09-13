@@ -4,7 +4,7 @@
 
 
 <li data-transition="fade">
-<img src="../../../public/customertemplate/img/slides/2.jpg"   alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
+<img src="customertemplate/img/slides/2.jpg"   alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
 
 <div class="tp-caption bg-dark-3"
 data-x="['625','435','185','100']"
@@ -48,7 +48,7 @@ data-transform_out="opacity:0;s:300;">Uygulama Adı</div>
 
 
 <li data-transition="fade">
-<img src="../../../public/customertemplate/img/slides/1.jpg"   alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
+<img src="customertemplate/img/slides/1.jpg"   alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
 
 <div class="tp-caption bg-dark-3"
 data-x="['625','435','185','100']"
@@ -91,7 +91,7 @@ data-transform_out="opacity:0;s:300;">Uygulama Adı</div>
 
 
 <li data-transition="fade">
-<img src="../../../public/customertemplate/img/slides/3.jpg"   alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
+<img src="customertemplate/img/slides/3.jpg"   alt="" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg">
 
 <div class="tp-caption bg-dark-3"
 data-x="['625','435','185','100']"

@@ -12,7 +12,7 @@
 									<div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
 										<span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
 											<a href="product.php">
-												<img src="../../../public/customertemplate/../../../public/customertemplate/img/demo/product-1.jpg" class="img-fluid" alt="">
+												<img src="customertemplate/customertemplate/img/demo/product-1.jpg" class="img-fluid" alt="">
 											</a>
 											<span class="image-frame-action">
 												<a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">SEPETE AT</a>
@@ -35,7 +35,7 @@
 									<div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
 										<span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
 											<a href="product.php">
-												<img src="../../../public/customertemplate/img/demo/2.jpg" class="img-fluid" alt="">
+												<img src="customertemplate/img/demo/2.jpg" class="img-fluid" alt="">
 											</a>
 											<span class="image-frame-action">
 												<a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">SEPETE AT</a>
@@ -58,7 +58,7 @@
 									<div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
 										<span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
 											<a href="product.php">
-												<img src="../../../public/customertemplate/img/demo/3.jpg" class="img-fluid" alt="">
+												<img src="customertemplate/img/demo/3.jpg" class="img-fluid" alt="">
 											</a>
 											<span class="image-frame-action">
 												<a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">SEPETE AT</a>
@@ -81,7 +81,7 @@
 									<div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
 										<span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
 											<a href="product.php">
-												<img src="../../../public/customertemplate/img/demo/4.jpg" class="img-fluid" alt="">
+												<img src="customertemplate/img/demo/4.jpg" class="img-fluid" alt="">
 											</a>
 											<span class="image-frame-action">
 												<a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">SEPETE AT</a>
