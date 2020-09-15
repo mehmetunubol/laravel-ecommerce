@@ -23,6 +23,24 @@ class CartController extends Controller
         return redirect()->back()->with('message', 'Item removed from cart successfully.');
     }
 
+    public function incrementItemQuantity($id)
+    {
+        
+        Cart::update($id, array(
+            'quantity' => 1, 
+        ));
+        return redirect()->back()->with('message', 'Item quantity changed.');
+    }
+
+    public function decrementItemQuantity($id)
+    {
+        
+        Cart::update($id, array(
+            'quantity' => -1, 
+        ));
+        return redirect()->back()->with('message', 'Item quantity changed.');;
+    }
+
     public function clearCart()
     {
         Cart::clear();

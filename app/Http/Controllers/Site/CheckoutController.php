@@ -20,6 +20,7 @@ class CheckoutController extends Controller
 
     public function getCheckout()
     {
+        return view('site.checkout');
         return view('site.pages.checkout');
     }
 
@@ -31,7 +32,7 @@ class CheckoutController extends Controller
             'address'     =>  'required',
             'city'          =>  'required',
             'country'       =>  'required',
-            'post_code'      =>  'required',
+            
             'phone_number'  =>  'required',
             'payment_method'       =>  'required'
         ]);

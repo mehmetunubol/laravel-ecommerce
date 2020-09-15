@@ -52,7 +52,6 @@ class ProductController extends Controller
             array_push($categories, $cat->name);
         }
         $product->categories = $categories;
-
         return view('site.pages.product', compact('product', 'attributes','wishlist'));
     }
 

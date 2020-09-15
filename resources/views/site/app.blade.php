@@ -2,14 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>@yield('title') - {{ config('app.name') }}</title>
-    @include('site.partials.styles')
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+	<link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
+
+	<title>Ege Pleks- Pleksiglas İzmir, Reklam malzemeleri İzmir</title>
+
+	<meta name="keywords" content="akrilik levha İzmir,pleksiglas dekota İzmir,kompozit levha İzmir,polikarbon,polikarbonat levha İzmir, reklam malzemeleri İzmir,folyo İzmir" />
+
+	<meta name="description" content="Plegsiglas ve reklam malzemeleri İzmir" />
+	
+    @include('site.partials.head')
 </head>
 <body>
 @include('site.partials.header')
 @yield('content')
-@include('site.partials.footer')
-@include('site.partials.scripts')
+@include('site.partials.bottom_scripts_home')
 </body>
 </html>

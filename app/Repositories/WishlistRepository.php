@@ -18,7 +18,11 @@ class WishlistRepository extends BaseRepository implements WishlistContract
 
     public function findWishlistByProductId($productId)
     {
-		return auth()->user()->wishlist->where('product_id',$productId)->first();
+        if(auth()->user())
+        {
+            return auth()->user()->wishlist->where('product_id',$productId)->first();
+        }
+		
     }
 
     public function addProductToWishlist($productId)

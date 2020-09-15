@@ -1,2 +1,6 @@
-User-agent: *
+User-Agent: *
 Disallow:
+Allow: /egepleks.com/
+Disallow: /egepleks.com/admin
+
+Sitemap: http://www.egepleks.com/sitemap.xml
