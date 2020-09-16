@@ -1,5 +1,3 @@
-<?php $categories = \App\Models\Category::where('parent_id',1)->get(); ?>
-<?php $items = \Cart::getContent(); ?>
 <header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 120}">
 <div class="header-body">
 
@@ -58,11 +56,11 @@ info@egepleks.com.tr
 
 		<div class="mini-cart-icon">
 		<img src="/customertemplate/img/icons/cart-bag.svg" class="img-fluid" alt="" />
-		<span class="badge badge-primary rounded-circle">{{$items->count()}}</span>
+		<span class="badge badge-primary rounded-circle">{{$cartItems->count()}}</span>
 		</div>
 		<div class="mini-cart-content">
 			<div class="inner-wrapper bg-light rounded">
-				@forelse($items as $item)
+				@forelse($cartItems as $item)
 				<div class="mini-cart-product">
 					<div class="row">
 						<div class="col-7">
