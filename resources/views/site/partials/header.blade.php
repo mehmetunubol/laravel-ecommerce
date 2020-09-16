@@ -1,4 +1,3 @@
-
 <?php $categories = \App\Models\Category::where('parent_id',1)->get(); ?>
 <?php $items = \Cart::getContent(); ?>
 <header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 120}">

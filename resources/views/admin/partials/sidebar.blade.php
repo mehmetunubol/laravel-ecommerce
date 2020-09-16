@@ -60,7 +60,7 @@
             </a>
         </li>
         <li>
-            <a class="app-menu__item {{ Route::currentRouteName() == 'admin.tags.index' ? 'active' : '' }}" href="{{ route('admin.tags.index') }}">
+            <a class="app-menu__item {{ Route::currentRouteName() == 'admin.badges.index' ? 'active' : '' }}" href="{{ route('admin.badges.index') }}">
                 <i class="app-menu__icon fa fa-tags"></i>
                 <span class="app-menu__label">{{ __("Ürün Etiketleri") }}</span>
             </a>

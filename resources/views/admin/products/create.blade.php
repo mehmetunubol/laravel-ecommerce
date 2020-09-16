@@ -101,16 +101,6 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <label class="control-label" for="tags">{{ __("Etiketler") }}</label>
-                                            <select name="tags[]" id="tags" class="form-control" multiple>
-                                                
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label" for="price">{{ __("Fiyat") }}</label>
@@ -219,7 +209,6 @@
     <script>
         $( document ).ready(function() {
             $('#categories').select2();
-            $('#tags').select2();
         });
     </script>
 @endpush

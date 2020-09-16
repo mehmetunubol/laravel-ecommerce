@@ -65,4 +65,10 @@ interface ProductContract
      * @return similarProducts
      */
     public function findSimilarProducts($id);
+
+    /**
+     * @param $search
+     * @return products
+     */
+    public function searchAllProducts($search = null);
 }
