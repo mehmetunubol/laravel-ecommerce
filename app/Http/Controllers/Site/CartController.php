@@ -10,6 +10,7 @@ class CartController extends Controller
 {
     public function getCart()
     {
+        return Cart::getContent();
         return view('site.pages.cart');
     }
 

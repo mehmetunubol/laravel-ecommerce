@@ -76,11 +76,8 @@ info@egepleks.com.tr
 						</div>
 						<div class="col-5">
 							<div class="product-image">
-								<a href="#" class="btn btn-light btn-rounded justify-content-center align-items-center"><i class="fas fa-times"></i></a>
-								<?php $image = \App\Models\Product::where('name',$item->name)->first()->images->first()?>
-								@if($image != null)
-									<img src="{{ asset('storage/'.$image->full) }}" class="img-fluid rounded" alt="" />
-								@endif
+								<a href="" class="btn btn-light btn-rounded justify-content-center align-items-center"><i class="fas fa-times"></i></a>
+								<img src="{{ asset('storage/'.$item->attributes->imagePath) }}" class="img-fluid rounded" alt="" />
 							</div>
 						</div>
 					</div>
