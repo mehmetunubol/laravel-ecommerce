@@ -44,8 +44,14 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/checkout/payment/paytr/succeeded', 'Payment\PaytrController@successfulAttempt')->name('checkout.payment.paytr.succeeded');
     Route::get('/checkout/payment/paytr/failed', 'Payment\PaytrController@failedAttempt')->name('checkout.payment.paytr.failed');
     Route::post('/checkout/payment/paytr/result', 'Payment\PaytrController@paymentResult')->name('checkout.payment.paytr.result');
+    Route::get('/addresses', 'Site\AddressController@addresses')->name('addresses');
+    Route::get('/address/create', 'Site\AddressController@create')->name('address.create');
+    Route::post('/address/store', 'Site\AddressController@store')->name('address.store');
+    Route::get('/address/edit/{id}', 'Site\AddressController@edit')->name('address.edit');
+    Route::post('/address/update', 'Site\AddressController@update')->name('address.update');
+    Route::post('/address/delete', 'Site\AddressController@delete')->name('address.delete');
     Route::get('/account/{page_name}', 'Site\AccountController@getAccount')->name('account');
-    Route::get('account/orders', 'Site\AccountController@getOrders')->name('account.orders');
+    Route::get('/account/orders', 'Site\AccountController@getOrders')->name('account.orders');
     Route::get('account/wishlist', 'Site\WishlistController@getWishlist')->name('account.wishlist');
     Route::post('wishlist/add', 'Site\WishlistController@addToWishlist')->name('wishlist.add');
     Route::post('wishlist/remove', 'Site\WishlistController@removeFromWishlist')->name('wishlist.remove');

@@ -22,7 +22,8 @@ class AccountController extends Controller
         $wishlists = auth()->user()->wishlist()->get();
         $orders = auth()->user()->orders;
         $user = $this->userRepository->findUserById(auth()->user()->id);
-        return view('site.pages.account.account' ,compact('page_name', 'orders', 'user', 'wishlists'));
+        $addresses = $user->addresses;
+        return view('site.pages.account.account' ,compact('page_name', 'orders', 'user', 'wishlists','addresses'));
     }
 
     public function getOrders()

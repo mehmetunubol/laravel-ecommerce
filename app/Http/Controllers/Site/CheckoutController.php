@@ -20,8 +20,9 @@ class CheckoutController extends Controller
 
     public function getCheckout()
     {
-        return view('site.checkout');
-        return view('site.pages.checkout');
+        $addresses = auth()->user()->addresses;
+        
+        return view('site.pages.checkout', compact('addresses'));
     }
 
     public function placeOrder(Request $request)
