@@ -211,8 +211,8 @@
 
 
 </div>
-
 	@include("site.content.related_products");
+	@include("site.content.recently_viewed_products");
 
 				@include("site.sections.our_catalogue")
 
