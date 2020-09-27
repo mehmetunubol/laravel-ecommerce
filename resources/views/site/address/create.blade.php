@@ -55,7 +55,9 @@
 								<div class="form-row">
 									<div class="form-group col">
 										<label class="text-color-dark font-weight-semibold" for="country">{{__("ÜLKE")}}:</label>
-										<input type="text" value="{{ old('country') }}" class="form-control line-height-1 bg-light-5" name="country" id="country" required>
+										<select id="country" name="country">
+											@include('site.address.countriesDropdownList')
+										</select>
 									</div>
 								</div>
 								<div class="col text-right">
