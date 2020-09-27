@@ -3,10 +3,10 @@
 @section('content')
     <div class="app-title">
         <div>
-            <h1><i class="fa fa-tags"></i> {{ $pageTitle }}</h1>
+            <h1><i class="fa fa-badges"></i> {{ $pageTitle }}</h1>
             <p>{{ $subTitle }}</p>
         </div>
-        <a href="{{ route('admin.tags.create') }}" class="btn btn-primary pull-right">{{ __("Tag") }} {{ __("Ekle") }}</a>
+        <a href="{{ route('admin.badges.create') }}" class="btn btn-primary pull-right">{{ __("Tag") }} {{ __("Ekle") }}</a>
     </div>
     @include('admin.partials.flash')
     <div class="row">
@@ -23,13 +23,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($tags as $tag)
-                            @if ($tag->name != 'Root' && $tag->name != 'Tag')
+                            @foreach($badges as $badge)
+                            @if ($badge->name != 'Root' && $badge->name != 'Tag')
                                     <tr>
-                                        <td>{{ $tag->id }}</td>
-                                        <td>{{ $tag->name }}</td>
+                                        <td>{{ $badge->id }}</td>
+                                        <td>{{ $badge->name }}</td>
                                         <td class="text-center">
-                                            @if ($tag->menu == 1)
+                                            @if ($badge->status == 1)
                                                 <span class="badge badge-success">{{ __("Evet") }}</span>
                                             @else
                                                 <span class="badge badge-danger">{{ __("Hayır") }}</span>
@@ -37,8 +37,8 @@
                                         </td>
                                         <td class="text-center">
                                             <div class="btn-group" role="group" aria-label="Second group">
-                                                <a href="{{ route('admin.tags.edit', $tag->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
-                                                <a href="{{ route('admin.tags.delete', $tag->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                                                <a href="{{ route('admin.badges.edit', $badge->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                                                <a href="{{ route('admin.badges.delete', $badge->id) }}" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
                                             </div>
                                         </td>
                                     </tr>

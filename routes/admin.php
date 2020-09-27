@@ -33,19 +33,19 @@ Route::group(['prefix'  =>  'admin'], function () {
         });
 
         /*
-            *** Implementation note for tags ***
-                * 'tags' has not independent database table.
+            *** Implementation note for badges ***
+                * 'badges' has not independent database table.
                 * It will use the categories table and will be root category.
-                * Tags should have base 'Tag' category as parent_id and it will not be allowed to have nested tags.
+                * Tags should have base 'Tag' category as parent_id and it will not be allowed to have nested badges.
             ***
         */
-        Route::group(['prefix'  =>   'tags'], function() {
-            Route::get('/', 'Admin\TagController@index')->name('admin.tags.index');
-            Route::get('/create', 'Admin\TagController@create')->name('admin.tags.create');
-            Route::post('/store', 'Admin\TagController@store')->name('admin.tags.store');
-            Route::get('/{id}/edit', 'Admin\TagController@edit')->name('admin.tags.edit');
-            Route::post('/update', 'Admin\TagController@update')->name('admin.tags.update');
-            Route::get('/{id}/delete', 'Admin\TagController@delete')->name('admin.tags.delete');        
+        Route::group(['prefix'  =>   'badges'], function() {
+            Route::get('/', 'Admin\BadgeController@index')->name('admin.badges.index');
+            Route::get('/create', 'Admin\BadgeController@create')->name('admin.badges.create');
+            Route::post('/store', 'Admin\BadgeController@store')->name('admin.badges.store');
+            Route::get('/{id}/edit', 'Admin\BadgeController@edit')->name('admin.badges.edit');
+            Route::post('/update', 'Admin\BadgeController@update')->name('admin.badges.update');
+            Route::get('/{id}/delete', 'Admin\BadgeController@delete')->name('admin.badges.delete');        
         });
 
         Route::group(['prefix'  =>   'brands'], function() {
@@ -124,6 +124,11 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::get('/view', 'Admin\ProductStatsController@view_index')->name('admin.statistics.product.view');
             Route::get('/cart', 'Admin\ProductStatsController@cart_index')->name('admin.statistics.product.cart');
             Route::get('/order', 'Admin\ProductStatsController@order_index')->name('admin.statistics.product.order');
+         });
+
+         Route::group(['prefix' => 'sitesearches'], function () {
+            Route::get('/index', 'Admin\SiteSearchController@index')->name('admin.sitesearches.index');
+            Route::get('/show/{id}', 'Admin\SiteSearchController@show')->name('admin.sitesearches.show');
          });
     });
 

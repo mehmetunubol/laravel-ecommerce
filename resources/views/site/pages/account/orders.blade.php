@@ -35,7 +35,7 @@
                                 </tr>
                             @empty
                                 <div class="col-sm-12">
-                                    <p class="alert alert-warning">{{ __("Hayır") }} orders to display.</p>
+                                    <p class="alert alert-warning">{{ __("Gösterilecek sipariş bulunamadı") }} </p>
                                 </div>
                             @endforelse
                         </tbody>

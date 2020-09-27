@@ -98,15 +98,19 @@
 @endsection
 @push('scripts')
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script src="/admintemplate/js/plugins/quill.htmlEditButton.min.js"></script> 
     <script>
-        var quill = new Quill('#contenteditor', {
+        Quill.register("modules/htmlEditButton", htmlEditButton);
+        var options = {
+            modules: {
+                htmlEditButton: {}
+            },
             theme: 'snow'
-        });
-        quill.setContents({!! $sitepage->content !!});
+        };
+        var quill = new Quill('#contenteditor', options);
+        quill.root.innerHTML = '{!! $sitepage->content !!}';
         $("#form").on("submit",function(){
-            $("#content").val(JSON.stringify(quill.getContents()));
-            var content = document.querySelector('input[name=content]');
-            content.value = JSON.stringify(quill.getContents()); 
+            $("#content").val(quill.root.innerHTML);
             return true;
         });        
     </script>

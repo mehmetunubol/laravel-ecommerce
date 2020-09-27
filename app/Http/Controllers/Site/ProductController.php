@@ -64,4 +64,5 @@ class ProductController extends Controller
         $this->productStatsRepository->incrementProductStats($product->id, 'cart');
         return redirect()->back()->with('message', 'Item added to cart successfully.');
     }
+
 }
