@@ -62,7 +62,7 @@
 		</div>
 		</div>
 		@empty
-			<p>{{ __("Hayır") }} Products found in {{ $category->name }}.</p>
+			<p> {{ $category->name }}: {{ __("Bu Kategoride hiç ürün yok") }}.</p>
 		@endforelse
 	</div>
 
