@@ -23,9 +23,12 @@ Route::get('/sitepages', 'Site\SitePageController@getAllPages')->name('sitepages
 
 Route::get('/categories', 'Site\CategoryController@categories')->name('categories');
 Route::get('/category/{slug}', 'Site\CategoryController@show')->name('category.show');
-Route::get('/product/{slug}', 'Site\ProductController@show')->name('product.show');
 
+Route::get('/product/{slug}', 'Site\ProductController@show')->name('product.show');
 Route::post('/product/add/cart', 'Site\ProductController@addToCart')->name('product.add.cart');
+
+Route::post('/sitesearch/product', 'Site\SiteSearchController@searchProducts')->name('sitesearch.product');
+
 Route::get('/cart', 'Site\CartController@getCart')->name('checkout.cart');
 Route::get('/cart/incrementItemQuantity/{id}', 'Site\CartController@incrementItemQuantity')->name('cart.incrementItemQuantity');
 Route::get('/cart/decrementItemQuantity/{id}', 'Site\CartController@decrementItemQuantity')->name('cart.decrementItemQuantity');

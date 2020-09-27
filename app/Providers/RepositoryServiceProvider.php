@@ -23,6 +23,10 @@ use App\Contracts\ProductStatsContract;
 use App\Repositories\ProductStatsRepository;
 use App\Contracts\AddressContract;
 use App\Repositories\AddressRepository;
+use App\Contracts\BadgeContract;
+use App\Repositories\BadgeRepository;
+use App\Contracts\SiteSearchContract;
+use App\Repositories\SiteSearchRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -37,6 +41,8 @@ class RepositoryServiceProvider extends ServiceProvider
         SitePageContract::class         =>          SitePageRepository::class,
         ProductStatsContract::class     =>          ProductStatsRepository::class,
         AddressContract::class          =>          AddressRepository::class,
+        BadgeContract::class            =>          BadgeRepository::class,
+        SiteSearchContract::class       =>          SiteSearchRepository::class,
     ];
 
     /**

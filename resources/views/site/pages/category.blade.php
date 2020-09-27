@@ -54,15 +54,19 @@
 		<div class="product-info d-flex flex-column flex-lg-row justify-content-between">
 		<div class="product-info-title">
 		<h3 class="text-color-default text-2 line-height-1 mb-1"><a href="{{ route('product.show', $product->slug) }}">{{ $product->name }}</a></h3>
-		<span class="price font-primary text-4"><strong class="text-color-dark">{{ config('settings.currency_symbol').$product->sale_price }}</strong></span>
-		<span class="old-price font-primary text-line-trough text-1"><strong class="text-color-default">{{ config('settings.currency_symbol').$product->price }}</strong></span>
+		@if(isset($product->sale_price))
+			<span class="price font-primary text-4"><strong class="text-color-dark">{{ config('settings.currency_symbol').$product->sale_price }}</strong></span>
+			<span class="old-price font-primary text-line-trough text-1"><strong class="text-color-default">{{ config('settings.currency_symbol').$product->price }}</strong></span>
+		@else
+			<span class="price font-primary text-4"><strong class="text-color-dark">{{ config('settings.currency_symbol').$product->price }}</strong></span>
+		@endif
 		</div>
 
 		</div>
 		</div>
 		</div>
 		@empty
-			<p>{{ __("Hayır") }} Products found in {{ $category->name }}.</p>
+			<p> {{ $category->name }}: {{ __("Bu Kategoride hiç ürün yok") }}.</p>
 		@endforelse
 	</div>
 
