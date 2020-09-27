@@ -15,12 +15,12 @@
                     <table class="table table-hover">
                         <thead>
                             <tr>
-                                <th scope="col">Order No.</th>
-                                <th scope="col">First Name</th>
-                                <th scope="col">Last Name</th>
-                                <th scope="col">Order Amount</th>
-                                <th scope="col">Qty.</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">{{ __("Sipariş Numarası") }}</th>
+                                <th scope="col">{{ __("İsim") }}</th>
+                                <th scope="col">{{ __("Soyisim") }}</th>
+                                <th scope="col">{{ __("Sipariş miktarı") }}</th>
+                                <th scope="col">{{ __("Miktar") }}</th>
+                                <th scope="col">{{ __("Durum") }}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -35,7 +35,7 @@
                                 </tr>
                             @empty
                                 <div class="col-sm-12">
-                                    <p class="alert alert-warning">No orders to display.</p>
+                                    <p class="alert alert-warning">{{ __("Gösterilecek sipariş bulunamadı") }} </p>
                                 </div>
                             @endforelse
                         </tbody>

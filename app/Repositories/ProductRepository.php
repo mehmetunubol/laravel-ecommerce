@@ -41,6 +41,17 @@ class ProductRepository extends BaseRepository implements ProductContract
     }
 
     /**
+     * @param string $order
+     * @param string $sort
+     * @param array $columns
+     * @return mixed
+     */
+    public function listProductsWithCategories(string $order = 'id', string $sort = 'desc', array $columns = ['*'])
+    {
+        return $this->model::with('categories:name')->get();
+    }
+
+    /**
      * @param int $id
      * @return mixed
      * @throws ModelNotFoundException
@@ -55,6 +66,16 @@ class ProductRepository extends BaseRepository implements ProductContract
             throw new ModelNotFoundException($e);
         }
 
+    }
+
+    /**
+     * @param int $ids
+     * @return mixed
+     * @throws ModelNotFoundException
+     */
+    public function findProductsByIds(array $ids)
+    {
+        return $this->model::find($ids);
     }
 
     /**
@@ -131,5 +152,61 @@ class ProductRepository extends BaseRepository implements ProductContract
         $product = Product::where('slug', $slug)->first();
 
         return $product;
+    }
+
+        /**
+     * @param array $params
+     * @return mixed
+     */
+    public function setProductAdminOrder(array $params)
+    {
+        $product = $this->findProductById($params['product_id']);
+        $product->order = $params['order'];
+        $product->save();
+
+        return $product;
+    }
+
+    /**
+     * @param $id
+     * @return similarProducts
+     */
+    public function findSimilarProducts($id)
+    {
+        $product = $this->model::with('categories')->findOrFail($id);
+
+        $categoryIds = $product->categories->pluck('id')->toArray();
+        $similarProducts = $this->model::whereHas('categories', function ($query) use ($categoryIds) {
+                                                    return $query->whereIn('category_id', $categoryIds);
+                                                })
+                            ->where('id', "!=" ,$product->id)
+                            ->limit(5)
+                            ->get();
+        return $similarProducts;
+    }
+
+    /**
+     * @param $search
+     * @return products
+     */
+    public function searchAllProducts($search = null)
+    {
+        $searchQueues = explode(" ", $search);
+
+        foreach($searchQueues as $i => $text) 
+        {
+            if($i == 0) 
+            {
+                $products = $this->model::where('name', 'LIKE', "%{$text}%") 
+                                        ->orWhere('description', 'LIKE', "%{$text}%");
+            }
+            else
+            {
+                $products = $products->where('name', 'LIKE', "%{$text}%") 
+                                     ->orWhere('description', 'LIKE', "%{$text}%");
+            }
+        }
+        
+        return $products->get();
     }
 }

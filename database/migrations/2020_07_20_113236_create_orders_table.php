@@ -18,9 +18,20 @@ class CreateOrdersTable extends Migration
             $table->string('order_number')->unique();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-
-            $table->enum('status', ['pending', 'processing', 'completed', 'decline'])->default('pending');
-            $table->decimal('grand_total', 20, 6);
+            /*
+                * Description of the Order States:
+                    * pending           : initial state, means customer went to checkout state.
+                    * wait_payment      : customer completed address informations, notes, .etc, customer should go to payment.
+                    * wait_pay_confirm  : customer completed the payment, system is waiting the confirmation from PaymentService.
+                    * wait_ship         : payment stage is completed, order is waiting confirmation from Admin to deliver it to TransportationService(Cargo).
+                    * declined          : order is declined by Admin, the order will not be shipped.
+                    * shipping          : order is on the road.
+                    * completed         : order is delivered to customer.
+                    * return_shipping   : customer starts to return the order.
+                    * returned          : order is returned back.
+            */
+            $table->enum('status', ['pending', 'wait_payment', 'wait_pay_confirm', 'wait_ship', 'declined', 'shipping','completed', 'return_shipping', 'returned'])->default('pending');
+            $table->decimal('grand_total', 20, 2);
             $table->unsignedInteger('item_count');
 
             $table->boolean('payment_status')->default(1);

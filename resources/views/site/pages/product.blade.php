@@ -1,69 +1,112 @@
 @extends('site.app')
-@section('title', $product->name)
+@section('title', 'Ürün')
 @section('content')
-    <section class="section-pagetop bg-dark">
-        <div class="container clearfix">
-            <h2 class="title-page">{{ $product->name }}</h2>
-        </div>
-    </section>
-    <section class="section-content bg padding-y border-top" id="site">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="row no-gutters">
-                            <aside class="col-sm-5 border-right">
-                                <article class="gallery-wrap">
-                                    @if ($product->images->count() > 0)
-                                        <div class="img-big-wrap">
-                                            <div class="padding-y">
-                                                <a href="{{ asset('storage/'.$product->images->first()->full) }}" data-fancybox="">
-                                                    <img src="{{ asset('storage/'.$product->images->first()->full) }}" alt="">
-                                                </a>
-                                            </div>
-                                        </div>
-                                    @else
-                                        <div class="img-big-wrap">
-                                            <div>
-                                                <a href="https://via.placeholder.com/176" data-fancybox=""><img src="https://via.placeholder.com/176"></a>
-                                            </div>
-                                        </div>
-                                    @endif
-                                     @if ($product->images->count() > 0)
-                                        <div class="img-small-wrap">
-                                            @foreach($product->images as $image)
-                                                <div class="item-gallery">
-                                                    <img src="{{ asset('storage/'.$image->full) }}" alt="">
-                                                </div>
-                                            @endforeach
-                                        </div>
-                                    @endif
-                                </article>
-                            </aside>
-                            <aside class="col-sm-7">
-                                <article class="p-5">
-                                    <h3 class="title mb-3">{{ $product->name }}</h3>
-                                    <dl class="row">
-                                        <dt class="col-sm-3">SKU</dt>
-                                        <dd class="col-sm-9">{{ $product->sku }}</dd>
-                                        <dt class="col-sm-3">Weight</dt>
-                                        <dd class="col-sm-9">{{ $product->weight }}</dd>
-                                    </dl>
-                                    <div class="mb-3">
-                                        @if ($product->sale_price > 0)
-                                            <var class="price h3 text-danger">
-                                                <span class="currency">{{ config('settings.currency_symbol') }}</span><span class="num" id="productPrice">{{ $product->sale_price }}</span>
-                                                <del class="price-old"> {{ config('settings.currency_symbol') }}{{ $product->price }}</del>
-                                            </var>
-                                        @else
-                                            <var class="price h3 text-success">
-                                                <span class="currency">{{ config('settings.currency_symbol') }}</span><span class="num" id="productPrice">{{ $product->price }}</span>
-                                            </var>
-                                        @endif
-                                    </div>
-                                    <hr>
-                                    <form action="{{ route('product.add.cart') }}" method="POST" role="form" id="addToCart">
-                                        @csrf
+<div class="body">
+	<div role="main" class="main">
+		<div class="container">
+
+
+
+<div class="row mb-5">
+
+			<div class="col-md-5 mb-5 mb-md-0">
+				@if ($product->images->count() > 0)
+					<img src="{{ asset('storage/'.$product->images->first()->full) }}" class="img-fluid" alt="">
+				@else
+                    <img src="https://via.placeholder.com/176" class="img-fluid" ></a>
+                @endif
+
+                @if ($product->images->count() > 0)
+
+				<div class="owl-carousel owl-theme manual dots-style-2 nav-style-2 nav-color-dark mb-3" id="thumbGalleryDetail">
+					@foreach($product->images as $image)
+					<div><img src="{{ asset('storage/'.$image->full) }}" class="img-fluid" alt=""></div>
+					@endforeach
+				</div>
+				
+				@else
+                    <img src="https://via.placeholder.com/176" class="img-fluid" ></a>
+                @endif
+
+<!-- 	
+					<div class="owl-carousel owl-theme manual thumb-gallery-thumbs mt" id="thumbGalleryThumbs">
+					<div><span class="d-block"><img alt="Product Image" src="img/demo/1.jpg" class="img-fluid"></span></div>
+					<div><span class="d-block"><img alt="Product Image" src="img/demo/product-2.jpg" class="img-fluid"></span></div>
+					<div><span class="d-block"><img alt="Product Image" src="img/demo/product-3.jpg" class="img-fluid"></span></div>
+					<div><span class="d-block"><img alt="Product Image" src="img/demo/product-4.jpg" class="img-fluid"></span></div>
+					</div> -->
+
+			</div>
+
+			<div class="col-md-7">
+
+							<h2 class="line-height-1 font-weight-bold mb-3">{{ $product->name }}</h2>
+							@if ($product->sale_price > 0)
+								<span class="price font-primary text-6"><strong class="text-color-dark">{{ config('settings.currency_symbol') }} {{ $product->sale_price }}</strong></span>
+								<span class="old-price font-primary text-line-trough text-4"><strong class="text-color-default">{{ config('settings.currency_symbol') }} {{ $product->price }} </strong></span>
+							@else
+								<span class="price font-primary text-6"><strong class="text-color-dark">{{ config('settings.currency_symbol') }} {{ $product->price }}</strong></span>
+							@endif
+							@if(auth()->user())
+                                
+								<div class="d-flex mt-2 mb-2" >
+								@if($wishlist)
+									<form action="{{ route('wishlist.remove') }}" method="POST" role="form" id="removeFromWishlist">
+										@csrf
+										<input type="hidden" name="productId" value="{{ $product->id }}">
+										<button type="submit" class="btn btn-danger"><i class="lnr lnr-heart text-3 mr-1"></i> {{__("Favorilerden Çıkar") }}</button>
+									</form>
+                                @else
+									<form action="{{ route('wishlist.add') }}" method="POST" role="form" id="removeFromWishlist">
+										@csrf
+										<input type="hidden" name="productId" value="{{ $product->id }}">
+										<button type="submit" class="btn btn-success"><i class="lnr lnr-heart text-3 mr-1"></i> {{__("Favorilere Ekle") }}</button>
+									</form>
+								@endif
+								</div>
+							@endif
+							<p class="mt-4">{{$product->description}}</p>
+
+<hr class="my-4">
+							<ul class="list list-unstyled">
+							@if($product->status)
+							<li>STOK DURUMU: <strong>STOKTA VAR</strong></li>
+							@else
+							<li>STOK DURUMU: <strong>STOKTA YOK</strong></li>
+							@endif
+							<li>ÜRÜN KODU: <strong>{{$product->sku}}</strong></li>
+								</ul>
+
+
+
+											<ul class="list list-inline list-filter mt-0 pb-0">
+												<li class="list-inline-item">
+													<a href="#">A1</a>
+												</li>
+																							<li class="list-inline-item">
+													<a href="#">A2</a>
+												</li>
+												<li class="list-inline-item">
+													<a href="#">A3</a>
+												</li>
+												<li class="list-inline-item">
+													<a href="#">A4</a>
+												</li>
+												<li class="list-inline-item">
+													<a href="#">A5</a>
+												</li>
+											</ul>
+
+
+
+
+
+
+<hr class="my-4">
+							
+							<form class="shop-cart d-flex align-items-center" action="{{ route('product.add.cart') }}" method="post" enctype="multipart/form-data">
+
+								@csrf
                                         <div class="row">
                                             <div class="col-sm-12">
                                                 <dl class="dlist-inline">
@@ -89,55 +132,95 @@
                                                 </dl>
                                             </div>
                                         </div>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-sm-12">
-                                                <dl class="dlist-inline">
-                                                    <dt>Quantity: </dt>
-                                                    <dd>
-                                                        <input class="form-control" type="number" min="1" value="1" max="{{ $product->quantity }}" name="qty" style="width:70px;">
-                                                        <input type="hidden" name="productId" value="{{ $product->id }}">
-                                                        <input type="hidden" name="price" id="finalPrice" value="{{ $product->sale_price != '' ? $product->sale_price : $product->price }}">
-                                                    </dd>
-                                                </dl>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <button type="submit" class="btn btn-success"><i class="fas fa-shopping-cart"></i> Add To Cart</button>
-                                    </form>
-                                </article>
-                            </aside>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <article class="card mt-4">
-                        <div class="card-body">
-                            {!! $product->description !!}
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </div>
-    </section>
+
+							<div class="quantity">
+							<input type="button" value="-" class="minus">
+							<input type="number" step="1" min="1" name="qty" value="1" title="Qty" class="qty" size="2">
+							<input type="button" value="+" class="plus">
+							</div>
+
+					<div class="quantity">
+
+
+
+					</div>
+							<input type="hidden" name="productId" value="{{ $product->id }}">
+                        	<input type="hidden" name="price" id="finalPrice" value="{{ $product->sale_price != '' ? $product->sale_price : $product->price }}">
+							<button type="submit" class="add-to-cart btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-h-2 btn-fs-2 ml-3">{{__("Sepete Ekle") }}</button>
+							</form>
+
+<hr class="my-4">
+							<div class="d-flex align-items-center">
+							<span class="text-2">PAYLAŞ</span>
+							<ul class="social-icons social-icons-dark social-icons-1 ml-3">
+							<li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+							<li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
+							<li class="social-icons-instagram"><a href="http://www.instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a></li>
+							</ul>
+							</div>
+
+			</div>
+
+</div>
+
+
+
+	<div class="row mb-5">
+	<div class="col">
+
+	<ul class="nav nav-tabs nav-tabs-default" id="productDetailTab" role="tablist">
+		<li class="nav-item">
+		<a class="nav-link font-weight-bold active" id="productDetailDescTab" data-toggle="tab" href="#productDetailDesc" role="tab" aria-controls="productDetailDesc" aria-expanded="true">ÜRÜN AÇIKLAMASI</a>
+		</li>
+		<li class="nav-item">
+		<a class="nav-link font-weight-bold" id="productDetailMoreInfoTab" data-toggle="tab" href="#productDetailMoreInfo" role="tab" aria-controls="productDetailMoreInfo">TEKNİK BİLGİLER</a>
+		</li>
+	</ul>
+
+		<div class="tab-content" id="contentTabProductDetail">
+
+			<div class="tab-pane fade pt-4 pb-4 show active" id="productDetailDesc" role="tabpanel" aria-labelledby="productDetailDescTab">
+			<p class="text-color-light-3">{{$product->description}}</p>
+
+			<p class="text-color-light-3 mb-0"></p>
+			</div>
+
+			<div class="tab-pane fade pt-4 pb-4" id="productDetailMoreInfo" role="tabpanel" aria-labelledby="productDetailMoreInfoTab">
+			<table class="table">
+			<tbody>
+			<tr>
+			<th class="border-top-0" scope="row">SIZE</th>
+			<td class="border-top-0">31, 32, 33, 34, 35</td>
+			</tr>
+			<tr>
+			<th scope="row">COLOR</th>
+			<td>blue, red, rosa, white</td>
+			</tr>
+			<tr>
+			<th scope="row">STYLE</th>
+			<td>classic, modern</td>
+			</tr>
+			</tbody>
+			</table>
+			</div>
+
+		</div>
+
+	</div>
+	</div>
+
+
+</div>
+	@include("site.content.related_products");
+	@include("site.content.recently_viewed_products");
+
+				@include("site.sections.our_catalogue")
+
+</div>
+
+
+		@include("site.partials.footer")
+
+</div>
+
 @stop
-@push('scripts')
-    <script>
-        $(document).ready(function () {
-            $('#addToCart').submit(function (e) {
-                if ($('.option').val() == 0) {
-                    e.preventDefault();
-                    alert('Please select an option');
-                }
-            });
-            $('.option').change(function () {
-                $('#productPrice').html("{{ $product->sale_price != '' ? $product->sale_price : $product->price }}");
-                let extraPrice = $(this).find(':selected').data('price');
-                let price = parseFloat($('#productPrice').html());
-                let finalPrice = (Number(extraPrice) + price).toFixed(2);
-                $('#finalPrice').val(finalPrice);
-                $('#productPrice').html(finalPrice);
-            });
-        });
-    </script>
-@endpush

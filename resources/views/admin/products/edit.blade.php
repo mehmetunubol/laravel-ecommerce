@@ -14,9 +14,9 @@
         <div class="col-md-3">
             <div class="tile p-0">
                 <ul class="nav flex-column nav-tabs user-tabs">
-                    <li class="nav-item"><a class="nav-link active" href="#general" data-toggle="tab">General</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#images" data-toggle="tab">Images</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#attributes" data-toggle="tab">Attributes</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#general" data-toggle="tab">{{ __("Genel") }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#images" data-toggle="tab">{{ __("Fotoğraflar") }}</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#attributes" data-toggle="tab">{{ __("Özellikler") }}</a></li>
                 </ul>
             </div>
         </div>
@@ -26,15 +26,15 @@
                     <div class="tile">
                         <form action="{{ route('admin.products.update') }}" method="POST" role="form">
                             @csrf
-                            <h3 class="tile-title">Product Information</h3>
+                            <h3 class="tile-title">{{ __("Ürün Detayı") }}</h3>
                             <hr>
                             <div class="tile-body">
                                 <div class="form-group">
-                                    <label class="control-label" for="name">Name</label>
+                                    <label class="control-label" for="name">{{ __("İsim") }}</label>
                                     <input
                                         class="form-control @error('name') is-invalid @enderror"
                                         type="text"
-                                        placeholder="Enter attribute name"
+                                        placeholder="{{ __('Özellik ismini gir') }}"
                                         id="name"
                                         name="name"
                                         value="{{ old('name', $product->name) }}"
@@ -45,7 +45,7 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="control-label" for="sku">SKU</label>
                                             <input
@@ -61,9 +61,25 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label class="control-label" for="brand_id">Brand</label>
+                                            <label class="control-label" for="order">{{ __("Özel Sıralama") }}</label>
+                                            <input
+                                                class="form-control @error('order') is-invalid @enderror"
+                                                type="text"
+                                                placeholder="Özel sıralama isteniyorsa girilmelidir."
+                                                id="order"
+                                                name="order"
+                                                value="{{ old('order', $product->order) }}"
+                                            />
+                                            <div class="invalid-feedback active">
+                                                <i class="fa fa-exclamation-circle fa-fw"></i> @error('order') <span>{{ $message }}</span> @enderror
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label" for="brand_id">{{ __("Marka") }}</label>
                                             <select name="brand_id" id="brand_id" class="form-control @error('brand_id') is-invalid @enderror">
                                                 <option value="0">Select a brand</option>
                                                 @foreach($brands as $brand)
@@ -83,11 +99,13 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label class="control-label" for="categories">Categories</label>
+                                            <label class="control-label" for="categories">{{ __("Kategoriler") }}</label>
                                             <select name="categories[]" id="categories" class="form-control" multiple>
                                                 @foreach($categories as $category)
-                                                    @php $check = in_array($category->id, $product->categories->pluck('id')->toArray()) ? 'selected' : ''@endphp
-                                                    <option value="{{ $category->id }}" {{ $check }}>{{ $category->name }}</option>
+                                                    @if($category->parent_id != NULL)
+                                                        @php $check = in_array($category->id, $product->categories->pluck('id')->toArray()) ? 'selected' : ''@endphp
+                                                        <option value="{{ $category->id }}" {{ $check }}>{{ $category->name }}</option>
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>
@@ -96,7 +114,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="control-label" for="price">Price</label>
+                                            <label class="control-label" for="price">{{ __("Fiyat") }}</label>
                                             <input
                                                 class="form-control @error('price') is-invalid @enderror"
                                                 type="text"
@@ -112,7 +130,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="control-label" for="sale_price">Special Price</label>
+                                            <label class="control-label" for="sale_price">{{ __("İndirimli Fiyat") }}</label>
                                             <input
                                                 class="form-control"
                                                 type="text"
@@ -127,7 +145,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="control-label" for="quantity">Quantity</label>
+                                            <label class="control-label" for="quantity">{{ __("Miktar") }}</label>
                                             <input
                                                 class="form-control @error('quantity') is-invalid @enderror"
                                                 type="number"
@@ -143,7 +161,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="control-label" for="weight">Weight</label>
+                                            <label class="control-label" for="weight">{{ __("Ağırlık") }}</label>
                                             <input
                                                 class="form-control"
                                                 type="text"
@@ -156,7 +174,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label" for="description">Description</label>
+                                    <label class="control-label" for="description"> {{ __("Açıklama") }}</label>
                                     <textarea name="description" id="description" rows="8" class="form-control">{{ old('description', $product->description) }}</textarea>
                                 </div>
                                 <div class="form-group">
@@ -167,7 +185,7 @@
                                                    id="status"
                                                    name="status"
                                                    {{ $product->status == 1 ? 'checked' : '' }}
-                                                />Status
+                                                />{{ __("Durum") }}
                                         </label>
                                     </div>
                                 </div>
@@ -179,7 +197,7 @@
                                                    id="featured"
                                                    name="featured"
                                                    {{ $product->featured == 1 ? 'checked' : '' }}
-                                                />Featured
+                                                />{{ __("Öne Çıkan") }}
                                         </label>
                                     </div>
                                 </div>
@@ -187,8 +205,8 @@
                             <div class="tile-footer">
                                 <div class="row d-print-none mt-2">
                                     <div class="col-12 text-right">
-                                        <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>Update Product</button>
-                                        <a class="btn btn-danger" href="{{ route('admin.products.index') }}"><i class="fa fa-fw fa-lg fa-arrow-left"></i>Go Back</a>
+                                        <button class="btn btn-success" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>{{ __("Güncelle") }}</button>
+                                        <a class="btn btn-danger" href="{{ route('admin.products.index') }}"><i class="fa fa-fw fa-lg fa-arrow-left"></i>{{ __("Geri Dön") }}</a>
                                     </div>
                                 </div>
                             </div>
@@ -197,7 +215,7 @@
                 </div>
                 <div class="tab-pane" id="images">
                     <div class="tile">
-                        <h3 class="tile-title">Upload Image</h3>
+                        <h3 class="tile-title">Upload > {{ __("Fotoğraf") }}/h3>
                         <hr>
                         <div class="tile-body">
                             <div class="row">

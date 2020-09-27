@@ -14,12 +14,12 @@
                     <table class="table table-hover table-bordered" id="sampleTable">
                         <thead>
                         <tr>
-                            <th> Order Number </th>
-                            <th> Placed By </th>
-                            <th class="text-center"> Total Amount </th>
-                            <th class="text-center"> Items Qty </th>
-                            <th class="text-center"> Payment Status </th>
-                            <th class="text-center"> Status </th>
+                            <th> {{ __("Sipariş") }} {{ __("Numarası") }} </th>
+                            <th> {{ __("Müşteri") }} </th>
+                            <th class="text-center"> {{ __("Toplam Tutar") }}  </th>
+                            <th class="text-center"> {{ __("Ürünler") }}  </th>
+                            <th class="text-center"> {{ __("Ödeme Durumu") }} </th>
+                            <th class="text-center"> {{ __("Durum") }} </th>
                             <th style="width:100px; min-width:100px;" class="text-center text-danger"><i class="fa fa-bolt"> </i></th>
                         </tr>
                         </thead>
@@ -32,9 +32,9 @@
                                 <td class="text-center">{{ $order->item_count }}</td>
                                 <td class="text-center">
                                     @if ($order->payment_status == 1)
-                                        <span class="badge badge-success">Completed</span>
+                                        <span class="badge badge-success">{{ __("Tamamlandı") }}</span>
                                     @else
-                                        <span class="badge badge-danger">Not Completed</span>
+                                        <span class="badge badge-danger">{{ __("Tamamlanmadı") }}</span>
                                     @endif
                                 </td>
                                 <td class="text-center">
@@ -42,7 +42,8 @@
                                 </td>
                                 <td class="text-center">
                                     <div class="btn-group" role="group" aria-label="Second group">
-                                        <a href="{{ route('admin.orders.show', $order->order_number) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
+                                        <a href="{{ route('admin.orders.show', $order->order_number) }}" class="btn btn-sm btn-primary"><i class="fa fa-star"></i></a>
+                                        <a href="{{ route('admin.orders.edit', $order->order_number) }}" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>
                                     </div>
                                 </td>
                             </tr>
@@ -55,7 +56,7 @@
     </div>
 @endsection
 @push('scripts')
-    <script type="text/javascript" src="{{ asset('backend/js/plugins/jquery.dataTables.min.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('backend/js/plugins/dataTables.bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('admintemplate/js/plugins/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('admintemplate/js/plugins/dataTables.bootstrap.min.js') }}"></script>
     <script type="text/javascript">$('#sampleTable').DataTable();</script>
 @endpush

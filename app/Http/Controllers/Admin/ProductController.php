@@ -40,7 +40,7 @@ class ProductController extends BaseController
     {
         $brands = $this->brandRepository->listBrands('name', 'asc');
         $categories = $this->categoryRepository->listCategories('name', 'asc');
-
+        
         $this->setPageTitle('Products', 'Create Product');
         return view('admin.products.create', compact('categories', 'brands'));
     }
@@ -77,5 +77,21 @@ class ProductController extends BaseController
             return $this->responseRedirectBack('Error occurred while updating product.', 'error', true, true);
         }
         return $this->responseRedirect('admin.products.index', 'Product updated successfully' ,'success',false, false);
+    }
+
+    public function order_index()
+    {
+        $products = $this->productRepository->listProductsWithCategories('id', 'asc');
+        $this->setPageTitle('Products Order', 'Tabloda kategori bazında arama yapabilir ve ürünlerin müşterilere hangi sıra ile gösterileceğini görüp düzenleyebilirsiniz.');
+        return view('admin.products.index_order', compact('products'));
+    }
+
+    public function set_order(Request $request)
+    {
+        $product = $this->productRepository->setProductAdminOrder($request->except('_token'));
+        if (!$product) {
+            return $this->responseRedirectBack('Error occurred while updating product order.', 'error', true, true);
+        }
+        return $this->responseRedirect('admin.products.order', 'Product('.$product->id.') order updated successfully' ,'success',false, false);
     }
 }

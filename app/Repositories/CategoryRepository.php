@@ -40,6 +40,10 @@ class CategoryRepository extends BaseRepository implements CategoryContract
         return $this->all($columns, $order, $sort);
     }
 
+    public function getMainCategories()
+    {
+        return Category::where('parent_id',1)->get();
+    }
     /**
      * @param int $id
      * @return mixed
@@ -150,10 +154,46 @@ class CategoryRepository extends BaseRepository implements CategoryContract
             ->listsFlattened('name');
     }
 
-    public function findBySlug($slug)
+    public function findBySlugWithOrderFilter($slug, $order = null, $filter = null)
     {
-        return Category::with('products')
-            ->where('slug', $slug)
+        if (isset($order) &&  isset($filter))
+        {
+            $closure = function ($products) use($order, $filter) 
+                        {
+                            return $products->orderBy($order['column'], $order['type'])
+                                            ->where($filter); 
+                        };
+        }
+        else if (isset($order))
+        {
+            $closure = function ($products) use($order) 
+                        { 
+                            return $products->orderBy($order['column'], $order['type']); 
+                        };
+        }
+        else if (isset($filter))
+        {
+            $closure = function ($products) use($filter) 
+                        { 
+                            /* Note: If you change default sorting of the products you should change here also. */
+                            return $products->orderBy('order', 'desc')->orderBy('id', 'desc')->where($filter); 
+                        };
+        }
+        else
+        {
+            /* 
+                It is default order of products. It is configurable from admin panel.
+                It will be applicable if and only if 'customer' does not select any order.
+                If there is no configurable value for the column 'order', products will be sorted by id desc.
+                Note: If you change below, you should change the same in else-if block above.
+            */
+            $closure = function ($products) use($filter) 
+                        { 
+                            return $products->orderBy('order', 'desc')->orderBy('id', 'desc');
+                        };
+        }
+
+        return Category::where('slug', $slug)
             ->where('menu', 1)
             ->first();
     }

@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="tile">
-            <h3 class="tile-title">Attributes</h3>
+            <h3 class="tile-title">Özellikler</h3>
             <hr>
             <div class="tile-body">
                 <div class="row">
@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="tile" v-if="attributeSelected">
-            <h3 class="tile-title">Add Attributes To Product</h3>
+            <h3 class="tile-title">Ekle Attributes To Product</h3>
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -31,13 +31,13 @@
             <div class="row" v-if="valueSelected">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="control-label" for="quantity">Quantity</label>
+                        <label class="control-label" for="quantity">Miktar</label>
                         <input class="form-control" type="number" id="quantity" v-model="currentQty"/>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label class="control-label" for="price">Price</label>
+                        <label class="control-label" for="price">Fiyat</label>
                         <input class="form-control" type="text" id="price" v-model="currentPrice"/>
                         <small class="text-danger">This price will be added to the main price of product on frontend.</small>
                     </div>
@@ -50,7 +50,7 @@
             </div>
         </div>
         <div class="tile">
-            <h3 class="tile-title">Product Attributes</h3>
+            <h3 class="tile-title">Ürün Attributes</h3>
             <div class="tile-body">
                 <div class="table-responsive">
                     <table class="table table-sm">
@@ -58,7 +58,7 @@
                         <tr class="text-center">
                             <th>Value</th>
                             <th>Qty</th>
-                            <th>Price</th>
+                            <th>Fiyat</th>
                             <th>Action</th>
                         </tr>
                         </thead>

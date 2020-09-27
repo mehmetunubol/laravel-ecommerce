@@ -32,6 +32,22 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::get('/{id}/delete', 'Admin\CategoryController@delete')->name('admin.categories.delete');        
         });
 
+        /*
+            *** Implementation note for badges ***
+                * 'badges' has not independent database table.
+                * It will use the categories table and will be root category.
+                * Tags should have base 'Tag' category as parent_id and it will not be allowed to have nested badges.
+            ***
+        */
+        Route::group(['prefix'  =>   'badges'], function() {
+            Route::get('/', 'Admin\BadgeController@index')->name('admin.badges.index');
+            Route::get('/create', 'Admin\BadgeController@create')->name('admin.badges.create');
+            Route::post('/store', 'Admin\BadgeController@store')->name('admin.badges.store');
+            Route::get('/{id}/edit', 'Admin\BadgeController@edit')->name('admin.badges.edit');
+            Route::post('/update', 'Admin\BadgeController@update')->name('admin.badges.update');
+            Route::get('/{id}/delete', 'Admin\BadgeController@delete')->name('admin.badges.delete');        
+        });
+
         Route::group(['prefix'  =>   'brands'], function() {
             Route::get('/', 'Admin\BrandController@index')->name('admin.brands.index');
             Route::get('/create', 'Admin\BrandController@create')->name('admin.brands.create');
@@ -73,13 +89,47 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::post('attributes/add', 'Admin\ProductAttributeController@addAttribute');
             // Delete product attribute from the current product
             Route::post('attributes/delete', 'Admin\ProductAttributeController@deleteAttribute');            
+
+            // Special Admin Order
+            Route::get('/order', 'Admin\ProductController@order_index')->name('admin.products.order');
+            Route::post('/order-set', 'Admin\ProductController@set_order')->name('admin.products.setOrder');
          });
 
          Route::group(['prefix' => 'orders'], function () {
             Route::get('/', 'Admin\OrderController@index')->name('admin.orders.index');
             Route::get('/{order}/show', 'Admin\OrderController@show')->name('admin.orders.show');
+            Route::get('/{order}/edit', 'Admin\OrderController@edit')->name('admin.orders.edit');
+            Route::post('/update', 'Admin\OrderController@update')->name('admin.orders.update');
          });
         
+         Route::group(['prefix' => 'users'], function () {
+            Route::get('/', 'Admin\UserController@index')->name('admin.users.index');
+            Route::get('/create', 'Admin\UserController@create')->name('admin.users.create');
+            Route::post('/store', 'Admin\UserController@store')->name('admin.users.store');
+            Route::get('/edit/{id}', 'Admin\UserController@edit')->name('admin.users.edit');
+            Route::get('/delete/{id}', 'Admin\UserController@delete')->name('admin.users.delete');
+            Route::get('/loginToUser/{id}', 'Admin\UserController@loginToUser')->name('admin.users.loginToUser');
+         });
+
+         Route::group(['prefix'  =>   'sitepages'], function() {
+            Route::get('/', 'Admin\SitePageController@index')->name('admin.sitepages.index');
+            Route::get('/create', 'Admin\SitePageController@create')->name('admin.sitepages.create');
+            Route::post('/store', 'Admin\SitePageController@store')->name('admin.sitepages.store');
+            Route::get('/{id}/edit', 'Admin\SitePageController@edit')->name('admin.sitepages.edit');
+            Route::post('/update', 'Admin\SitePageController@update')->name('admin.sitepages.update');
+            Route::get('/{id}/delete', 'Admin\SitePageController@delete')->name('admin.sitepages.delete');
+        });
+
+        Route::group(['prefix' => 'statistics/product'], function () {
+            Route::get('/view', 'Admin\ProductStatsController@view_index')->name('admin.statistics.product.view');
+            Route::get('/cart', 'Admin\ProductStatsController@cart_index')->name('admin.statistics.product.cart');
+            Route::get('/order', 'Admin\ProductStatsController@order_index')->name('admin.statistics.product.order');
+         });
+
+         Route::group(['prefix' => 'sitesearches'], function () {
+            Route::get('/index', 'Admin\SiteSearchController@index')->name('admin.sitesearches.index');
+            Route::get('/show/{id}', 'Admin\SiteSearchController@show')->name('admin.sitesearches.show');
+         });
     });
 
 });
