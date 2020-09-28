@@ -13,7 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'site.index');
+// Maintanence Mode - coming soon index page
+Route::view('/', 'comingSoon.index');
+Route::view('/homepage', 'site.index');
+
+// TODO: Need to rework views locations
+
 Route::view('/catalogue', 'site.catalogue');
 Route::view('/contact', 'site.contact');
 Route::view('/about_us', 'site.about_us');
