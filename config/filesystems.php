@@ -45,13 +45,24 @@ return [
 
         'local' => [
             'driver' => 'local',
+            // Original Implementation
+            /* 
             'root' => storage_path('app'),
+            */
+            // Below is required since it is not possible to run webpack.mix.js under "distrubuted hosting"
+            'root' => 'public/storage',
         ],
 
         'public' => [
             'driver' => 'local',
+            // Original Implementation
+            /*
             'root' => storage_path('app/public'),
             'url' => env('APP_URL').'/storage',
+            */
+            // Below is required since it is not possible to run webpack.mix.js under "distrubuted hosting"
+            'root' => 'storage',
+            'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],
 

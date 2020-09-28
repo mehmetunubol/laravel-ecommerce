@@ -1,5 +1,3 @@
-<?php $categories = \App\Models\Category::where('parent_id',1)->get(); ?>
-<?php $items = \Cart::getContent(); ?>
 <header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': true, 'stickyStartAt': 120}">
 <div class="header-body">
 
@@ -58,11 +56,11 @@ info@egepleks.com.tr
 
 		<div class="mini-cart-icon">
 		<img src="/customertemplate/img/icons/cart-bag.svg" class="img-fluid" alt="" />
-		<span class="badge badge-primary rounded-circle">{{$items->count()}}</span>
+		<span class="badge badge-primary rounded-circle">{{$cartItems->count()}}</span>
 		</div>
 		<div class="mini-cart-content">
 			<div class="inner-wrapper bg-light rounded">
-				@forelse($items as $item)
+				@forelse($cartItems as $item)
 				<div class="mini-cart-product">
 					<div class="row">
 						<div class="col-7">
@@ -79,10 +77,7 @@ info@egepleks.com.tr
 						<div class="col-5">
 							<div class="product-image">
 								<a href="#" class="btn btn-light btn-rounded justify-content-center align-items-center"><i class="fas fa-times"></i></a>
-								<?php $image = \App\Models\Product::where('name',$item->name)->first()->images->first()?>
-								@if($image != null)
-									<img src="{{ asset('storage/'.$image->full) }}" class="img-fluid rounded" alt="" />
-								@endif
+								<img src="{{ asset('storage/'.$item->attributes->imagePath) }}" class="img-fluid rounded" alt="" />
 							</div>
 						</div>
 					</div>
@@ -137,13 +132,14 @@ info@egepleks.com.tr
 
 
 <div class="header-search-expanded">
-<form method="GET">
-<div class="input-group bg-light border">
-<input type="text" class="form-control text-4" name="s" placeholder="Sitede aramak için buraya yazın" aria-label="arama kısmı">
-<span class="input-group-btn">
-<button class="btn" type="submit"><i class="lnr lnr-magnifier text-color-dark"></i></button>
-</span>
-</div>
+<form method="POST" action="{{ route('sitesearch.product') }}">
+	@csrf
+	<div class="input-group bg-light border">
+		<input type="text" class="form-control text-4" name="search" placeholder="{{__('Sitede aramak için buraya yazın')}}" aria-label="arama kısmı">
+		<span class="input-group-btn">
+			<button class="btn" type="submit"><i class="lnr lnr-magnifier text-color-dark"></i></button>
+		</span>
+	</div>
 </form>
 </div>
 

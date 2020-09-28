@@ -13,61 +13,17 @@
 
 
 	<div class="col-md-6 mb-5 mb-md-0">
-											<h2 class="font-weight-bold mb-3">{{ __("Fatura Adresim") }}</h2>
-											<div class="form-row">
-												<div class="form-group col-md-6">
-													<label class="text-color-dark font-weight-semibold" for="billing_name">{{ __("İsim") }}</label>
-													<input type="text" value="{{auth()->user()->first_name}}" class="form-control line-height-1 bg-light-5" name="first_name" id="billing_name" required>
-												</div>
-												<div class="form-group col-md-6">
-													<label class="text-color-dark font-weight-semibold" for="billing_last_name">{{ __("Soyisim") }}:</label>
-													<input type="text" value="{{auth()->user()->last_name}}" class="form-control line-height-1 bg-light-5" name="last_name" id="billing_last_name" required>
-												</div>
-											</div>
+		<h2 class="font-weight-bold mb-3">{{ __("Fatura Adresim") }}</h2>
+		<label for="addresses">Adres Seç:</label>
+
+		<select name="addresses" id="addresses">
+			@forelse ($addresses as $address)
+			<option value="{{$address->id}}">{{$address->name}}</option>
+			@empty
+			{{__("Lütfen adres ekleyin")}}
+			@endforelse
+		</select>
 											
-											<div class="form-row">
-												<div class="form-group col">
-													<label class="text-color-dark font-weight-semibold" for="billing_address">{{ __("Adres") }}:</label>
-													<input type="text" value="{{ auth()->user()->address }}" class="form-control line-height-1 bg-light-5" name="address" id="billing_address" required>
-												</div>
-											</div>
-											<div class="form-row">
-												<div class="form-group col">
-													<label class="text-color-dark font-weight-semibold" for="post_code">{{ __("Posta kodu") }}:</label>
-													<input type="text" value="" class="form-control line-height-1 bg-light-5" name="post_code" id="post_code">
-												</div>
-											</div>
-											
-											<div class="form-row">
-												<div class="form-group col">
-													<label class="text-color-dark font-weight-semibold" for="city">{{ __("Şehir") }}:</label>
-													<input type="text" value="{{ auth()->user()->city }}" class="form-control line-height-1 bg-light-5" name="city" id="city" required>
-												</div>
-											</div>
-											<div class="form-row">
-												<div class="form-group col">
-													<label class="text-color-dark font-weight-semibold" for="country">{{ __("Ülke") }}:</label>
-													<input type="text" value="{{ auth()->user()->country }}" class="form-control line-height-1 bg-light-5" name="country" id="country" required>
-												</div>
-											</div>
-											<div class="form-row">
-												<div class="form-group col">
-													<label class="text-color-dark font-weight-semibold" for="phone_number">{{ __("Telefon Numarası") }}:</label>
-													<input type="text" value="" class="form-control line-height-1 bg-light-5" name="phone_number" id="phone_number" required>
-												</div>
-											</div>
-											<div class="form-row">
-												<div class="form-group col">
-													<label class="text-color-dark font-weight-semibold" for="country">{{ __("Email") }}:</label>
-													<input type="text" value="{{ auth()->user()->email }}" class="form-control line-height-1 bg-light-5" name="amail" id="country" required>
-												</div>
-											</div>
-											<div class="form-row">
-												<div class="form-group col">
-													<label class="text-color-dark font-weight-semibold" for="notes">{{ __("Sipariş Notu") }}:</label>
-													<input type="text" value="" class="form-control line-height-1 bg-light-5" name="notes" id="notes">
-												</div>
-											</div>
 
 
 <div class="form-group col-md-6">
