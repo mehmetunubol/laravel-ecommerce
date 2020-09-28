@@ -50,7 +50,7 @@ return [
             'root' => storage_path('app'),
             */
             // Below is required since it is not possible to run webpack.mix.js under "distrubuted hosting"
-            'root' => 'public/storage',
+            'root' => 'public_html/storage',
         ],
 
         'public' => [
@@ -62,8 +62,8 @@ return [
             */
             // Below is required since it is not possible to run webpack.mix.js under "distrubuted hosting"
             'root' => 'storage',
-            'url' => env('APP_URL').'/public',
-            'visibility' => 'public',
+            'url' => env('APP_URL').'/public_html',
+            'visibility' => 'public_html',
         ],
 
         's3' => [
@@ -90,7 +90,7 @@ return [
     */
 
     'links' => [
-        public_path('storage') => storage_path('app/public'),
+        public_path('storage') => storage_path('app/public_html'),
     ],
 
 ];
