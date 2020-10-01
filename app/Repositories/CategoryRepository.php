@@ -193,7 +193,8 @@ class CategoryRepository extends BaseRepository implements CategoryContract
                         };
         }
 
-        return Category::where('slug', $slug)
+        return Category::with(['products' => $closure])
+            ->where('slug', $slug)
             ->where('menu', 1)
             ->first();
     }
