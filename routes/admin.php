@@ -109,6 +109,8 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::get('/edit/{id}', 'Admin\UserController@edit')->name('admin.users.edit');
             Route::get('/delete/{id}', 'Admin\UserController@delete')->name('admin.users.delete');
             Route::get('/loginToUser/{id}', 'Admin\UserController@loginToUser')->name('admin.users.loginToUser');
+            Route::get('/getMailToUsersForm', 'Admin\UserController@getMailToUsersForm')->name('admin.users.getMailToUsersForm');
+            Route::post('/sendMailToUsers', 'Admin\UserController@sendMailToUsers')->name('admin.users.sendMailToUsers');
          });
 
          Route::group(['prefix'  =>   'sitepages'], function() {
