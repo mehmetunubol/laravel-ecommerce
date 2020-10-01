@@ -19,6 +19,9 @@ interface UserContract
      * @param int $id
      * @return mixed
      */
+
+    public function getUserEmailsArray();
+
     public function findUserById(int $id);
 
     /**

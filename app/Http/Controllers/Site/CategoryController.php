@@ -59,10 +59,10 @@ class CategoryController extends Controller
             // TODO: It should be implemented according to decision
         }
         // Test code, TODO: remove the test code
-        $filter = [
-            ['price', '>', 1],
-            ['quantity', '>', 1]
-        ];
+        //$filter = [
+        //    ['price', '>', 1],
+        //    ['quantity', '>', 1]
+        //];
         // End Test code
         $category = $this->categoryRepository->findBySlugWithOrderFilter($slug, $order, $filter);
         

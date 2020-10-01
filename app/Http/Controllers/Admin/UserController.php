@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Contracts\UserContract;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\StoreUserFormRequest;
+use App\Mail\Admin\SendMailToAllUsers;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends BaseController
 {
@@ -83,5 +85,24 @@ class UserController extends BaseController
         auth()->guard('web')->loginUsingId($id);
 
         return redirect('/');        
+    }
+
+
+    public function getMailToUsersForm()
+    {
+        return view('admin.users.email_form');
+    }
+
+    public function sendMailToUsers(Request $request)
+    {
+        $this->validate($request, [
+            'subject'      =>  'required|max:191',
+        ]);
+
+        $mailData = $request->except('_token');
+
+        $users = $this->userRepository->getUserEmailsArray();
+
+        Mail::to($users)->send(new SendMailToAllUsers($mailData));
     }
 }
