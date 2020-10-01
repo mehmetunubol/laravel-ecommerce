@@ -50,7 +50,7 @@
 						      	</div>
 						    </div>
 					      	<div class="form-group col text-right">
-					      		<a href="#" class="forgot-pw text-color-light-2 d-block">{{ __('Şifremi Unuttum')}}</a>
+					      		<a href="{{route('password.request')}}" class="forgot-pw text-color-light-2 d-block">{{ __('Şifremi Unuttum')}}</a>
 					      	</div>
 						</div>
 						<div class="row align-items-center">
