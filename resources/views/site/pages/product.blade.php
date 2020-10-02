@@ -127,30 +127,24 @@
                             <div class="col-sm-12">
                                 <dl class="dlist-inline">
                                     @foreach($attributes as $attribute)
-                                        @php$attributeCheck = in_array($attribute->id,
-                                            $product->attributes->pluck('attribute_id')->toArray()) @endphp
-                                            @if($attributeCheck)
-                                                <dt>{{ $attribute->name }}: </dt>
-                                                <dd>
-                                                    <select class="form-control form-control-sm option"
-                                                        style="width:180px;"
-                                                        name="{{ strtolower($attribute->name ) }}">
-                                                        <option data-price="0" value="0"> Select a
-                                                            {{ $attribute->name }}</option>
-                                                        <blade
-                                                            foreach|(%24product-%3Eattributes%20as%20%24attributeValue)%0D>
-                                                            <blade
-                                                                if|%20(%24attributeValue-%3Eattribute_id%20%3D%3D%20%24attribute-%3Eid)%0D>
-                                                                <option data-price="{{ $attributeValue->price }}"
-                                                                    value="{{ $attributeValue->value }}">
-                                                                    {{ ucwords($attributeValue->value . ' +'. $attributeValue->price) }}
-                                                                </option>
-                                                            @endif
-                                                        @endforeach
-                                                    </select>
-                                                </dd>
-                                            @endif
-                                        @endforeach
+                                        @php $attributeCheck = in_array($attribute->id, $product->attributes->pluck('attribute_id')->toArray()) @endphp
+                                        @if ($attributeCheck)
+                                            <dt>{{ $attribute->name }}: </dt>
+                                            <dd>
+                                                <select class="form-control form-control-sm option" style="width:180px;" name="{{ strtolower($attribute->name ) }}">
+                                                    <option data-price="0" value="0"> Select a {{ $attribute->name }}</option>
+                                                    @foreach($product->attributes as $attributeValue)
+                                                        @if ($attributeValue->attribute_id == $attribute->id)
+                                                            <option
+                                                                data-price="{{ $attributeValue->price }}"
+                                                                value="{{ $attributeValue->value }}"> {{ ucwords($attributeValue->value . ' +'. $attributeValue->price) }}
+                                                            </option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                            </dd>
+                                        @endif
+                                    @endforeach
                                 </dl>
                             </div>
                         </div>
@@ -233,7 +227,9 @@
                                 </tbody>
                             </table>
                         </div>
+
                     </div>
+
                 </div>
             </div>
         </div>
@@ -242,6 +238,7 @@
         @include("site.sections.our_catalogue")
     </div>
     @include("site.partials.footer")
+
 </div>
 
 @stop
