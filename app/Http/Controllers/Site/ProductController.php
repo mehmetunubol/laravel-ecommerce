@@ -62,6 +62,7 @@ class ProductController extends Controller
         $product->imagePath = $product->images->first()->full;
 
         $attributes = $this->attributeRepository->listAttributes();
+        $selected_attributes;
         foreach($attributes as $attr)
         {
             $attributeCheck = in_array($attr->id, $product->attributes->pluck('attribute_id')->toArray());
@@ -72,9 +73,10 @@ class ProductController extends Controller
                 {
                     return redirect()->back()->with('error', 'Hata: '.$attr->name.' seçmelisin !');
                 }
-                $product[strtolower($attr->name)] = $request->input(strtolower($attr->name));
+                $selected_attributes[strtolower($attr->name)] = $request->input(strtolower($attr->name));
             }
         }
+        $product['selected_attributes'] = $selected_attributes;
 
         Cart::add(uniqid(), $product->name, $request->input('price'), $request->input('qty'), $product);
 
