@@ -63,7 +63,7 @@ return [
             // Below is required since it is not possible to run webpack.mix.js under "distrubuted hosting"
             'root' => 'storage',
             'url' => env('APP_URL').'/public_html',
-            'visibility' => 'public_html',
+            'visibility' => 'public',
         ],
 
         's3' => [
