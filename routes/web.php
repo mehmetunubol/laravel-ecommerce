@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Maintanence Mode - coming soon index page
-//Route::view('/', 'comingSoon.index');
-Route::view('/', 'site.index');
+Route::view('/', 'comingSoon.index');
+//Route::view('/', 'site.index');
 
 // TODO: Need to rework views locations
 
