@@ -4,7 +4,15 @@
 <div class="body">
     <div role="main" class="main">
         <div class="container">
-
+            <div class="row">
+                <div class="col-sm-12">
+                    @if (Session::has('message'))
+                        <p class="alert alert-success">{{ Session::get('message') }}</p>
+                    @elseif(Session::has('error'))
+                        <p class="alert alert-danger">{{ Session::get('error') }}</p>
+                    @endif
+                </div>
+            </div>
             <div class="row mb-5">
 
                 <div class="col-md-5 mb-5 mb-md-0">

@@ -67,6 +67,11 @@ class ProductController extends Controller
             $attributeCheck = in_array($attr->id, $product->attributes->pluck('attribute_id')->toArray());
             if($attributeCheck)
             {
+                $attr_val = $request->input(strtolower($attr->name));
+                if($attr_val === 0)
+                {
+                    return redirect()->back()->with('error', 'Hata: '.$attr->name.' seçmelisin !');
+                }
                 $product[strtolower($attr->name)] = $request->input(strtolower($attr->name));
             }
         }
