@@ -36,7 +36,7 @@ class CartStorageService
     }
 
     public function put($key, $value)
-    {dd(x);
+    {
         $this->data[$key] = $value;
         \Cache::put('cart_' . $this->cart_id, $this->data, Carbon::now()->addDays(30));
 
