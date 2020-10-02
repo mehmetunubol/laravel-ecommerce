@@ -29,7 +29,7 @@
 													<th class="product-name"><strong>{{__('Ürün')}}</strong></th>
 													<th class="product-price"><strong>{{__('Birim Fİyat')}}</strong></th>
 													<th class="product-quantity"><strong>{{__('Adet')}}</strong></th>
-													<th class="product-subtotal"><strong>T{{__('Total')}}</strong></th>
+													<th class="product-subtotal"><strong>{{__('Total')}}</strong></th>
 												</tr>
 
 											</thead> 

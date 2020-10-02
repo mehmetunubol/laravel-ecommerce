@@ -57,9 +57,20 @@ class ProductController extends Controller
 
     public function addToCart(Request $request)
     {
+        
         $product = $this->productRepository->findProductById($request->input('productId'));        
         $product->imagePath = $product->images->first()->full;
-        
+
+        $attributes = $this->attributeRepository->listAttributes();
+        foreach($attributes as $attr)
+        {
+            $attributeCheck = in_array($attr->id, $product->attributes->pluck('attribute_id')->toArray());
+            if($attributeCheck)
+            {
+                $product[strtolower($attr->name)] = $request->input(strtolower($attr->name));
+            }
+        }
+
         Cart::add(uniqid(), $product->name, $request->input('price'), $request->input('qty'), $product);
 
         $this->productStatsRepository->incrementProductStats($product->id, 'cart');
