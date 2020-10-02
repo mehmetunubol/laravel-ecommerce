@@ -84,20 +84,73 @@
                             @endif
                         </div>
                     @endif
-                    <p class="mt-4">{{ $product->description }}</p>
 
                     <hr class="my-4">
+
                     <ul class="list list-unstyled">
                         @if($product->status)
+                            <!--<p class="mt-4">{{ $product->description }}</p>-->
+
                             <li>STOK DURUMU: <strong>STOKTA VAR</strong></li>
+                            <hr class="my-4">
+
+                            <form class="shop-cart d-flex align-items-center" action="{{ route('product.add.cart') }}" method="post" enctype="multipart/form-data">
+                                <div class="container">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <dl class="dlist-inline">
+                                                @foreach($attributes as $attribute)
+                                                    @php $attributeCheck = in_array($attribute->id, $product->attributes->pluck('attribute_id')->toArray()) @endphp
+                                                    @if ($attributeCheck)
+                                                        <dt>{{ $attribute->name }}: </dt>
+                                                        <dd>
+                                                            <select class="form-control form-control-sm option" style="width:180px;" name="{{ strtolower($attribute->name ) }}">
+                                                                <option data-price="0" value="0"> Select a {{ $attribute->name }}</option>
+                                                                @foreach($product->attributes as $attributeValue)
+                                                                    @if ($attributeValue->attribute_id == $attribute->id)
+                                                                        <option
+                                                                            data-price="{{ $attributeValue->price }}"
+                                                                            value="{{ $attributeValue->value }}"> {{ ucwords($attributeValue->value . ' +'. $attributeValue->price) }}
+                                                                        </option>
+                                                                    @endif
+                                                                @endforeach
+                                                            </select>
+                                                        </dd>
+                                                    @endif
+                                                @endforeach
+                                            </dl>
+                                        </div>
+                                    </div>
+                                    <div class="row right">
+                                        <div class="col-sm-3">
+                                            <div class="quantity">
+                                                <input type="button" value="-" class="minus">
+                                                <input type="number" step="1" min="1" name="qty" value="1" title="Qty" class="qty" size="2">
+                                                <input type="button" value="+" class="plus">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <input type="hidden" name="productId" value="{{ $product->id }}">
+                                            <input type="hidden" name="price" id="finalPrice"
+                                                value="{{ $product->sale_price != '' ? $product->sale_price : $product->price }}">
+                                            <button type="submit"
+                                                class="add-to-cart btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-h-2 btn-fs-2 ml-3">{{ __("Sepete Ekle") }}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+        
+                            <hr class="my-4">
                         @else
                             <li>STOK DURUMU: <strong>STOKTA YOK</strong></li>
+                            <!--<p class="mt-4">{{ $product->description }}</p>-->
                         @endif
                         <li>ÜRÜN KODU: <strong>{{ $product->sku }}</strong></li>
                     </ul>
 
 
-
+                    <!--
                     <ul class="list list-inline list-filter mt-0 pb-0">
                         <li class="list-inline-item">
                             <a href="#">A1</a>
@@ -114,59 +167,8 @@
                         <li class="list-inline-item">
                             <a href="#">A5</a>
                         </li>
-                    </ul>
+                    </ul>-->
 
-                    <hr class="my-4">
-
-                    <form class="shop-cart d-flex align-items-center"
-                        action="{{ route('product.add.cart') }}" method="post"
-                        enctype="multipart/form-data">
-
-                        @csrf
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <dl class="dlist-inline">
-                                    @foreach($attributes as $attribute)
-                                        @php $attributeCheck = in_array($attribute->id, $product->attributes->pluck('attribute_id')->toArray()) @endphp
-                                        @if ($attributeCheck)
-                                            <dt>{{ $attribute->name }}: </dt>
-                                            <dd>
-                                                <select class="form-control form-control-sm option" style="width:180px;" name="{{ strtolower($attribute->name ) }}">
-                                                    <option data-price="0" value="0"> Select a {{ $attribute->name }}</option>
-                                                    @foreach($product->attributes as $attributeValue)
-                                                        @if ($attributeValue->attribute_id == $attribute->id)
-                                                            <option
-                                                                data-price="{{ $attributeValue->price }}"
-                                                                value="{{ $attributeValue->value }}"> {{ ucwords($attributeValue->value . ' +'. $attributeValue->price) }}
-                                                            </option>
-                                                        @endif
-                                                    @endforeach
-                                                </select>
-                                            </dd>
-                                        @endif
-                                    @endforeach
-                                </dl>
-                            </div>
-                        </div>
-
-                        <div class="quantity">
-                            <input type="button" value="-" class="minus">
-                            <input type="number" step="1" min="1" name="qty" value="1" title="Qty" class="qty" size="2">
-                            <input type="button" value="+" class="plus">
-                        </div>
-
-                        <div class="quantity">
-
-						</div>
-
-                        <input type="hidden" name="productId" value="{{ $product->id }}">
-                        <input type="hidden" name="price" id="finalPrice"
-                            value="{{ $product->sale_price != '' ? $product->sale_price : $product->price }}">
-                        <button type="submit"
-                            class="add-to-cart btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-h-2 btn-fs-2 ml-3">{{ __("Sepete Ekle") }}</button>
-                    </form>
-
-                    <hr class="my-4">
                     <div class="d-flex align-items-center">
                         <span class="text-2">PAYLAŞ</span>
                         <ul class="social-icons social-icons-dark social-icons-1 ml-3">
@@ -192,11 +194,13 @@
                                 href="#productDetailDesc" role="tab" aria-controls="productDetailDesc"
                                 aria-expanded="true">ÜRÜN AÇIKLAMASI</a>
                         </li>
+                        <!-- TODO TODO: teknik bilgi
                         <li class="nav-item">
                             <a class="nav-link font-weight-bold" id="productDetailMoreInfoTab" data-toggle="tab"
                                 href="#productDetailMoreInfo" role="tab" aria-controls="productDetailMoreInfo">TEKNİK
                                 BİLGİLER</a>
                         </li>
+                        -->
                     </ul>
 
                     <div class="tab-content" id="contentTabProductDetail">
@@ -207,7 +211,7 @@
 
                             <p class="text-color-light-3 mb-0"></p>
                         </div>
-
+                        <!-- TODO: teknik bilgi
                         <div class="tab-pane fade pt-4 pb-4" id="productDetailMoreInfo" role="tabpanel"
                             aria-labelledby="productDetailMoreInfoTab">
                             <table class="table">
@@ -227,6 +231,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        -->
 
                     </div>
 
