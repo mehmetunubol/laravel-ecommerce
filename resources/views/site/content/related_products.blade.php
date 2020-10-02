@@ -12,8 +12,8 @@
 									<div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
 										<span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
 											<a href="{{ route('product.show', $sProduct->slug) }}">
-												@if ($product->images->count() > 0)
-													<img src="{{ asset('storage/'.$product->images->first()->full) }}" class="img-fluid" alt="">
+												@if ($sProduct->images->count() > 0)
+													<img src="{{ asset('storage/'.$sProduct->images->first()->full) }}" class="img-fluid" alt="">
 												@else
 													<img src="https://via.placeholder.com/176" class="img-fluid" ></a>
 												@endif
