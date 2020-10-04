@@ -8,11 +8,16 @@
 <div class="{{$wholeClassName}}">
 
 	<div class="row align-items-center justify-content-between mb-4">
+		<div class="col-auto mb-1 mb-sm-0">
+			<button onclick="window.location.href = `{{Request::url()}}?sb`;">
+				Filter
+			</button>
+		</div>
 		<div class="col-auto mb-3 mb-sm-0">
 			<form method="post">
 				<div class="custom-select-1">
 					<select class="sm-form-control border" 
-						onchange="window.location.href = `/category/{{$category->slug}}?order=${value}`;">
+						onchange="window.location.href = `{{Request::url()}}?order=${value}`;">
 						<option value="" disabled selected>{{__('SIRALAMA')}}</option>
 						<option value="price-desc">{{__('Fiyat: Azalan')}}</option>
 						<option value="price-asc">{{__('Fiyat: Artan')}}</option>

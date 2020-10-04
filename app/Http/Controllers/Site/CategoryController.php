@@ -23,18 +23,6 @@ class CategoryController extends Controller
     }
     public function show(Request $request, $slug)
     {
-        /* 
-            * !!!
-            * Expected Front-End for the ORDER BY 
-                <option value="" disabled selected>Order by</option>
-                <option value="id-asc">Id (Asc)</option>
-                <option value="id-desc">Id (Desc)</option>
-                <option value="name-asc">Name (A - Z)</option>
-                <option value="name-desc">Name (Z - A)</option>
-            * !!!
-            * Or we can do it as query string parameter 
-            * exp:  "/category/{slug}?order=price-desc"
-        */
         $order = null;
         if ($request->has('order'))
         {
@@ -42,10 +30,6 @@ class CategoryController extends Controller
             $order['column'] = $orderByArray[0];
             $order['type'] = $orderByArray[1];
         }
-        // Test code, TODO: remove the test code
-        //$order['column'] = 'price';
-        //$order['type'] = 'desc';
-        // End Test code
         /*
             * Expected Request
             * TODO: It is not decided yet! Request may have multiple filters
@@ -53,10 +37,9 @@ class CategoryController extends Controller
         
         */
         $filter = null;
-        $is_sidebar_on = false;
+        $is_sidebar_on = $request->has('sb') ? true : false;
         if ($request->has('filter'))
         {
-            $is_sidebar_on = true;
             $filters = explode(',', $request->input('filter'));
             // TODO: It should be implemented according to decision
         }
@@ -68,8 +51,26 @@ class CategoryController extends Controller
         ];
         */
         // End Test code
-        $category = $this->categoryRepository->findBySlugWithOrderFilter($slug, $order, $filter);
-        
+
+        /* 
+            Below is the "Multiple Category Request" implementation.
+            $cat_slugs = $slug+$slug
+            Example: www.site.com/category/man+woman+prom-dress
+        */
+        $cat_slugs = explode('+', $slug);
+        $category = $this->categoryRepository->findBySlugWithOrderFilter($cat_slugs[0], $order, $filter);
+        $products = $category->products;
+
+        foreach ($cat_slugs as $i => $cat_slug) {
+            if( $i > 0)
+            {
+                $products = $this->categoryRepository->findBySlugWithOrderFilter($cat_slugs[$i], $order, $filter)
+                    ->products->merge($products);
+            }
+        }
+        $category->products = $products;
+        // End of "Multiple Category Request" implementation
+
         return view('site.pages.category_products.category', compact('category', 'is_sidebar_on'));
     }
 }
