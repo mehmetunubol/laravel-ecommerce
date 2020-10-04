@@ -19,7 +19,7 @@ class CategoryController extends Controller
     {
         $categories = $this->categoryRepository->listCategories()->where('parent_id','<>', NULL);
 
-        return view('site.pages.categories', compact('categories'));
+        return view('site.pages.category_products.categories', compact('categories'));
     }
     public function show(Request $request, $slug)
     {
@@ -38,7 +38,7 @@ class CategoryController extends Controller
         $order = null;
         if ($request->has('order'))
         {
-            $orderByArray = explode(' ', $request->input('order'));
+            $orderByArray = explode('-', $request->input('order'));
             $order['column'] = $orderByArray[0];
             $order['type'] = $orderByArray[1];
         }
@@ -53,19 +53,23 @@ class CategoryController extends Controller
         
         */
         $filter = null;
+        $is_sidebar_on = false;
         if ($request->has('filter'))
         {
+            $is_sidebar_on = true;
             $filters = explode(',', $request->input('filter'));
             // TODO: It should be implemented according to decision
         }
         // Test code, TODO: remove the test code
-        //$filter = [
-        //    ['price', '>', 1],
-        //    ['quantity', '>', 1]
-        //];
+        /*
+        $filter = [
+            ['price', '>', 1],
+            ['quantity', '>', 1]
+        ];
+        */
         // End Test code
         $category = $this->categoryRepository->findBySlugWithOrderFilter($slug, $order, $filter);
         
-        return view('site.pages.category', compact('category'));
+        return view('site.pages.category_products.category', compact('category', 'is_sidebar_on'));
     }
 }
