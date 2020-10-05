@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Contracts\BrandContract;
 use App\Contracts\CategoryContract;
 use App\Contracts\ProductContract;
+use App\Contracts\BadgeContract;
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\StoreProductFormRequest;
 
@@ -17,15 +18,19 @@ class ProductController extends BaseController
 
     protected $productRepository;
 
+    protected $badgeRepository;
+
     public function __construct(
         BrandContract $brandRepository,
         CategoryContract $categoryRepository,
-        ProductContract $productRepository
+        ProductContract $productRepository,
+        BadgeContract $badgeRepository
     )
     {
         $this->brandRepository = $brandRepository;
         $this->categoryRepository = $categoryRepository;
         $this->productRepository = $productRepository;
+        $this->badgeRepository = $badgeRepository;
     }
 
     public function index()
@@ -40,9 +45,10 @@ class ProductController extends BaseController
     {
         $brands = $this->brandRepository->listBrands('name', 'asc');
         $categories = $this->categoryRepository->listCategories('name', 'asc');
-        
+        $badges = $this->badgeRepository->listBadges('name','asc');
+
         $this->setPageTitle('Products', 'Create Product');
-        return view('admin.products.create', compact('categories', 'brands'));
+        return view('admin.products.create', compact('categories', 'brands', 'badges'));
     }
 
     public function store(StoreProductFormRequest $request)
@@ -54,7 +60,8 @@ class ProductController extends BaseController
         if (!$product) {
             return $this->responseRedirectBack('Error occurred while creating product.', 'error', true, true);
         }
-        return $this->responseRedirect('admin.products.index', 'Product added successfully' ,'success',false, false);
+
+        return $this->responseRedirectWithParams('admin.products.edit', ['id' => $product->id], 'Product added successfully' ,'success',false, false);
     }
 
     public function edit($id)
@@ -62,9 +69,10 @@ class ProductController extends BaseController
         $product = $this->productRepository->findProductById($id);
         $brands = $this->brandRepository->listBrands('name', 'asc');
         $categories = $this->categoryRepository->listCategories('name', 'asc');
+        $badges = $this->badgeRepository->listBadges('name','asc');
 
         $this->setPageTitle('Products', 'Edit Product');
-        return view('admin.products.edit', compact('categories', 'brands', 'product'));
+        return view('admin.products.edit', compact('categories', 'brands', 'badges', 'product'));
     }
 
     public function update(StoreProductFormRequest $request)

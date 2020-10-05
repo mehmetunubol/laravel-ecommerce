@@ -156,44 +156,69 @@ class CategoryRepository extends BaseRepository implements CategoryContract
 
     public function findBySlugWithOrderFilter($slug, $order = null, $filter = null)
     {
-        if (isset($order) &&  isset($filter))
-        {
-            $closure = function ($products) use($order, $filter) 
-                        {
-                            return $products->orderBy($order['column'], $order['type'])
-                                            ->where($filter); 
-                        };
+        /**
+         * Seperation of the product and attribute filters
+         * 
+         */
+        $product_filter = [];
+        $attr_filter = [];
+        foreach ($filter as $each_filter) {
+            if($each_filter[0] === 'price')
+            {
+                array_push($product_filter, $each_filter);
+            }
+            else
+            {
+                array_push($attr_filter, $each_filter);
+            }
         }
-        else if (isset($order))
-        {
-            $closure = function ($products) use($order) 
-                        { 
-                            return $products->orderBy($order['column'], $order['type']); 
-                        };
-        }
-        else if (isset($filter))
-        {
-            $closure = function ($products) use($filter) 
-                        { 
-                            /* Note: If you change default sorting of the products you should change here also. */
-                            return $products->orderBy('order', 'desc')->orderBy('id', 'desc')->where($filter); 
-                        };
-        }
-        else
-        {
-            /* 
-                It is default order of products. It is configurable from admin panel.
-                It will be applicable if and only if 'customer' does not select any order.
-                If there is no configurable value for the column 'order', products will be sorted by id desc.
-                Note: If you change below, you should change the same in else-if block above.
-            */
-            $closure = function ($products) use($filter) 
-                        { 
-                            return $products->orderBy('order', 'desc')->orderBy('id', 'desc');
-                        };
-        }
+        // End of Seperation of the product and attribute filters
 
-        return Category::where('slug', $slug)
+        /**
+         * Preperation of the closure which will be used in Model query.
+         */
+        $closure = function ($products) use($order, $product_filter, $attr_filter) 
+        {
+            $return_value;
+            if(isset($order))
+            {
+                $return_value = $products->orderBy($order['column'], $order['type']);
+            }
+            else
+            {
+                /* 
+                    It is default order of products. It is configurable from admin panel.
+                    It will be applicable if and only if 'customer' does not select any order.
+                    If there is no configurable value for the column 'order', products will be sorted by id desc.
+                */
+                $return_value = $products->orderBy('order', 'desc')->orderBy('id', 'desc');
+            }
+
+            if ($product_filter)
+            {
+                $return_value = $return_value->where($product_filter);
+            }
+
+            if($attr_filter)
+            {
+                $return_value = $return_value->whereHas('attributes' , 
+                                                    function ($attrs) use($attr_filter)
+                                                    {
+                                                        $attr_returned_val = $attrs->where(
+                                                            function($q) use($attr_filter){
+                                                                $r;
+                                                                foreach ($attr_filter as $i => $value) {
+                                                                    $r = $q->orWhere('value', $value);
+                                                                }
+                                                            }
+                                                        );
+                                                    }); 
+            }
+        };
+        // End of Preperation of the closure
+
+        return Category::with(['products' => $closure])
+            ->where('slug', $slug)
             ->where('menu', 1)
             ->first();
     }

@@ -62,7 +62,7 @@ class AttributeController extends BaseController
         if (!$attribute) {
             return $this->responseRedirectBack('Error occurred while creating attribute.', 'error', true, true);
         }
-        return $this->responseRedirect('admin.attributes.index', 'Attribute added successfully' ,'success',false, false);
+        return $this->responseRedirectWithParams('admin.attributes.edit', ['id' => $attribute->id],'Attribute added successfully' ,'success',false, false);
     }
 
     /**

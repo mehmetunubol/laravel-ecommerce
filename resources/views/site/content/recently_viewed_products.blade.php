@@ -11,8 +11,13 @@
 								<div class="product portfolio-item portfolio-item-style-2">
 									<div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
 										<span class="image-frame-wrapper image-frame-wrapper-overlay-bottom image-frame-wrapper-overlay-light image-frame-wrapper-align-end">
+											
 											<a href="{{ route('product.show', $rvProduct->slug) }}">
-												<img src="{{ asset('storage/'.$rvProduct->images->first()->full) }}" class="img-fluid" alt="">
+												@if ($rvProduct->images->count() > 0)
+													<img src="{{ asset('storage/'.$rvProduct->images->first()->full) }}" class="img-fluid" alt="">
+												@else
+													<img src="https://via.placeholder.com/176" class="img-fluid" ></a>
+												@endif
 											</a>
 											<span class="image-frame-action">
 												<a href="{{ route('product.show', $rvProduct->slug) }}" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">SEPETE AT</a>

@@ -35,6 +35,10 @@ class UserRepository extends BaseRepository implements UserContract
         return $this->all($columns, $sort);
     }
 
+    public function getUserEmailsArray()
+    {
+        return $this->all()->pluck('email')->toArray();
+    }
     /**
      * @param int $id
      * @return mixed

@@ -71,6 +71,14 @@ class Product extends Model
         return $this->belongsToMany(Category::class, 'product_categories', 'product_id', 'category_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function badges()
+    {
+        return $this->belongsToMany(Badge::class, 'product_badges', 'product_id', 'badge_id');
+    }
+
     public function wishlist()
     {
        return $this->hasMany(Wishlist::class);
