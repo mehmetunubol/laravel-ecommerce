@@ -12,10 +12,11 @@
 				aria-labelledby="categories">
 				<div class="card-body">
 					<ul class="list list-unstyled mb-0">
-						<li><a href="#">POLİSTREN</a></li>
-						<li><a href="#">PVC</a></li>
-						<li><a href="#">FOAM</a></li>
-						<li><a href="#">POLİKARBONAT</a></li>
+						@forelse($categories as $cate)
+							<li><a href="{{ route('category.show', $cate->slug) }}">{{ $cate->name }}</a></li>
+						@empty
+							<li><a href="#" {{__("Kategori yok")}}></a></li>
+						@endforelse
 					</ul>
 				</div>
 			</div>
@@ -24,7 +25,7 @@
 			<div class="card-header accordion-header" role="tab" id="price">
 				<h5 class="mb-0">
 					<a href="#" data-toggle="collapse" data-target="#togglePrice" aria-expanded="false"
-						aria-controls="togglePrice">FİYAT:</a>
+						aria-controls="togglePrice">{{__("FİYAT")}}:</a>
 				</h5>
 			</div>
 			<div id="togglePrice" class="accordion-body collapse show" role="tabpanel" aria-labelledby="price">
@@ -35,12 +36,9 @@
 							method="get">
 
 							<input type="text" value="" data-msg-required="." maxlength="20" class="form-control"
-								name="name" id="name" placeholder="" required> -
+								name="priceLow" id="priceLow" placeholder="" required> -
 							<input type="text" value="" data-msg-required="." maxlength="20" class="form-control"
-								name="name" id="name" placeholder="" required>
-
-							<input type="hidden" class="hidden-price-range-low" name="priceLow" value="" />
-							<input type="hidden" class="hidden-price-range-high" name="priceHigh" value="" />
+								name="priceHigh" id="priceHigh" placeholder="" required>
 							<button type="submit"
 								class="btn btn-primary btn-h-1 font-weight-bold rounded-0">FILTER</button>
 						</form>
@@ -49,55 +47,30 @@
 			</div>
 		</div>
 		<div class="card">
-			<div class="card-header accordion-header" role="tab" id="sizes">
-				<h5 class="mb-0">
-					<a href="#" data-toggle="collapse" data-target="#toggleSizes" aria-expanded="false"
-						aria-controls="toggleSizes">ÖLÇÜLER:</a>
-				</h5>
-			</div>
-			<div id="toggleSizes" class="accordion-body collapse show" role="tabpanel" aria-labelledby="sizes">
-				<div class="card-body">
-					<ul class="list list-inline list-filter">
-						<li class="list-inline-item">
-							<a href="#">A1</a>
-						</li>
-						<li class="list-inline-item">
-							<a href="#" class="active">M</a>
-						</li>
-						<li class="list-inline-item">
-							<a href="#">A2</a>
-						</li>
-						<li class="list-inline-item">
-							<a href="#">A3</a>
-						</li>
-						<li class="list-inline-item">
-							<a href="#">A4</a>
-						</li>
-						<li class="list-inline-item">
-							<a href="#">A5</a>
-						</li>
-					</ul>
+			@forelse($attributes as $attribute)
+				<div class="card-header accordion-header" role="tab" id="sizes">
+					<h5 class="mb-0">
+						<a href="#" data-toggle="collapse" data-target="#toggleSizes" aria-expanded="false"
+							aria-controls="toggleSizes">{{ $attribute->name }}:</a>
+					</h5>
 				</div>
-			</div>
-		</div>
-		<div class="card">
-			<div class="card-header accordion-header" role="tab" id="brands">
-				<h5 class="mb-0">
-					<a href="#" data-toggle="collapse" data-target="#toggleBrands" aria-expanded="false"
-						aria-controls="toggleBrands">MARKALAR:</a>
-				</h5>
-			</div>
-			<div id="toggleBrands" class="accordion-body collapse show" role="tabpanel" aria-labelledby="brands">
-				<div class="card-body">
-					<ul class="list list-unstyled mb-0">
-						<li><a href="#">Sign-EX <span class="float-right">18</span></a></li>
-						<li><a href="#">Lenzing <span class="float-right">22</span></a></li>
-						<li><a href="#">Oracal <span class="float-right">05</span></a></li>
-						<li><a href="#">Unifol <span class="float-right">68</span></a></li>
-						<li><a href="#">Mactac <span class="float-right">03</span></a></li>
-					</ul>
+				<div id="toggleSizes" class="accordion-body collapse show" role="tabpanel" aria-labelledby="sizes">
+					<div class="card-body">
+						<ul class="list list-inline list-filter">
+							@forelse($attribute->values as $attribute_value)
+								<li class="list-inline-item">
+									<a href="{{ route('category.show', [ 'slug' => $category->slug, 'filter' => "$attribute_value->value"]) }}">
+										{{ $attribute_value->value }} 
+									</a>
+								</li>
+							@empty
+								<li></li>
+							@endforelse
+						</ul>
+					</div>
 				</div>
-			</div>
+			@empty
+			@endforelse
 		</div>
 	</div>
 </aside>

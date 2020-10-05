@@ -5,14 +5,17 @@ namespace App\Http\Controllers\Site;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\CategoryContract;
+use App\Contracts\AttributeContract;
 
 class CategoryController extends Controller
 {
     protected $categoryRepository;
+    protected $attributeRepository;
 
-    public function __construct(CategoryContract $categoryRepository)
+    public function __construct(CategoryContract $categoryRepository, AttributeContract $attributeRepository)
     {
         $this->categoryRepository = $categoryRepository;
+        $this->attributeRepository = $attributeRepository;
     }
 
     public function categories()
@@ -40,20 +43,19 @@ class CategoryController extends Controller
 
         /**
          * Price Filter Implementation
-         * usage: ?price=min-max
-         * examples:       Query            Results
-         *              price=0-100           0 < $p->price < 100
-         *              price=100           100 < $p->price
-         *              price=200-300       200 < $p->price < 300
+         * usage: ?priceLow=min&priceHigh=max
          */
-        if ($request->has('price'))
+        if ($request->has('priceLow') || $request->has('priceHigh'))
         {
             
-            $price_filters = explode('-', $request->input('price'));
-            if(sizeof($price_filters) <= 0 && sizeof($price_filters) > 1)
-            {
-                // Unexpected input for price filter
-            }
+            /*
+            * examples:       Query            Results
+            *              price=0-100           0 < $p->price < 100
+            *              price=100           100 < $p->price
+            *              price=200-300       200 < $p->price < 300
+            *  $price_filters = explode('-', $request->input('price'));
+            */
+            $price_filters = array($request->input('priceLow'), $request->input('priceHigh'));
             foreach ($price_filters as $i => $price) {
                 if($i === 0)
                 {
@@ -69,9 +71,10 @@ class CategoryController extends Controller
         /**
          * General Attribute Filter Implementation
          *  
-         * Usage:    filter=attr1_name:attr1_val1-attr1_val2,attr2_name:attr2_val1-attr2_val2
+         * Usage:   
+         *          filter=attr1_val1-attr1_val2,attr2_val1-attr2_val2
          * 
-         * Example: filter=Renk:kırmızı-beyaz,Beden:36-42-32
+         * Example: filter=kırmızı-beyaz,36-42-32
          * 
          */
         
@@ -79,15 +82,17 @@ class CategoryController extends Controller
         if ($request->has('filter'))
         {
             $filters = explode(',', $request->input('filter'));
+            
             foreach ($filters as $filter) {
-                [$attribute, $values_string] = explode(':', $filter);
+                $attr_filters = [];
+                //[$attribute, $values_string] = explode(':', $filter);
                 // TODO: Check if needed.
                 // -> $attribute: attribute name(Renk) is not used !! Since we have attribute value(kırmızı) as column in product_attributes table.
-                $values = explode('-', $values_string);
+                $values = explode('-', $filter);
                 foreach ($values as $value) {
-                    // TODO: These should be Added to whole query as AND condition, but it should be OR in this foreach.
-                    array_push($final_filter, ['value', strval($value)]);
+                    array_push($attr_filters, strval($value));
                 }
+                array_push($final_filter, $attr_filters);
             }
         }
 
@@ -110,6 +115,8 @@ class CategoryController extends Controller
         $category->products = $products;
         // End of "Multiple Category Request" implementation
 
-        return view('site.pages.category_products.category', compact('category', 'is_sidebar_on'));
+        $categories = $this->categoryRepository->listCategories()->where('parent_id','<>', NULL);
+        $attributes = $this->attributeRepository->listAttributes();
+        return view('site.pages.category_products.category', compact('category', 'categories', 'attributes', 'is_sidebar_on'));
     }
 }

@@ -204,15 +204,14 @@ class CategoryRepository extends BaseRepository implements CategoryContract
                 $return_value = $return_value->whereHas('attributes' , 
                                                     function ($attrs) use($attr_filter)
                                                     {
-                                                        $attr_returned_val;
-                                                        foreach ($attr_filter as $i => $value) {
-                                                            if($i === 0)
-                                                            {
-                                                                $attr_returned_val = $attrs->where($value[0], $value[1]);
+                                                        $attr_returned_val = $attrs->where(
+                                                            function($q) use($attr_filter){
+                                                                $r;
+                                                                foreach ($attr_filter as $i => $value) {
+                                                                    $r = $q->orWhere('value', $value);
+                                                                }
                                                             }
-                                                            $attr_returned_val = $attrs->OrWhere($value[0], $value[1]);
-                                                        }
-                                                        return $attr_returned_val;
+                                                        );
                                                     }); 
             }
         };
