@@ -37,6 +37,35 @@ class CategoryController extends Controller
         
         */
         $filter = null;
+
+        /**
+         * Price Filter Implementation
+         * usage: ?price=min-max
+         * examples:       Query            Results
+         *              price=0-100           0 < $p->price < 100
+         *              price=100           100 < $p->price
+         *              price=200-300       200 < $p->price < 300
+         */
+        if ($request->has('price'))
+        {
+            $filter = [];
+            $price_filters = explode('-', $request->input('price'));
+            if(sizeof($price_filters) <= 0 && sizeof($price_filters) > 1)
+            {
+                // Unexpected input for price filter
+            }
+            foreach ($price_filters as $i => $price) {
+                if($i === 0)
+                {
+                    array_push($filter, ['price', '>', $price]);
+                }
+                else {
+                    array_push($filter, ['price', '<', $price]);
+                }
+            }
+        }
+        // End of Price Filter Implementation
+
         $is_sidebar_on = $request->has('sb') ? true : false;
         if ($request->has('filter'))
         {
