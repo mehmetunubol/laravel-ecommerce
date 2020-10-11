@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Contracts\OrderContract;
 use App\Http\Controllers\BaseController;
+use App\Notifications\OrderStatus;
 
 class OrderController extends BaseController
 {
@@ -57,6 +58,8 @@ class OrderController extends BaseController
         $params = $request->except('_token');
 
         $order = $this->orderRepository->setOrderState($params);
+
+        $order->user->notify(new OrderStatus($params['state']));
 
         if (!$order) {
             return $this->responseRedirectBack('Error occurred while updating order.', 'error', true, true);
