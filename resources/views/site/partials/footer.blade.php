@@ -39,7 +39,7 @@
 
 <div class="featured-box col-lg-4">
 <a class="text-decoration-none text-color-dark" href="arge.php">
-<img src="customertemplate/img/icons/icon-1.svg" class="img-responsive appear-ani
+<img src="/customertemplate/img/icons/icon-1.svg" class="img-responsive appear-ani
 mation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="100" alt="Icon 1" />
 <div class="d-inline-block appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="150">
 <h2 class="text-2 pt-1 mb-0 text-color-dark">AR-GE & ÇÖZÜMLER</h2>
@@ -50,7 +50,7 @@ mation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="
 
 <div class="featured-box col-lg-4">
 <a class="text-decoration-none" href="academy.php">
-<img src="customertemplate/img/icons/icon-2.svg" class="img-responsive appear-ani
+<img src="/customertemplate/img/icons/icon-2.svg" class="img-responsive appear-ani
 mation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="100" alt="Icon 1" />
 <div class="d-inline-block appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="150">
 <h2 class="text-2 pt-1 mb-0 text-color-dark">EGEPLEKS AKADEMİ</h2>
@@ -62,7 +62,7 @@ mation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="
 
 <div class="featured-box col-lg-4">
 <a class="text-decoration-none" href="data_security.php">
-<img src="customertemplate/img/icons/icon-3.svg" class="img-responsive appear-ani
+<img src="/customertemplate/img/icons/icon-3.svg" class="img-responsive appear-ani
 mation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="100" alt="Icon 1" />
 <div class="d-inline-block appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="150">
 <h2 class="text-2 pt-1 mb-0 text-color-dark">VERİ GİZLİLİĞİ</h2>

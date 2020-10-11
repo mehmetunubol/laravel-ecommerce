@@ -27,7 +27,7 @@ class WishlistController extends Controller
     	if (!$wishlist) {
             return redirect()->back()->with('message','error | An error is occured.');
         }
-        return redirect()->back()->with('message','success | Product is added to your wishlist.');
+        return redirect()->back()->with('message',__('Ürün Favorilerinize eklendi.'));
     }
 
     public function removeFromWishlist(Request $request)
@@ -37,6 +37,6 @@ class WishlistController extends Controller
     	if (!$wishlist) {
             return redirect()->back()->with('message','error | An error is occured.');
         }
-        return redirect()->back()->with('message','success | Product is removed from your wishlist.');
+        return redirect()->back()->with('message',__('Ürün Favorilerinizden çıkarıldı'));
     }
 }
