@@ -22,15 +22,15 @@
                         </tr>
                         </thead>
                         <tbody>
-                            {{ $index = 1 }}
+                            <?php $index = 0;?>
                             @foreach($stats as $stat)
                                 <tr>
-                                    <td>{{ $index}}</td>
+                                    <td>{{ $index }}</td>
                                     <td><a href="{{ route('admin.products.edit', $stat->product->id) }}" class="btn btn-sm btn-primary">{{ $stat->product->name }}</a</td>
                                     <td>{{ $stat->count }}</td>
                                     <td>{{ $stat->updated_at}}</td>
                                 </tr>
-                                @php($index++)@endphp
+                                <?php $index++;?>
                             @endforeach
                         </tbody>
                     </table>
