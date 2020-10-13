@@ -69,9 +69,9 @@ class ProductController extends Controller
             if($attributeCheck)
             {
                 $attr_val = $request->input(strtolower($attr->name));
-                if($attr_val === 0)
+                if($attr_val == 0)
                 {
-                    return redirect()->back()->with('error', 'Hata: '.$attr->name.' seçmelisin !');
+                    return redirect()->back()->with('error_message', 'Hata: '.$attr->name.' seçmelisin !');
                 }
                 $selected_attributes[strtolower($attr->name)] = $request->input(strtolower($attr->name));
             }

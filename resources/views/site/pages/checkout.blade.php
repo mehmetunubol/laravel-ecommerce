@@ -14,8 +14,9 @@
 
     <div class="col-md-6 mb-5 mb-md-0">
         <h2 class="font-weight-bold mb-3">{{ __("Fatura Adresim") }}</h2>
-        <label for="billing_address">Adres Seç:</label>
 
+        <label for="billing_address">Adres Seç:</label>
+        @if ( count($addresses)>0 )
         <select name="billing_address" id="billing_address">
             @forelse ($addresses as $address)
             <option value="{{$address->id}}">{{$address->address_name}}</option>
@@ -24,19 +25,25 @@
             @endforelse
         </select>
                                             
-
+        @else
+            <a href="{{route('address.create')}}" class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3">{{__("Adres Ekle")}}</a>
+        @endif
 <div class="col-md-6">
                                             <h2 class="font-weight-bold mb-3">TESLİMAT ADRESİM</h2>
 
                                             <label for="addresses">Adres Seç:</label>
-
+        @if ( count($addresses)>0 )
         <select name="delivery_address" id="delivery_address">
+            
             @forelse ($addresses as $address)
             <option value="{{$address->id}}">{{$address->address_name}}</option>
             @empty
             {{__("Lütfen adres ekleyin")}}
             @endforelse
         </select>
+        @else
+            <a href="{{route('address.create')}}" class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3">{{__("Adres Ekle")}}</a>
+        @endif
 
 
     </div>
