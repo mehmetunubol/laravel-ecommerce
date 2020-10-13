@@ -53,10 +53,11 @@
 														@php 
 															$attrs = $item->attributes->selected_attributes
 														@endphp
-														
+														@if( $attrs != null)
 														@foreach(array_keys($attrs) as $key)
 															<strong>{{ ucwords($key) }}: </strong> {{ $attrs[$key] }}
 														@endforeach
+														@endif
 													</td>
 													<td class="product-price">
 														<span class="unit-price">{{ config('settings.currency_symbol'). $item->price }}</span>

@@ -87,6 +87,16 @@ class ProductController extends BaseController
         return $this->responseRedirect('admin.products.index', 'Product updated successfully' ,'success',false, false);
     }
 
+    public function delete(Request $request)
+    {
+        $product = $this->productRepository->deleteProduct($request['id']);
+
+        if (!$product) {
+            return $this->responseRedirectBack('Error occurred while deleting product.', 'error', true, true);
+        }
+        return $this->responseRedirect('admin.products.index', 'Product deleted successfully' ,'success',false, false);
+    }
+
     public function order_index()
     {
         $products = $this->productRepository->listProductsWithCategories('id', 'asc');
