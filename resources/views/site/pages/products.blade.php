@@ -59,7 +59,7 @@
                   </div>
                </div>
                @empty
-               <p> {{ $searchRecord }}: {{ __("Hiç ürün bulunamadı") }}.</p>
+               <p> {{ __("Hiç ürün bulunamadı") }}.</p>
                @endforelse
             </div>
          </div>

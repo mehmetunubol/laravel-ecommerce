@@ -23,13 +23,14 @@
 										<table class="shop-cart-table w-100">
 										<thead>
 
-												<tr>
+												<tr class="text-center">
 													<th class="product-remove"></th>
 													<th class="product-thumbnail"></th>
-													<th class="product-name"><strong>{{__('Ürün')}}</strong></th>
-													<th class="product-price"><strong>{{__('Birim Fİyat')}}</strong></th>
+													<th class="product-name text-left"><strong>{{__('Ürün')}}</strong></th>
+													<th class="product-attr"><strong>{{__('Özellikler')}}</strong></th>
+													<th class="product-price"><strong>{{__('Birim Fiyatı')}}</strong></th>
 													<th class="product-quantity"><strong>{{__('Adet')}}</strong></th>
-													<th class="product-subtotal"><strong>T{{__('Total')}}</strong></th>
+													<th class="product-subtotal"><strong>{{__('Total')}}</strong></th>
 												</tr>
 
 											</thead> 
@@ -47,6 +48,15 @@
 													</td>
 													<td class="product-name">
 														<a href="shop-product-detail-right-sidebar.html">{{ Str::words($item->name,20) }}</a>
+													</td>
+													<td class="product-attr">
+														@php 
+															$attrs = $item->attributes->selected_attributes
+														@endphp
+														
+														@foreach(array_keys($attrs) as $key)
+															<strong>{{ ucwords($key) }}: </strong> {{ $attrs[$key] }}
+														@endforeach
 													</td>
 													<td class="product-price">
 														<span class="unit-price">{{ config('settings.currency_symbol'). $item->price }}</span>

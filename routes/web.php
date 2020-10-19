@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 // Maintanence Mode - coming soon index page
 Route::view('/', 'comingSoon.index');
-Route::view('/homepage', 'site.index');
+//Route::view('/', 'site.index');
 
 // TODO: Need to rework views locations
 
@@ -44,7 +44,7 @@ Route::get('/cart/clear', 'Site\CartController@clearCart')->name('checkout.cart.
     It means only registered users can order products !!
     Probably we will improve it for unregistered users..    
 */
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth' ,'verified']], function () {
     Route::get('/checkout', 'Site\CheckoutController@getCheckout')->name('checkout.index');
     Route::post('/checkout/order', 'Site\CheckoutController@placeOrder')->name('checkout.place.order');
     Route::get('/checkout/payment/complete', 'Site\CheckoutController@complete')->name('checkout.payment.complete');
@@ -70,3 +70,6 @@ Route::group(['middleware' => ['auth']], function () {
 
 Auth::routes();
 require 'admin.php';
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -112,6 +112,19 @@
                                     </div>
                                 </div>
                                 <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label class="control-label" for="badges">{{ __("Ürün Etiketleri") }}</label>
+                                            <select name="badges[]" id="badges" class="form-control" multiple>
+                                                @foreach($badges as $badge)
+                                                    @php $check = in_array($badge->id, $product->badges->pluck('id')->toArray()) ? 'selected' : ''@endphp
+                                                    <option value="{{ $badge->id }}" {{ $check }}>{{ $badge->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label" for="price">{{ __("Fiyat") }}</label>
@@ -269,6 +282,7 @@
         Dropzone.autoDiscover = false;
         $( document ).ready(function() {
             $('#categories').select2();
+            $('#badges').select2();
             let myDropzone = new Dropzone("#dropzone", {
                 paramName: "image",
                 addRemoveLinks: false,

@@ -99,6 +99,11 @@ class ProductRepository extends BaseRepository implements ProductContract
             if ($collection->has('categories')) {
                 $product->categories()->sync($params['categories']);
             }
+
+            if ($collection->has('badges')) {
+                $product->badges()->sync($params['badges']);
+            }
+
             return $product;
 
         } catch (QueryException $exception) {
@@ -125,6 +130,10 @@ class ProductRepository extends BaseRepository implements ProductContract
 
         if ($collection->has('categories')) {
             $product->categories()->sync($params['categories']);
+        }
+
+        if ($collection->has('badges')) {
+            $product->badges()->sync($params['badges']);
         }
 
         return $product;
