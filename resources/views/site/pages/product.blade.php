@@ -114,9 +114,9 @@
                                                         <dt>{{ $attribute->name }}: </dt>
                                                         <dd>
                                                             <select class="form-control form-control-sm option" style="width:180px;" name="{{ strtolower($attribute->name ) }}">
-                                                                <option data-price="0" value="0"> Select a {{ $attribute->name }}</option>
+                                                                <option data-price="0" value="0"> {{ $attribute->name }} seç</option>
                                                                 @foreach($product->attributes as $attributeValue)
-                                                                    @if ($attributeValue->attribute_id == $attribute->id)
+                                                                    @if ($attributeValue->attribute_id == $attribute->id && $attributeValue->quantity > 0)
                                                                         <option
                                                                             data-price="{{ $attributeValue->price }}"
                                                                             value="{{ $attributeValue->value }}"> {{ ucwords($attributeValue->value . ' +'. $attributeValue->price) }}

@@ -10,7 +10,7 @@
 </div>
 <div class="col-md-3 col-lg-3">
 <div class="call-to-action-btn appear-animation" data-appear-animation="fadeInRightShorter">
-<a href="../../../public/customertemplate/assets/catalogue/katalog.pdf" download target="_blank" class="btn btn-light btn-outline btn-rounded font-weight-semibold btn-h-3 btn-v-3 text-0">EGEPLEKS KATALOG</a>
+<a href="/customertemplate/assets/catalogue/katalog.pdf" download target="_blank" class="btn btn-light btn-outline btn-rounded font-weight-semibold btn-h-3 btn-v-3 text-0">EGEPLEKS KATALOG</a>
 </div>
 </div>
 </div>

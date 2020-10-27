@@ -34,7 +34,7 @@
 
 	<!-- <a href="online-katalog/index.html" class="tp-caption btn btn-rounded btn-primary btn-v-2 btn-h-2  font-weight-semibold appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" target="_blank">KATALOĞUMUZU İNCELEYİN</a> -->
 
-	<a href="assets/catalogue/katalog.pdf"  target="_blank" class="tp-caption btn btn-rounded btn-primary btn-v-2 btn-h-2  font-weight-semibold appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000">KATALOĞUMUZU İNCELEYİN</a>
+	<a href="/customertemplate/assets/catalogue/katalog.pdf"  target="_blank" class="tp-caption btn btn-rounded btn-primary btn-v-2 btn-h-2  font-weight-semibold appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000">KATALOĞUMUZU İNCELEYİN</a>
 
 
 
