@@ -13,22 +13,22 @@
 				@if($is_sidebar_on)
 					@include("site.pages.category_products.products_sidebar")
 				@endif
-				
-				
+
+
 				@include("site.pages.category_products.list_products")
 
 			</div>
-			
+
 			<hr class="mt-5 mb-4">
 		</div>
 
-
+	</div>
 		@include("site.sections.our_catalogue")
 
-	</div>
 
 
-	@include("site.partials.footer")
+
+	@include("site.sections.footer")
 
 </div>
 

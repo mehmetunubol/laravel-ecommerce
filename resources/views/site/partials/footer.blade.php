@@ -9,7 +9,7 @@
 <div class="row">
 <div class="featured-box col-lg-4">
 <a class="text-decoration-none" href="#">
-<i class="lnr lnr-cart text-color-dark"></i>
+<i class="lnr lnr-truck text-color-dark"></i>
 <h2 class="text-2 pt-1 mb-0 text-color-dark">TÜM TÜRKİYE ÜCRETSİZ KARGO</h2>
 <p>Lorem ipsum dolor sit amet, consectetur</p>
 </a>
