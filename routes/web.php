@@ -20,8 +20,10 @@ Route::view('/', 'comingSoon.index');
 // TODO: Need to rework views locations
 
 Route::view('/catalogue', 'site.catalogue');
-Route::view('/contact', 'site.contact');
 Route::view('/about_us', 'site.about_us');
+
+Route::get('/contact', 'Site\ContactController@index')->name('contact.index');
+Route::post('/contact', 'Site\ContactController@submit')->name('contact.submit');
 
 Route::get('/sitepages/{slug}', 'Site\SitePageController@show')->name('sitepages.show');
 Route::get('/sitepages', 'Site\SitePageController@getAllPages')->name('sitepages');
