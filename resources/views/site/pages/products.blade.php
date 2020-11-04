@@ -93,6 +93,6 @@
       </div>
     </div>
       @include("site.sections.our_catalogue")
-   @include("site.sections.footer")
+   @include("site.partials.footer")
 </div>
 @stop
