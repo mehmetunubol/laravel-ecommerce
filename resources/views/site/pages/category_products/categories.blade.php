@@ -64,7 +64,7 @@
 	</div>
 
 
-		@include("site.sections.footer")
+		@include("site.partials.footer")
 
 </div>
 

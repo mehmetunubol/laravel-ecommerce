@@ -1,6 +1,6 @@
 
 
-<footer id="footer" class="footer-hover-links-light mt-0" data-plugin-image-background data-plugin-options="{'imageUrl': '', 'bgPosition': 'center 100%'}">
+<footer id="footer" class="footer-hover-links-light mt-0" data-plugin-image-background data-plugin-options="{'imageUrl': 'img/footer/background-1.png', 'bgPosition': 'center 100%'}">
 
 <div class="container">
 
@@ -9,30 +9,30 @@
 <div class="row">
 <div class="featured-box col-lg-4">
 <a class="text-decoration-none" href="#">
-<i class="lnr lnr-truck text-color-dark"></i>
+<i class="lnr lnr-cart text-color-dark"></i>
 <h2 class="text-2 pt-1 mb-0 text-color-dark">TÜM TÜRKİYE ÜCRETSİZ KARGO</h2>
-<p>Lorem ipsum dolor sit amet, consectetur</p>
+<p>Hızlı üretim ve sorunsuz teslim</p>
 </a>
 </div>
 <div class="featured-box col-lg-4">
 <a class="text-decoration-none" href="#">
-<i class="lnr lnr-gift text-color-dark"></i>
-<h2 class="text-2 pt-1 mb-0 text-color-dark">HEDİYE KARTI UYGULAMASI</h2>
-<p>Lorem ipsum dolor sit amet, consectetur</p>
+<i class="lnr lnr-lock text-color-dark"></i>
+<h2 class="text-2 pt-1 mb-0 text-color-dark">GÜVENLİ ALIŞVERİŞ</h2>
+<p>128 bi̇t encryption i̇le güvendesi̇ni̇z</p>
 </a>
 </div>
 <div class="featured-box col-lg-4">
 <a class="text-decoration-none" href="#">
 <i class="lnr lnr-envelope text-color-dark"></i>
 <h2 class="text-2 pt-1 mb-0 text-color-dark">SORULARINIZ İÇİN BİZE ULAŞIN</h2>
-<p>Lorem ipsum dolor sit amet, consectetur</p>
+<p>Soru ve özel projeleri̇ni̇z i̇çi̇n burdayiz</p>
 </a>
 </div>
 </div>
 </div>
 
 
-
+<!--
 <div class="footer-top-featured-boxes featured-boxes">
 <div class="row">
 
@@ -74,7 +74,7 @@ mation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="
 
 </div>
 </div>
-
+ -->
 
 
 
@@ -100,8 +100,7 @@ mation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="
 <h2 class="text-3 mb-3 text-color-dark">KURUMSAL</h2>
 <ul class="list list-icon list-unstyled">
 
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="page.php">Hakkımızda</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="certificates.php">Sertifikalar</a></li>
+
 <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="account_page.php?accountMenu=5">İADE VE İPTAL KOŞULLARI</a></li>
 <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="account_page.php?accountMenu=6">SATIŞ SÖZLEŞMESİ</a></li>
 <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="account_page.php?accountMenu=7">ÇEREZ POLİTİKASI</a></li>
@@ -116,28 +115,25 @@ mation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="
 <h2 class="text-3 mb-3 text-color-dark">ÜRÜNLERİMİZ</h2>
 <ul class="list list-icon list-unstyled">
 
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="products.php">KATEGORI</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="products.php">KATEGORI</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="products.php">ÜRÜNLER</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="products_with_sidebar.php">ÜRÜNLER w/Sidebar</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="products_with_sidebar.php">KATEGORI</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="products_with_sidebar.php">KATEGORI</a></li>
+
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="products.php">TÜM KATEGORİLER</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="products_with_sidebar.php">EN ÇOK SATANLAR</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="products_with_sidebar.php">YENİ GELENLER</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="products_with_sidebar.php">FIRSAT ÜRÜNLERİ</a></li>
 </ul>
 </div>
 
 
 
 <div class="col-lg-3">
-<h2 class="text-3 mb-3 text-color-dark">E-KATALOG</h2>
-<!-- <ul class="list list-icon list-unstyled">
+<h2 class="text-3 mb-3 text-color-dark">KURUMSAL</h2>
+ <ul class="list list-icon list-unstyled">
 
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="products.php">Mutfak Hijyeni</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="products.php">Çamaşır Hijyeni</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="products.php">Genel Temizlik</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="products.php">Zemin Hijyeni</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="products.php">Gıda Hijyeni</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="products.php">Vegan Ürünler</a></li>
-</ul> -->
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="page.php">HAKKIMIZDA</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="certificates.php">SERTİFİKALARIMIZ</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="certificates.php">E-KATALOG</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="certificates.php">İLETİŞİM</a></li>
+</ul>
 </div>
 
 
