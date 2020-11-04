@@ -35,7 +35,7 @@
 </div>
 <div class="icon-box-info">
 <div class="icon-box-info-title">
-<h2 class="text-4">Ürün Çeşitliliği</h2>
+<h2 class="text-4">ÜRÜN ÇEŞİTLİLİĞİ</h2>
 </div>
 <p>Phasellus blandit massa enim. Nullam id varius nunc. Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
 <a href="categories.php" class="btn btn-link font-weight-semibold text-decoration-none align-items-center text-0 d-inline-flex">DAHA FAZLA <i class="fas fa-angle-right text-3 ml-3"></i></a>
@@ -56,7 +56,7 @@
 </div>
 <div class="icon-box-info">
 <div class="icon-box-info-title">
-<h2 class="text-4">Ar-Ge & Çözümler</h2>
+<h2 class="text-4">YERLİ ÜRETİM</h2>
 </div>
 <p>Phasellus blandit massa enim. Nullam id varius nunc. Lorem ipsum dolor sit amet, consectetur adipiscing...</p>
 <a href="arge.php" class="btn btn-link font-weight-semibold text-decoration-none align-items-center text-0 d-inline-flex">DAHA FAZLA <i class="fas fa-angle-right text-3 ml-3"></i></a>

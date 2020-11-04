@@ -29,7 +29,7 @@ strong {
 }
 
 h1, h2, h3, h4, h5, h6 {
-	
+
 }
 
 li {
@@ -185,8 +185,8 @@ li {
 	-webkit-box-align: center;
 	-ms-flex-align: center;
 	align-items: center;
-	/*background-color:  #0082cb;*/
-	border-bottom: 1px solid #0082cb;
+	/*background-color:  #06a1dd;*/
+	border-bottom: 1px solid #06a1dd;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -1104,12 +1104,12 @@ html:not(.sticky-header-active) #header.header-transparent-sticky-deactive .head
 	}
 
 	#header .header-nav-main nav > ul > li.open > a, #header .header-nav-main nav > ul > li:hover > a, #header .header-nav-main nav > ul > li.active > a {
-		color: #0082cb;
+		color: #06a1dd;
 		background: transparent;
 	}
 
 	#header .header-nav-main nav > ul > li.dropdown .dropdown-menu {
-		background: #0082cb;
+		background: #06a1dd;
 		top: -10000px;
 		display: block;
 		opacity: 0;

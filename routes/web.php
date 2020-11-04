@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Maintanence Mode - coming soon index page
-Route::view('/', 'comingSoon.index');
-//Route::view('/', 'site.index');
+//Route::view('/', 'comingSoon.index');
+Route::view('/', 'site.index');
 
 // TODO: Need to rework views locations
 
@@ -42,9 +42,9 @@ Route::get('/cart/decrementItemQuantity/{id}', 'Site\CartController@decrementIte
 Route::get('/cart/item/{id}/remove', 'Site\CartController@removeItem')->name('checkout.cart.remove');
 Route::get('/cart/clear', 'Site\CartController@clearCart')->name('checkout.cart.clear');
 
-/* from now on our all routes will be for only authenticated users 
+/* from now on our all routes will be for only authenticated users
     It means only registered users can order products !!
-    Probably we will improve it for unregistered users..    
+    Probably we will improve it for unregistered users..
 */
 Route::group(['middleware' => ['auth' ,'verified']], function () {
     Route::get('/checkout', 'Site\CheckoutController@getCheckout')->name('checkout.index');
