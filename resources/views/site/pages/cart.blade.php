@@ -35,16 +35,13 @@
 
 											</thead> 
 											<tbody>
-												@forelse(\Cart::getContent() as $item)
+												@forelse($cartItems as $item)
 												<tr class="cart-item">
 													<td class="product-remove">
 														<a href="{{ route('checkout.cart.remove', $item->id) }}"><i class="fas fa-times" aria-label="Remove"></i></a>
 													</td>
 													<td class="product-thumbnail">
-														<?php $image = \App\Models\Product::where('name',$item->name)->first()->images->first()?>
-														@if($image != null)
-														<img src="{{ asset('storage/'.$image->full) }}" class="img-fluid" width="67" alt="" />
-														@endif
+														<img src="{{ asset('storage/'.$item->attributes->imagePath) }}" class="img-fluid" width="67" alt="" />
 													</td>
 													<td class="product-name">
 														<a href="shop-product-detail-right-sidebar.html">{{ Str::words($item->name,20) }}</a>
