@@ -7,7 +7,7 @@
 
 
 
-			
+
 			<ul class="nav sort-source mb-3" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
 				<li class="nav-item" data-option-value="*"><a class="nav-link active" href="#"></a></li>
 
@@ -48,7 +48,7 @@
 				{{__("Kategori yok")}}
 			@endforelse
 
-			
+
 
 			</ul>
 			</div>

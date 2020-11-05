@@ -19,8 +19,8 @@
 				<li class="mb-2"><a href="/account/cookie_policy" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('Çerez Politikası')}}</a></li>
 				<li class="mb-2"><a href="/account/privacy-policy" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('Gizlilik Koşulları')}}</a></li>
 				<li class="mb-2"><a href="/account/size-guide" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('Beden Rehberi')}}</a></li>
-				<li class="mb-2"><a href="/account/about-us" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('Hakkımızda')}}</a></li>
-				<li class="mb-2"><a href="/account/contact" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('İletişim')}}</a></li>
+				<li class="mb-2"><a href="/about_us" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('Hakkımızda')}}</a></li>
+				<li class="mb-2"><a href=" {{ route('contact.index') }} " class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('İletişim')}}</a></li>
 		</ul>
 </div>
 </div>

@@ -42,7 +42,7 @@
                         <img src="https://via.placeholder.com/176" class="img-fluid"></a>
                     @endif
 
-                    <!-- 	
+                    <!--
 					<div class="owl-carousel owl-theme manual thumb-gallery-thumbs mt" id="thumbGalleryThumbs">
 					<div><span class="d-block"><img alt="Product Image" src="img/demo/1.jpg" class="img-fluid"></span></div>
 					<div><span class="d-block"><img alt="Product Image" src="img/demo/product-2.jpg" class="img-fluid"></span></div>
@@ -155,7 +155,7 @@
                                     </div>
                                 </div>
                             </form>
-        
+
                             <hr class="my-4">
                         @else
                             <li>STOK DURUMU: <strong>STOKTA YOK</strong></li>
@@ -255,8 +255,8 @@
         </div>
         @include("site.content.related_products");
         @include("site.content.recently_viewed_products");
-        @include("site.sections.our_catalogue")
     </div>
+    @include("site.sections.our_catalogue")
     @include("site.partials.footer")
 
 </div>
