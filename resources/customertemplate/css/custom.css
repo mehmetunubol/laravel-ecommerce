@@ -50,8 +50,8 @@
   0 100px 80px rgba(0, 0, 0, 0.12)
 ;
 
-  
-  
+
+
   min-height: 200px;
   width: 50vw;
   margin:10px;
@@ -73,34 +73,34 @@ color: #212529;
 .top-sub-title {
     font-family: "Montserrat", sans-serif;
     font-size: 1.1em;
-     font-weight: 600 !important; 
-       color: #1c1f21 !important; 
+     font-weight: 600 !important;
+       color: #1c1f21 !important;
        line-height: 32px;
 }
 
 .font-weight-bold {
-    font-weight: 500 !important; 
+    font-weight: 500 !important;
 }
 
 .font-weight-bolder {
-    font-weight: 700 !important; 
+    font-weight: 700 !important;
       /* 16 * 0.0625 = 1px */
   letter-spacing: 0.0525em;
 }
 
 
 .font-weight-boldish {
-    font-weight: 500 !important; 
+    font-weight: 500 !important;
       /* 16 * 0.0625 = 1px */
   letter-spacing: 0.0425em;
 }
 
 .text-color-dark {
-     color: #1c1f21 !important; 
+     color: #1c1f21 !important;
 }
 
 
-.dif-bg{ 
+.dif-bg{
 
     /*background-color: #f8f9fa;*/
     /*background-color: #0082cb;*/
@@ -110,7 +110,7 @@ color: #212529;
 
 
 .portfolio-list .portfolio-item {
-  
+
 /*    padding: 10px;
        border: 3px solid;
   border-image: linear-gradient(45deg, rgb(15,14,159), rgb(173,216,230)) 1;*/
@@ -118,15 +118,15 @@ color: #212529;
 }
 
 .isotope-item {
-         
+
 
 
     /*background-color: #f8f9fa;*/
-  
+
 }
 
 .image-frame .image-frame-wrapper {
- padding: 20px;
+ padding: 0px;
 }
 
 
@@ -139,7 +139,7 @@ color: #212529;
 .badge {
     display: inline-block;
     padding: .25em .4em;
-     font-size: 95%; 
+     font-size: 95%;
     font-weight: 700;
     line-height: 1;
     text-align: center;

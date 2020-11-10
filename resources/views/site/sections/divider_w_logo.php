@@ -3,7 +3,7 @@
 <div class="col">
 <div class="border border-left-0 border-right-0 border-bottom-0 d-flex align-items-center justify-content-center">
 <a href="index.php" class="position-absolute">
-<img src="customertemplate/img/demo/kare.jpg" width="93" height="84" alt="EGEPLEKS" class="img-fluid bg-light px-4">
+<img src="customertemplate/img/logo50.jpg" width="80" height="80" alt="EGEPLEKS" class="img-fluid bg-light px-4">
 </a>
 </div>
 </div>

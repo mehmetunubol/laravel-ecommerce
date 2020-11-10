@@ -13,7 +13,9 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'failed' => __('Email yada şifre yanlış.'),
+    //'These credentials do not match our records.',
+    'throttle' => __('Çok fazla deneme!')
+    //'Too many login attempts. Please try again in :seconds seconds.',
 
 ];

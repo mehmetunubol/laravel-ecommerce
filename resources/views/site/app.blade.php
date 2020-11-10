@@ -17,7 +17,17 @@
 </head>
 <body>
 @include('site.partials.header')
+<div class="row">
+    <div class="col-sm-12">
+        @if (Session::has('warning_message'))
+            <p class="alert alert-warning">{{ Session::get('warning_message') }}</p>
+        @elseif(Session::has('error_message'))
+            <p class="alert alert-danger">{{ Session::get('error_message') }}</p>
+        @endif
+    </div>
+</div>
 @yield('content')
 @include('site.partials.bottom_scripts_home')
+@stack('scripts')
 </body>
 </html>

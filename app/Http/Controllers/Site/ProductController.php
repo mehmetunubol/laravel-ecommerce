@@ -68,12 +68,12 @@ class ProductController extends Controller
             $attributeCheck = in_array($attr->id, $product->attributes->pluck('attribute_id')->toArray());
             if($attributeCheck)
             {
-                $attr_val = $request->input(strtolower($attr->name));
+                $attr_val = $request->input(mb_strtolower($attr->name));
                 if($attr_val === 0)
                 {
-                    return redirect()->back()->with('error', 'Hata: '.$attr->name.' seçmelisin !');
+                    return redirect()->back()->with('error_message', 'Hata: '.$attr->name.' seçmelisin !');
                 }
-                $selected_attributes[strtolower($attr->name)] = $request->input(strtolower($attr->name));
+                $selected_attributes[mb_strtolower($attr->name)] = $request->input(mb_strtolower($attr->name));
             }
         }
         $product['selected_attributes'] = $selected_attributes;
@@ -81,7 +81,7 @@ class ProductController extends Controller
         Cart::add(uniqid(), $product->name, $request->input('price'), $request->input('qty'), $product);
 
         $this->productStatsRepository->incrementProductStats($product->id, 'cart');
-        return redirect()->back()->with('message', 'Item added to cart successfully.');
+        return redirect()->back()->with('message', __('Ürün sepete eklendi.'));
     }
 
 }

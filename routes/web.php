@@ -14,14 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Maintanence Mode - coming soon index page
-Route::view('/', 'comingSoon.index');
-//Route::view('/', 'site.index');
+//Route::view('/', 'comingSoon.index');
+Route::view('/', 'site.index');
 
 // TODO: Need to rework views locations
 
 Route::view('/catalogue', 'site.catalogue');
-Route::view('/contact', 'site.contact');
 Route::view('/about_us', 'site.about_us');
+
+Route::get('/contact', 'Site\ContactController@index')->name('contact.index');
+Route::post('/contact', 'Site\ContactController@submit')->name('contact.submit');
 
 Route::get('/sitepages/{slug}', 'Site\SitePageController@show')->name('sitepages.show');
 Route::get('/sitepages', 'Site\SitePageController@getAllPages')->name('sitepages');
@@ -40,11 +42,11 @@ Route::get('/cart/decrementItemQuantity/{id}', 'Site\CartController@decrementIte
 Route::get('/cart/item/{id}/remove', 'Site\CartController@removeItem')->name('checkout.cart.remove');
 Route::get('/cart/clear', 'Site\CartController@clearCart')->name('checkout.cart.clear');
 
-/* from now on our all routes will be for only authenticated users 
+/* from now on our all routes will be for only authenticated users
     It means only registered users can order products !!
-    Probably we will improve it for unregistered users..    
+    Probably we will improve it for unregistered users..
 */
-Route::group(['middleware' => ['auth' ,'verified']], function () {
+Route::group(['middleware' => ['auth']], function () {
     Route::get('/checkout', 'Site\CheckoutController@getCheckout')->name('checkout.index');
     Route::post('/checkout/order', 'Site\CheckoutController@placeOrder')->name('checkout.place.order');
     Route::get('/checkout/payment/complete', 'Site\CheckoutController@complete')->name('checkout.payment.complete');

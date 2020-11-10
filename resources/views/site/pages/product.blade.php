@@ -42,7 +42,7 @@
                         <img src="https://via.placeholder.com/176" class="img-fluid"></a>
                     @endif
 
-                    <!-- 	
+                    <!--
 					<div class="owl-carousel owl-theme manual thumb-gallery-thumbs mt" id="thumbGalleryThumbs">
 					<div><span class="d-block"><img alt="Product Image" src="img/demo/1.jpg" class="img-fluid"></span></div>
 					<div><span class="d-block"><img alt="Product Image" src="img/demo/product-2.jpg" class="img-fluid"></span></div>
@@ -56,17 +56,24 @@
 
                     <h2 class="line-height-1 font-weight-bold mb-3">{{ $product->name }}</h2>
                     @if($product->sale_price > 0)
-                        <span class="price font-primary text-6"><strong
-                                class="text-color-dark">{{ config('settings.currency_symbol') }}
-                                {{ $product->sale_price }}</strong></span>
-                        <span class="old-price font-primary text-line-trough text-4"><strong
-                                class="text-color-default">{{ config('settings.currency_symbol') }}
-                                {{ $product->price }}
-                            </strong></span>
+                        <span class="price font-primary text-6">
+                            <strong class="text-color-dark">
+                                {{ config('settings.currency_symbol') }} {{ $product->sale_price }}
+                                <span class="currency">{{ config('settings.currency_symbol') }}</span><span class="num" id="productPrice">{{ $product->sale_price }}</span>
+                            </strong>
+                        </span>
+                        <span class="old-price font-primary text-line-trough text-4">
+                            <strong class="text-color-default">
+                                <span class="currency">{{ config('settings.currency_symbol') }}</span><span class="num" id="productPrice">{{ $product->price }}</span>
+                            </strong>
+                        </span>
                     @else
-                        <span class="price font-primary text-6"><strong
-                                class="text-color-dark">{{ config('settings.currency_symbol') }}
-                                {{ $product->price }}</strong></span>
+                        <span class="price font-primary text-6">
+                            <strong class="text-color-dark">
+                                <span class="currency">{{ config('settings.currency_symbol') }}</span><span class="num" id="productPrice">{{ $product->price }}</span>
+                            </strong>
+                        </span>
+
                     @endif
                     @if(auth()->user())
 
@@ -113,10 +120,10 @@
                                                     @if ($attributeCheck)
                                                         <dt>{{ $attribute->name }}: </dt>
                                                         <dd>
-                                                            <select class="form-control form-control-sm option" style="width:180px;" name="{{ strtolower($attribute->name ) }}">
-                                                                <option data-price="0" value="0"> Select a {{ $attribute->name }}</option>
+                                                            <select class="form-control form-control-sm option" style="width:180px;" name="{{ mb_strtolower($attribute->name ) }}">
+                                                                <option data-price="0" value="0"> {{ $attribute->name }} seç</option>
                                                                 @foreach($product->attributes as $attributeValue)
-                                                                    @if ($attributeValue->attribute_id == $attribute->id)
+                                                                    @if ($attributeValue->attribute_id == $attribute->id && $attributeValue->quantity > 0)
                                                                         <option
                                                                             data-price="{{ $attributeValue->price }}"
                                                                             value="{{ $attributeValue->value }}"> {{ ucwords($attributeValue->value . ' +'. $attributeValue->price) }}
@@ -148,7 +155,7 @@
                                     </div>
                                 </div>
                             </form>
-        
+
                             <hr class="my-4">
                         @else
                             <li>STOK DURUMU: <strong>STOKTA YOK</strong></li>
@@ -248,10 +255,29 @@
         </div>
         @include("site.content.related_products");
         @include("site.content.recently_viewed_products");
-        @include("site.sections.our_catalogue")
     </div>
+    @include("site.sections.our_catalogue")
     @include("site.partials.footer")
 
 </div>
+@push('scripts')
+    <script>
+        $(document).ready(function () {
+            /*$('#addToCart').submit(function (e) {
+                if ($('.option').val() == 0) {
+                    e.preventDefault();
+                    alert('Please select an option');
+                }
+            });*/
+            $('.option').change(function () {
+                let extraPrice = $(this).find(':selected').data('price');
+                let price = parseFloat($('#finalPrice').attr('value'));
+                let finalPrice = (Number(extraPrice) + price).toFixed(2);
 
+                $('#finalPrice').val(finalPrice);
+                $('#productPrice').html(finalPrice);
+            });
+        });
+    </script>
+@endpush
 @stop

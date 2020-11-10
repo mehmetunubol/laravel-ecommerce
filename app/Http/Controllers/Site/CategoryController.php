@@ -103,6 +103,12 @@ class CategoryController extends Controller
         */
         $cat_slugs = explode('+', $slug);
         $category = $this->categoryRepository->findBySlugWithOrderFilter($cat_slugs[0], $order, $final_filter);
+        
+        if( !$category )
+        {
+            return redirect()->back()->with('warning_message', 'Kategori bulunamadı.');
+        }
+
         $products = $category->products;
 
         foreach ($cat_slugs as $i => $cat_slug) {

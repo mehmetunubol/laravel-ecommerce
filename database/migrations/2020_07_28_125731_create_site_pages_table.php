@@ -19,7 +19,7 @@ class CreateSitePagesTable extends Migration
             $table->string('slug');
             $table->unsignedInteger('type_id')->default(1);
             $table->string('logo')->nullable();
-            $table->text('content')->nullable();
+            $table->longText('content')->nullable();
             $table->boolean('show_in_footer')->default(1);
             $table->boolean('show_in_header')->default(0);
             $table->timestamps();

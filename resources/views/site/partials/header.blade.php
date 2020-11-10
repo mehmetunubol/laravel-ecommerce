@@ -19,7 +19,7 @@ info@egepleks.com.tr
 <a href="tel:+1234567890">0 232 376 80 56 pbx</a>
 </span>
 
-
+<!--
 <ul class="header-top-social-icons social-icons social-icons-transparent d-none d-md-block">
 <li class="social-icons-facebook">
 <a href="https://www.facebook.com//" target="_blank" title="Facebook"><i class="fab  fa-facebook-f"></i></a>
@@ -27,7 +27,7 @@ info@egepleks.com.tr
 <li class="social-icons-instagram">
 <a href="https://www.instagram.com//" target="_blank" title="Instragram"><i class="fab  fa-instagram"></i></a>
 </li>
-</ul>
+</ul> -->
 
 </div>
 
@@ -38,7 +38,7 @@ info@egepleks.com.tr
 
 
 <ul class="nav">
-	
+
 	@if (\Auth::check())
 
 	<li class="nav-item"><a href="/account/my-info" class="nav-link">{{__("Hesabım")}}</a></li>
@@ -68,9 +68,9 @@ info@egepleks.com.tr
 							<strong class="text-color-dark">
 							<span class="qty">{{$item->quantity}}x</span>
 							@if ($item->sale_price > 0)
-								<span class="product-price">{{ config('settings.currency_symbol') }} {{$item->sale_price}} </span> 
+								<span class="product-price">{{ config('settings.currency_symbol') }} {{$item->sale_price}} </span>
 							@else
-								<span class="product-price">{{$item->price}}</span> 
+								<span class="product-price">{{$item->price}}</span>
 							@endif
 							</strong>
 						</div>

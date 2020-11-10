@@ -25,3 +25,5 @@
 <!-- Head Libs -->
 <script src="/customertemplate/vendor/modernizr/modernizr.min.js"></script>
 
+<link rel="shortcut icon" href="/customertemplate/img/favicon.ico" type="image/x-icon">
+<link rel="icon" href="/customertemplate/img/favicon.ico" type="image/x-icon">
