@@ -109,7 +109,7 @@
                             <li>STOK DURUMU: <strong>STOKTA VAR</strong></li>
                             <hr class="my-4">
 
-                            <form class="shop-cart d-flex align-items-center" action="{{ route('product.add.cart') }}" method="post" enctype="multipart/form-data">
+                            <form class="shop-cart d-flex align-items-center" action="{{ route('contact.index') }}" method="post" enctype="multipart/form-data">
                                 <div class="container">
                                     @csrf
                                     <div class="row">
