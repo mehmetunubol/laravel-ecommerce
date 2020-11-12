@@ -12,9 +12,11 @@
 
 
                 <div class="row pt-5">
-                    <div class="col-lg-4">
+                    <!-- <div class="col-lg-4"> -->
+             <!-- <div class="col-12 col-md-4 col-lg-12 mb-lg-4 appear-animation"    ESKİYE BU ŞEKİLDE DONECEK-->
+
                         <div class="row">
-                            <div class="col-12 col-md-4 col-lg-12 mb-lg-4 appear-animation"
+                            <div class="col-3 col-md-3 col-lg-3 mb-lg-3 appear-animation"
                                 data-appear-animation="fadeInLeftShorter">
                                 <div class="icon-box icon-box-style-1">
                                     <div class="icon-box-icon">
@@ -30,7 +32,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-4 col-lg-12 mb-lg-4 appear-animation"
+                                   <div class="col-3 col-md-3 col-lg-3 mb-lg-3 appear-animation"
                                 data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="200">
                                 <div class="icon-box icon-box-style-1">
                                     <div class="icon-box-icon icon-box-icon-no-top">
@@ -45,7 +47,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-12 col-md-4 col-lg-12 appear-animation"
+                              <div class="col-3 col-md-3 col-lg-3 mb-lg-3 appear-animation"
                                 data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="400">
                                 <div class="icon-box icon-box-style-1">
                                     <div class="icon-box-icon">
@@ -60,7 +62,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-12 col-md-4 col-lg-12 appear-animation"
+                                   <div class="col-3 col-md-3 col-lg-3 mb-lg-3 appear-animation"
                                 data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="600">
                                 <div class="icon-box icon-box-style-1">
                                     <div class="icon-box-icon">
@@ -76,52 +78,55 @@
                             </div>
 
                         </div>
-                    </div>
-                    <div class="col-lg-8 appear-animation" data-appear-animation="fadeInRightShorter">
-                    <form class="contact-form form-style-2" action="{{route('contact.submit')}}" method="POST">
-                        @csrf
-                            <div class="contact-form-success alert alert-success d-none">
-                                <strong>Success!</strong> Your message has been sent to us.
-                            </div>
-                            <div class="contact-form-error alert alert-danger d-none">
-                                <strong>Error!</strong> There was an error sending your message.
-                                <span class="mail-error-message d-block"></span>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <input type="text" value="" data-msg-required="Please enter your name."
-                                        maxlength="100" class="form-control" name="name" id="name" placeholder="Name"
-                                        required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <input type="email" value="" data-msg-required="Please enter your email address."
-                                        data-msg-email="Please enter a valid email address." maxlength="100"
-                                        class="form-control" name="email" id="email" placeholder="E-mail" required>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col">
-                                    <input type="text" value="" data-msg-required="Please enter the subject."
-                                        maxlength="100" class="form-control" name="subject" id="subject"
-                                        placeholder="Subject" required>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col">
-                                    <textarea maxlength="5000" data-msg-required="Please enter your message." rows="5"
-                                        class="form-control" name="message" id="message" placeholder="Message"
-                                        required></textarea>
-                                </div>
-                            </div>
-                            <div class="form-row mt-2">
-                                <div class="col">
-                                    <input type="submit" value="SEND MESSAGE"
-                                        class="btn btn-primary btn-rounded btn-4 font-weight-semibold text-0"
-                                        data-loading-text="Loading...">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                    <!-- </div> -->
+<!--
+<div class="col-lg-8 appear-animation" data-appear-animation="fadeInRightShorter">
+<form class="contact-form form-style-2" action="{{route('contact.submit')}}" method="POST">
+@csrf
+<div class="contact-form-success alert alert-success d-none">
+<strong>Success!</strong> Your message has been sent to us.
+</div>
+<div class="contact-form-error alert alert-danger d-none">
+<strong>Error!</strong> There was an error sending your message.
+<span class="mail-error-message d-block"></span>
+</div>
+<div class="form-row">
+<div class="form-group col-md-6">
+<input type="text" value="" data-msg-required="Please enter your name."
+maxlength="100" class="form-control" name="name" id="name" placeholder="Name"
+required>
+</div>
+<div class="form-group col-md-6">
+<input type="email" value="" data-msg-required="Please enter your email address."
+data-msg-email="Please enter a valid email address." maxlength="100"
+class="form-control" name="email" id="email" placeholder="E-mail" required>
+</div>
+</div>
+<div class="form-row">
+<div class="form-group col">
+<input type="text" value="" data-msg-required="Please enter the subject."
+maxlength="100" class="form-control" name="subject" id="subject"
+placeholder="Subject" required>
+</div>
+</div>
+<div class="form-row">
+<div class="form-group col">
+<textarea maxlength="5000" data-msg-required="Please enter your message." rows="5"
+class="form-control" name="message" id="message" placeholder="Message"
+required></textarea>
+</div>
+</div>
+<div class="form-row mt-2">
+<div class="col">
+<input type="submit" value="SEND MESSAGE"
+class="btn btn-primary btn-rounded btn-4 font-weight-semibold text-0"
+data-loading-text="Loading...">
+</div>
+</div>
+</form>
+</div>
+-->
+
                 </div>
             </div>
 

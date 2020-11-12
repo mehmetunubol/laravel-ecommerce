@@ -107,7 +107,7 @@ info@egepleks.com.tr
 		</div>
 		</div>
 @else
-	<li class="nav-item"><a href="{{ route('login') }}" class="nav-link">{{ __("Giriş / Kayıt")}}</a></li>
+	<!-- <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">{{ __("Giriş / Kayıt")}}</a></li> -->
 @endif
 
 
@@ -160,7 +160,7 @@ info@egepleks.com.tr
 			<a class="dropdown-item dropdown-toggle" href="#">KURUMSAL</a>
 			<ul class="dropdown-menu">
 			<li><a class="dropdown-item" href="/about_us">HAKKIMIZDA</a></li>
-			<li><a class="dropdown-item" href="certificates.php">SERTİFİKALAR</a></li>
+<!-- 			<li><a class="dropdown-item" href="certificates.php">SERTİFİKALAR</a></li> -->
 			</ul>
 			</li>
 
@@ -186,7 +186,7 @@ info@egepleks.com.tr
 </div>
 
  <div class="header-button d-none d-sm-flex ml-1 ">
-<a href="Teklif İstiyorum" class="btn btn-outline btn-default btn-primary btn-2 btn-icon-effect-1" target="_blank">
+<a href="http://www.egepleks.com/contact" class="btn btn-outline btn-default btn-primary btn-2 btn-icon-effect-1" target="_self">
 <span class="wrap">
 <span>ÖZEL PROJE</span><i class="fa fa-star "></i>
 </span>

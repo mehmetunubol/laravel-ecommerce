@@ -44,7 +44,7 @@
 													<span class="text-color-light font-primary font-weight-bold text-3">TOPLU ALIMLARDA</span>
 													<h2 class="text-color-light font-weight-bold text-5 line-height-1 mb-2">MASKE - VİZOR</h2>
 													<span class="text-color-light font-primary text-3 mb-4"> <strong>35% İNDİRİM</strong></span>
-													<a href="shop-3-columns-left-sidebar.html" class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3">HEMEN AL</a>
+													<a href="http://www.egepleks.com/contact" class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3">HEMEN AL</a>
 												</div>
 											</div>
 										</div>

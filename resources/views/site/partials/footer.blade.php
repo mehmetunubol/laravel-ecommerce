@@ -78,8 +78,10 @@ mation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="
 
 
 
-
+<!--
 <div class="row">
+
+
 
 <div class="col-lg-3">
 <h2 class="text-3 mb-3 text-color-dark">HESABIM</h2>
@@ -90,8 +92,6 @@ mation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="
 <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="account_page.php?accountMenu=2">TAKİP LİSTEM</a></li>
 <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="account_page.php?accountMenu=3">ADRESLERİM</a></li>
 <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="account_page.php?accountMenu=4">KİŞİSEL BİLGİLER</a></li>
-<!-- <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="academy.php">Viking Akademi</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="arge.php">Ar-Ge Çözümler</a></li> -->
 </ul>
 </div>
 
@@ -105,8 +105,6 @@ mation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="
 <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="account_page.php?accountMenu=6">SATIŞ SÖZLEŞMESİ</a></li>
 <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="account_page.php?accountMenu=7">ÇEREZ POLİTİKASI</a></li>
 <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="account_page.php?accountMenu=8">GİZLİLİK POLİTİKASI</a></li>
-<!-- <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="academy.php">Viking Akademi</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="arge.php">Ar-Ge Çözümler</a></li> -->
 </ul>
 </div>
 
@@ -144,6 +142,8 @@ mation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="
 
 
 </div>
+ -->
+
 </div>
 
 
