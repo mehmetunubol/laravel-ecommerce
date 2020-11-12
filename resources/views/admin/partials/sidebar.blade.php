@@ -17,38 +17,38 @@
             <a data-toggle="treeview" class="app-menu__item" href="#">
                 <i class="app-menu__icon fa fa-shopping-bag"></i>
 
-                <span class="app-menu__label">Product Management</span>
+                <span class="app-menu__label">{{ __("Ürün Yönetimi") }}</span>
                 <i class="treeview-indicator fa fa-angle-right"></i>
             </a>
             <ul class="treeview-menu">
                 <li>
                     <a data-toggle="treeview-item" class="app-menu__item {{ Route::currentRouteName() == 'admin.products.index' ? 'active' : '' }}" href="{{ route('admin.products.index') }}">
                         <i class="app-menu__icon fa fa-shopping-bag"></i>
-                        <span class="app-menu__label">Products</span>
+                        <span class="app-menu__label">{{ __("Ürünler") }}</span>
                     </a>
                 </li>
                 <li>
                     <a class="treeview-item {{ Route::currentRouteName() == 'admin.attributes.index' ? 'active' : '' }}" href="{{ route('admin.attributes.index') }}">
                         <i class="app-menu__icon fa fa-th"></i>
-                        <span class="app-menu__label">Attributes</span>
+                        <span class="app-menu__label">{{ __("Ürün Özellikleri") }}</span>
                     </a>
                 </li>
                 <li>
                     <a class="treeview-item {{ Route::currentRouteName() == 'admin.products.order' ? 'active' : '' }}" href="{{ route('admin.products.order') }}">
                         <i class="app-menu__icon fa fa-th"></i>
-                        <span class="app-menu__label">Ürün Gösterim Sıralamaları</span>
+                        <span class="app-menu__label">{{ __("Ürün Gösterim Sıralamaları") }}</span>
                     </a>
                 </li>
                 <li>
                     <a data-toggle="treeview-item" class="app-menu__item {{ Route::currentRouteName() == 'admin.statistics.product.view' ? 'active' : '' }}" href="{{ route('admin.statistics.product.view') }}">
                         <i class="app-menu__icon fa fa-shopping-bag"></i>
-                        <span class="app-menu__label">View Statistics</span>
+                        <span class="app-menu__label">{{ __("Tıklanma İstatistikleri") }}</span>
                     </a>
                 </li>
                 <li>
                     <a class="treeview-item {{ Route::currentRouteName() == 'admin.statistics.product.cart' ? 'active' : '' }}" href="{{ route('admin.statistics.product.cart') }}">
                         <i class="app-menu__icon fa fa-th"></i>
-                        <span class="app-menu__label">Cart Statistics</span>
+                        <span class="app-menu__label">{{ __("Sepet İstatistikleri") }}</span>
                     </a>
                 </li>
             </ul> 
@@ -81,6 +81,12 @@
             <a class="app-menu__item {{ Route::currentRouteName() == 'admin.sitepages.index' ? 'active' : '' }}" href="{{ route('admin.sitepages.index') }}">
                 <i class="app-menu__icon fa fa-cogs"></i>
                 <span class="app-menu__label">{{ __("Sayfalar") }}</span>
+            </a>
+        </li>
+        <li>
+            <a class="app-menu__item {{ Route::currentRouteName() == 'admin.sitesearches.index' ? 'active' : '' }}" href="{{ route('admin.sitesearches.index') }}">
+                <i class="app-menu__icon fa fa-cogs"></i>
+                <span class="app-menu__label">{{ __("Müşteri Aramaları") }}</span>
             </a>
         </li>
         <li>
