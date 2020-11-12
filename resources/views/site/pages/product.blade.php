@@ -109,7 +109,7 @@
                             <li>STOK DURUMU: <strong>STOKTA VAR</strong></li>
                             <hr class="my-4">
 
-                            <form class="shop-cart d-flex align-items-center" action="{{ route('contact.index') }}" method="post" enctype="multipart/form-data">
+                            <form class="shop-cart d-flex align-items-center" action="{{ route('product.add.cart') }}" method="post" enctype="multipart/form-data">
                                 <div class="container">
                                     @csrf
                                     <div class="row">
@@ -149,8 +149,9 @@
                                             <input type="hidden" name="productId" value="{{ $product->id }}">
                                             <input type="hidden" name="price" id="finalPrice"
                                                 value="{{ $product->sale_price != '' ? $product->sale_price : $product->price }}">
-                                            <button type="submit"
-                                                class="add-to-cart btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-h-2 btn-fs-2 ml-3">{{ __("Sepete Ekle") }}</button>
+                                                <a class="add-to-cart btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-h-2 btn-fs-2 ml-3" href="{{ route('contact.index') }}">{{ __("SİPARİŞ VER")}}</a>
+                                            <!--<button type="submit"
+                                                class="add-to-cart btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-h-2 btn-fs-2 ml-3">{{ __("Sepete Ekle") }}</button>-->
                                         </div>
                                     </div>
                                 </div>
@@ -183,7 +184,7 @@
                             <a href="#">A5</a>
                         </li>
                     </ul>-->
-
+                    <!--
                     <div class="d-flex align-items-center">
                         <span class="text-2">PAYLAŞ</span>
                         <ul class="social-icons social-icons-dark social-icons-1 ml-3">
@@ -195,7 +196,7 @@
                                     title="Instagram"><i class="fab fa-instagram"></i></a></li>
                         </ul>
                     </div>
-
+                    -->
                 </div>
 
             </div>
