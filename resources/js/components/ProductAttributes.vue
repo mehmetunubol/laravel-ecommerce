@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="parent">Select an Attribute <span class="m-l-5 text-danger"> *</span></label>
+                            <label for="parent">Özellik Seç <span class="m-l-5 text-danger"> *</span></label>
                             <select id=parent class="form-control custom-select mt-15" v-model="attribute" @change="selectAttribute(attribute)">
                                 <option :value="attribute" v-for="attribute in attributes"> {{ attribute.name }} </option>
                             </select>
@@ -17,7 +17,7 @@
             </div>
         </div>
         <div class="tile" v-if="attributeSelected">
-            <h3 class="tile-title">Ekle Attributes To Product</h3>
+            <h3 class="tile-title">Ürüne Özellik Ekle</h3>
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
@@ -50,16 +50,16 @@
             </div>
         </div>
         <div class="tile">
-            <h3 class="tile-title">Ürün Attributes</h3>
+            <h3 class="tile-title">Ürün Özellikleri</h3>
             <div class="tile-body">
                 <div class="table-responsive">
                     <table class="table table-sm">
                         <thead>
                         <tr class="text-center">
-                            <th>Value</th>
-                            <th>Qty</th>
+                            <th>Değer</th>
+                            <th>Miktar</th>
                             <th>Fiyat</th>
-                            <th>Action</th>
+                            <th>Düzenle</th>
                         </tr>
                         </thead>
                         <tbody>

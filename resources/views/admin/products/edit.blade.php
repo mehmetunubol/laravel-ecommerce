@@ -228,7 +228,7 @@
                 </div>
                 <div class="tab-pane" id="images">
                     <div class="tile">
-                        <h3 class="tile-title">Upload > {{ __("Fotoğraf") }}/h3>
+                        <h3 class="tile-title">{{ __("Fotoğraf") }} {{__("Yükle")}}</h3>
                         <hr>
                         <div class="tile-body">
                             <div class="row">
@@ -242,7 +242,7 @@
                             <div class="row d-print-none mt-2">
                                 <div class="col-12 text-right">
                                     <button class="btn btn-success" type="button" id="uploadButton">
-                                        <i class="fa fa-fw fa-lg fa-upload"></i>Upload Images
+                                        <i class="fa fa-fw fa-lg fa-upload"></i>{{ __("Kaydet") }}
                                     </button>
                                 </div>
                             </div>

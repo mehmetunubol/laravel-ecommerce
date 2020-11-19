@@ -20031,7 +20031,7 @@ var render = function() {
             staticClass: "form-control",
             attrs: {
               type: "text",
-              placeholder: "Enter attribute value",
+              placeholder: "Özellik değeri gir",
               id: "value",
               name: "value"
             },
@@ -20066,7 +20066,7 @@ var render = function() {
             staticClass: "form-control",
             attrs: {
               type: "number",
-              placeholder: "Enter attribute value price",
+              placeholder: "Özellik fiyatını gir",
               id: "price",
               name: "price"
             },
@@ -20151,7 +20151,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "tile" }, [
-      _c("h3", { staticClass: "tile-title" }, [_vm._v("Option Values")]),
+      _c("h3", { staticClass: "tile-title" }, [_vm._v("Özellik Değerleri")]),
       _vm._v(" "),
       _c("div", { staticClass: "tile-body" }, [
         _c("div", { staticClass: "table-responsive" }, [
@@ -20336,7 +20336,7 @@ var render = function() {
     _vm.attributeSelected
       ? _c("div", { staticClass: "tile" }, [
           _c("h3", { staticClass: "tile-title" }, [
-            _vm._v("Ekle Attributes To Product")
+            _vm._v("Ürüne Özellik Ekle")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
@@ -20487,7 +20487,7 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "tile" }, [
-      _c("h3", { staticClass: "tile-title" }, [_vm._v("Ürün Attributes")]),
+      _c("h3", { staticClass: "tile-title" }, [_vm._v("Ürün Özellikleri")]),
       _vm._v(" "),
       _c("div", { staticClass: "tile-body" }, [
         _c("div", { staticClass: "table-responsive" }, [
@@ -20562,7 +20562,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "parent" } }, [
-      _vm._v("Select an Attribute "),
+      _vm._v("Özellik Seç "),
       _c("span", { staticClass: "m-l-5 text-danger" }, [_vm._v(" *")])
     ])
   },
@@ -20571,7 +20571,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "values" } }, [
-      _vm._v("Select an value "),
+      _vm._v("Değer seç "),
       _c("span", { staticClass: "m-l-5 text-danger" }, [_vm._v(" *")])
     ])
   },
@@ -20581,13 +20581,15 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", { staticClass: "text-center" }, [
-        _c("th", [_vm._v("Value")]),
+        _c("th", [_vm._v("İsim")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Qty")]),
+        _c("th", [_vm._v("Değer")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Miktar")]),
         _vm._v(" "),
         _c("th", [_vm._v("Fiyat")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Action")])
+        _c("th", [_vm._v("Düzenle")])
       ])
     ])
   }
