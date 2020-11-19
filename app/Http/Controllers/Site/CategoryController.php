@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\CategoryContract;
 use App\Contracts\AttributeContract;
+use App\Support\Collection;
 
 class CategoryController extends Controller
 {
@@ -118,7 +119,7 @@ class CategoryController extends Controller
                     ->products->merge($products);
             }
         }
-        $category->products = $products;
+        $category->products = (new Collection($products))->paginate(15);
         // End of "Multiple Category Request" implementation
 
         $categories = $this->categoryRepository->listCategories()->where('parent_id','<>', NULL);
