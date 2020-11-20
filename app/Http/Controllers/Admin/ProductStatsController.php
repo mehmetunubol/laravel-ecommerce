@@ -21,7 +21,7 @@ class ProductStatsController extends BaseController
     {
         $stats = $this->productStatsRepository->listStatistics('view');
 
-        $this->setPageTitle('View Statistics', 'Product View Statistics');
+        $this->setPageTitle('Ürün Görüntülenmeleri', 'Ürünlerin kaç defa görüntülendiğini gösterir');
         return view('admin.statistics.product.index', compact('stats'));
     }
 
@@ -29,7 +29,7 @@ class ProductStatsController extends BaseController
     {
         $stats = $this->productStatsRepository->listStatistics('cart');
 
-        $this->setPageTitle('Cart Statistics', 'Product Cart Statistics');
+        $this->setPageTitle('Sepete eklenmeler', 'Ürünlerin kaç defa sepete eklendiğini gösterir');
         return view('admin.statistics.product.index', compact('stats'));
     }
 
@@ -37,7 +37,7 @@ class ProductStatsController extends BaseController
     {
         $stats = $this->productStatsRepository->listStatistics('order');
 
-        $this->setPageTitle('Order Statistics', 'Product Order Statistics');
+        $this->setPageTitle('Sipariş Sayıları', 'Ürünlerin kaç kere sipariş edildiğini gösterir');
         return view('admin.statistics.product.index', compact('stats'));
     }
 }

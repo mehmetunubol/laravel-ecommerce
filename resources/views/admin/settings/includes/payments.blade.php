@@ -1,14 +1,14 @@
 <div class="tile">
     <form action="{{ route('admin.settings.update') }}" method="POST" role="form">
         @csrf
-        <h3 class="tile-title">Payment Settings</h3>
+        <h3 class="tile-title">Ödeme Ayarları</h3>
         <hr>
         <div class="tile-body">
             <div class="form-group">
                 <h5 class="control-label" for="stripe_payment_method">PayTR</h5>
                 <select name="paytr_payment_method" id="paytr_payment_method" class="form-control">
-                    <option value="1" {{ (config('settings.paytr_payment_method')) == 1 ? 'selected' : '' }}>Enabled</option>
-                    <option value="0" {{ (config('settings.paytr_payment_method')) == 0 ? 'selected' : '' }}>Disabled</option>
+                    <option value="1" {{ (config('settings.paytr_payment_method')) == 1 ? 'selected' : '' }}>Aktif</option>
+                    <option value="0" {{ (config('settings.paytr_payment_method')) == 0 ? 'selected' : '' }}>Aktif değil</option>
                 </select>
             </div>
             <div class="form-group">
@@ -16,7 +16,7 @@
                 <input
                     class="form-control"
                     type="text"
-                    placeholder="Enter PayTR merchant id"
+                    placeholder="PayTR merchant id"
                     id="paytr_merchant_id"
                     name="paytr_merchant_id"
                     value="{{ config('settings.paytr_merchant_id') }}"
@@ -27,7 +27,7 @@
                 <input
                     class="form-control"
                     type="text"
-                    placeholder="Enter PayTR merchant key"
+                    placeholder="PayTR merchant key"
                     id="paytr_merchant_key"
                     name="paytr_merchant_key"
                     value="{{ config('settings.paytr_merchant_key') }}"
@@ -38,7 +38,7 @@
                 <input
                     class="form-control"
                     type="text"
-                    placeholder="Enter PayTR merchant salt"
+                    placeholder="PayTR merchant salt"
                     id="paytr_merchant_salt"
                     name="paytr_merchant_salt"
                     value="{{ config('settings.paytr_merchant_salt') }}"

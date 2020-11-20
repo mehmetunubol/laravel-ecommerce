@@ -96,7 +96,8 @@
 
 
 	<hr class="mt-5 mb-4">
-	<div class="row align-items-center justify-content-between mb-2 pb-2">
+	{{ $category->products->links()}}
+	<!--<div class="row align-items-center justify-content-between mb-2 pb-2">
 		<div class="col-auto mb-3 mb-sm-0">
 			<span>Listelenen: 1-9 / 60 Ürün</span>
 		</div>
@@ -121,4 +122,4 @@
 				</ul>
 			</nav>
 		</div>
-	</div>
+	</div>-->
