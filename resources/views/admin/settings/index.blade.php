@@ -14,11 +14,11 @@
             <div class="tile p-0">
                 <ul class="nav flex-column nav-tabs user-tabs">
                     <li class="nav-item"><a class="nav-link active" href="#general" data-toggle="tab">{{ __("Genel") }}</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#site-logo" data-toggle="tab">Site Logo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#site-logo" data-toggle="tab">Site Logosu</a></li>
                     <li class="nav-item"><a class="nav-link" href="#footer-seo" data-toggle="tab">Footer &amp; SEO</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#social-links" data-toggle="tab">Social Links</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#analytics" data-toggle="tab">Analytics</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#payments" data-toggle="tab">Payments</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#social-links" data-toggle="tab">Sosyal Medya</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#analytics" data-toggle="tab">Google Analytics</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#payments" data-toggle="tab">Ödemeler</a></li>
                 </ul>
             </div>
         </div>

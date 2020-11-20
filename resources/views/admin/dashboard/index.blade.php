@@ -23,31 +23,31 @@
             </a>
         </div>
         <div class="col-md-6 col-lg-3">
-            <div class="widget-small info coloured-icon">
+            <a href="{{ route('admin.statistics.product.view') }}" class="widget-small info coloured-icon">
                 <i class="icon fa fa-thumbs-o-up fa-3x"></i>
                 <div class="info">
-                    <h4>Likes</h4>
-                    <p><b>25</b></p>
+                    <h4>Görüntülemeler</h4>
+                    <!--<p><b>25</b></p>-->
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-md-6 col-lg-3">
-            <div class="widget-small warning coloured-icon">
+            <a href="{{ route('admin.orders.index') }}" class="widget-small warning coloured-icon">
                 <i class="icon fa fa-files-o fa-3x"></i>
                 <div class="info">
-                    <h4>Uploades</h4>
+                    <h4>Siparişler</h4>
                     <p><b>10</b></p>
                 </div>
-            </div>
+            </a>
         </div>
         <div class="col-md-6 col-lg-3">
-            <div class="widget-small danger coloured-icon">
+            <a href="{{ route('admin.statistics.product.cart') }}" class="widget-small danger coloured-icon">
                 <i class="icon fa fa-star fa-3x"></i>
                 <div class="info">
-                    <h4>Stars</h4>
-                    <p><b>500</b></p>
+                    <h4>Sepet istatistikleri</h4>
+                    <!--<p><b>500</b></p>-->
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 @endsection

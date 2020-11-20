@@ -16,9 +16,9 @@
                         <thead>
                         <tr>
                             <th> # </th>
-                            <th> {{ __("Product") }}</th>
-                            <th class="text-center"> {{ __("Count") }} </th>
-                            <th class="text-center"> {{ __("Updated At") }} </th>
+                            <th> {{ __("Ürün") }}</th>
+                            <th class="text-center"> {{ __("Kaç kere ?") }} </th>
+                            <th class="text-center"> {{ __("En Son Güncellenme") }} </th>
                         </tr>
                         </thead>
                         <tbody>

@@ -22,7 +22,7 @@ class SiteSearchController extends BaseController
     {
         $sitesearches = $this->sitesearchRepository->listSiteSearchs();
         
-        $this->setPageTitle('SiteSearch', 'Site Searches');
+        $this->setPageTitle('Site İçi Aramalar', 'Site içerisinde yapılan aramaların listesi');
         return view('admin.sitesearches.index', compact('sitesearches'));
     }
 
