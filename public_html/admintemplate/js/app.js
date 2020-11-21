@@ -2223,6 +2223,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "product-attributes",
   props: ['productid'],
@@ -2262,6 +2264,7 @@ __webpack_require__.r(__webpack_exports__);
         id: id
       }).then(function (response) {
         _this.productAttributes = response.data;
+        console.log(response.data);
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2286,10 +2289,12 @@ __webpack_require__.r(__webpack_exports__);
       this.currentPrice = value.price;
     },
     addProductAttribute: function addProductAttribute() {
-      if (this.currentQty === null || this.currentPrice === null) {
-        this.$swal("Error, Some values are missing.", {
+      if (this.currentQty === null) {
+        this.$swal("Hata, miktar girmelisin", {
           icon: "error"
         });
+      } else if (this.currentPrice === null) {
+        this.currentPrice = 0;
       } else {
         var _this = this;
 
@@ -2304,7 +2309,7 @@ __webpack_require__.r(__webpack_exports__);
         axios.post('/admin/products/attributes/add', {
           data: data
         }).then(function (response) {
-          _this.$swal("Success! " + response.data.message, {
+          _this.$swal("Başarılı! " + response.data.message, {
             icon: "success"
           });
 
@@ -2324,8 +2329,8 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.$swal({
-        title: "Are you sure?",
-        text: "Once deleted, you will not be able to recover this data!",
+        title: "Emin misin?",
+        text: "Onayladığında, bu özelliği geri alamayacaksın!",
         icon: "warning",
         buttons: true,
         dangerMode: true
@@ -2336,19 +2341,19 @@ __webpack_require__.r(__webpack_exports__);
             id: pa.id
           }).then(function (response) {
             if (response.data.status === 'success') {
-              _this.$swal("Success! Product attribute has been deleted!", {
+              _this.$swal("Başarılı! Ürün özelliği silindi!", {
                 icon: "success"
               });
 
               this.loadProductAttributes(this.productid);
             } else {
-              _this.$swal("Your Product attribute not deleted!");
+              _this.$swal("Ürün özelliği silinecek!");
             }
           })["catch"](function (error) {
             console.log(error);
           });
         } else {
-          _this2.$swal("Action cancelled!");
+          _this2.$swal("İptal edildi!");
         }
       });
     }
@@ -20031,7 +20036,7 @@ var render = function() {
             staticClass: "form-control",
             attrs: {
               type: "text",
-              placeholder: "Enter attribute value",
+              placeholder: "Özellik değeri gir",
               id: "value",
               name: "value"
             },
@@ -20066,7 +20071,7 @@ var render = function() {
             staticClass: "form-control",
             attrs: {
               type: "number",
-              placeholder: "Enter attribute value price",
+              placeholder: "Özellik fiyatını gir",
               id: "price",
               name: "price"
             },
@@ -20151,7 +20156,7 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "tile" }, [
-      _c("h3", { staticClass: "tile-title" }, [_vm._v("Option Values")]),
+      _c("h3", { staticClass: "tile-title" }, [_vm._v("Özellik Değerleri")]),
       _vm._v(" "),
       _c("div", { staticClass: "tile-body" }, [
         _c("div", { staticClass: "table-responsive" }, [
@@ -20336,7 +20341,7 @@ var render = function() {
     _vm.attributeSelected
       ? _c("div", { staticClass: "tile" }, [
           _c("h3", { staticClass: "tile-title" }, [
-            _vm._v("Ekle Attributes To Product")
+            _vm._v("Ürüne Özellik Ekle")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
@@ -20458,7 +20463,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("small", { staticClass: "text-danger" }, [
                       _vm._v(
-                        "This price will be added to the main price of product on frontend."
+                        "Burada girilen fiyat ürünün temel fiyatının üzerine eklenecek"
                       )
                     ])
                   ])
@@ -20477,7 +20482,7 @@ var render = function() {
                     },
                     [
                       _c("i", { staticClass: "fa fa-plus" }),
-                      _vm._v(" Add\n                ")
+                      _vm._v(" Ekle\n                ")
                     ]
                   )
                 ])
@@ -20487,7 +20492,7 @@ var render = function() {
       : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "tile" }, [
-      _c("h3", { staticClass: "tile-title" }, [_vm._v("Ürün Attributes")]),
+      _c("h3", { staticClass: "tile-title" }, [_vm._v("Ürün Özellikleri")]),
       _vm._v(" "),
       _c("div", { staticClass: "tile-body" }, [
         _c("div", { staticClass: "table-responsive" }, [
@@ -20502,7 +20507,16 @@ var render = function() {
                     "td",
                     {
                       staticClass: "text-center",
-                      staticStyle: { width: "25%" }
+                      staticStyle: { width: "20%" }
+                    },
+                    [_vm._v(_vm._s(pa.attribute.name))]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "td",
+                    {
+                      staticClass: "text-center",
+                      staticStyle: { width: "20%" }
                     },
                     [_vm._v(_vm._s(pa.value))]
                   ),
@@ -20511,7 +20525,7 @@ var render = function() {
                     "td",
                     {
                       staticClass: "text-center",
-                      staticStyle: { width: "25%" }
+                      staticStyle: { width: "20%" }
                     },
                     [_vm._v(_vm._s(pa.quantity))]
                   ),
@@ -20520,7 +20534,7 @@ var render = function() {
                     "td",
                     {
                       staticClass: "text-center",
-                      staticStyle: { width: "25%" }
+                      staticStyle: { width: "20%" }
                     },
                     [_vm._v(_vm._s(pa.price))]
                   ),
@@ -20529,7 +20543,7 @@ var render = function() {
                     "td",
                     {
                       staticClass: "text-center",
-                      staticStyle: { width: "25%" }
+                      staticStyle: { width: "20%" }
                     },
                     [
                       _c(
@@ -20562,7 +20576,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "parent" } }, [
-      _vm._v("Select an Attribute "),
+      _vm._v("Özellik Seç "),
       _c("span", { staticClass: "m-l-5 text-danger" }, [_vm._v(" *")])
     ])
   },
@@ -20571,7 +20585,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("label", { attrs: { for: "values" } }, [
-      _vm._v("Select an value "),
+      _vm._v("Seç "),
       _c("span", { staticClass: "m-l-5 text-danger" }, [_vm._v(" *")])
     ])
   },
@@ -20581,13 +20595,15 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", { staticClass: "text-center" }, [
-        _c("th", [_vm._v("Value")]),
+        _c("th", [_vm._v("İsim")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Qty")]),
+        _c("th", [_vm._v("Değer")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Miktar")]),
         _vm._v(" "),
         _c("th", [_vm._v("Fiyat")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Action")])
+        _c("th", [_vm._v("Düzenle")])
       ])
     ])
   }
@@ -33586,7 +33602,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! D:\work\laravel-ecommerce\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\cgn-workspace\laravel-ecommerce\resources\js\app.js */"./resources/js/app.js");
 
 
 /***/ })

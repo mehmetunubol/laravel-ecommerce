@@ -5,11 +5,11 @@
             <hr>
             <div class="tile-body">
                 <div class="form-group">
-                    <label class="control-label" for="value">Value</label>
+                    <label class="control-label" for="value">Değer</label>
                     <input
                         class="form-control"
                         type="text"
-                        placeholder="Enter attribute value"
+                        placeholder="Özellik değeri gir"
                         id="value"
                         name="value"
                         v-model="value"
@@ -20,7 +20,7 @@
                     <input
                         class="form-control"
                         type="number"
-                        placeholder="Enter attribute value price"
+                        placeholder="Özellik fiyatını gir"
                         id="price"
                         name="price"
                         v-model="price"
@@ -37,14 +37,14 @@
                             <i class="fa fa-fw fa-lg fa-check-circle"></i>Güncelle
                         </button>
                         <button class="btn btn-primary" type="submit" @click.stop="reset()" v-if="!addValue">
-                            <i class="fa fa-fw fa-lg fa-check-circle"></i>Reset
+                            <i class="fa fa-fw fa-lg fa-check-circle"></i>Sıfırla
                         </button>
                     </div>
                 </div>
             </div>
         </div>
         <div class="tile">
-            <h3 class="tile-title">Option Values</h3>
+            <h3 class="tile-title">Seçenek Değerleri</h3>
             <div class="tile-body">
                 <div class="table-responsive">
                     <table class="table table-sm">
@@ -53,7 +53,7 @@
                             <th>#</th>
                             <th>Value</th>
                             <th>Fiyat</th>
-                            <th>Action</th>
+                            <th>Düzenle</th>
                         </tr>
                         </thead>
                         <tbody>

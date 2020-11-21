@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="parent">Select an Attribute <span class="m-l-5 text-danger"> *</span></label>
+                            <label for="parent">Özellik Seç <span class="m-l-5 text-danger"> *</span></label>
                             <select id=parent class="form-control custom-select mt-15" v-model="attribute" @change="selectAttribute(attribute)">
                                 <option :value="attribute" v-for="attribute in attributes"> {{ attribute.name }} </option>
                             </select>
@@ -17,11 +17,12 @@
             </div>
         </div>
         <div class="tile" v-if="attributeSelected">
-            <h3 class="tile-title">Ekle Attributes To Product</h3>
+            <h3 class="tile-title">Ürüne Özellik Ekle</h3>
+
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="values">Select an value <span class="m-l-5 text-danger"> *</span></label>
+                        <label for="values">Seç <span class="m-l-5 text-danger"> *</span></label>
                         <select id=values class="form-control custom-select mt-15" v-model="value" @change="selectValue(value)">
                             <option :value="value" v-for="value in attributeValues"> {{ value.value }} </option>
                         </select>
@@ -39,35 +40,37 @@
                     <div class="form-group">
                         <label class="control-label" for="price">Fiyat</label>
                         <input class="form-control" type="text" id="price" v-model="currentPrice"/>
-                        <small class="text-danger">This price will be added to the main price of product on frontend.</small>
+                        <small class="text-danger">Burada girilen fiyat ürünün temel fiyatının üzerine eklenecek</small>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <button class="btn btn-sm btn-primary" @click="addProductAttribute()">
-                        <i class="fa fa-plus"></i> Add
+                        <i class="fa fa-plus"></i> Ekle
                     </button>
                 </div>
             </div>
         </div>
         <div class="tile">
-            <h3 class="tile-title">Ürün Attributes</h3>
+            <h3 class="tile-title">Ürün Özellikleri</h3>
             <div class="tile-body">
                 <div class="table-responsive">
                     <table class="table table-sm">
                         <thead>
                         <tr class="text-center">
-                            <th>Value</th>
-                            <th>Qty</th>
+                            <th>İsim</th>
+                            <th>Değer</th>
+                            <th>Miktar</th>
                             <th>Fiyat</th>
-                            <th>Action</th>
+                            <th>Düzenle</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr v-for="pa in productAttributes">
-                            <td style="width: 25%" class="text-center">{{ pa.value}}</td>
-                            <td style="width: 25%" class="text-center">{{ pa.quantity}}</td>
-                            <td style="width: 25%" class="text-center">{{ pa.price}}</td>
-                            <td style="width: 25%" class="text-center">
+                            <td style="width: 20%" class="text-center">{{ pa.attribute.name}}</td>
+                            <td style="width: 20%" class="text-center">{{ pa.value}}</td>
+                            <td style="width: 20%" class="text-center">{{ pa.quantity}}</td>
+                            <td style="width: 20%" class="text-center">{{ pa.price}}</td>
+                            <td style="width: 20%" class="text-center">
                                 <button class="btn btn-sm btn-danger" @click="deleteProductAttribute(pa)">
                                     <i class="fa fa-trash"></i>
                                 </button>
@@ -119,6 +122,7 @@
                     id: id
                 }).then (function(response){
                     _this.productAttributes = response.data;
+                    console.log(response.data);
                 }).catch(function (error) {
                     console.log(error);
                 });
@@ -142,11 +146,16 @@
                 this.currentPrice = value.price;
             },
             addProductAttribute() {
-                if (this.currentQty === null || this.currentPrice === null) {
-                    this.$swal("Error, Some values are missing.", {
+                if (this.currentQty === null ) {
+                    this.$swal("Hata, miktar girmelisin", {
                         icon: "error",
                     });
-                } else {
+                } 
+                else if ( this.currentPrice === null )
+                {
+                    this.currentPrice = 0;
+                }
+                else {
                     let _this = this;
                     console.log(this.currentAttributeId);
                     let data = {
@@ -159,7 +168,7 @@
                     axios.post('/admin/products/attributes/add', {
                         data: data
                     }).then (function(response){
-                        _this.$swal("Success! " + response.data.message, {
+                        _this.$swal("Başarılı! " + response.data.message, {
                             icon: "success",
                         });
                         _this.currentValue = '';
@@ -175,8 +184,8 @@
             deleteProductAttribute(pa) {
                 let _this = this;
                 this.$swal({
-                    title: "Are you sure?",
-                    text: "Once deleted, you will not be able to recover this data!",
+                    title: "Emin misin?",
+                    text: "Onayladığında, bu özelliği geri alamayacaksın!",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
@@ -187,18 +196,18 @@
                             id: pa.id,
                         }).then (function(response){
                             if (response.data.status === 'success') {
-                                _this.$swal("Success! Product attribute has been deleted!", {
+                                _this.$swal("Başarılı! Ürün özelliği silindi!", {
                                     icon: "success",
                                 });
                                 this.loadProductAttributes(this.productid);
                             } else {
-                                _this.$swal("Your Product attribute not deleted!");
+                                _this.$swal("Ürün özelliği silinecek!");
                             }
                         }).catch(function (error) {
                             console.log(error);
                         });
                     } else {
-                        this.$swal("Action cancelled!");
+                        this.$swal("İptal edildi!");
                     }
                 });
             }

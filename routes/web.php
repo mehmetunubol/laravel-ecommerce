@@ -20,8 +20,10 @@ Route::view('/', 'site.index');
 // TODO: Need to rework views locations
 
 Route::view('/catalogue', 'site.catalogue');
-Route::view('/contact', 'site.contact');
 Route::view('/about_us', 'site.about_us');
+
+Route::get('/contact', 'Site\ContactController@index')->name('contact.index');
+Route::post('/contact', 'Site\ContactController@submit')->name('contact.submit');
 
 Route::get('/sitepages/{slug}', 'Site\SitePageController@show')->name('sitepages.show');
 Route::get('/sitepages', 'Site\SitePageController@getAllPages')->name('sitepages');
@@ -44,7 +46,7 @@ Route::get('/cart/clear', 'Site\CartController@clearCart')->name('checkout.cart.
     It means only registered users can order products !!
     Probably we will improve it for unregistered users..
 */
-Route::group(['middleware' => ['auth' ,'verified']], function () {
+Route::group(['middleware' => ['auth']], function () {
     Route::get('/checkout', 'Site\CheckoutController@getCheckout')->name('checkout.index');
     Route::post('/checkout/order', 'Site\CheckoutController@placeOrder')->name('checkout.place.order');
     Route::get('/checkout/payment/complete', 'Site\CheckoutController@complete')->name('checkout.payment.complete');

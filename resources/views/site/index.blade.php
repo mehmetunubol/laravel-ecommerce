@@ -30,7 +30,7 @@
 @include('site.sections.our_catalogue')
 </div>
 
-@include('site.sections.footer')
+@include('site.partials.footer')
 
 </div>
 @stop

@@ -9,15 +9,14 @@
 
 	<div class="row align-items-center justify-content-between mb-4">
 		<div class="col-auto mb-1 mb-sm-0">
-			<button onclick="window.location.href = `{{Request::url()}}?sb`;">
-				Filter
+			<button class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2" onclick="window.location.href = `{{Request::url()}}?sb`;">
+				ÜRÜNLERİ FİLTRELE
 			</button>
 		</div>
 		<div class="col-auto mb-3 mb-sm-0">
 			<form method="post">
 				<div class="custom-select-1">
-					<select class="sm-form-control border" 
-						onchange="window.location.href = `{{Request::url()}}?order=${value}`;">
+					<select class="form-control border" onchange="window.location.href = `{{Request::url()}}?order=${value}`;">
 						<option value="" disabled selected>{{__('SIRALAMA')}}</option>
 						<option value="price-desc">{{__('Fiyat: Azalan')}}</option>
 						<option value="price-asc">{{__('Fiyat: Artan')}}</option>
@@ -27,6 +26,12 @@
 					</select>
 				</div>
 			</form>
+
+
+
+
+
+
 		</div>
 		<div class="col-auto">
 			<div class="d-flex align-items-center">
@@ -50,7 +55,7 @@
 								@endif
 							</a>
 							<span class="image-frame-action">
-								<a href="{{ route('product.show', $product->slug) }}" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">{{ __("SEPETE EKLE") }}</a>
+								<a href="{{ route('product.show', $product->slug) }}" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">{{ __("ÜRÜNÜ GÖR") }}</a>
 							</span>
 						</span>
 					</div>
@@ -91,7 +96,8 @@
 
 
 	<hr class="mt-5 mb-4">
-	<div class="row align-items-center justify-content-between mb-2 pb-2">
+	{{ $category->products->links()}}
+	<!--<div class="row align-items-center justify-content-between mb-2 pb-2">
 		<div class="col-auto mb-3 mb-sm-0">
 			<span>Listelenen: 1-9 / 60 Ürün</span>
 		</div>
@@ -116,4 +122,4 @@
 				</ul>
 			</nav>
 		</div>
-	</div>
+	</div>-->

@@ -16,9 +16,9 @@
                         <thead>
                         <tr>
                             <th> # </th>
-                            <th> {{ __("Product") }}</th>
-                            <th class="text-center"> {{ __("Count") }} </th>
-                            <th class="text-center"> {{ __("Updated At") }} </th>
+                            <th> {{ __("Ürün") }}</th>
+                            <th class="text-center"> {{ __("Kaç kere ?") }} </th>
+                            <th class="text-center"> {{ __("En Son Güncellenme") }} </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -42,5 +42,11 @@
 @push('scripts')
     <script type="text/javascript" src="{{ asset('admintemplate/js/plugins/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('admintemplate/js/plugins/dataTables.bootstrap.min.js') }}"></script>
-    <script type="text/javascript">$('#sampleTable').DataTable();</script>
+    <script type="text/javascript">
+        $('#sampleTable').DataTable( {
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
+            }
+        } );
+    </script>
 @endpush

@@ -18,7 +18,7 @@
 										<div class="image-frame-info image-frame-info-show flex-column align-items-start px-4 pt-md-4 mt-md-3 mx-2">
 											<h2 class="text-color-light font-weight-bold text-8 line-height-2 mb-2">YAZA ÖZEL <br>ÜRÜNLER</h2>
 											<span class="text-color-light font-primary text-3 mb-4"> <strong>40% DAN BAŞLAYAN İNDİRİMLER</strong></span>
-											<a href="shop-3-columns-left-sidebar.html" class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3 appear-animation animated scaleOut appear-animation-visible" data-appear-animation="scaleOut" data-appear-animation-duration="8s" style="animation-duration: 8s; animation-delay: 100ms;">ALIŞVERİŞE BAŞLA</a>
+											<a href="{{ route('categories') }}" class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3 appear-animation animated scaleOut appear-animation-visible" data-appear-animation="scaleOut" data-appear-animation-duration="8s" style="animation-duration: 8s; animation-delay: 100ms;">ALIŞVERİŞE BAŞLA</a>
 										</div>
 									</div>
 								</div>
@@ -44,7 +44,7 @@
 													<span class="text-color-light font-primary font-weight-bold text-3">TOPLU ALIMLARDA</span>
 													<h2 class="text-color-light font-weight-bold text-5 line-height-1 mb-2">MASKE - VİZOR</h2>
 													<span class="text-color-light font-primary text-3 mb-4"> <strong>35% İNDİRİM</strong></span>
-													<a href="shop-3-columns-left-sidebar.html" class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3">HEMEN AL</a>
+													<a href="http://www.egepleks.com/contact" class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3">HEMEN AL</a>
 												</div>
 											</div>
 										</div>

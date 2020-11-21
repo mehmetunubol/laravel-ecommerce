@@ -10,7 +10,7 @@ class CartController extends Controller
 {
     public function getCart()
     {
-        return view('site.pages.cart');
+        return view('site.pages.cart')->with('cartItems', Cart::getContent());
     }
 
     public function removeItem($id)

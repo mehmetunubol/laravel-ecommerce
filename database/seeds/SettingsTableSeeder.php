@@ -22,6 +22,10 @@ class SettingsTableSeeder extends Seeder
             'value'                     =>  'admin@admin.com',
         ],
         [
+            'key'                       =>  'info_email_address',
+            'value'                     =>  'info@egepleks.com',
+        ],
+        [
             'key'                       =>  'currency_code',
             'value'                     =>  'GBP',
         ],

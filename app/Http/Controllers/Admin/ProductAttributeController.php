@@ -28,7 +28,10 @@ class ProductAttributeController extends Controller
     public function productAttributes(Request $request)
     {
         $product = Product::findOrFail($request->id);
-
+        foreach($product->attributes as $pa) {
+            $attribute = Attribute::findOrFail($pa->attribute_id);
+            $pa['attribute'] = $attribute;
+        }
         return response()->json($product->attributes);
     }
 
@@ -51,9 +54,9 @@ class ProductAttributeController extends Controller
     {
         $productAttribute = ProductAttribute::create($request->data);
         if ($productAttribute) {
-            return response()->json(['message' => 'Product attribute added successfully.']);
+            return response()->json(['message' => 'Ürün özelliği eklendi.']);
         } else {
-            return response()->json(['message' => 'Something went wrong while submitting product attribute.']);
+            return response()->json(['message' => 'Bir sorun oluştu, Tekrar dener misin ?']);
         }
     }
 
@@ -66,6 +69,6 @@ class ProductAttributeController extends Controller
         $productAttribute = ProductAttribute::findOrFail($request->id);
         $productAttribute->delete();
 
-        return response()->json(['status' => 'success', 'message' => 'Product attribute deleted successfully.']);
+        return response()->json(['status' => 'success', 'message' => 'Ürün özelliği silindi']);
     }
 }

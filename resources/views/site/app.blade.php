@@ -28,5 +28,6 @@
 </div>
 @yield('content')
 @include('site.partials.bottom_scripts_home')
+@stack('scripts')
 </body>
 </html>
