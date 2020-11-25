@@ -32,6 +32,15 @@ class AttributeRepository extends BaseRepository implements AttributeContract
     }
 
     /**
+     * @param array $ids
+     * @return mixed
+     */
+    public function findAttributesbyIds(array $ids)
+    {
+        return $this->model->findMany($ids);
+    }
+
+    /**
      * @param int $id
      * @return mixed
      * @throws ModelNotFoundException

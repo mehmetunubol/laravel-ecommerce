@@ -8,11 +8,13 @@
 <div class="{{$wholeClassName}}">
 
 	<div class="row align-items-center justify-content-between mb-4">
+		<!-- Button is removed. Sidebar will be active for all pages.
 		<div class="col-auto mb-1 mb-sm-0">
 			<button class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2" onclick="window.location.href = `{{Request::url()}}?sb`;">
 				ÜRÜNLERİ FİLTRELE
 			</button>
 		</div>
+		-->
 		<div class="col-auto mb-3 mb-sm-0">
 			<form method="post">
 				<div class="custom-select-1">
