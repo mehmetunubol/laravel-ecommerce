@@ -47,19 +47,22 @@
 			</div>
 		</div>
 		<div class="card">
-			@forelse($attributes as $attribute)
-				<div class="card-header accordion-header" role="tab" id="sizes">
+			@forelse($attributes as $i => $attribute)
+		<div class="card-header accordion-header" role="tab" id="sizes-{{$i}}">
 					<h5 class="mb-0">
-						<a href="#" data-toggle="collapse" data-target="#toggleSizes" aria-expanded="false"
+						<a href="#" data-toggle="collapse" data-target="#toggleSizes-{{$i}}" aria-expanded="false"
 							aria-controls="toggleSizes">{{ $attribute->name }}:</a>
 					</h5>
 				</div>
-				<div id="toggleSizes" class="accordion-body collapse show" role="tabpanel" aria-labelledby="sizes">
+				<div id="toggleSizes-{{$i}}" class="accordion-body collapse" role="tabpanel" aria-labelledby="sizes-{{$i}}">
 					<div class="card-body">
 						<ul class="list list-inline list-filter">
 							@forelse($attribute->values as $attribute_value)
 								<li class="list-inline-item">
-									<a href="{{ route('category.show', [ 'slug' => $category->slug, 'filter' => "$attribute_value->value"]) }}">
+									<!-- This is removed, it was fail for multiple category listing
+										<a href="{{ route('category.show', [ 'slug' => $category->slug, 'filter' => "$attribute_value->value"]) }}">
+									-->
+										<a href="{{ route('category.show', [ 'slug' => request()->route()->parameters['slug'], 'filter' => "$attribute_value->value"]) }}">
 										{{ $attribute_value->value }} 
 									</a>
 								</li>

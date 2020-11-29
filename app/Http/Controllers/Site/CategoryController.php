@@ -79,7 +79,8 @@ class CategoryController extends Controller
          * 
          */
         
-        $is_sidebar_on = $request->has('sb') ? true : false;
+         // sidebar should be active for all pages from now on.
+        $is_sidebar_on = true;//$request->has('sb') ? true : false;
         if ($request->has('filter'))
         {
             $filters = explode(',', $request->input('filter'));
@@ -123,7 +124,15 @@ class CategoryController extends Controller
         // End of "Multiple Category Request" implementation
 
         $categories = $this->categoryRepository->listCategories()->where('parent_id','<>', NULL);
-        $attributes = $this->attributeRepository->listAttributes();
+
+        //$attributes = $this->attributeRepository->listAttributes();
+        // Don't want to list all defined attributes, just show applicable ones.
+        $applicable_attributes = [];
+        foreach ($products as $p) {
+            array_push($applicable_attributes, $p->attributes()->pluck('attribute_id'));
+        }
+        $attributes = $this->attributeRepository->findAttributesbyIds($applicable_attributes);
+
         return view('site.pages.category_products.category', compact('category', 'categories', 'attributes', 'is_sidebar_on'));
     }
 }

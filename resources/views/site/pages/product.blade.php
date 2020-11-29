@@ -58,13 +58,12 @@
                     @if($product->sale_price > 0)
                         <span class="price font-primary text-6">
                             <strong class="text-color-dark">
-                                {{ config('settings.currency_symbol') }} {{ $product->sale_price }}
                                 <span class="currency">{{ config('settings.currency_symbol') }}</span><span class="num" id="productPrice">{{ $product->sale_price }}</span>
                             </strong>
                         </span>
-                        <span class="old-price font-primary text-line-trough text-4">
+                        <span id="productPriceOld" class="old-price font-primary text-line-trough text-4">
                             <strong class="text-color-default">
-                                <span class="currency">{{ config('settings.currency_symbol') }}</span><span class="num" id="productPrice">{{ $product->price }}</span>
+                                <span class="currency">{{ config('settings.currency_symbol') }}</span><span class="num">{{ $product->price }}</span>
                             </strong>
                         </span>
                     @else
@@ -125,6 +124,7 @@
                                                                 @foreach($product->attributes as $attributeValue)
                                                                     @if ($attributeValue->attribute_id == $attribute->id && $attributeValue->quantity > 0)
                                                                         <option
+                                                                            name="{{ $attribute->name }}"
                                                                             data-price="{{ $attributeValue->price }}"
                                                                             value="{{ $attributeValue->value }}"> {{ ucwords($attributeValue->value . ' +'. $attributeValue->price) }}
                                                                         </option>
@@ -270,13 +270,19 @@
                     alert('Please select an option');
                 }
             });*/
+            let memory = {};
             $('.option').change(function () {
-                let extraPrice = $(this).find(':selected').data('price');
-                let price = parseFloat($('#finalPrice').attr('value'));
-                let finalPrice = (Number(extraPrice) + price).toFixed(2);
-
+                const extraPrice = Number($(this).find(':selected').data('price')),
+                    currentPrice = parseFloat($('#finalPrice').attr('value')),
+                    attrName = $(this).find(':selected').attr('name');
+                if( memory[attrName] === undefined ) {
+                    memory[attrName] = 0;
+                }
+                const finalPrice = (extraPrice + currentPrice - memory[attrName]).toFixed(2);
+                memory[attrName] = extraPrice;
                 $('#finalPrice').val(finalPrice);
                 $('#productPrice').html(finalPrice);
+                $('#productPriceOld').html("");
             });
         });
     </script>
