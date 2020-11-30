@@ -21,7 +21,9 @@ class SiteSearchController extends Controller
     public function searchProducts(Request $request)
     {
         $searchText = $request->input('search');
-
+        if ( !isset($searchText) ) {
+            return redirect()->back();
+        }
         $products = $this->productRepository->searchAllProducts($searchText);
         $resultIds = $products->map(function ($p) {
             return $p->id;
