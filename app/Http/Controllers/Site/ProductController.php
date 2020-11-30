@@ -76,7 +76,9 @@ class ProductController extends Controller
                 $selected_attributes[mb_strtolower($attr->name)] = $request->input(mb_strtolower($attr->name));
             }
         }
-        $product['selected_attributes'] = $selected_attributes;
+        if(isset($selected_attributes)) {
+            $product['selected_attributes'] = $selected_attributes;
+        }
 
         Cart::add(uniqid(), $product->name, $request->input('price'), $request->input('qty'), $product);
 
