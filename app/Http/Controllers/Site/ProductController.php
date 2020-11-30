@@ -69,14 +69,16 @@ class ProductController extends Controller
             if($attributeCheck)
             {
                 $attr_val = $request->input(mb_strtolower($attr->name));
-                if($attr_val === 0)
+                if($attr_val == 0)
                 {
                     return redirect()->back()->with('error_message', 'Hata: '.$attr->name.' seçmelisin !');
                 }
                 $selected_attributes[mb_strtolower($attr->name)] = $request->input(mb_strtolower($attr->name));
             }
         }
-        $product['selected_attributes'] = $selected_attributes;
+        if(isset($selected_attributes)) {
+            $product['selected_attributes'] = $selected_attributes;
+        }
 
         Cart::add(uniqid(), $product->name, $request->input('price'), $request->input('qty'), $product);
 
