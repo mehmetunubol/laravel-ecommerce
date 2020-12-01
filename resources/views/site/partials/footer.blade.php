@@ -18,11 +18,11 @@
 <a class="text-decoration-none" href="#">
 <i class="lnr lnr-lock text-color-dark"></i>
 <h2 class="text-2 pt-1 mb-0 text-color-dark">GÜVENLİ ALIŞVERİŞ</h2>
-<p>128 bi̇t encryption i̇le güvendesi̇ni̇z</p>
+<p>128 bi̇t encryption  (SSL)  i̇le güvendesi̇ni̇z</p>
 </a>
 </div>
 <div class="featured-box col-lg-4">
-<a class="text-decoration-none" href="#">
+<a class="text-decoration-none" href="http://www.egepleks.com/contact">
 <i class="lnr lnr-envelope text-color-dark"></i>
 <h2 class="text-2 pt-1 mb-0 text-color-dark">SORULARINIZ İÇİN BİZE ULAŞIN</h2>
 <p>Soru ve özel projeleri̇ni̇z i̇çi̇n burdayiz</p>
@@ -78,7 +78,7 @@ mation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="
 
 
 
-<!--
+
 <div class="row">
 
 
@@ -88,10 +88,10 @@ mation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="
 <ul class="list list-icon list-unstyled">
 
 
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="account_page.php?accountMenu=1">SİPARİŞLERİM</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="account_page.php?accountMenu=2">TAKİP LİSTEM</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="account_page.php?accountMenu=3">ADRESLERİM</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="account_page.php?accountMenu=4">KİŞİSEL BİLGİLER</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="http://www.egepleks.com/account/orders">SİPARİŞLERİM</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="http://www.egepleks.com/account/wishlist">TAKİP LİSTEM</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="http://www.egepleks.com/addresses">ADRESLERİM</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="http://www.egepleks.com/account/my-info">KİŞİSEL BİLGİLER</a></li>
 </ul>
 </div>
 
@@ -101,10 +101,10 @@ mation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="
 <ul class="list list-icon list-unstyled">
 
 
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="account_page.php?accountMenu=5">İADE VE İPTAL KOŞULLARI</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="account_page.php?accountMenu=6">SATIŞ SÖZLEŞMESİ</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="account_page.php?accountMenu=7">ÇEREZ POLİTİKASI</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="account_page.php?accountMenu=8">GİZLİLİK POLİTİKASI</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="http://www.egepleks.com/account/return-policy">İADE VE İPTAL KOŞULLARI</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="http://www.egepleks.com/account/terms-of-sale">SATIŞ SÖZLEŞMESİ</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="http://www.egepleks.com/account/cookie_policy">ÇEREZ POLİTİKASI</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="http://www.egepleks.com/account/privacy-policy">GİZLİLİK POLİTİKASI</a></li>
 </ul>
 </div>
 
@@ -114,10 +114,10 @@ mation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="
 <ul class="list list-icon list-unstyled">
 
 
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="products.php">TÜM KATEGORİLER</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="products_with_sidebar.php">EN ÇOK SATANLAR</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="products_with_sidebar.php">YENİ GELENLER</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="products_with_sidebar.php">FIRSAT ÜRÜNLERİ</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="http://www.egepleks.com/categories">TÜM KATEGORİLER</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="http://www.egepleks.com/category/brosurlukler">BROŞÜRLÜKLER</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="http://www.egepleks.com/category/akrilik-masaustu-standlar">MASAÜSTÜ STANDLARI</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="#">ÖZEL PROJE</a></li>
 </ul>
 </div>
 
@@ -127,10 +127,10 @@ mation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="
 <h2 class="text-3 mb-3 text-color-dark">KURUMSAL</h2>
  <ul class="list list-icon list-unstyled">
 
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="page.php">HAKKIMIZDA</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="certificates.php">SERTİFİKALARIMIZ</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="certificates.php">E-KATALOG</a></li>
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="certificates.php">İLETİŞİM</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="http://www.egepleks.com/about_us">HAKKIMIZDA</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="http://www.egepleks.com/account/size-guide">RENK VE ÖLÇÜ REHBERİ</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="http://www.egepleks.com/catalogue">E-KATALOG</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="http://www.egepleks.com/contact">İLETİŞİM</a></li>
 </ul>
 </div>
 
@@ -142,7 +142,7 @@ mation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="
 
 
 </div>
- -->
+ 
 
 </div>
 
@@ -168,7 +168,7 @@ mation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="
 </ul>
 </div>
 <div class="col-md-5 col-lg-4">
-<p class="text-md-right pb-0 mb-0">© 2020 EGEPLEKS -  TÜM HAKLARI SAKLIDIR</p>
+<p class="text-md-right pb-0 mb-0">EGEPLEKS -  TÜM HAKLARI SAKLIDIR</p>
 </div>
 </div>
 </div>

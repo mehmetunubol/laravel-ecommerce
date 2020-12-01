@@ -11,12 +11,12 @@
 <div class="header-column justify-content-start">
 
 <span class="d-none d-sm-flex align-items-center">
-<i class="fas fa-envelope mr-1"></i>
-info@egepleks.com.tr
+
+<a href="mailto:info@egepleks.com.tr">info@egepleks.com.tr</a><i class="fas fa-envelope ml-1 mr-1 pl-2"></i>
 </span>
 <span class="d-none d-sm-flex align-items-center ml-4">
-<i class="fas fa-phone mr-1"></i>
-<a href="tel:+1234567890">0 232 376 80 56 pbx</a>
+
+<a href="tel:02323768056">0 232 376 80 56 pbx</a><i class="fas fa-phone ml-1 mr-1 pl-2"></i>
 </span>
 
 <!--
@@ -41,73 +41,72 @@ info@egepleks.com.tr
 
 	@if (\Auth::check())
 
-	<li class="nav-item"><a href="/account/my-info" class="nav-link">{{__("Hesabım")}}</a></li>
-	<li class="nav-item">
-		<a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __("Çıkış Yap")}} </a>
-	</li>
+	<li class="nav-item"><a href="/account/my-info" class="nav-link">{{__("Hesabım")}}<i class="fas fa-user ml-1 mr-1 pl-2"></i></a></li>
+	<li class="nav-item"><a href="/account/wishlist" class="nav-link">Takip Listem<i class="fas fa-list ml-1 mr-1 pl-2"></i></a></li>
+	<li class="nav-item"><a href="{{ route('checkout.cart') }}" class="nav-link">Sepetim
+		<i class="fas fa-shopping-cart"></i>		<span class="badge badge-primary rounded-circle">{{$cartItems->count()}}</span>
 
-	<li class="nav-item"><a href="/account/wishlist" class="nav-link">FAVORİLERİM</a></li>
-	<li class="nav-item"><a href="{{ route('checkout.cart') }}" class="nav-link">SEPET</a></li>
-	<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-        @csrf
-    </form>
+	</a></li>
 
-    <div class="mini-cart order-4">
 
-		<div class="mini-cart-icon">
-		<img src="/customertemplate/img/icons/cart-bag.svg" class="img-fluid" alt="" />
-		<span class="badge badge-primary rounded-circle">{{$cartItems->count()}}</span>
-		</div>
-		<div class="mini-cart-content">
-			<div class="inner-wrapper bg-light rounded">
-				@forelse($cartItems as $item)
-				<div class="mini-cart-product">
-					<div class="row">
-						<div class="col-7">
-							<h2 class="text-color-default font-secondary text-1 mt-3 mb-0">{{$item->name}}</h2>
-							<strong class="text-color-dark">
-							<span class="qty">{{$item->quantity}}x</span>
-							@if ($item->sale_price > 0)
-								<span class="product-price">{{ config('settings.currency_symbol') }} {{$item->sale_price}} </span>
-							@else
-								<span class="product-price">{{$item->price}}</span>
-							@endif
-							</strong>
-						</div>
-						<div class="col-5">
-							<div class="product-image">
-								<a href="#" class="btn btn-light btn-rounded justify-content-center align-items-center"><i class="fas fa-times"></i></a>
-								<img src="{{ asset('storage/'.$item->attributes->imagePath) }}" class="img-fluid rounded" alt="" />
-							</div>
-						</div>
-					</div>
-				</div>
-				@empty
-				{{__("Sepette ürün bulunmamaktadır")}}
-				@endforelse
-				<div class="mini-cart-total">
-					<div class="row">
-						<div class="col">
-							<strong class="text-color-dark">{{__('TOPLAM')}}:</strong>
-						</div>
-						<div class="col text-right">
-							<strong class="total-value text-color-dark">{{\Cart::getSubTotal()}}</strong>
-						</div>
-					</div>
-				</div>
-				<div class="mini-cart-actions">
-					<div class="row">
+<!-- 
+<div class="mini-cart order-4">
 
-						<div class="col p-1 text-center">
-							<a href="{{ route('checkout.cart') }}" class="btn btn-outline btn-default btn-primary btn-2">ALIŞ VERİŞİ TAMAMLA</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-		</div>
+<div class="mini-cart-icon">
+<img src="/customertemplate/img/icons/cart-bag.svg" class="img-fluid" alt="" />
+<span class="badge badge-primary rounded-circle">{{$cartItems->count()}}</span>
+</div>
+
+<div class="mini-cart-content">
+<div class="inner-wrapper bg-light rounded">
+@forelse($cartItems as $item)
+<div class="mini-cart-product">
+<div class="row">
+<div class="col-7">
+<h2 class="text-color-default font-secondary text-1 mt-4 mb-0">{{$item->name}}</h2>
+<strong class="text-color-dark">
+<span class="qty">{{$item->quantity}}x</span>
+@if ($item->sale_price > 0)
+<span class="product-price">{{ config('settings.currency_symbol') }} {{$item->sale_price}} </span>
 @else
-	<!-- <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">{{ __("Giriş / Kayıt")}}</a></li> -->
+<span class="product-price">{{$item->price}}</span>
+@endif
+</strong>
+</div>
+<div class="col-5">
+<div class="product-image">
+<img src="{{ asset('storage/'.$item->attributes->imagePath) }}" class="img-fluid rounded" alt="" />
+</div>
+</div>
+</div>
+</div>
+@empty
+{{__("Sepette ürün bulunmamaktadır")}}
+@endforelse
+<div class="mini-cart-total">
+<div class="row">
+<div class="col">
+<strong class="text-color-dark">{{__('TOPLAM')}}:</strong>
+</div>
+<div class="col text-right">
+<strong class="total-value text-color-dark">{{\Cart::getSubTotal()}}</strong>
+</div>
+</div>
+</div>
+<div class="mini-cart-actions">
+<div class="row text-center">
+<div class="col-md-6 p-1">
+</div>
+<div class="col-md-6 col-last p-1">
+<a href="{{ route('checkout.cart') }}" class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3">SEPETE GİT</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div> -->
+@else
+	 <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">{{ __("Giriş / Kayıt")}}</a></li> 
 @endif
 
 

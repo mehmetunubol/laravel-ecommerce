@@ -36,42 +36,39 @@
 											</thead> 
 											<tbody>
 												@forelse($cartItems as $item)
-												<tr class="cart-item">
-													<td class="product-remove">
-														<a href="{{ route('checkout.cart.remove', $item->id) }}"><i class="fas fa-times" aria-label="Remove"></i></a>
-													</td>
-													<td class="product-thumbnail">
-														<img src="{{ asset('storage/'.$item->attributes->imagePath) }}" class="img-fluid" width="67" alt="" />
-													</td>
-													<td class="product-name">
-														<a href="shop-product-detail-right-sidebar.html">{{ Str::words($item->name,20) }}</a>
-													</td>
-													<td class="product-attr">
-														@php 
-															$attrs = $item->attributes->selected_attributes
-														@endphp
-														@if( $attrs != null)
-														@foreach(array_keys($attrs) as $key)
-															<strong>{{ ucwords($key) }}: </strong> {{ $attrs[$key] }}
-														@endforeach
-														@endif
-													</td>
-													<td class="product-price">
-														<span class="unit-price">{{ config('settings.currency_symbol'). $item->price }}</span>
-													</td>
-													<td class="product-quantity">
-														<div class="quantity">
-															<a type="button" class="minus" href="/cart/decrementItemQuantity/{{ $item->id }}">-</a>
-															<input type="number" step="1" min="1" name="quantity" value="{{ $item->quantity }}" title="Qty" class="qty" size="2">
-															<a type="button" class="plus" href="/cart/incrementItemQuantity/{{ $item->id }}">+</a>
-															
-														</div>
-													</td>
-													<td class="product-subtotal">
-														<span class="sub-total"><strong>{{ config('settings.currency_symbol'). ($item->price*$item->quantity) }}</strong></span>
-													</td>
-												</tr>
+<tr class="cart-item border_bottom">
+
+<td class="product-remove"><a href="{{ route('checkout.cart.remove', $item->id) }}"><i class="fas fa-times" aria-label="Remove"></i></a></td>
+<td class="product-thumbnail"><img src="{{ asset('storage/'.$item->attributes->imagePath) }}" class="img-fluid" width="67" alt="" /></td>
+<td class="product-name"><a href="shop-product-detail-right-sidebar.html">{{ Str::words($item->name,20) }}</a></td>
+<td class="product-attr">
+@php 
+$attrs = $item->attributes->selected_attributes
+@endphp
+@if( $attrs != null)
+@foreach(array_keys($attrs) as $key)
+<strong>{{ ucwords($key) }}: </strong> {{ $attrs[$key] }}
+@endforeach
+@endif
+</td>
+
+<td class="product-price"><span class="unit-price">{{ config('settings.currency_symbol'). $item->price }}</span></td>
+<td class="product-quantity">
+
+<div class="quantity">
+<a type="button" class="minus" href="/cart/decrementItemQuantity/{{ $item->id }}">-</a>
+<input type="number" step="1" min="1" name="quantity" value="{{ $item->quantity }}" title="Qty" class="qty" size="2">
+<a type="button" class="plus" href="/cart/incrementItemQuantity/{{ $item->id }}">+</a>
+</div>
+</td>
+
+<td class="product-subtotal"><span class="sub-total"><strong>{{ config('settings.currency_symbol'). ($item->price*$item->quantity) }}</strong></span></td>
+			
+</tr>
+
 												<input type="hidden" name="id" value="{{$item->id}}">
+								
+
 												@empty
 												<p class="alert alert-warning">{{ __("Sepetin Boş") }}</p>
 
@@ -80,27 +77,36 @@
 
 
 
-												<tr class="border-bottom-0">
-													<td colspan="6" class="px-0">
-														<div class="row mx-0">
-															<div class="col-md-5 px-0 mb-3 mb-md-0">
-																<div class="input-group input-group-style-3 rounded">
-																	<!--
-																  	<input type="text" class="form-control bg-light-5 border-0" placeholder="İNDİRİM KODU..." aria-label="Enter Coupon Code">
-																  	<span class="input-group-btn bg-light-5 p-1">
-																    	<button class="btn btn-primary font-weight-semibold btn-h-3 rounded h-100" type="submit">{{__('UYGULA')}}</button>
-																  	</span>
-																  -->
-																</div>
-															</div>
-															
-															<div class="col-md-7 text-right px-0">
-																<a href="/" class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3">{{__('ALIŞVERİŞE DEVAM')}}</a>
-																<!--<button class="btn btn-dark btn-outline btn-rounded font-weight-bold btn-h-2 btn-v-3" type="submit">SEPETİ GÜNCELLE</button>-->
-															</div>
-														</div>
-													</td>
-												</tr>
+<tr class="border-bottom-0">
+<td colspan="6" class="px-0">
+<div class="row mx-0">
+<div class="col-md-5 px-0 mb-3 mb-md-0">
+
+<a href="/" class="btn btn-outline btn-default btn-primary btn-2 btn-icon-effect-1" target="_self">
+<span class="wrap">
+<i class="fa fa-chevron-left "></i><span>{{__('ALIŞVERİŞE DEVAM')}}</span>
+</span>
+</a>
+
+
+<div class="input-group input-group-style-3 rounded">
+
+<!--  HEDİYE ÇEKİ/KUPONU İÇİN TASARIM
+<input type="text" class="form-control bg-light-5 border-0" placeholder="İNDİRİM KODU..." aria-label="Enter Coupon Code">
+<span class="input-group-btn bg-light-5 p-1">
+<button class="btn btn-primary font-weight-semibold btn-h-3 rounded h-100" type="submit">{{__('UYGULA')}}</button>
+</span>
+-->
+</div>
+</div>
+
+<div class="col-md-7 text-right px-0">
+
+<!--<button class="btn btn-dark btn-outline btn-rounded font-weight-bold btn-h-2 btn-v-3" type="submit">SEPETİ GÜNCELLE</button>-->
+</div>
+</div>
+</td>
+</tr>
 											</tbody>
 										</table>
 									</div>
@@ -198,8 +204,17 @@
 
 
 			<tr class="border-bottom-0">
-			<td><span class="cart-total-label">{{__('Sepetinizi onaylıyorsanız adres seçimine geçiniz')}} --></span></td>
-			<td><a href="{{route('checkout.index')}}" class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3">{{__('ADRES SEÇİMİ')}}</a></td>
+			<td><span class="cart-total-label">{{__('Sepetinizi onaylıyorsanız adres seçimine geçiniz')}} 	<i class="lnr lnr-arrow-right"></i></span></td>
+			<td>
+
+<a href="{{route('checkout.index')}}" class="btn btn-outline btn-default btn-primary btn-2 btn-icon-effect-1" target="_self">
+<span class="wrap">
+<span>{{__('ADRES SEÇİMİ')}}</span><i class="fa fa-chevron-right "></i>
+</span>
+</a>
+
+
+			</td>
 			</tr>
 
 

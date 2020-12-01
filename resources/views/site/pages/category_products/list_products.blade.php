@@ -8,43 +8,53 @@
 <div class="{{$wholeClassName}}">
 
 	<div class="row align-items-center justify-content-between mb-4">
-		<!-- Button is removed. Sidebar will be active for all pages.
-		<div class="col-auto mb-1 mb-sm-0">
-			<button class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2" onclick="window.location.href = `{{Request::url()}}?sb`;">
-				ÜRÜNLERİ FİLTRELE
-			</button>
-		</div>
-		-->
-		<div class="col-auto mb-3 mb-sm-0">
-			<form method="post">
-				<div class="custom-select-1">
-					<select class="form-control border" onchange="window.location.href = `{{Request::url()}}?order=${value}`;">
-						<option value="" disabled selected>{{__('SIRALAMA')}}</option>
-						<option value="price-desc">{{__('Fiyat: Azalan')}}</option>
-						<option value="price-asc">{{__('Fiyat: Artan')}}</option>
-						<option value="id-asc">{{__('Tarih: Önce Eski')}}</option>
-						<option value="id-desc">{{__('Tarih: Önce Yeni')}}</option>
-						<option value="order-desc">{{__('En çok tercih edilen')}}</option>
-					</select>
-				</div>
-			</form>
 
+<!-- Button is removed. Sidebar will be active for all pages.
+<div class="col-auto mb-1 mb-sm-0">
+<button class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2" onclick="window.location.href = `{{Request::url()}}?sb`;">
+ÜRÜNLERİ FİLTRELE
+</button>
+</div>
+-->
 
+<div class="col-auto mb-3 mb-sm-0">
+<form method="post">
+<div class="custom-select-1">
+<select class="form-control border" onchange="window.location.href = `{{Request::url()}}?order=${value}`;">
+<option value="" disabled selected>{{__('SIRALAMA')}}</option>
+<option value="price-desc">{{__('Fiyat: Azalan')}}</option>
+<option value="price-asc">{{__('Fiyat: Artan')}}</option>
+<option value="id-asc">{{__('Tarih: Önce Eski')}}</option>
+<option value="id-desc">{{__('Tarih: Önce Yeni')}}</option>
+<option value="order-desc">{{__('En çok tercih edilen')}}</option>
+</select>
+</div>
+</form>
+</div>
 
+<div class="col-auto">
+<div class="d-flex align-items-center">
+<span>UYGULANAN FİLTRE</span>
+</div>
+</div>
 
+<div class="col-auto">
+<div class="d-flex align-items-center">
+<span>FİLTREYİ SIFIRLA</span>
+</div>
+</div>
 
+<div class="col-auto">
+<div class="d-flex align-items-center">
+<span>1-9 / 60 Ürün</span>
+</div>
+</div>
 
-		</div>
-		<div class="col-auto">
-			<div class="d-flex align-items-center">
-				<span>Listelenen: 1-9 / 60 Ürün</span>
-			</div>
-		</div>
 	</div>
-
-	<div class="row">
+	<hr class="mt-5 mb-4">
+	<div class="row ">
 		@forelse($category->products as $product)
-			<div class="col-sm-6 col-md-3 p-0 isotope-item clothes">
+			<div class="col-sm-6 col-md-3 p-0 isotope-item clothes mb-4">
 				<div class="product portfolio-item portfolio-item-style-2">
 					<div class="image-frame image-frame-style-1 image-frame-effect-2 mb-3">
 						<span
@@ -63,7 +73,7 @@
 					</div>
 					<div class="product-info d-flex flex-column flex-lg-row justify-content-between">
 						<div class="product-info-title">
-							<h3 class="text-color-default text-2 line-height-1 mb-1">
+							<h3 class="text-color-default text-2 line-height-2 mb-1">
 								<a href="{{ route('product.show', $product->slug) }}"> {{ $product->name }}
 								</a>
 							</h3>
@@ -97,7 +107,7 @@
 
 
 
-	<hr class="mt-5 mb-4">
+
 	{{ $category->products->links()}}
 	<!--<div class="row align-items-center justify-content-between mb-2 pb-2">
 		<div class="col-auto mb-3 mb-sm-0">

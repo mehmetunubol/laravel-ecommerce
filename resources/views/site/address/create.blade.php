@@ -18,6 +18,16 @@
 										<input type="text" value="{{ old('address_name') }}" class="form-control line-height-1 bg-light-5" name="address_name" id="address_name" required>
 									</div>
 								</div>
+
+<!-- YENİ ALAN -->
+								<div class="form-row">
+									<div class="form-group col">
+										<label class="text-color-dark font-weight-semibold" for="phone">{{__("FİRMA ADI")}}:</label>
+										<input type="text" value="{{ old('phone') }}" class="form-control line-height-1 bg-light-5" name="phone" id="phone" required>
+									</div>
+								</div>
+<!-- //YENİ ALAN -->
+
 								<div class="form-row">
 									<div class="form-group col-md-6">
 										<label class="text-color-dark font-weight-semibold" for="first_name">{{__("ADINIZ")}}:</label>
@@ -32,7 +42,7 @@
 								<div class="form-row">
 									<div class="form-group col">
 										<label class="text-color-dark font-weight-semibold" for="address">{{__("ADRES")}}:</label>
-										<input type="text" value="{{ old('address') }}" class="form-control line-height-1 bg-light-5" name="address" id="address" required>
+										<textarea type="text" value="{{ old('address') }}" class="form-control line-height-1 bg-light-5" rows="3" cols="20"  name="address" id="address" required></textarea>
 									</div>
 								</div>
 								<div class="form-row">
@@ -41,6 +51,17 @@
 										<input type="text" value="{{ old('phone') }}" class="form-control line-height-1 bg-light-5" name="phone" id="phone" required>
 									</div>
 								</div>
+
+
+<!-- YENİ ALAN -->
+								<div class="form-row">
+									<div class="form-group col">
+										<label class="text-color-dark font-weight-semibold" for="phone">{{__("CEP TELEFONU")}}:</label>
+										<input type="text" value="{{ old('phone') }}" class="form-control line-height-1 bg-light-5" name="phone" id="phone" required>
+									</div>
+								</div>
+<!-- //YENİ ALAN -->
+
 								<div class="form-row">
 									<div class="form-group col-md-6">
 										<label class="text-color-dark font-weight-semibold" for="district">{{__("İLÇE")}}:</label>
@@ -52,10 +73,24 @@
 									</div>
 								</div>
 
+
+<!-- YENİ ALAN -->
+								<div class="form-row">
+									<div class="form-group col-md-6">
+										<label class="text-color-dark font-weight-semibold" for="district">{{__("VERGİ DAİRESİ")}}:</label>
+										<input type="text" value="{{ old('district') }}" class="form-control line-height-1 bg-light-5" name="district" id="district" required>
+									</div>
+									<div class="form-group col-md-6">
+										<label class="text-color-dark font-weight-semibold" for="city">{{__("VERGİ NUMARASI")}}:</label>
+										<input type="text" value="{{ old('city') }}" class="form-control line-height-1 bg-light-5" name="city" id="city" required>
+									</div>
+								</div>
+
+<!-- //YENİ ALAN -->								
 								<div class="form-row">
 									<div class="form-group col">
 										<label class="text-color-dark font-weight-semibold" for="country">{{__("ÜLKE")}}:</label>
-										<select id="country" name="country">
+											<select id="country" name="country"  class="form-control bg-light-5 text-color-dark border-0" aria-label="ÜLKE" required="">
 											@include('site.address.countriesDropdownList')
 										</select>
 									</div>

@@ -6,7 +6,7 @@
 		<div class="container">
 			<div class="row">
 				@include("site.pages.account.account_page_sidebar")
-				<div class="col-md-8 col-lg-9 order-2 order-md-2 mb-5 mb-md-0">
+				<div class="col-md-8 col-lg-9 order-2 order-md-2 mb-5 mt-5 mb-md-0">
 					<form id="" action="{{ route('address.update') }}" method="post">
 						@csrf
 						<div class="row mb-5">
@@ -55,7 +55,7 @@
 								<div class="form-row">
 									<div class="form-group col">
 										<label class="text-color-dark font-weight-semibold" for="country">{{__("ÜLKE")}}:</label>
-										<select id="country" name="country">
+										<select id="country" name="country"  class="form-control bg-light-5 text-color-dark border-0" aria-label="ÜLKE" required="">
 											@include('site.address.countriesDropdownList')
 										</select>
 									</div>
