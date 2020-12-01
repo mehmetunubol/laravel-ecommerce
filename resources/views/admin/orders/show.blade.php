@@ -28,7 +28,7 @@
                         </div>
                         <div class="col-4">
                             <b>{{ __("Sipariş Numarası") }}:</b> {{ $order->order_number }}<br>
-                            <b>{{ __("Toplam") }}:</b> {{ config('settings.currency_symbol') }}{{ round($order->grand_total, 2) }}<br>
+                            <b>{{ __("Toplam") }}:</b> {{ round($order->grand_total, 2) }} {{ config('settings.currency_symbol') }}<br>
                             <b>{{ __("Ödeme Methodu") }}:</b> {{ $order->payment_method }}<br>
                             <b>{{ __("Ödeme Durumu") }}:</b> {{ $order->payment_status == 1 ?  __("Tamamlandı") : __("Tamamlanmadı") }}<br>
                             <b>{{ __("Sipariş Durumu") }}:</b> {{ __($order->status) }}<br>
@@ -53,7 +53,7 @@
                                             <td>{{ $item->product->name }}</td>
                                             <td>{{ $item->product->sku }}</td>
                                             <td>{{ $item->quantity }}</td>
-                                            <td>{{ config('settings.currency_symbol') }}{{ round($item->price, 2) }}</td>
+                                            <td>{{ round($item->price, 2) }}{{ config('settings.currency_symbol') }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

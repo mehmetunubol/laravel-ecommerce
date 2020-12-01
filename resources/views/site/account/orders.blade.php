@@ -40,7 +40,7 @@
 </td>
 
 <td class="product-price">
-<span class="product-quantity">{{ config('settings.currency_symbol') }}{{ round($order->grand_total, 2) }}</span>
+<span class="product-quantity">{{ round($order->grand_total, 2) }} {{ config('settings.currency_symbol') }}</span>
 </td>
 
 

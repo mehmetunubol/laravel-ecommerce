@@ -38,7 +38,7 @@
                                             <span class="badge badge-info">{{ $category->name }}</span>
                                         @endforeach
                                     </td>
-                                    <td>{{ config('settings.currency_symbol') }}{{ $product->price }}</td>
+                                    <td>{{ $product->price }}{{ config('settings.currency_symbol') }}</td>
                                     <td class="text-center">
                                         @if ($product->status == 1)
                                             <span class="badge badge-success">{{ __("Aktif") }}</span>

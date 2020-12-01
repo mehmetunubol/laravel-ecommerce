@@ -52,7 +52,7 @@ $attrs = $item->attributes->selected_attributes
 @endif
 </td>
 
-<td class="product-price"><span class="unit-price">{{ config('settings.currency_symbol'). $item->price }}</span></td>
+<td class="product-price"><span class="unit-price"> {{$item->price }} {{ config('settings.currency_symbol')}}</span></td>
 <td class="product-quantity">
 
 <div class="quantity">
@@ -62,7 +62,7 @@ $attrs = $item->attributes->selected_attributes
 </div>
 </td>
 
-<td class="product-subtotal"><span class="sub-total"><strong>{{ config('settings.currency_symbol'). ($item->price*$item->quantity) }}</strong></span></td>
+<td class="product-subtotal"><span class="sub-total"><strong>{{($item->price*$item->quantity) }}{{ config('settings.currency_symbol')}}</strong></span></td>
 			
 </tr>
 
@@ -199,7 +199,7 @@ $attrs = $item->attributes->selected_attributes
 			-->
 			<tr>
 			<td><span class="cart-total-label">{{__('TOPLAM')}}</span></td>
-			<td><span class="cart-total-value text-color-primary text-4">{{\Cart::getSubTotal()}}</span></td>
+			<td><span class="cart-total-value text-color-primary text-4">{{\Cart::getSubTotal()}}{{ config('settings.currency_symbol')}}</span></td>
 			</tr>
 
 

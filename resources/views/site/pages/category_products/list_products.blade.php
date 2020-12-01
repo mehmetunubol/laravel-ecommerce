@@ -80,18 +80,18 @@
 							@if(isset($product->sale_price))
 								<span class="price font-primary text-4">
 									<strong class="text-color-dark">
-										{{ config('settings.currency_symbol').$product->sale_price }}
+										{{ $product->sale_price }} {{ config('settings.currency_symbol')}} 
 									</strong>
 								</span>
 								<span class="old-price font-primary text-line-trough text-1">
 									<strong class="text-color-default">
-										{{ config('settings.currency_symbol').$product->price }}
+										{{ $product->price }} {{ config('settings.currency_symbol')}} 
 									</strong>
 								</span>
 							@else
 								<span class="price font-primary text-4">
 									<strong class="text-color-dark">
-										{{ config('settings.currency_symbol').$product->price }}
+										{{ $product->price }} {{ config('settings.currency_symbol')}} 
 									</strong>
 								</span>
 							@endif
