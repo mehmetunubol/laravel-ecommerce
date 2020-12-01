@@ -5,7 +5,11 @@
 	<div role="main" class="main">
 		<div class="container">
 
-
+	<div class="row p-1 m-3 ">
+<h2 class="font-weight-bold text-6 mb-3">ÜRÜN KATEGORİLERİMİZ</h2>
+<div class="col">
+</div>
+</div>
 
 
 			<ul class="nav sort-source mb-3" data-sort-id="portfolio" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
@@ -24,22 +28,16 @@
 			<ul class="portfolio-list portfolio-list-style-2 sort-destination" data-sort-id="portfolio">
 
 			@forelse ($categories as $category)
-			<li class="col-sm-6 col-md-4 p-0 mb-3 isotope-item  ">
-				<div class="portfolio-item hover-effect text-center">
+			<li class="col-sm-6 col-md-3 p-0 mb-3 isotope-item  ">
+				<div class="portfolio-item text-center">
 					<a href="/category/{{$category->slug}}">
-						<span class="image-frame image-frame-style-1 image-frame-effect-1 mb-3 ">
+						<span class="image-frame image-frame-style-1 box-shadow-effect-1   mb-3 ">
 						<span class="image-frame-wrapper">
 						<img src="{{ asset('storage/'.$category->image) }}" class="img-fluid" alt="">
-						<span class="image-frame-inner-border"></span>
-						<span class="image-frame-action image-frame-action-effect-1 image-frame-action-sm">
-						<span class="image-frame-action-icon">
-						<i class="lnr lnr-link text-color-light"></i>
-						</span>
-						</span>
-						</span>
+		
 						</span>
 					</a>
-						<h2 class="font-weight-bolder line-height-4 text-4 mb-0">
+						<h2 class="font-weight-bold line-height-4 text-4 mb-0">
 					<a href="/category/{{$category->slug}}" class="link-color-dark">{{$category->name}}</a>
 					</h2>
 				</div>

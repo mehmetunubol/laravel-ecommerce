@@ -1,5 +1,4 @@
 <aside class="sidebar col-md-4 col-lg-3 order-1 order-md-1">
-	</br></br>
 <div class="accordion accordion-default accordion-toggle accordion-style-1 accordion-style-1-no-borders-divider accordion-style-1-no-expand mb-4" role="tablist">
 
 <div class="card">
@@ -19,18 +18,9 @@
 				<li class="mb-2"><a href="/account/terms-of-sale" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('Satış Sözleşmesi')}}</a></li>
 				<li class="mb-2"><a href="/account/cookie_policy" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('Çerez Politikası')}}</a></li>
 				<li class="mb-2"><a href="/account/privacy-policy" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('Gizlilik Koşulları')}}</a></li>
-				<li class="mb-2"><a href="/account/size-guide" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('Renk ve Ölçü Rehberi')}}</a></li>
-				<li class="mb-2"><a href="/about_us" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('Hakkımızda')}}</a></li>
-				<li class="mb-2"><a href=" {{ route('contact.index') }} " class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('İletişim')}}</a></li>
-
-
-	<li class="mb-2">
-
-		<a href="{{ route('logout') }}" class="font-weight-semibold" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{ __("Çıkış Yap")}} </a>
-
-		<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;"> @csrf </form>
-	</li>
-
+				<li class="mb-2"><a href="/account/size-guide" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('Beden Rehberi')}}</a></li>
+				<li class="mb-2"><a href="/account/about-us" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('Hakkımızda')}}</a></li>
+				<li class="mb-2"><a href="/account/contact" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('İletişim')}}</a></li>
 		</ul>
 </div>
 </div>

@@ -149,9 +149,9 @@
                                             <input type="hidden" name="productId" value="{{ $product->id }}">
                                             <input type="hidden" name="price" id="finalPrice"
                                                 value="{{ $product->sale_price != '' ? $product->sale_price : $product->price }}">
-                                                <a class="add-to-cart btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-h-2 btn-fs-2 ml-3" href="{{ route('contact.index') }}">{{ __("SİPARİŞ VER")}}</a>
-                                            <!--<button type="submit"
-                                                class="add-to-cart btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-h-2 btn-fs-2 ml-3">{{ __("Sepete Ekle") }}</button>-->
+                                                <!-- <a class="add-to-cart btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-h-2 btn-fs-2 ml-3" href="{{ route('contact.index') }}">{{ __("SİPARİŞ VER")}}</a> -->
+                                            <button type="submit"
+                                                class="add-to-cart btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-h-2 btn-fs-2 ml-3">{{ __("Sepete Ekle") }}</button>
                                         </div>
                                     </div>
                                 </div>
@@ -288,3 +288,4 @@
     </script>
 @endpush
 @stop
+

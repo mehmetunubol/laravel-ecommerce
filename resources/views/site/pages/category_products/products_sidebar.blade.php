@@ -40,7 +40,7 @@
 							<input type="text" value="" data-msg-required="." maxlength="20" class="form-control"
 								name="priceHigh" id="priceHigh" placeholder="" required>
 							<button type="submit"
-								class="btn btn-primary btn-h-1 font-weight-bold rounded-0">FILTER</button>
+								class="btn btn-primary btn-h-1 font-weight-bold rounded-0">FİLTRELE</button>
 						</form>
 					</div>
 				</div>

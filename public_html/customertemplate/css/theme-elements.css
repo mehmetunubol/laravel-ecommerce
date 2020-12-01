@@ -106,7 +106,7 @@ a {
 }
 /* line 25, ../../theme/css/gui/_typography.scss */
 a:hover, a:focus {
-  color: #CCC;
+  color: #06a1dd;
   text-decoration: none;
 }
 /* line 32, ../../theme/css/gui/_typography.scss */
@@ -639,11 +639,11 @@ p.drop-caps.drop-caps-style-2:first-letter {
 }
 /* line 7, ../../theme/css/gui/_navs.scss */
 .nav > .nav-item > .nav-link.active {
-  color: #CCC;
+  color: #06a1dd;
 }
 /* line 10, ../../theme/css/gui/_navs.scss */
 .nav > .nav-item > .nav-link:hover, .nav > .nav-item > .nav-link:focus, .nav > .nav-item > .nav-link:active {
-  color: #CCC;
+  color: #06a1dd;
 }
 /* line 20, ../../theme/css/gui/_navs.scss */
 .nav.no-skin .nav-item .nav-link {
@@ -2101,7 +2101,7 @@ label.error#captcha-error {
 }
 /* line 285, ../../theme/css/gui/_images.scss */
 .image-frame.image-frame-style-1 .image-frame-wrapper.image-frame-wrapper-overlay-light:after {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(108,117,125,0.3);
 }
 /* line 290, ../../theme/css/gui/_images.scss */
 .image-frame.image-frame-style-1 .image-frame-wrapper.image-frame-wrapper-justify-left {
@@ -2266,7 +2266,7 @@ label.error#captcha-error {
 }
 /* line 477, ../../theme/css/gui/_images.scss */
 .hover-effect-3d .image-frame-style-1:hover {
-  box-shadow: 0px 17px 20px -15px rgba(28, 31, 33, 0.6);
+  box-shadow: 0px 17px 20px -15px rgba(28, 31, 33, 0.5);
 }
 /* line 481, ../../theme/css/gui/_images.scss */
 .hover-effect-3d .image-frame-style-1 .image-frame-action .image-frame-action-icon {
@@ -4903,12 +4903,12 @@ html.sticky-wrapper-active .sticky-wrapper.sticky-wrapper-effect-1 .sticky-body 
 
 /* line 686, ../../theme/css/gui/_misc.scss */
 .hover-effect-2 {
-  opacity: 1;
+   opacity: 0.9;
   transition: ease opacity 300ms;
 }
 /* line 689, ../../theme/css/gui/_misc.scss */
 .hover-effect-2:hover {
-  opacity: 0.9;
+   opacity: 1;
 }
 
 /* line 695, ../../theme/css/gui/_misc.scss */
@@ -6202,7 +6202,7 @@ hr.divider-size-5 {
 }
 /* line 7, ../../theme/css/gui/_cards.scss */
 .card .card-body {
-  padding: 2.2rem;
+  padding: 1rem;
 }
 /* line 9, ../../theme/css/gui/_cards.scss */
 .card .card-body.card-body-flex-0 {
