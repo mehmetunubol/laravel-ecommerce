@@ -27,10 +27,10 @@
 										<div class="product-info-title">
 											<h3 class="text-color-default text-2 line-height-1 mb-1"><a href="product.php">{{ $sProduct->name }}</a></h3>
 											@if(isset($sProduct->sale_price))
-												<span class="price font-primary text-4"><strong class="text-color-dark">{{ config('settings.currency_symbol').$sProduct->sale_price }}</strong></span>
-												<span class="old-price font-primary text-line-trough text-1"><strong class="text-color-default">{{ config('settings.currency_symbol').$sProduct->price }}</strong></span>
+												<span class="price font-primary text-4"><strong class="text-color-dark">{{$sProduct->sale_price }}{{ config('settings.currency_symbol')}}</strong></span>
+												<span class="old-price font-primary text-line-trough text-1"><strong class="text-color-default">{{$sProduct->price }}{{ config('settings.currency_symbol')}}</strong></span>
 											@else
-												<span class="price font-primary text-4"><strong class="text-color-dark">{{ config('settings.currency_symbol').$sProduct->price }}</strong></span>
+												<span class="price font-primary text-4"><strong class="text-color-dark">{{$sProduct->price }}{{ config('settings.currency_symbol')}}</strong></span>
 											@endif
 										</div>
 

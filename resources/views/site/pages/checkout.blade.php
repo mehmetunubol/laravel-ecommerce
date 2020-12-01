@@ -114,7 +114,7 @@
 <div class="row">
 <div class="col-md-12">
 <div class="card">
-<header class="card-header"><h4 class="card-title mt-2">Toplam Tutar: {{ config('settings.currency_symbol') }}{{ \Cart::getSubTotal() }} </h4></header>
+<header class="card-header"><h4 class="card-title mt-2">Toplam Tutar: {{ \Cart::getSubTotal() }} {{ config('settings.currency_symbol') }}</h4></header>
 <article class="card-body">
 
 <dl class="dlist-align">

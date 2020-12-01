@@ -67,7 +67,7 @@
 <strong class="text-color-dark">
 <span class="qty">{{$item->quantity}}x</span>
 @if ($item->sale_price > 0)
-<span class="product-price">{{ config('settings.currency_symbol') }} {{$item->sale_price}} </span>
+<span class="product-price"> {{$item->sale_price}} {{ config('settings.currency_symbol') }}</span>
 @else
 <span class="product-price">{{$item->price}}</span>
 @endif

@@ -58,18 +58,18 @@
                     @if($product->sale_price > 0)
                         <span class="price font-primary text-6">
                             <strong class="text-color-dark">
-                                <span class="currency">{{ config('settings.currency_symbol') }}</span><span class="num" id="productPrice">{{ $product->sale_price }}</span>
+                                <span class="num" id="productPrice">{{ $product->sale_price }}</span><span class="currency">{{ config('settings.currency_symbol') }}</span>
                             </strong>
                         </span>
                         <span id="productPriceOld" class="old-price font-primary text-line-trough text-4">
                             <strong class="text-color-default">
-                                <span class="currency">{{ config('settings.currency_symbol') }}</span><span class="num">{{ $product->price }}</span>
+                                <span class="num">{{ $product->price }}</span><span class="currency">{{ config('settings.currency_symbol') }}</span>
                             </strong>
                         </span>
                     @else
                         <span class="price font-primary text-6">
                             <strong class="text-color-dark">
-                                <span class="currency">{{ config('settings.currency_symbol') }}</span><span class="num" id="productPrice">{{ $product->price }}</span>
+                                <span class="num" id="productPrice">{{ $product->price }}</span><span class="currency">{{ config('settings.currency_symbol') }}</span>
                             </strong>
                         </span>
 
