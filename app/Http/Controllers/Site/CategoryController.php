@@ -128,6 +128,7 @@ class CategoryController extends Controller
                     ->products->merge($products);
             }
         }
+
         $category->products = (new Collection($products))->paginate(15);
         // End of "Multiple Category Request" implementation
 
@@ -139,7 +140,11 @@ class CategoryController extends Controller
         foreach ($products as $p) {
             array_push($applicable_attributes, $p->attributes()->pluck('attribute_id'));
         }
-        $attributes = $this->attributeRepository->findAttributesbyIds($applicable_attributes);
+        if ( count($applicable_attributes) > 0)
+        {
+            $attributes = $this->attributeRepository->findAttributesbyIds($applicable_attributes);
+        }
+        
 
         return view('site.pages.category_products.category', compact('category', 'categories', 'attributes', 'is_sidebar_on', 'appliedFilter'));
     }
