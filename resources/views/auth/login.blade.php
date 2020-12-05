@@ -66,7 +66,7 @@
 				<div class="border rounded h-100 p-5">
 					<span class="top-sub-title text-color-primary">{{__('HESABINIZ YOKSA KAYIT OLUN')}}</span>
 
-					<h2 class="font-weight-bold text-4 mb-4">hızlı kayıt</h2>
+					<h2 class="font-weight-bold text-4 mb-4">Hızlı Kayıt</h2>
 
 					<form action="{{ route('register') }}" id="frmRegister" role="form" method="post">
 						@csrf
@@ -131,19 +131,19 @@
                                 @enderror
 							</div>
 						</div>
-						<div class="form-row">
+						<div hidden class="form-row">
 							<div class="form-group col mb-2">
 								<label for="frmAddress">{{ __("Adres") }}</label>
 								<input type="text" value="{{ old('address') }}" maxlength="100" class="form-control bg-light-5 rounded border-0 text-1 " name="address" id="frmAddress">
 							</div>
 						</div>	
-						<div class="form-row mb-5">
+						<div hidden class="form-row mb-5">
 							<div class="form-group col-lg-6">
 								<label for="frmCity">{{ __("Şehir") }}</label>
 								<input type="text" value="{{ old('city') }}" maxlength="100" class="form-control bg-light-5 rounded border-0 text-1 " name="city" id="frmCity">
 							</div>
 												
-							<div class="form-group col-lg-6">
+							<div hidden class="form-group col-lg-6">
 								<label for="frmCountry">{{ __("Ülke") }}</label>
 								<select id="frmCountry" class="form-control bg-light-5 rounded border-0 text-1" name="country">
                                     <option value="Turkey" selected="">Türkiye</option>
