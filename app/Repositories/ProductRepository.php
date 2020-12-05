@@ -189,7 +189,7 @@ class ProductRepository extends BaseRepository implements ProductContract
                                                     return $query->whereIn('category_id', $categoryIds);
                                                 })
                             ->where('id', "!=" ,$product->id)
-                            ->limit(5)
+                            ->limit(4)
                             ->get();
         return $similarProducts;
     }

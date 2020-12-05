@@ -35,11 +35,15 @@ class ProductComposer
          */
         $recentlyViewed = array();
         $recentlyViewedIds = session()->get('products.recently_viewed');
+        $i = 0;
+        $limit = 4;
         if (isset($recentlyViewedIds)) {
             $recentlyViewedIds = array_filter($recentlyViewedIds, 
-                                                        function ($p) use($view) {
-                                                            return $p != $view->product->id;
-                                            });
+                                                function ($p) use($view, $i, $limit) {
+                                                    $i++;
+                                                    return ($p != $view->product->id && ($i - 1 < $limit) );
+                                                }
+                                            );
             $recentlyViewed = $this->productRepository->findProductsByIds($recentlyViewedIds);
         }
 
