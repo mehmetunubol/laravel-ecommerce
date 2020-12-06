@@ -36,11 +36,12 @@ class AddressController extends Controller
     	$this->validate($request, [
             'first_name' =>  'required',
             'last_name'  =>  'required',
+            'firm_name' => 'required',
             'address'	 =>  'required',
             'district'	     => 'required',
             'city'       => 'required',
             'country'    => 'required',
-            'phone'      => 'required',
+            'cell_phone'      => 'required',
         ]);
         $params = $request->except('_token');
         $address = $this->addressRepository->createAddress($params);
@@ -63,11 +64,12 @@ class AddressController extends Controller
     	$this->validate($request, [
             'first_name' =>  'required',
             'last_name'  =>  'required',
-            'address'	 =>  'required',
-            'district'	     => 'required',
+            'firm_name' => 'required',
+            'address'    =>  'required',
+            'district'       => 'required',
             'city'       => 'required',
             'country'    => 'required',
-            'phone'      => 'required',
+            'cell_phone'      => 'required',
         ]);
         $params = $request->except('_token');
 

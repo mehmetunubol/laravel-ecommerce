@@ -47,10 +47,10 @@
                                     </div>
                                     <h3 class="text-color-default text-2 mb-0"><a href="{{ route('product.show', $product->slug) }}">{{ $product->name }} </a></h3>
 									@if(isset($product->sale_price))
-										<span class="price font-primary text-4"><strong class="text-color-dark">{{ $product->sale_price }}</strong></span>
-										<span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">{{ $product->price }}</strong></span>
+										<span class="price font-primary text-4"><strong class="text-color-dark">{{ $product->sale_price }} {{ config('settings.currency_symbol') }}</strong></span>
+										<span class="old-price font-primary text-line-trough text-2"><strong class="text-color-default">{{ $product->price }} {{ config('settings.currency_symbol') }}</strong></span>
 									@else
-										<span class="price font-primary text-4"><strong class="text-color-dark">{{ $product->price }}</strong></span>
+										<span class="price font-primary text-4"><strong class="text-color-dark">{{ $product->price }} {{ config('settings.currency_symbol') }}</strong></span>
 									@endif
                                 </div>
                             </div>
