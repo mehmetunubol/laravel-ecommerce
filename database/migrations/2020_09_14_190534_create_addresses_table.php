@@ -17,6 +17,7 @@ class CreateAddressesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->index();
             $table->string('address_name');
+            $table->string('firm_name');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('address',255);
@@ -24,6 +25,9 @@ class CreateAddressesTable extends Migration
             $table->string('city');
             $table->string('country');
             $table->string('phone');
+            $table->string('cell_phone');
+            $table->string('tax_administration');
+            $table->string('tax_no');
             $table->boolean('is_default')->default('0');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

@@ -22,8 +22,8 @@
 <!-- YENİ ALAN -->
 								<div class="form-row">
 									<div class="form-group col">
-										<label class="text-color-dark font-weight-semibold" for="phone">{{__("FİRMA ADI")}}:</label>
-										<input type="text" value="{{ old('phone') }}" class="form-control line-height-1 bg-light-5" name="phone" id="phone" required>
+										<label class="text-color-dark font-weight-semibold" for="firm_name">{{__("FİRMA ADI")}}:</label>
+										<input type="text" value="{{ old('firm_name') }}" class="form-control line-height-1 bg-light-5" name="firm_name" id="firm_name" required>
 									</div>
 								</div>
 <!-- //YENİ ALAN -->
@@ -56,8 +56,8 @@
 <!-- YENİ ALAN -->
 								<div class="form-row">
 									<div class="form-group col">
-										<label class="text-color-dark font-weight-semibold" for="phone">{{__("CEP TELEFONU")}}:</label>
-										<input type="text" value="{{ old('phone') }}" class="form-control line-height-1 bg-light-5" name="phone" id="phone" required>
+										<label class="text-color-dark font-weight-semibold" for="cell_phone">{{__("CEP TELEFONU")}}:</label>
+										<input type="text" value="{{ old('cell_phone') }}" class="form-control line-height-1 bg-light-5" name="cell_phone" id="cell_phone" required>
 									</div>
 								</div>
 <!-- //YENİ ALAN -->
@@ -77,12 +77,12 @@
 <!-- YENİ ALAN -->
 								<div class="form-row">
 									<div class="form-group col-md-6">
-										<label class="text-color-dark font-weight-semibold" for="district">{{__("VERGİ DAİRESİ")}}:</label>
-										<input type="text" value="{{ old('district') }}" class="form-control line-height-1 bg-light-5" name="district" id="district" required>
+										<label class="text-color-dark font-weight-semibold" for="tax_administration">{{__("VERGİ DAİRESİ")}}:</label>
+										<input type="text" value="{{ old('tax_administration') }}" class="form-control line-height-1 bg-light-5" name="tax_administration" id="tax_administration" required>
 									</div>
 									<div class="form-group col-md-6">
-										<label class="text-color-dark font-weight-semibold" for="city">{{__("VERGİ NUMARASI")}}:</label>
-										<input type="text" value="{{ old('city') }}" class="form-control line-height-1 bg-light-5" name="city" id="city" required>
+										<label class="text-color-dark font-weight-semibold" for="tax_no">{{__("VERGİ NUMARASI")}}:</label>
+										<input type="text" value="{{ old('tax_no') }}" class="form-control line-height-1 bg-light-5" name="tax_no" id="tax_no" required>
 									</div>
 								</div>
 

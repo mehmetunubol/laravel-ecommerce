@@ -27,6 +27,7 @@ class CategoryController extends Controller
     }
     public function show(Request $request, $slug)
     {
+        $appliedFilter = "";
         $order = null;
         if ($request->has('order'))
         {
@@ -66,6 +67,7 @@ class CategoryController extends Controller
                     array_push($final_filter, ['price', '<', $price]);
                 }
             }
+            $appliedFilter = $request->input('priceLow').config('settings.currency_symbol')." - ".$request->input('priceHigh').config('settings.currency_symbol');
         }
         // End of Price Filter Implementation
 
@@ -93,6 +95,7 @@ class CategoryController extends Controller
                 $values = explode('-', $filter);
                 foreach ($values as $value) {
                     array_push($attr_filters, strval($value));
+                    $appliedFilter .= " " . $value;
                 }
                 array_push($final_filter, $attr_filters);
             }
@@ -105,10 +108,15 @@ class CategoryController extends Controller
         */
         $cat_slugs = explode('+', $slug);
         $category = $this->categoryRepository->findBySlugWithOrderFilter($cat_slugs[0], $order, $final_filter);
-        
+
         if( !$category )
         {
             return redirect()->back()->with('warning_message', 'Kategori bulunamadı.');
+        }
+
+        if ( $appliedFilter === "" ) 
+        {
+            $appliedFilter = $category->name;
         }
 
         $products = $category->products;
@@ -120,6 +128,7 @@ class CategoryController extends Controller
                     ->products->merge($products);
             }
         }
+
         $category->products = (new Collection($products))->paginate(15);
         // End of "Multiple Category Request" implementation
 
@@ -131,8 +140,12 @@ class CategoryController extends Controller
         foreach ($products as $p) {
             array_push($applicable_attributes, $p->attributes()->pluck('attribute_id'));
         }
-        $attributes = $this->attributeRepository->findAttributesbyIds($applicable_attributes);
+        if ( count($applicable_attributes) > 0)
+        {
+            $attributes = $this->attributeRepository->findAttributesbyIds($applicable_attributes);
+        }
+        
 
-        return view('site.pages.category_products.category', compact('category', 'categories', 'attributes', 'is_sidebar_on'));
+        return view('site.pages.category_products.category', compact('category', 'categories', 'attributes', 'is_sidebar_on', 'appliedFilter'));
     }
 }

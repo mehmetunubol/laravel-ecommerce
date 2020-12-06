@@ -14,8 +14,14 @@
 								<h2 class="font-weight-bold mb-3">{{__("ADRES DÜZENLE")}}</h2>
 								<div class="form-row">
 									<div class="form-group col">
-										<label class="text-color-dark font-weight-semibold" for="address">{{__("ADRES ADI")}}:</label>
+										<label class="text-color-dark font-weight-semibold" for="address_name">{{__("ADRES ADI")}}:</label>
 										<input type="text" value="{{ $address->address_name }}" class="form-control line-height-1 bg-light-5" name="address_name" id="address_name" required>
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col">
+										<label class="text-color-dark font-weight-semibold" for="firm_name">{{__("FİRMA ADI")}}:</label>
+										<input type="text" value="{{ $address->firm_name }}" class="form-control line-height-1 bg-light-5" name="firm_name" id="firm_name" >
 									</div>
 								</div>
 								<div class="form-row">
@@ -38,7 +44,13 @@
 								<div class="form-row">
 									<div class="form-group col">
 										<label class="text-color-dark font-weight-semibold" for="phone">{{__("TELEFON")}}:</label>
-										<input type="text" value="{{ $address->phone }}" class="form-control line-height-1 bg-light-5" name="phone" id="phone" required>
+										<input type="text" value="{{ $address->phone }}" class="form-control line-height-1 bg-light-5" name="phone" id="phone">
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col">
+										<label class="text-color-dark font-weight-semibold" for="cell_phone">{{__("CEP TELEFON")}}:</label>
+										<input type="text" value="{{ $address->cell_phone }}" class="form-control line-height-1 bg-light-5" name="cell_phone" id="cell_phone" required>
 									</div>
 								</div>
 								<div class="form-row">
@@ -51,7 +63,18 @@
 										<input type="text" value="{{ $address->city }}" class="form-control line-height-1 bg-light-5" name="city" id="city" required>
 									</div>
 								</div>
-
+								<div class="form-row">
+									<div class="form-group col">
+										<label class="text-color-dark font-weight-semibold" for="tax_administration">{{__("VERGİ DAİRESİ")}}:</label>
+										<input type="text" value="{{ $address->tax_administration }}" class="form-control line-height-1 bg-light-5" name="tax_administration" id="tax_administration" >
+									</div>
+								</div>
+								<div class="form-row">
+									<div class="form-group col">
+										<label class="text-color-dark font-weight-semibold" for="tax_no">{{__("VERGİ NUMARASI")}}:</label>
+										<input type="text" value="{{ $address->tax_no }}" class="form-control line-height-1 bg-light-5" name="tax_no" id="tax_no" >
+									</div>
+								</div>
 								<div class="form-row">
 									<div class="form-group col">
 										<label class="text-color-dark font-weight-semibold" for="country">{{__("ÜLKE")}}:</label>

@@ -34,13 +34,13 @@
 
 <div class="col-auto">
 <div class="d-flex align-items-center">
-<span>UYGULANAN FİLTRE</span>
+<span> {{ $appliedFilter }} </span>
 </div>
 </div>
 
 <div class="col-auto">
 <div class="d-flex align-items-center">
-<span>FİLTREYİ SIFIRLA</span>
+<a href="{{ route('category.show', $category->slug) }}"><span>FİLTREYİ SIFIRLA</span></a>
 </div>
 </div>
 
