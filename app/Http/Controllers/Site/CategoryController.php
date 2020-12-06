@@ -140,6 +140,7 @@ class CategoryController extends Controller
         foreach ($products as $p) {
             array_push($applicable_attributes, $p->attributes()->pluck('attribute_id'));
         }
+        $attributes = [];
         if ( count($applicable_attributes) > 0)
         {
             $attributes = $this->attributeRepository->findAttributesbyIds($applicable_attributes);
