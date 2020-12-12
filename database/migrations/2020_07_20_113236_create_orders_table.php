@@ -18,6 +18,11 @@ class CreateOrdersTable extends Migration
             $table->string('order_number')->unique();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('delivery_address');
+            $table->foreign('delivery_address')->references('id')->on('addresses');
+            $table->unsignedBigInteger('billing_address');
+            $table->foreign('billing_address')->references('id')->on('addresses');
+
             /*
                 * Description of the Order States:
                     * pending           : initial state, means customer went to checkout state.
@@ -31,19 +36,13 @@ class CreateOrdersTable extends Migration
                     * returned          : order is returned back.
             */
             $table->enum('status', ['pending', 'wait_payment', 'wait_pay_confirm', 'wait_ship', 'declined', 'shipping','completed', 'return_shipping', 'returned'])->default('pending');
+
             $table->decimal('grand_total', 20, 2);
             $table->unsignedInteger('item_count');
 
             $table->boolean('payment_status')->default(1);
             $table->string('payment_method')->nullable();
 
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->text('address');
-            $table->string('city');
-            $table->string('country');
-            $table->string('post_code');
-            $table->string('phone_number');
             $table->text('notes')->nullable();
 
             $table->timestamps();

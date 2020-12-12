@@ -35,11 +35,10 @@ class CheckoutController extends Controller
             'form1_accept'     =>  'required',
             'form2_accept'     =>  'required'
         ]);
-		return view('site.payment.credit-card.checkout-pay')->with('total', \Cart::getSubTotal());
 
-        $payment = $request->payment_method;
-        $order = $this->orderRepository->storeOrderDetails($request->all());
+        $params['notes'] = "";
 
+        $order = $this->orderRepository->storeOrderDetails($params);
         if (!isset($order)) {
             return redirect()->back()->with('message','Order not placed');
         }
@@ -47,11 +46,12 @@ class CheckoutController extends Controller
 		
         
         // Redirect to Payment Screen
+        $payment = $params['payment_method'];
         if($payment == 'paytr')
         {
             $token = $this->paytr->getToken($order);
             return view('site.payment.paytr.index', compact('token'));
-        } else if ( $payment == 'akbank') // TODO: need to set it on frontend
+        } else if ( $payment == 'akbank')
         {
             return view('site.payment.credit-card.checkout-pay')->with('total', \Cart::getSubTotal());
         }
