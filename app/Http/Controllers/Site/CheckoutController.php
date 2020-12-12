@@ -26,19 +26,16 @@ class CheckoutController extends Controller
 
     public function placeOrder(Request $request)
     {
-		return view('site.payment.credit-card.checkout-pay')->with('total', \Cart::getSubTotal());
 
 		
-        $this->validate($request, [
-            'first_name'    =>  'required',
-            'last_name'     =>  'required',
-            'address'     =>  'required',
-            'city'          =>  'required',
-            'country'       =>  'required',
-            
-            'phone_number'  =>  'required',
-            'payment_method'       =>  'required'
+        $params = $this->validate($request, [
+            'delivery_address'    =>  'required',
+            'payment_method'       =>  'required',
+            'billing_address'     =>  'required',
+            'form1_accept'     =>  'required',
+            'form2_accept'     =>  'required'
         ]);
+		return view('site.payment.credit-card.checkout-pay')->with('total', \Cart::getSubTotal());
 
         $payment = $request->payment_method;
         $order = $this->orderRepository->storeOrderDetails($request->all());
@@ -48,12 +45,17 @@ class CheckoutController extends Controller
         }
         $order = $this->orderRepository->setOrderState(['number'=> $order->order_number, 'state' => 'wait_payment']);
 		
-        // Redirect to Payment
+        
+        // Redirect to Payment Screen
         if($payment == 'paytr')
         {
             $token = $this->paytr->getToken($order);
             return view('site.payment.paytr.index', compact('token'));
+        } else if ( $payment == 'akbank') // TODO: need to set it on frontend
+        {
+            return view('site.payment.credit-card.checkout-pay')->with('total', \Cart::getSubTotal());
         }
+
         return redirect()->back()->with('message','Not Found : Payment method');
     }
 
