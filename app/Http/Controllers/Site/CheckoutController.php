@@ -20,13 +20,15 @@ class CheckoutController extends Controller
 
     public function getCheckout()
     {
-        $addresses = auth()->user()->addresses;
-        
+        $addresses = auth()->user()->addresses;        
         return view('site.pages.checkout', compact('addresses'));
     }
 
     public function placeOrder(Request $request)
     {
+		return view('site.payment.credit-card.checkout-pay')->with('total', \Cart::getSubTotal());
+
+		
         $this->validate($request, [
             'first_name'    =>  'required',
             'last_name'     =>  'required',
@@ -37,6 +39,7 @@ class CheckoutController extends Controller
             'phone_number'  =>  'required',
             'payment_method'       =>  'required'
         ]);
+
         $payment = $request->payment_method;
         $order = $this->orderRepository->storeOrderDetails($request->all());
 
@@ -44,6 +47,7 @@ class CheckoutController extends Controller
             return redirect()->back()->with('message','Order not placed');
         }
         $order = $this->orderRepository->setOrderState(['number'=> $order->order_number, 'state' => 'wait_payment']);
+		
         // Redirect to Payment
         if($payment == 'paytr')
         {

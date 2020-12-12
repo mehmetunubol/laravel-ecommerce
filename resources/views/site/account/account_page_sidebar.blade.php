@@ -15,7 +15,7 @@
 				<li class="mb-2"><a href="/account/wishlist" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('Takip Listem')}}</a></li>
 				<li class="mb-2"><a href="/addresses" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('Adreslerim')}}</a></li>
 				<li class="mb-2"><a href="/account/my-info" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('Kişisel Bilgilerim')}}</a></li>
-				<li class="mb-2"><a href="/account/return-policy" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('İade ve İptal Koşulları')}}</a></li>
+				<li class="mb-2"><a href="/account/return-policy" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('Kargo ve İade Koşulları')}}</a></li>
 				<li class="mb-2"><a href="/account/terms-of-sale" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('Satış Sözleşmesi')}}</a></li>
 				<li class="mb-2"><a href="/account/cookie_policy" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('Çerez Politikası')}}</a></li>
 				<li class="mb-2"><a href="/account/privacy-policy" class="font-weight-semibold"><i class="fas fa-angle-right ml-1 mr-1 pr-2"></i>{{__('Gizlilik Koşulları')}}</a></li>

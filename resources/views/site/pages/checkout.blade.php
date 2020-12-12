@@ -138,11 +138,12 @@ Satış Sözleşmesi'ni okudum ve kabul ediyorum.
 <div class="row">
 
 <div class="col-6 order-1">
-<button class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3" type="submit">ADRESLERİ DÜZENLE</button>
+<a class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3" href="{{ route('addresses') }}">ADRESLERİ DÜZENLE</a>
 </div>
 
 <div class="col-6 col-last  order-2">
 <button class="btn btn-primary btn-rounded font-weight-bold btn-h-2 btn-v-3" type="submit">SİPARİŞİ TAMAMLA</button>
+
 </div>
 
 </div>
