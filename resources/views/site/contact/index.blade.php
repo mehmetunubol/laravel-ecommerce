@@ -27,7 +27,7 @@
                                             <h3 class="font-weight-bold text-4 mb-0">Fabrika</h3>
                                         </div>
                                         <p>
-                                            Egepleks Yapı ve Elek.Malz.San.Tic.Ltd.Şti.
+                                            Egepleks Plastik Sanayi Tic. A.Ş.
                                             10002 Sokak No:15 A.O.S.B. Çiğli / İZMİR</p>
                                     </div>
                                 </div>

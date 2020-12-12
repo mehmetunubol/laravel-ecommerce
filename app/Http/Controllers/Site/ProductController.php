@@ -57,7 +57,6 @@ class ProductController extends Controller
 
     public function addToCart(Request $request)
     {
-        
         $product = $this->productRepository->findProductById($request->input('productId'));        
         $product->imagePath = $product->images->first()->full;
 

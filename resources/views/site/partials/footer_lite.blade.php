@@ -10,25 +10,26 @@
 <div class="row">
 <div class="featured-box col-lg-4">
 <a class="text-decoration-none" href="#">
-<i class="lnr lnr-cart text-color-dark"></i>
+<i class="lnr lnr-bus text-color-dark"></i>
 <h2 class="text-2 pt-1 mb-0 text-color-dark">TÜM TÜRKİYE ÜCRETSİZ KARGO</h2>
-<p>Hızlı üretim ve sorunsuz teslim</p>
+<p><a class="text-decoration-none text-color-dark" href="http://www.egepleks.com/account/return-policy">Hızlı üretim ve sorunsuz teslim</a></p>
 </a>
 </div>
 <div class="featured-box col-lg-4">
 <a class="text-decoration-none" href="#">
 <i class="lnr lnr-lock text-color-dark"></i>
 <h2 class="text-2 pt-1 mb-0 text-color-dark">GÜVENLİ ALIŞVERİŞ</h2>
-<p>128 bi̇t encryption (SSL) i̇le güvendesi̇ni̇z</p>
+<p>128 bi̇t encryption (SSL)</p>
 </a>
 </div>
+
 <div class="featured-box col-lg-4">
 <a class="text-decoration-none" href="http://www.egepleks.com/contact">
-<i class="lnr lnr-envelope text-color-dark"></i>
-<h2 class="text-2 pt-1 mb-0 text-color-dark">SORULARINIZ İÇİN BİZE ULAŞIN</h2>
-<p>Soru ve özel projeleri̇ni̇z i̇çi̇n burdayiz</p>
+<i class="lnr lnr-credit-card text-color-dark"></i>
+<p><img src="/customertemplate/img/visa.png" class="img-responsive " /></p>
 </a>
 </div>
+
 </div>
 </div>
 
@@ -102,7 +103,7 @@ mation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="
 <ul class="list list-icon list-unstyled">
 
 
-<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="http://www.egepleks.com/account/return-policy">İADE VE İPTAL KOŞULLARI</a></li>
+<li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="http://www.egepleks.com/account/return-policy">KARGO VE İADE KOŞULLARI</a></li>
 <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="http://www.egepleks.com/account/terms-of-sale">SATIŞ SÖZLEŞMESİ</a></li>
 <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="http://www.egepleks.com/account/cookie_policy">ÇEREZ POLİTİKASI</a></li>
 <li class="mb-2"><i class="fas fa-angle-right mr-2 ml-1"></i> <a href="http://www.egepleks.com/account/privacy-policy">GİZLİLİK POLİTİKASI</a></li>

@@ -120,7 +120,7 @@
                                                         <dt>{{ $attribute->name }}: </dt>
                                                         <dd>
                                                             <select class="form-control form-control-sm option" style="width:180px;" name="{{ mb_strtolower($attribute->name ) }}">
-                                                                <option data-price="0" value="0"> {{ $attribute->name }} seç</option>
+                                                                <option data-price="0" value="-1"> {{ $attribute->name }} seç</option>
                                                                 @foreach($product->attributes as $attributeValue)
                                                                     @if ($attributeValue->attribute_id == $attribute->id && $attributeValue->quantity > 0)
                                                                         <option
