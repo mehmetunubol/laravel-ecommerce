@@ -25,9 +25,7 @@ class CheckoutController extends Controller
     }
 
     public function placeOrder(Request $request)
-    {
-
-		
+    {		
         $params = $this->validate($request, [
             'delivery_address'    =>  'required',
             'payment_method'       =>  'required',
@@ -53,7 +51,7 @@ class CheckoutController extends Controller
             return view('site.payment.paytr.index', compact('token'));
         } else if ( $payment == 'akbank')
         {
-            return view('site.payment.credit-card.checkout-pay')->with('total', \Cart::getSubTotal());
+            return view('site.payment.akbank.index', compact('order'));
         }
 
         return redirect()->back()->with('message','Not Found : Payment method');

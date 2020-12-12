@@ -23,7 +23,7 @@ class Order extends Model
         return $this->hasMany(OrderItem::class);
     }
 
-    public function shippingAddress()
+    public function deliveryAddress()
     {
         return $this->belongsTo(Address::class, 'delivery_address');
     }

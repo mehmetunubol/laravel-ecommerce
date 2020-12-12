@@ -56,6 +56,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/checkout/payment/paytr/succeeded', 'Payment\PaytrController@successfulAttempt')->name('checkout.payment.paytr.succeeded');
     Route::get('/checkout/payment/paytr/failed', 'Payment\PaytrController@failedAttempt')->name('checkout.payment.paytr.failed');
     Route::post('/checkout/payment/paytr/result', 'Payment\PaytrController@paymentResult')->name('checkout.payment.paytr.result');
+
+    Route::post('/checkout/payment/akbank/pay', 'Payment\AkbankController@paymentRequest')->name('checkout.payment.akbank.pay');
+
+    
     Route::get('/addresses', 'Site\AddressController@addresses')->name('addresses');
     Route::get('/address/create', 'Site\AddressController@create')->name('address.create');
     Route::post('/address/store', 'Site\AddressController@store')->name('address.store');
