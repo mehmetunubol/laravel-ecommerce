@@ -29,9 +29,9 @@ class AkbankController extends Controller
             'cvc_code'      =>  'required',
         ]);
         $order = $this->orderRepository->findOrderById($params['order']);
-        dd($params, $order);
+
         //handle the request params fields all...
-        $this->akbank->sendRequest();
+        $this->akbank->sendRequest($params, $order);
 
     }
 
