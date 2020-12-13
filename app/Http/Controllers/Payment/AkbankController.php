@@ -31,8 +31,14 @@ class AkbankController extends Controller
         $order = $this->orderRepository->findOrderById($params['order']);
 
         //handle the request params fields all...
-        $this->akbank->sendRequest($params, $order);
+        $result = $this->akbank->sendRequest($params, $order);
 
+        if( $result )
+        {
+            return view('site.payment.akbank.payment-success');
+        }
+
+        return redirect()->back();
     }
 
 }

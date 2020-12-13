@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Http;
 
 class AkbankService
 {
-    private $postUrl = "https://entegrasyon.asseco-see.com.tr/fim/api";
-    private $terminalId = "AKTESTAPI";
-    private $password = "*****";
-    private $clientId = "*****";
-    private $mode = "****";
+    private $postUrl = "https://www.sanalakpos.com/fim/api";
+    private $terminalId = "egeadmin";
+    private $password = "BOSS1302";
+    private $clientId = "102184559";
+    private $mode = "P";
     private $transactionType = "Auth";
     private $currencyCode = "949";
     private $userId;
@@ -22,9 +22,13 @@ class AkbankService
     {
         $this->order = $order;
         $this->params = $params;
-        dd($this->getPostOptions());
-        $response = Http::post($this->postUrl, $this->getPostOptions());
-        return $response;
+
+        $client = new \GuzzleHttp\Client();
+        $response = $client->post($this->postUrl, $this->getPostOptions());
+        
+        $result = $this->getPaymentResultStatus($response);
+
+        return $result;
     }
 
     protected function getPostOptions()
@@ -50,7 +54,7 @@ class AkbankService
             'Expires' => $this->params['end_month'] . '/'. $this->params['end_year'],
             'Cvv2Val' => $this->params['cvc_code'],
             'Total' => $this->order['grand_total'],
-            'UserId' => $this->clientId,
+            //'UserId' => $this->clientId,
             'Currency' => $this->currencyCode,
             'email' => $this->order->user->email,
             //'Taksit' => $this->order['installment'],
@@ -79,8 +83,27 @@ class AkbankService
     *   Returns true if payment is successful
     *   else returns false.
     */
-    public function getPaymentResultStatus($post, $order)
+    public function getPaymentResultStatus($response)
     {
+        if ($response->getStatusCode() == 200)
+        {
+            $response_data = $response->getBody()->getContents();
+
+            $response_xml = simplexml_load_string($response_data);
+
+            $response_json = json_encode($response_xml);
+
+            $response_array = json_decode($response_json,TRUE);
+
+            if($response_array['ProcReturnCode'] === "00")
+            {
+                return true;
+            }
+
+            return false; // TODO: handleErrorCode() function
+        }
+
+        return false;
 
     }
 }
