@@ -18,7 +18,7 @@
                     @endif
                 </div>
             </div>
-            <form id="" action="{{ route('checkout.place.order') }}" method="post">
+            <form id="" action="{{ route('checkout.place.order') }}" method="get">
                 @csrf
                 <div class="row show-grid">
                     <!-- SEPET ADRES SEÇİMİ -->

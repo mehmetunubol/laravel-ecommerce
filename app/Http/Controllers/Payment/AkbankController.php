@@ -33,12 +33,17 @@ class AkbankController extends Controller
         //handle the request params fields all...
         $result = $this->akbank->sendRequest($params, $order);
 
-        if( $result )
+        if($result === -1)
+        {
+            redirect()->back()->with('error_message', "Ödeme sunucuları ile bağlantı kurulamıyor. Daha sonra tekrar deneyin.");
+        }
+        
+        if( $result === true )
         {
             return view('site.payment.akbank.payment-success');
         }
 
-        return redirect()->back();
+        return redirect()->back()->with('error_message', $result);
     }
 
 }

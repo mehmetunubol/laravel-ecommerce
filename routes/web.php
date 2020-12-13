@@ -50,7 +50,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 	
 	
     Route::get('/checkout', 'Site\CheckoutController@getCheckout')->name('checkout.index');
-    Route::post('/checkout/order', 'Site\CheckoutController@placeOrder')->name('checkout.place.order');
+    Route::get('/checkout/order', 'Site\CheckoutController@placeOrder')->name('checkout.place.order');
     Route::get('/checkout/payment/complete', 'Site\CheckoutController@complete')->name('checkout.payment.complete');
 
     Route::get('/checkout/payment/paytr/succeeded', 'Payment\PaytrController@successfulAttempt')->name('checkout.payment.paytr.succeeded');

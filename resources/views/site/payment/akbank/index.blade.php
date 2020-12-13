@@ -6,7 +6,15 @@
         <div class="container">
 
             <div class="container">
-
+                @if (Session::has('message'))
+                    <p class="alert alert-success">{{ Session::get('message') }}</p>
+                @elseif(Session::has('error'))
+                    <p class="alert alert-danger">{{ Session::get('error') }}</p>
+                @elseif(Session::has('errors'))
+                    @foreach (Session::get('errors')->all() as $error)
+                        <p class="alert alert-danger">{{ $error }}</p>
+                    @endforeach
+                @endif
 
                 <div class="col-md-8 col-lg-9 order-2 order-md-2 mb-5 mb-md-0">
                     <form id="" action="{{ route('checkout.payment.akbank.pay') }}" method="post">

@@ -100,10 +100,10 @@ class AkbankService
                 return true;
             }
 
-            return false; // TODO: handleErrorCode() function
+            else return $response_array['ErrMsg']; // TODO: handleErrorCode() function
         }
 
-        return false;
+        return -1;
 
     }
 }
