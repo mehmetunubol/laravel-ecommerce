@@ -18,11 +18,6 @@
                   </div>
                </form>
             </div>
-            <div class="col-auto">
-               <div class="d-flex align-items-center">
-                  <span>Listelenen: 1-9 / 60 Ürün</span>
-               </div>
-            </div>
          </div>
          <ul class="nav sort-source mb-3" data-sort-id="products" data-option-key="filter" data-plugin-options="{'layoutMode': 'fitRows', 'filter': '*'}">
          </ul>
