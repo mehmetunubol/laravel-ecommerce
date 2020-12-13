@@ -25,35 +25,35 @@ class CheckoutController extends Controller
     }
 
     public function placeOrder(Request $request)
-    {
-		return view('site.payment.credit-card.checkout-pay')->with('total', \Cart::getSubTotal());
-
-		
-        $this->validate($request, [
-            'first_name'    =>  'required',
-            'last_name'     =>  'required',
-            'address'     =>  'required',
-            'city'          =>  'required',
-            'country'       =>  'required',
-            
-            'phone_number'  =>  'required',
-            'payment_method'       =>  'required'
+    {		
+        $params = $this->validate($request, [
+            'delivery_address'    =>  'required',
+            'payment_method'       =>  'required',
+            'billing_address'     =>  'required',
+            'form1_accept'     =>  'required',
+            'form2_accept'     =>  'required'
         ]);
 
-        $payment = $request->payment_method;
-        $order = $this->orderRepository->storeOrderDetails($request->all());
+        $params['notes'] = "";
 
+        $order = $this->orderRepository->storeOrderDetails($params);
         if (!isset($order)) {
             return redirect()->back()->with('message','Order not placed');
         }
         $order = $this->orderRepository->setOrderState(['number'=> $order->order_number, 'state' => 'wait_payment']);
 		
-        // Redirect to Payment
+        
+        // Redirect to Payment Screen
+        $payment = $params['payment_method'];
         if($payment == 'paytr')
         {
             $token = $this->paytr->getToken($order);
             return view('site.payment.paytr.index', compact('token'));
+        } else if ( $payment == 'akbank')
+        {
+            return view('site.payment.akbank.index', compact('order'));
         }
+
         return redirect()->back()->with('message','Not Found : Payment method');
     }
 

@@ -10,7 +10,7 @@ class Order extends Model
 
     protected $fillable = [
         'order_number', 'user_id', 'status', 'grand_total', 'item_count', 'payment_status', 'payment_method',
-        'first_name', 'last_name', 'address', 'city', 'country', 'post_code', 'phone_number', 'notes'
+         'delivery_address', 'billing_address', 'notes'
     ];
 
     public function user()
@@ -21,5 +21,15 @@ class Order extends Model
     public function items()
     {
         return $this->hasMany(OrderItem::class);
+    }
+
+    public function deliveryAddress()
+    {
+        return $this->belongsTo(Address::class, 'delivery_address');
+    }
+
+    public function billingAddress()
+    {
+        return $this->belongsTo(Address::class, 'billing_address');
     }
 }
