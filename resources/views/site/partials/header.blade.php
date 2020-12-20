@@ -139,8 +139,7 @@
 
 
 <div class="header-search-expanded">
-<form method="POST" action="{{ route('sitesearch.product') }}">
-	@csrf
+<form method="GET" action="{{ route('sitesearch.product') }}">
 	<div class="input-group bg-light border">
 		<input type="text" class="form-control text-4" name="search" placeholder="{{__('Sitede aramak için buraya yazın')}}" aria-label="arama kısmı">
 		<span class="input-group-btn">

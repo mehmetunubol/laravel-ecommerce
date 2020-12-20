@@ -46,7 +46,6 @@
 
 <div class="col-auto">
 <div class="d-flex align-items-center">
-<span>1-9 / 60 Ürün</span>
 </div>
 </div>
 

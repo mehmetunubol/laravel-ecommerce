@@ -35,7 +35,7 @@ Route::get('/category/{slug}', 'Site\CategoryController@show')->name('category.s
 Route::get('/product/{slug}', 'Site\ProductController@show')->name('product.show');
 Route::post('/product/add/cart', 'Site\ProductController@addToCart')->name('product.add.cart');
 
-Route::post('/sitesearch/product', 'Site\SiteSearchController@searchProducts')->name('sitesearch.product');
+Route::get('/sitesearch/product', 'Site\SiteSearchController@searchProducts')->name('sitesearch.product');
 
 Route::get('/cart', 'Site\CartController@getCart')->name('checkout.cart');
 Route::get('/cart/incrementItemQuantity/{id}', 'Site\CartController@incrementItemQuantity')->name('cart.incrementItemQuantity');
