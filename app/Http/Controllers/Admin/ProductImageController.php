@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Traits\UploadAble;
+use Illuminate\Http\UploadedFile;
 use App\Models\ProductImage;
 use Illuminate\Http\Request;
 use App\Contracts\ProductContract;
 use App\Http\Controllers\Controller;
+use Intervention\Image\ImageManagerStatic;
 
 class ProductImageController extends Controller
 {
