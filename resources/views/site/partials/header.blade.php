@@ -43,10 +43,12 @@
 
 	<li class="nav-item"><a href="/account/my-info" class="nav-link">{{__("Hesabım")}}<i class="fas fa-user ml-1 mr-1 pl-2"></i></a></li>
 	<li class="nav-item"><a href="/account/wishlist" class="nav-link">Takip Listem<i class="fas fa-list ml-1 mr-1 pl-2"></i></a></li>
-	<li class="nav-item"><a href="{{ route('checkout.cart') }}" class="nav-link">Sepetim
-		<i class="fas fa-shopping-cart"></i>		<span class="badge badge-primary rounded-circle">{{$cartItems->count()}}</span>
-
-	</a></li>
+	<li class="nav-item">
+		<a href="{{ route('checkout.cart') }}" class="nav-link">Sepetim
+			<i class="fas fa-shopping-cart"></i>		
+			<span class="badge badge-primary rounded-circle">{{$cartItems->count()}}</span>
+		</a>
+	</li>
 
 
 <!-- 
@@ -106,7 +108,13 @@
 </div>
 </div> -->
 @else
-	 <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">{{ __("Giriş / Kayıt")}}</a></li> 
+	<li class="nav-item">
+		<a href="{{ route('checkout.cart') }}" class="nav-link">Sepetim
+			<i class="fas fa-shopping-cart"></i>
+			<span class="badge badge-primary rounded-circle">{{$cartItems->count()}}</span>
+		</a>
+	</li>
+	<li class="nav-item"><a href="{{ route('login') }}" class="nav-link">{{ __("Giriş / Kayıt")}}</a></li> 
 @endif
 
 
