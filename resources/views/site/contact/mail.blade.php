@@ -1,1 +1,2 @@
-{{$mailData}}
+REQUEST FORM
+{{printr($mailData)}}
