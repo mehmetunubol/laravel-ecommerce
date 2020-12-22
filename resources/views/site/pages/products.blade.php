@@ -59,32 +59,9 @@
             </div>
          </div>
          <hr class="mt-5 mb-4">
-         <div class="row align-items-center justify-content-between mb-2 pb-2">
-            <div class="col-auto mb-3 mb-sm-0">
-               <span>Listelenen: 1-9 / 60 Ürün</span>
-            </div>
-            <div class="col-auto">
-               <nav aria-label="Page navigation example">
-                  <ul class="pagination mb-0">
-                     <li class="page-item">
-                        <a class="page-link prev" href="#" aria-label="Previous">
-                        <span><i class="fas fa-angle-left" aria-label="Previous"></i></span>
-                        </a>
-                     </li>
-                     <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                     <li class="page-item"><a class="page-link" href="#">2</a></li>
-                     <li class="page-item"><a class="page-link" href="#">3</a></li>
-                     <li class="page-item">...</li>
-                     <li class="page-item"><a class="page-link" href="#">15</a></li>
-                     <li class="page-item">
-                        <a class="page-link next" href="#" aria-label="Next">
-                        <span><i class="fas fa-angle-right" aria-label="Next"></i></span>
-                        </a>
-                     </li>
-                  </ul>
-               </nav>
-            </div>
-         </div>
+         
+         {{ $products->links()}}
+
       </div>
     </div>
       @include("site.sections.our_catalogue")

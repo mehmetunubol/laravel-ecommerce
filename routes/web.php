@@ -24,6 +24,7 @@ Route::view('/about_us', 'site.about_us');
 
 Route::get('/contact', 'Site\ContactController@index')->name('contact.index');
 Route::post('/contact', 'Site\ContactController@submit')->name('contact.submit');
+Route::get('/requestform', 'Site\ContactController@formIndex')->name('requestform.index');
 
 Route::get('/sitepages/{slug}', 'Site\SitePageController@show')->name('sitepages.show');
 Route::get('/sitepages', 'Site\SitePageController@getAllPages')->name('sitepages');
@@ -34,7 +35,7 @@ Route::get('/category/{slug}', 'Site\CategoryController@show')->name('category.s
 Route::get('/product/{slug}', 'Site\ProductController@show')->name('product.show');
 Route::post('/product/add/cart', 'Site\ProductController@addToCart')->name('product.add.cart');
 
-Route::post('/sitesearch/product', 'Site\SiteSearchController@searchProducts')->name('sitesearch.product');
+Route::get('/sitesearch/product', 'Site\SiteSearchController@searchProducts')->name('sitesearch.product');
 
 Route::get('/cart', 'Site\CartController@getCart')->name('checkout.cart');
 Route::get('/cart/incrementItemQuantity/{id}', 'Site\CartController@incrementItemQuantity')->name('cart.incrementItemQuantity');

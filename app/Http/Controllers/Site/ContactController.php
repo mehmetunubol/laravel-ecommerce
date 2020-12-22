@@ -24,6 +24,11 @@ class ContactController extends Controller
         return view('site.contact.index');
     }
 
+    public function formIndex()
+    {
+        return view('site.requestform.index');
+    }
+
     public function submit(Request $request)
     {
         $this->validate($request, [
@@ -34,5 +39,6 @@ class ContactController extends Controller
         ]);
         $mailData = $request->except('_token');
         Mail::to(config('settings.info_email_address'))->send(new ContactMail($mailData));
+        return view('site.contact.index');
     }
 }
