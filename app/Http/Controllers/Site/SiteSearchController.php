@@ -24,8 +24,14 @@ class SiteSearchController extends Controller
         if ( !isset($searchText) ) {
             return redirect()->back();
         }
-        $products = $this->productRepository->searchAllProducts($searchText)->paginate(15);
-
+        $order = null;
+        if ($request->has('order'))
+        {
+            $orderByArray = explode('-', $request->input('order'));
+            $order['column'] = $orderByArray[0];
+            $order['type'] = $orderByArray[1];
+        }
+        $products = $this->productRepository->searchAllProducts($searchText, $order)->paginate(15);
         $products->appends(['search' => $searchText]);
         
         $resultIds = $products->map(function ($p) {

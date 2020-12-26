@@ -70,5 +70,5 @@ interface ProductContract
      * @param $search
      * @return products
      */
-    public function searchAllProducts($search = null);
+    public function searchAllProducts($search = null, $order);
 }
