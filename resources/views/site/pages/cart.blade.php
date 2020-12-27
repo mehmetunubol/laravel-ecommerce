@@ -40,7 +40,7 @@
 
 <td class="product-remove"><a href="{{ route('checkout.cart.remove', $item->id) }}"><i class="fas fa-times" aria-label="Remove"></i></a></td>
 <td class="product-thumbnail"><img src="{{ asset('storage/'.$item->attributes->imagePath) }}" class="img-fluid" width="67" alt="" /></td>
-<td class="product-name"><a href="shop-product-detail-right-sidebar.html">{{ Str::words($item->name,20) }}</a></td>
+<td class="product-name"><a href="/product/{{$item->attributes->slug}}">{{ Str::words($item->name,20) }}</a></td>
 <td class="product-attr">
 @php 
 $attrs = $item->attributes->selected_attributes

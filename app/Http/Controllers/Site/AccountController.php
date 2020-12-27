@@ -6,15 +6,19 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Contracts\UserContract;
 use App\Contracts\WishlistContract;
+use App\Contracts\OrderContract;
 
 class AccountController extends Controller
 {
     protected $userRepository;
+    protected $wishlistRepository;
+    protected $orderRepository;
 
-    public function __construct(UserContract $userRepository, WishlistContract $wishlistRepository)
+    public function __construct(UserContract $userRepository, WishlistContract $wishlistRepository, OrderContract $orderRepository)
     {
         $this->userRepository = $userRepository;
         $this->wishlistRepository = $wishlistRepository;
+        $this->orderRepository = $orderRepository;
     }
 
     public function getAccount($page_name)
@@ -33,6 +37,13 @@ class AccountController extends Controller
         return view('site.pages.account.orders', compact('orders'));
     }
     
+    public function getOrderItems($id)
+    {
+        $order = $this->orderRepository->findOrderById($id);
+        $items = $order->items;
+        return view('site.account.orderItems', compact('items'));
+    }
+
     public function getProfile()
     {
         $user = $this->userRepository->findUserById(auth()->user()->id);

@@ -101,6 +101,7 @@ Route::group(['prefix'  =>  'admin'], function () {
             Route::get('/{order}/show', 'Admin\OrderController@show')->name('admin.orders.show');
             Route::get('/{order}/edit', 'Admin\OrderController@edit')->name('admin.orders.edit');
             Route::post('/update', 'Admin\OrderController@update')->name('admin.orders.update');
+            Route::get('/order/transfers', 'Admin\OrderController@transfers')->name('admin.orders.transfers');
          });
         
          Route::group(['prefix' => 'users'], function () {

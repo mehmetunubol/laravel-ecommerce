@@ -61,6 +61,11 @@ class OrderRepository extends BaseRepository implements OrderContract
         return $this->all($columns, $order, $sort);
     }
 
+    public function listTransfers()
+    {
+        return Order::where('payment_method', 'transfer')->get();
+    }
+
     public function findOrderByNumber($orderNumber)
     {
         return Order::where('order_number', $orderNumber)->first();

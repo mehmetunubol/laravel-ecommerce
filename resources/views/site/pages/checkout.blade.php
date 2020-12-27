@@ -90,9 +90,9 @@
                                             <input id="payment_method" name="payment_method" type="radio" class="" value="akbank" checked> KREDİ KARTI</input>
                                         </dl>
 
-                                        <!--<dl class="dlist-align">
-                                            <input id="payment_method" name="payment_method" type="radio" class="" value="bank-transfer"> HAVALE</input>
-                                        </dl> -->
+                                        <dl class="dlist-align">
+                                            <input id="payment_method" name="payment_method" type="radio" class="" value="transfer"> HAVALE</input>
+                                        </dl>
 
                                     </article>
                                 </div>

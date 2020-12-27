@@ -65,11 +65,27 @@
                 <span class="app-menu__label">{{ __("Ürün Etiketleri") }}</span>
             </a>
         </li>
-        <li>
-            <a class="app-menu__item {{ Route::currentRouteName() == 'admin.orders.index' ? 'active' : '' }}" href="{{ route('admin.orders.index') }}">
-                <i class="app-menu__icon fa fa-bar-chart"></i>
-                <span class="app-menu__label">{{ __("Siparişler") }}</span>
+        <li class="treeview">
+            <a data-toggle="treeview" class="app-menu__item" href="#">
+                <i class="app-menu__icon fa fa-shopping-bag"></i>
+
+                <span class="app-menu__label">{{ __("Sipariş Yönetimi") }}</span>
+                <i class="treeview-indicator fa fa-angle-right"></i>
             </a>
+            <ul class="treeview-menu">
+                <li>
+                    <a data-toggle="treeview-item" class="app-menu__item {{ Route::currentRouteName() == 'admin.orders.index' ? 'active' : '' }}" href="{{ route('admin.orders.index') }}">
+                        <i class="app-menu__icon fa fa-bar-chart"></i>
+                        <span class="app-menu__label">{{ __("Siparişler") }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a data-toggle="treeview-item" class="app-menu__item {{ Route::currentRouteName() == 'admin.orders.transfers' ? 'active' : '' }}" href="{{ route('admin.orders.transfers') }}">
+                        <i class="app-menu__icon fa fa-bar-chart"></i>
+                        <span class="app-menu__label">{{ __("Havaleler") }}</span>
+                    </a>
+                </li>
+            </ul>
         </li>
         <li>
             <a class="app-menu__item {{ Route::currentRouteName() == 'admin.brands.index' ? 'active' : '' }}" href="{{ route('admin.brands.index') }}">
