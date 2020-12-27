@@ -66,4 +66,13 @@ class OrderController extends BaseController
         }
         return $this->responseRedirectBack('Order updated successfully' ,'success',false, false);
     }
+
+    public function transfers()
+    {
+        $transfers = $this->orderRepository->listtransfers();
+
+        $this->setPageTitle('Transfers', 'List of all transfers');
+
+        return view('admin.orders.transfers', compact('transfers'));
+    }
 }

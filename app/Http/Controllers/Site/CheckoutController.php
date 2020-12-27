@@ -53,6 +53,10 @@ class CheckoutController extends Controller
         {
             return view('site.payment.akbank.index', compact('order'));
         }
+        else if ( $payment == 'transfer')
+        {
+            return view('site.payment.transfer.transfer', compact('order'));
+        }
 
         return redirect()->back()->with('message','Not Found : Payment method');
     }
