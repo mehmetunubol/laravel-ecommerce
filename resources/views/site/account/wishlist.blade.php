@@ -37,7 +37,7 @@
 	</td>
 
 	<td class="product-name">
-		<a href="">{{$wishlist->product->name}}</a>
+		<a href="/product/{{$wishlist->product->slug}}">{{$wishlist->product->name}}</a>
 	</td>
 
 	<td class="product-price">

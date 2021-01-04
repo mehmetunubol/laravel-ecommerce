@@ -69,6 +69,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::post('/address/delete', 'Site\AddressController@delete')->name('address.delete');
     Route::get('/account/{page_name}', 'Site\AccountController@getAccount')->name('account');
     Route::get('/account/orders', 'Site\AccountController@getOrders')->name('account.orders');
+    Route::get('/account/order/{id}/items', 'Site\AccountController@getOrderItems')->name('account.order.items');
     Route::get('account/wishlist', 'Site\WishlistController@getWishlist')->name('account.wishlist');
     Route::post('wishlist/add', 'Site\WishlistController@addToWishlist')->name('wishlist.add');
     Route::post('wishlist/remove', 'Site\WishlistController@removeFromWishlist')->name('wishlist.remove');

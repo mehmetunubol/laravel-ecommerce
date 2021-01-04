@@ -138,11 +138,17 @@ class CategoryController extends Controller
         // Don't want to list all defined attributes, just show applicable ones.
         $applicable_attributes = [];
         foreach ($products as $p) {
-            array_push($applicable_attributes, $p->attributes()->pluck('attribute_id'));
+            if( count($p->attributes) > 0 )
+            {
+                array_push($applicable_attributes, $p->attributes()->groupBy('attribute_id')->pluck('attribute_id'));
+            }
         }
+
+        $applicable_attributes = array_unique($applicable_attributes);
+
         $attributes = [];
         if ( count($applicable_attributes) > 0)
-        {
+        {      
             $attributes = $this->attributeRepository->findAttributesbyIds($applicable_attributes);
         }
         

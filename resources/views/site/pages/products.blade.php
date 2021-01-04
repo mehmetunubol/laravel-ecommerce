@@ -6,14 +6,15 @@
       <div class="container">
          <div class="row align-items-center justify-content-between mb-4">
             <div class="col-auto mb-3 mb-sm-0">
-               <form method="get">
+               <form method="post">
                   <div class="custom-select-1">
-                     <select class="form-control border">
-                        <option value="popularity">Fiyat: Azalan</option>
-                        <option value="rating">Fiyat: Artan</option>
-                        <option value="date" selected="selected">Tarih: Önce Yeni</option>
-                        <option value="price">Tarih: Önce Eski</option>
-                        <option value="price-desc">En çok tercih edilen</option>
+                     <select class="form-control border" onchange="window.location.href = `{{Request::url()}}?search={{$searchRecord->search}}&order=${value}`;">
+                        <option value="" disabled selected>{{__('SIRALAMA')}}</option>
+                        <option value="price-desc">{{__('Fiyat: Azalan')}}</option>
+                        <option value="price-asc">{{__('Fiyat: Artan')}}</option>
+                        <option value="id-asc">{{__('Tarih: Önce Eski')}}</option>
+                        <option value="id-desc">{{__('Tarih: Önce Yeni')}}</option>
+                        <option value="order-desc">{{__('En çok tercih edilen')}}</option>
                      </select>
                   </div>
                </form>
@@ -36,7 +37,7 @@
                               @endif
                            </a>
                            <span class="image-frame-action">
-                           <a href="#" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">SEPETE EKLE</a>
+                           <a href="{{ route('product.show', $product->slug) }}" class="btn btn-primary btn-rounded font-weight-semibold btn-v-3 btn-fs-2">SEPETE EKLE</a>
                            </span>
                         </span>
                      </div>

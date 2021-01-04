@@ -16,7 +16,7 @@
 </button>
 </div>
 -->
-
+Gösterilen: {{$category->name}}
 <div class="col-auto mb-3 mb-sm-0">
 <form method="post">
 <div class="custom-select-1">

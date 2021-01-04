@@ -198,10 +198,10 @@ class ProductRepository extends BaseRepository implements ProductContract
      * @param $search
      * @return products
      */
-    public function searchAllProducts($search = null)
+    public function searchAllProducts($search = null, $order)
     {
         $searchQueues = explode(" ", $search);
-
+        
         foreach($searchQueues as $i => $text) 
         {
             if($i == 0) 
@@ -215,7 +215,10 @@ class ProductRepository extends BaseRepository implements ProductContract
                                      ->orWhere('description', 'LIKE', "%{$text}%");
             }
         }
-        
+        if(isset($order))
+        {
+            $products = $products->orderBy($order['column'], $order['type']);
+        }
         return $products->get();
     }
 }

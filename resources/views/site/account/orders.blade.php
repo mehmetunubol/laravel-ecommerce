@@ -32,11 +32,11 @@
 </td>
 
 <td class="product-name">
-<a href="">ürünler gösterilecek</a>
+<a href="/account/order/{{$order->id}}/items">Ürünleri Görmek İçin Tıklayın</a>
 </td>
 
 <td class="product-price">
-<strong>{{ strtoupper($order->status) }}</strong>
+<strong>{{ strtoupper(orderStatusToTr($order->status)) }}</strong>
 </td>
 
 <td class="product-price">
@@ -46,7 +46,7 @@
 
 
 <td class="product-subtotal">
-<span class="sub-total"><strong><a href="">LİNK</a></strong></span>
+<span class="sub-total"><strong><a href="#"></a></strong></span>
 </td>
 
 </tr>
