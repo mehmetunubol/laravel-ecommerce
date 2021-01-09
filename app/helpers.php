@@ -43,7 +43,6 @@ function orderStatusToTr($status)
         case 'returned':
             # code...
             $status = "İade edildi";
-            dd($status);
             break;
 
         default:

@@ -31,7 +31,7 @@
                             <b>{{ __("Toplam") }}:</b> {{ round($order->grand_total, 2) }} {{ config('settings.currency_symbol') }}<br>
                             <b>{{ __("Ödeme Methodu") }}:</b> {{ $order->payment_method }}<br>
                             <b>{{ __("Ödeme Durumu") }}:</b> {{ $order->payment_status == 1 ?  __("Tamamlandı") : __("Tamamlanmadı") }}<br>
-                            <b>{{ __("Sipariş Durumu") }}:</b> {{ __($order->status) }}<br>
+                            <b>{{ __("Sipariş Durumu") }}:</b> {{ __(orderStatusToTr($order->status)) }}<br>
                         </div>
                         <div class="col-3">
                         <form action="{{ route('admin.orders.update') }}" method="POST" role="form" enctype="multipart/form-data">
@@ -44,7 +44,7 @@
                                             <label class="form-check-label">
                                                 <input class="form-check-input" type="radio" id="state" name="state" value="{{$state}}"
                                                 {{ $order->status == $state ? 'checked' : '' }}
-                                                /> {{ __($state) }}
+                                                /> {{ __(orderStatusToTr($state)) }}
                                             </label>
                                         </div>
                                     @endforeach

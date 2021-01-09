@@ -84,6 +84,11 @@ class OrderRepository extends BaseRepository implements OrderContract
             throw new InvalidArgumentException("Given state is not predefined!");
         }
         $order->status = $params['state'];
+
+        if ( $params['state'] === "wait_pay_confirm" || "wait_ship" )
+        {
+            $order->payment_status = 1;
+        }
         $order->save();
         return $order;
     }
