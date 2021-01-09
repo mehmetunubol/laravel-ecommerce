@@ -31,7 +31,7 @@
                             <b>{{ __("Toplam") }}:</b> {{ round($order->grand_total, 2) }} {{ config('settings.currency_symbol') }}<br>
                             <b>{{ __("Ödeme Methodu") }}:</b> {{ $order->payment_method }}<br>
                             <b>{{ __("Ödeme Durumu") }}:</b> {{ $order->payment_status == 1 ?  __("Tamamlandı") : __("Tamamlanmadı") }}<br>
-                            <b>{{ __("Sipariş Durumu") }}:</b> {{ __($order->status) }}<br>
+                            <b>{{ __("Sipariş Durumu") }}:</b> {{ __(orderStatusToTr($order->status)) }}<br>
                         </div>
                     </div>
                     <div class="row">

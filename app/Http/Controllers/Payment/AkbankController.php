@@ -45,6 +45,7 @@ class AkbankController extends Controller
         if( $result === true )
         {
             $order->status = "wait_ship";
+            $order->payment_status = 1;
             $order->save();
 
            
